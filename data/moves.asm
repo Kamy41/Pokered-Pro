@@ -109,7 +109,7 @@ MoveEnd:
 	move MEDITATE,     ATTACK_UP1_EFFECT,            0, PSYCHIC,  100, 40
 	move AGILITY,      SPEED_UP2_EFFECT,             0, PSYCHIC,  100, 30
 	move QUICK_ATTACK, NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 30
-	move RAGE,         RAGE_EFFECT,                 20, NORMAL,   100, 20
+	move RAGE,         RAGE_EFFECT,                 40, NORMAL,   100, 20
 	move TELEPORT,     SWITCH_AND_TELEPORT_EFFECT,   0, PSYCHIC,  100, 20
 	move NIGHT_SHADE,  SPECIAL_DAMAGE_EFFECT,        0, GHOST,    100, 15
 	move MIMIC,        MIMIC_EFFECT,                 0, NORMAL,   100, 10
