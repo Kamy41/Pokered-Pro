@@ -2349,16 +2349,16 @@ CheckFightingMapTrainers::
 	ret
 
 ; display the before battle text after the enemy trainer has walked up to the player's sprite
-DisplayEnemyTrainerTextAndStartBattle::
-	ld a, [wd730]
-	and $1
-	ret nz ; return if the enemy trainer hasn't finished walking to the player's sprite
-	ld [wJoyIgnore], a
-	ld a, [wSpriteIndex]
-	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	; fall through
-
+DisplayEnemyTrainerTextAndStartBattle:: ; 324c (0:324c)
+        ld a, [wd730]
+        and $1
+        ret nz ; return if the enemy trainer hasn't finished walking to the player's sprite
+        ld [wJoyIgnore], a
+        ld a, [wSpriteIndex]
+        ld [hSpriteIndexOrTextID], a
+        call DisplayTextID
+        ; fall through
+    
 StartTrainerBattle::
 	xor a
 	ld [wJoyIgnore], a
