@@ -10,7 +10,7 @@ TypeNames:
 	dw .Bug
 	dw .Ghost
 
-	dw .Normal
+	dw .Unk
 	dw .Normal
 	dw .Normal
 	dw .Normal
@@ -46,3 +46,4 @@ TypeNames:
 .Bug:      db "BUG@"
 .Ghost:    db "GHOST@"
 .Dragon:   db "DRAGON@"
+.Unk       db "???@"
