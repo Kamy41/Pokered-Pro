@@ -19,16 +19,21 @@ EvolveTradeMon:
 
 	ld a, [wInGameTradeReceiveMonName]
 
+	; KADABRA
+	cp "K"
+	jr z, .ok
+	
+	; MACHOKE
+	cp "M"
+	jr z, .ok
+	
 	; GRAVELER
 	cp "G"
 	jr z, .ok
 
-	; "SPECTRE" (HAUNTER)
-	cp "S"
-	ret nz
-	ld a, [wInGameTradeReceiveMonName + 1]
-	cp "P"
-	ret nz
+	; HAUNTER
+	cp "H"
+	jr z, .ok
 
 .ok
 	ld a, [wPartyCount]
