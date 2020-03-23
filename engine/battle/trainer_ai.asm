@@ -473,7 +473,7 @@ ErikaAI:
 	ld a, 10
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseSuperPotion
+	jp AIUsePotion
 
 KogaAI:
 	cp 25 percent + 1
@@ -483,7 +483,7 @@ KogaAI:
 BlaineAI:
 	cp 25 percent + 1
 	ret nc
-	jp AIUseSuperPotion
+	jp AIUseHyperPotion
 
 SabrinaAI:
 	cp 25 percent + 1
@@ -491,7 +491,7 @@ SabrinaAI:
 	ld a, 10
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseHyperPotion
+	jp AIUseSuperPotion
 
 Sony2AI:
 	cp 13 percent - 1
@@ -499,7 +499,7 @@ Sony2AI:
 	ld a, 5
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUsePotion
+	jp AIUseHyperPotion
 
 Sony3AI:
 	cp 13 percent - 1
@@ -515,7 +515,7 @@ LoreleiAI:
 	ld a, 5
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseSuperPotion
+	jp AIUseHyperPotion
 
 BrunoAI:
 	cp 25 percent + 1
@@ -530,7 +530,7 @@ AgathaAI:
 	ld a, 4
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseSuperPotion
+	jp AIUseHyperPotion
 
 LanceAI:
 	cp 50 percent + 1
