@@ -1871,7 +1871,6 @@ AnimationSlideMonDownAndHide:
 ; Slides the mon's sprite down and disappears. Used in Acid Armor.
 	ld a, $1
 	ld c, $2
-	ret
 .loop
 	push bc
 	push af
@@ -1892,9 +1891,7 @@ AnimationSlideMonDownAndHide:
 	ld hl, wTempPic
 	ld bc, $0310
 	xor a
-	call FillMemory
-	jp CopyTempPicToMonPic
-	
+		
 _AnimationSlideMonOff:
 ; Slides the mon's sprite off the screen horizontally by e tiles and waits
 ; [wSlideMonDelay] V-blanks each time the pic is slid by one tile.
