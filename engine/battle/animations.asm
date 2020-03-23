@@ -1893,6 +1893,7 @@ AnimationSlideMonDownAndHide:
 	xor a
 	call FillMemory
 	jp CopyTempPicToMonPic
+	ret
 
 _AnimationSlideMonOff:
 ; Slides the mon's sprite off the screen horizontally by e tiles and waits
