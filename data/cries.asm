@@ -17,7 +17,7 @@ CryData:
 	db $01, $00, $80; Nidoran♀
 	db $0A, $00, $80; Nidoqueen
 	db $19, $00, $80; Cubone
-	db $04, $00, $80; Rhyhorn
+	db $04, $03, $80; Rhyhorn
 	db $1B, $00, $80; Lapras
 	db $15, $00, $80; Arcanine
 	db $1E, $EE, $FF; Mew
@@ -43,7 +43,7 @@ CryData:
 	db $1F, $48, $60; Machoke
 	db $20, $08, $40; Mr.Mime
 	db $12, $80, $C0; Hitmonlee
-	db $0C, $EE, $C0; Hitmonchan
+	db $0C, $DE, $C0; Hitmonchan
 	db $17, $E0, $10; Arbok
 	db $1E, $42, $FF; Parasect
 	db $21, $20, $60; Psyduck
@@ -75,7 +75,7 @@ CryData:
 	db $09, $F8, $40; Moltres
 	db $09, $80, $40; Articuno
 	db $18, $FF, $80; Zapdos
-	db $0E, $FF, $FF; Ditto
+	db $0E, $EF, $FF; Ditto
 	db $19, $77, $10; Meowth
 	db $20, $20, $E0; Krabby
 	db $22, $FF, $40; MissingNo.
@@ -83,7 +83,7 @@ CryData:
 	db $0E, $E0, $60; MissingNo.
 	db $24, $4F, $10; Vulpix
 	db $24, $88, $60; Ninetales
-	db $0F, $EE, $01; Pikachu
+	db $0F, $FF, $01; Pikachu
 	db $09, $EE, $08; Raichu
 	db $00, $00, $00; MissingNo.
 	db $00, $00, $00; MissingNo.
@@ -105,7 +105,7 @@ CryData:
 	db $1A, $10, $20; Flareon
 	db $1A, $3D, $80; Jolteon
 	db $1A, $AA, $FF; Vaporeon
-	db $1F, $EE, $01; Machop
+	db $1F, $DE, $01; Machop
 	db $1D, $E0, $80; Zubat
 	db $17, $12, $40; Ekans
 	db $1E, $20, $E0; Paras
@@ -186,7 +186,7 @@ CryData:
 	db $00, $00, $00; MissingNo.
 	db $08, $DD, $01; Oddish
 	db $08, $AA, $40; Gloom
-	db $23, $22, $FF; Vileplume
+	db $23, $23, $FF; Vileplume
 	db $21, $55, $01; Bellsprout
 	db $25, $44, $20; Weepinbell
 	db $25, $66, $CC; Victreebel

@@ -61,7 +61,7 @@ FishingGroup4:
 
 FishingGroup5:
 	db 2
-	db 23,POLIWHIRL
+	db 20,POLIWHIRL
 	db 15,SLOWPOKE
 
 FishingGroup6:
@@ -87,14 +87,14 @@ FishingGroup8:
 
 FishingGroup9:
 	db 4
-	db 23,SLOWBRO
-	db 23,SEAKING
-	db 23,KINGLER
-	db 23,SEADRA
+	db 20,SLOWBRO
+	db 20,SEAKING
+	db 20,KINGLER
+	db 20,SEADRA
 
 FishingGroup10:
 	db 4
-	db 23,SEAKING
+	db 20,SEAKING
 	db 15,KRABBY
 	db 15,GOLDEEN
 	db 15,MAGIKARP

@@ -24,11 +24,11 @@ MonPartyData:
 	dn SPRITE_GRASS, SPRITE_BUG             ;Vileplume/Paras
 	dn SPRITE_BUG, SPRITE_BUG               ;Parasect/Venonat
 	dn SPRITE_BUG, SPRITE_MON               ;Venomoth/Diglett
-	dn SPRITE_MON, SPRITE_MON               ;Dugtrio/Meowth
-	dn SPRITE_MON, SPRITE_MON               ;Persian/Psyduck
+	dn SPRITE_MON, SPRITE_QUADRUPED         ;Dugtrio/Meowth
+	dn SPRITE_QUADRUPED, SPRITE_MON         ;Persian/Psyduck
 	dn SPRITE_MON, SPRITE_MON               ;Golduck/Mankey
 	dn SPRITE_MON, SPRITE_QUADRUPED         ;Primeape/Growlithe
-	dn SPRITE_QUADRUPED, SPRITE_MON         ;Arcanine/Poliwag
+	dn SPRITE_QUADRUPED, SPRITE_WATER       ;Arcanine/Poliwag
 	dn SPRITE_MON, SPRITE_MON               ;Poliwhirl/Poliwrath
 	dn SPRITE_MON, SPRITE_MON               ;Abra/Kadabra
 	dn SPRITE_MON, SPRITE_MON               ;Alakazam/Machop
@@ -73,5 +73,5 @@ MonPartyData:
 	dn SPRITE_MON, SPRITE_BIRD_M            ;Snorlax/Articuno
 	dn SPRITE_BIRD_M, SPRITE_BIRD_M         ;Zapdos/Moltres
 	dn SPRITE_SNAKE, SPRITE_SNAKE           ;Dratini/Dragonair
-	dn SPRITE_SNAKE, SPRITE_MON             ;Dragonite/Mewtwo
+	dn SPRITE_MON, SPRITE_MON               ;Dragonite/Mewtwo
 	dn SPRITE_MON, 0                        ;Mew/Padding
