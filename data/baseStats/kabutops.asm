@@ -14,7 +14,7 @@ dw KabutopsPicBack
 ; attacks known at lvl 0
 db SCRATCH
 db HARDEN
-db ABSORB
+db WATER_GUN
 db 0
 db 0 ; growth rate
 ; learnset
@@ -23,6 +23,6 @@ db 0 ; growth rate
 	tmlearn 17,19,20
 	tmlearn 31,32
 	tmlearn 33,34,40
-	tmlearn 44
+	tmlearn 44,48
 	tmlearn 50,53
 db 0 ; padding
