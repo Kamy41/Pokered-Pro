@@ -255,14 +255,14 @@ GainExperience:
 	ld a, [wd0b5]
 	ld [wd11e], a
 		
-	ld a, [W_CURENEMYLVL]
+	ld a, [wCurEnemyLVL]
 	ld c, a
 	ld a, [wTempLevel]
 	ld b, a
 .level_loop
 	inc b
 	ld a, b
-	ld [W_CURENEMYLVL], a
+	ld [wCurEnemyLVL], a
 	push bc	
 	predef LearnMoveFromLevelUp
 	pop bc
