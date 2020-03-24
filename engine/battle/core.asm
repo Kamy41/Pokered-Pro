@@ -8720,3 +8720,12 @@ PlayBattleAnimationGotID:
 	pop de
 	pop hl
 	ret
+	
+; Determine if a move is Physical, Special, or Status
+; INPUT: Move ID in register a
+; OUTPUT: Move Physical/Special/Status type in register a
+PhysicalSpecialSplit:
+	ld [wTempMoveID], a
+	callba _PhysicalSpecialSplit
+	ld a, [wTempMoveID]
+	ret
