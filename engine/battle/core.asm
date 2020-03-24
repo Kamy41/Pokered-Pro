@@ -4707,7 +4707,7 @@ CriticalHitTest:
 	ld c, [hl]                   ; read move id
 	ld a, [de]
 	bit GETTING_PUMPED, a        ; test for focus energy
-	jr z, .focusEnergyUsed       ; bug: using focus energy causes a shift to the right instead of left,
+	jr z, .noFocusEnergyUsed     ; bug: using focus energy causes a shift to the right instead of left,
 	                             ; resulting in 1/4 the usual crit chance
 	sla b                        ; (effective (base speed/2)*2)
 	jr c, .guaranteedCritical
