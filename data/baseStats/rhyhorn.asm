@@ -13,8 +13,8 @@ dw RhyhornPicFront
 dw RhyhornPicBack
 ; attacks known at lvl 0
 db HORN_ATTACK
-db 0
-db 0
+db STOMP
+db TAIL_WHIP
 db 0
 db 5 ; growth rate
 ; learnset
