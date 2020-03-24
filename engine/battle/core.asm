@@ -4785,14 +4785,25 @@ HandleCounterMove:
 	and a
 	ret z ; miss if the opponent's last selected move's Base Power is 0.
 ; check if the move the target last selected was Normal or Fighting type
-;	inc de
-;	ld a, [de]
-;	and a ; normal type
-;	jr z, .counterableType
-;	cp FIGHTING
-        ld a,[hl]
-	call PhysicalSpecialSplit
-	cp a, PHYSICAL
+ 	inc de
+ 	ld a, [de]
+ 	and a ; normal type
+ 	jr z, .counterableType
+ 	cp FIGHTING
+	jr z, .counterableType
+	cp FLYING
+	jr z, .counterableType
+	cp POISON
+	jr z, .counterableType
+	cp GROUND
+	jr z, .counterableType
+	cp ROCK
+	jr z, .counterableType
+	cp BUG
+	jr z, .counterableType
+	cp GHOST
+	jr z, .counterableType
+	cp UNK_TYPE
 	jr z, .counterableType
 ; if the move wasn't Normal or Fighting type, miss
 	xor a
@@ -8719,13 +8730,4 @@ PlayBattleAnimationGotID:
 	pop bc
 	pop de
 	pop hl
-	ret
-	
-; Determine if a move is Physical, Special, or Status
-; INPUT: Move ID in register a
-; OUTPUT: Move Physical/Special/Status type in register a
-PhysicalSpecialSplit:
-	ld [wTempMoveID], a
-	callba _PhysicalSpecialSplit
-	ld a, [wTempMoveID]
-	ret
+	ret	
