@@ -1,9 +1,9 @@
 db DEX_ONIX ; pokedex id
-db 35 ; base hp
-db 45 ; base attack
+db 50 ; base hp
+db 60 ; base attack
 db 160 ; base defense
 db 70 ; base speed
-db 30 ; base special
+db 45 ; base special
 db ROCK ; species type 1
 db GROUND ; species type 2
 db 45 ; catch rate
