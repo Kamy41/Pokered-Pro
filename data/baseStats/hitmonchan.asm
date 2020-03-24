@@ -1,9 +1,9 @@
 db DEX_HITMONCHAN ; pokedex id
 db 60 ; base hp
 db 105 ; base attack
-db 80 ; base defense
+db 85 ; base defense
 db 75 ; base speed
-db 60 ; base special
+db 65 ; base special
 db FIGHTING ; species type 1
 db FIGHTING ; species type 2
 db 45 ; catch rate
