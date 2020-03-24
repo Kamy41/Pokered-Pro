@@ -1055,6 +1055,7 @@ SplashAnim:
 
 AcidArmorAnim:
 	db SE_SLIDE_MON_DOWN_AND_HIDE, $96
+	db SE_DELAY_ANIMATION_10, $FF
 	db SE_SHOW_MON_PIC, $FF
 	db $FF
 
