@@ -15,7 +15,7 @@ dw RaichuPicBack
 db THUNDERSHOCK
 db GROWL
 db THUNDER_WAVE
-db 0
+db QUICK_ATTACK
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8
