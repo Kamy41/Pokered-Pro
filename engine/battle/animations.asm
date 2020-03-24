@@ -1887,6 +1887,12 @@ AnimationSlideMonDownAndHide:
 	pop bc
 	dec c
 	jr nz, .loop
+	call AnimationHideMonPic
+	ld hl, wTempPic
+	ld bc, $0310
+	xor a
+	call FillMemory
+        jp CopyTempPicToMonPic
 		
 _AnimationSlideMonOff:
 ; Slides the mon's sprite off the screen horizontally by e tiles and waits
