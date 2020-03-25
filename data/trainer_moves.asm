@@ -2,10 +2,6 @@
 ; moveset = partymon location, partymon's move, moveid
 
 SpecialTrainerMoves:
-	db YOUNGSTER,$9
-	db 1,4,FISSURE
-	db 0
-		
 	db BROCK,$1
 	db 2,3,BIDE
 	db 0
@@ -38,23 +34,19 @@ SpecialTrainerMoves:
 	db 5,2,FISSURE
 	db 0
 
-	db LORELEI,$1	
-	db 5,1,LOVELY_KISS
+	db LORELEI,$1
 	db 6,3,BLIZZARD
 	db 0
 
 	db BRUNO,$1
-	db 4,1,DIG
 	db 6,1,FISSURE
 	db 0
 
 	db AGATHA,$1
-	db 1,1,LICK
 	db 6,2,TOXIC
 	db 0
 
-	db LANCE,$1	
-	db 5,1,DRAGON_RAGE	
+	db LANCE,$1
 	db 6,3,BARRIER
 	db 0
 
