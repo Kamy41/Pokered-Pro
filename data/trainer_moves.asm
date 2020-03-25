@@ -60,7 +60,7 @@ SpecialTrainerMoves:
 
 	db SONY3,$1
 	db 1,3,SKY_ATTACK	
-	db 6,2,FIRE_BLAST
+	db 6,2,BLIZZARD
 	db 0
 
 	db SONY3,$2
@@ -70,7 +70,7 @@ SpecialTrainerMoves:
 
 	db SONY3,$3
 	db 1,3,SKY_ATTACK	
-	db 6,2,BLIZZARD
+	db 6,2,FIRE_BLAST
 	db 0
 
 	db $ff
