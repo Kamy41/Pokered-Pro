@@ -14,8 +14,8 @@ dw MarowakPicBack
 ; attacks known at lvl 0
 db BONE_CLUB
 db GROWL
-db LEER
-db FOCUS_ENERGY
+db 0
+db 0
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8
