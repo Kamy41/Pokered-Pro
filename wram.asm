@@ -2730,7 +2730,6 @@ wViridianMartCurScript:: ; d60d
 wRoute22GateCurScript:: ; d60e
 	ds 1
 wCeruleanCityCurScript:: ; d60f
-wVermilionDockCurScript:: ; d60f
 	ds 1
 	ds 7
 wSSAnneBowCurScript:: ; d617
