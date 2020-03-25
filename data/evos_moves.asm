@@ -927,7 +927,7 @@ DragoniteEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 35, TWISTER
+	db 35, SLAM
 	db 45, DRAGON_RAGE
 	db 55, WING_ATTACK
 	db 60, HYPER_BEAM
@@ -1119,7 +1119,7 @@ DratiniEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 30, TWISTER
+	db 30, SLAM
 	db 40, DRAGON_RAGE
 	db 50, HYPER_BEAM
 	db 0
@@ -1131,7 +1131,7 @@ DragonairEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 35, TWISTER
+	db 35, SLAM
 	db 45, DRAGON_RAGE
 	db 55, HYPER_BEAM
 	db 0
@@ -1163,9 +1163,9 @@ HorseaEvosMoves:
 	db 0
 ; Learnset
 	db 19, SMOKESCREEN
-	db 24, AGILITY
-	db 30, WATER_GUN
-	db 37, TWISTER
+	db 24, WATER_GUN
+	db 30, AGILITY
+	db 37, BUBBLEBEAM
 	db 45, HYDRO_PUMP
 	db 0
 
@@ -1174,9 +1174,9 @@ SeadraEvosMoves:
 	db 0
 ; Learnset
 	db 19, SMOKESCREEN
-	db 24, AGILITY
-	db 30, WATER_GUN
-	db 41, TWISTER
+	db 24, WATER_GUN
+	db 30, AGILITY
+	db 41, BUBBLEBEAM
 	db 52, HYDRO_PUMP
 	db 0
 
