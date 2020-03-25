@@ -163,4 +163,5 @@ MoveNames::
 	db "SUPER FANG@"
 	db "SLASH@"
 	db "SUBSTITUTE@"
+	db "TWISTER@"
 	db "STRUGGLE@"
