@@ -2649,7 +2649,7 @@ wNumHoFTeams:: ; d5a2
 ; number of HOF teams
 	ds 1
 
-wVermilionDockCurScript:: ; d5a3
+wUnusedD5A3:: ; d5a3
 	ds 1
 
 wPlayerCoins:: ; d5a4
@@ -2730,6 +2730,7 @@ wViridianMartCurScript:: ; d60d
 wRoute22GateCurScript:: ; d60e
 	ds 1
 wCeruleanCityCurScript:: ; d60f
+wVermilionDockCurScript ; d60f
 	ds 1
 	ds 7
 wSSAnneBowCurScript:: ; d617
