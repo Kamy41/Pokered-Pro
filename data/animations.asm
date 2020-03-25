@@ -163,7 +163,6 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
-	dw TwisterAnim
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -1128,14 +1127,6 @@ SubstituteAnim:
 	db SE_SLIDE_MON_OFF, $A3
 	db $08,$FF,$47
 	db SE_SUBSTITUTE_MON, $FF
-	db $FF
-
-TwisterAnim:
-	db SE_DARK_SCREEN_PALETTE, $FF
-	db $46,$A4,$10
-	db SE_DARK_SCREEN_FLASH, $FF
-	db $46,$FF,$04
-	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
 BallTossAnim:
