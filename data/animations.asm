@@ -563,7 +563,7 @@ LowKickAnim:
 
 CounterAnim:
 	db SE_SLIDE_MON_OFF, $43
-	db $46,$FF,$04
+	db $46,$43,$04
 	db SE_SHOW_MON_PIC, $FF
 	db $FF
 
