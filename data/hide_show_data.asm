@@ -99,7 +99,7 @@ MapHSPointers:
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHSXX
-	dw MapHSXX
+	dw MapHS5E
 	dw MapHSXX
 	dw MapHS60
 	dw MapHSXX
@@ -573,5 +573,8 @@ MapHSA2:
 	db SEAFOAM_ISLANDS_B4F,$01,Hide
 	db SEAFOAM_ISLANDS_B4F,$02,Hide
 	db SEAFOAM_ISLANDS_B4F,$03,Show
+	
+MapHS5E:
+	db VERMILION_DOCK,$01,Hide
 
 	db $FF,$01,Show
