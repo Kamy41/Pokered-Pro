@@ -5,6 +5,10 @@ SpecialTrainerMoves:
 	db YOUNGSTER,$9
 	db 1,4,FISSURE
 	db 0
+	
+	db BUG_CATCHER,$1
+	db 1,1,BUBBLE
+	db 0
 
 	db BROCK,$1
 	db 2,3,BIDE
