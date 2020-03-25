@@ -1,32 +1,76 @@
-LoneMoves:
-; these are used for gym leaders.
-; this is not automatic! you have to write the number you want to wLoneAttackNo
-; first. e.g., erika's script writes 4 to wLoneAttackNo to get mega drain,
-; the fourth entry in the list.
+; entry = trainerclass, trainerid, moveset+, 0
+; moveset = partymon location, partymon's move, moveid
 
-; first byte:  pokemon in the trainer's party that gets the move
-; second byte: move
-; unterminated
-	db 1,BIDE
-	db 1,BUBBLEBEAM
-	db 2,THUNDERBOLT
-	db 2,MEGA_DRAIN
-	db 3,TOXIC
-	db 3,PSYWAVE
-	db 3,FIRE_BLAST
-	db 4,FISSURE
+SpecialTrainerMoves:
+	db YOUNGSTER,$9
+	db 1,4,FISSURE
+	db 0
+		
+	db BROCK,$1
+	db 2,3,BIDE
+	db 0
 
-TeamMoves:
-; these are used for elite four.
-; this is automatic, based on trainer class.
-; don't be confused by LoneMoves above, the two data structures are
-	; _completely_ unrelated.
+	db MISTY,$1
+	db 2,3,BUBBLEBEAM
+	db 0
 
-; first byte: trainer (all trainers in this class have this move)
-; second byte: move
-; ff-terminated
-	db LORELEI,BLIZZARD
-	db BRUNO,FISSURE
-	db AGATHA,TOXIC
-	db LANCE,BARRIER
-	db $FF
+	db LT_SURGE,$1
+	db 3,4,THUNDERBOLT
+	db 0
+
+	db ERIKA,$1
+	db 3,3,MEGA_DRAIN	
+	db 0
+
+	db KOGA,$1	
+	db 4,4,TOXIC
+	db 0
+
+	db BLAINE,$1
+	db 4,3,FIRE_BLAST
+	db 0
+
+	db SABRINA,$1
+	db 4,1,PSYWAVE
+	db 0
+
+	db GIOVANNI,$3
+	db 5,2,FISSURE
+	db 0
+
+	db LORELEI,$1	
+	db 5,1,LOVELY_KISS
+	db 6,3,BLIZZARD
+	db 0
+
+	db BRUNO,$1
+	db 4,1,DIG
+	db 6,1,FISSURE
+	db 0
+
+	db AGATHA,$1
+	db 1,1,LICK
+	db 6,2,TOXIC
+	db 0
+
+	db LANCE,$1	
+	db 5,1,DRAGON_RAGE	
+	db 6,3,BARRIER
+	db 0
+
+	db SONY3,$1
+	db 1,3,SKY_ATTACK	
+	db 6,2,BLIZZARD
+	db 0
+
+	db SONY3,$2
+	db 1,3,SKY_ATTACK	
+	db 6,2,MEGA_DRAIN
+	db 0
+
+	db SONY3,$3
+	db 1,3,SKY_ATTACK	
+	db 6,2,FIRE_BLAST
+	db 0
+
+	db $ff
