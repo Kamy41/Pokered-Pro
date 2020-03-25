@@ -121,7 +121,7 @@ ReadTrainer:
 	jr .FinishUp ; nope
 .GiveTeamMoves
 	ld a, [hl]
-	ld [wEnemyMon5Moves + 2], a
+	ld [wEnemyMon5Moves], a
 	jr .FinishUp
 .ChampionRival ; give moves to his team
 
@@ -140,7 +140,7 @@ ReadTrainer:
 	ld b, BLIZZARD ; must be squirtle
 .GiveStarterMove
 	ld a, b
-	ld [wEnemyMon6Moves + 2], a
+	ld [wEnemyMon6Moves + 1], a
 .FinishUp
 ; clear wAmountMoneyWon addresses
 	xor a
