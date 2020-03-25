@@ -2649,7 +2649,7 @@ wNumHoFTeams:: ; d5a2
 ; number of HOF teams
 	ds 1
 
-wUnusedD5A3:: ; d5a3
+wVermilionDockCurScript:: ; d5a3
 	ds 1
 
 wPlayerCoins:: ; d5a4
