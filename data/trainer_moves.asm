@@ -39,17 +39,17 @@ SpecialTrainerMoves:
 	db 0
 
 	db LORELEI,$1	
-	db 4,3,LOVELY_KISS
+	db 5,1,LOVELY_KISS
 	db 6,3,BLIZZARD
 	db 0
 
 	db BRUNO,$1
-	db 4,2,BODY_SLAM
+	db 4,1,DIG
 	db 6,1,FISSURE
 	db 0
 
 	db AGATHA,$1
-	db 4,1,WRAP
+	db 1,1,LICK
 	db 6,2,TOXIC
 	db 0
 
