@@ -294,7 +294,7 @@ IvysaurEvosMoves:
 	db EV_LEVEL, 32, VENUSAUR
 	db 0
 ; Learnset
-	db 7, LEECH_SEED
+	db 8, LEECH_SEED
 	db 13, VINE_WHIP
 	db 22, POISONPOWDER
 	db 30, RAZOR_LEAF
@@ -1772,7 +1772,7 @@ BulbasaurEvosMoves:
 	db EV_LEVEL, 16, IVYSAUR
 	db 0
 ; Learnset
-	db 7, LEECH_SEED
+	db 8, LEECH_SEED
 	db 13, VINE_WHIP
 	db 20, POISONPOWDER
 	db 27, RAZOR_LEAF
@@ -1785,7 +1785,7 @@ VenusaurEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 7, LEECH_SEED
+	db 8, LEECH_SEED
 	db 13, VINE_WHIP
 	db 22, POISONPOWDER
 	db 30, RAZOR_LEAF
@@ -2003,7 +2003,7 @@ CharmanderEvosMoves:
 	db EV_LEVEL, 16, CHARMELEON
 	db 0
 ; Learnset
-	db 9, EMBER
+	db 8, EMBER
 	db 15, LEER
 	db 22, RAGE
 	db 30, SLASH
@@ -2029,7 +2029,7 @@ CharmeleonEvosMoves:
 	db EV_LEVEL, 36, CHARIZARD
 	db 0
 ; Learnset
-	db 9, EMBER
+	db 8, EMBER
 	db 15, LEER
 	db 24, RAGE
 	db 33, SLASH
@@ -2054,7 +2054,7 @@ CharizardEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 9, EMBER
+	db 8, EMBER
 	db 15, LEER
 	db 24, RAGE
 	db 36, SLASH
