@@ -654,8 +654,8 @@ ChanseyEvosMoves:
 	db 30, BIDE
 	db 38, MINIMIZE
 	db 44, DEFENSE_CURL
-	db 48, LIGHT_SCREEN
-	db 54, DOUBLE_EDGE
+	db 48, DOUBLE_EDGE
+	db 54, LIGHT_SCREEN
 	db 0
 
 MachokeEvosMoves:
@@ -674,7 +674,7 @@ MrMimeEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 15, CONFUSION
+	db 15, BARRIER
 	db 23, DOUBLESLAP
 	db 31, MEDITATE
 	db 39, PSYBEAM
@@ -927,8 +927,9 @@ DragoniteEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 35, SLAM
+	db 35, TWISTER
 	db 45, DRAGON_RAGE
+	db 55, WING_ATTACK
 	db 60, HYPER_BEAM
 	db 0
 
@@ -1118,7 +1119,7 @@ DratiniEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 30, SLAM
+	db 30, TWISTER
 	db 40, DRAGON_RAGE
 	db 50, HYPER_BEAM
 	db 0
@@ -1130,7 +1131,7 @@ DragonairEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 35, SLAM
+	db 35, TWISTER
 	db 45, DRAGON_RAGE
 	db 55, HYPER_BEAM
 	db 0
@@ -1162,9 +1163,9 @@ HorseaEvosMoves:
 	db 0
 ; Learnset
 	db 19, SMOKESCREEN
-	db 24, LEER
+	db 24, AGILITY
 	db 30, WATER_GUN
-	db 37, AGILITY
+	db 37, TWISTER
 	db 45, HYDRO_PUMP
 	db 0
 
@@ -1173,9 +1174,9 @@ SeadraEvosMoves:
 	db 0
 ; Learnset
 	db 19, SMOKESCREEN
-	db 24, LEER
+	db 24, AGILITY
 	db 30, WATER_GUN
-	db 41, AGILITY
+	db 41, TWISTER
 	db 52, HYDRO_PUMP
 	db 0
 
@@ -1222,7 +1223,7 @@ OmanyteEvosMoves:
 	db 34, ROCK_THROW
 	db 39, LEER
 	db 44, SPIKE_CANNON
-	db 49, WATERFALL
+	db 49, HYDRO_PUMP
 	db 0
 
 OmastarEvosMoves:
@@ -1232,7 +1233,7 @@ OmastarEvosMoves:
 	db 34, ROCK_THROW
 	db 39, LEER
 	db 46, SPIKE_CANNON
-	db 53, WATERFALL
+	db 53, HYDRO_PUMP
 	db 0
 
 JigglypuffEvosMoves:
@@ -1612,7 +1613,7 @@ MukEvosMoves:
 	db 30, POISON_GAS
 	db 33, MINIMIZE
 	db 37, SLUDGE
-	db 45, HARDEN
+	db 45, SCREECH
 	db 53, ACID_ARMOR
 	db 0
 
@@ -1764,7 +1765,6 @@ StarmieEvosMoves:
 	db 0
 ; Learnset
 	db 37,CONFUSE_RAY
-	db 47,AURORA_BEAM
 	db 0
 
 BulbasaurEvosMoves:
@@ -1931,8 +1931,8 @@ NidorinaEvosMoves:
 	db 12, DOUBLE_KICK
 	db 19, POISON_STING
 	db 23, TAIL_WHIP
-	db 32, BITE
-	db 41, FURY_SWIPES
+	db 36, BITE
+	db 46, FURY_SWIPES
 	db 0
 
 GeodudeEvosMoves:
@@ -2116,9 +2116,7 @@ VileplumeEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 15, POISONPOWDER
-	db 17, STUN_SPORE
-	db 19, SLEEP_POWDER
+	db 15, POISONPOWDER	
 	db 0
 
 BellsproutEvosMoves:
@@ -2154,6 +2152,4 @@ VictreebelEvosMoves:
 	db 0
 ; Learnset
 	db 13, WRAP
-	db 15, POISONPOWDER
-	db 18, SLEEP_POWDER
 	db 0
