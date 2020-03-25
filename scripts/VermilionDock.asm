@@ -1,6 +1,6 @@
-VermilionDockScript:
+VermilionDock_Script:
 	call EnableAutoTextBoxDrawing
-	call VermilionDockSubscript1
+	call VermilionDock_SubScript
 	ld hl, MewTrainerHeader
 	ld de, VermilionDock_ScriptPointers
 	ld a, [wVermilionDockCurScript]
@@ -13,7 +13,7 @@ VermilionDock_ScriptPointers
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
 
-VermilionDock_Script1:
+VermilionDock_SubScript:
 	call EnableAutoTextBoxDrawing
 	CheckEventHL EVENT_STARTED_WALKING_OUT_OF_DOCK
 	jr nz, .asm_1db8d
