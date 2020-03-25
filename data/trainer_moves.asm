@@ -2,7 +2,7 @@
 ; moveset = partymon location, partymon's move, moveid
 
 SpecialTrainerMoves:
-	db YOUNGSTER,$e
+	db YOUNGSTER,$9
 	db 1,4,FISSURE
 	db 0
 
