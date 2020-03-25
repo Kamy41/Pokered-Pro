@@ -3,9 +3,9 @@ VermilionDock_Script:
 	call VermilionDock_SubScript
 	ld hl, MewTrainerHeader
 	ld de, VermilionDock_ScriptPointers
-	ld a, [wVermilionDockCurScript]
+	ld a, [wUnusedD366]
 	call ExecuteCurMapScriptInTable
-	ld [wVermilionDockCurScript], a
+	ld [wUnusedD366], a
 	ret
 	
 VermilionDock_ScriptPointers
