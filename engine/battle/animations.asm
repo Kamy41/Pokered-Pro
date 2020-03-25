@@ -1887,6 +1887,13 @@ AnimationSlideMonDownAndHide:
 	pop bc
 	dec c	
 	jr nz, .loop
+	call AnimationHideMonPic
+	ld hl, wTempPic
+	ld bc, $0310
+	xor a
+	call FillMemory
+	jp CopyTempPicToMonPic
+	jr nz, .loop
 	ret
 		
 _AnimationSlideMonOff:
