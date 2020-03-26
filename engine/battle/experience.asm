@@ -158,6 +158,7 @@ GainExperience:
 	callba CalcLevelFromExperience
 	pop hl
 	ld a, [hl] ; current level
+	ld [wTempLevel], a ; store current level
 	cp d
 	jp z, .nextMon ; if level didn't change, go to next mon
 	ld a, [wCurEnemyLVL]
@@ -256,6 +257,8 @@ GainExperience:
 		
 	ld a, [wCurEnemyLVL]
 	ld c, a
+	ld a, [wTempLevel]
+	ld b, a
 .level_loop
 	inc b
 	ld a, b
