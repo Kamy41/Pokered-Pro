@@ -986,7 +986,7 @@ JynxEvosMoves:
 	db 31, ICE_PUNCH
 	db 39, BODY_SLAM
 	db 47, THRASH
-	db 58, BLIZZARD
+	db 56, BLIZZARD
 	db 0
 
 MoltresEvosMoves:
@@ -1089,7 +1089,7 @@ PikachuEvosMoves:
 ; Learnset
 	db 9, THUNDER_WAVE
 	db 16, QUICK_ATTACK
-	db 26, SWIFT
+	db 25, SWIFT
 	db 33, AGILITY
 	db 43, THUNDER
 	db 0
@@ -1163,9 +1163,9 @@ HorseaEvosMoves:
 	db 0
 ; Learnset
 	db 19, SMOKESCREEN
-	db 24, WATER_GUN
-	db 30, AGILITY
-	db 37, BUBBLEBEAM
+	db 24, TWISTER
+	db 30, WATER_GUN
+	db 37, AGILITY
 	db 45, HYDRO_PUMP
 	db 0
 
@@ -1174,9 +1174,9 @@ SeadraEvosMoves:
 	db 0
 ; Learnset
 	db 19, SMOKESCREEN
-	db 24, WATER_GUN
-	db 30, AGILITY
-	db 41, BUBBLEBEAM
+	db 24, TWISTER
+	db 30, WATER_GUN
+	db 41, AGILITY
 	db 52, HYDRO_PUMP
 	db 0
 
@@ -2005,8 +2005,8 @@ CharmanderEvosMoves:
 ; Learnset
 	db 8, EMBER
 	db 15, LEER
-	db 22, RAGE
-	db 30, SLASH
+	db 22, SLASH
+	db 30, RAGE
 	db 38, FLAMETHROWER
 	db 46, FIRE_SPIN
 	db 0
@@ -2031,8 +2031,8 @@ CharmeleonEvosMoves:
 ; Learnset
 	db 8, EMBER
 	db 15, LEER
-	db 24, RAGE
-	db 33, SLASH
+	db 24, SLASH
+	db 33, RAGE
 	db 42, FLAMETHROWER
 	db 56, FIRE_SPIN
 	db 0
@@ -2056,8 +2056,8 @@ CharizardEvosMoves:
 ; Learnset
 	db 8, EMBER
 	db 15, LEER
-	db 24, RAGE
-	db 36, SLASH
+	db 24, SLASH
+	db 36, RAGE
 	db 46, FLAMETHROWER
 	db 55, FIRE_SPIN
 	db 0
