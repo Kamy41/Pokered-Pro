@@ -4802,8 +4802,6 @@ HandleCounterMove:
 	jr z, .counterableType
 	cp GHOST
 	jr z, .counterableType
-	cp UNK_TYPE
-	jr z, .counterableType
 ; if the move wasn't Normal or Fighting type, miss
 	xor a
 	ret
