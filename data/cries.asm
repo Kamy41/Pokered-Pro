@@ -75,7 +75,7 @@ CryData:
 	db $09, $F8, $40; Moltres
 	db $09, $80, $40; Articuno
 	db $18, $FF, $80; Zapdos
-	db $0E, $EF, $FF; Ditto
+	db $0E, $FA, $FF; Ditto
 	db $19, $77, $10; Meowth
 	db $20, $20, $E0; Krabby
 	db $22, $FF, $40; MissingNo.
@@ -105,7 +105,7 @@ CryData:
 	db $1A, $10, $20; Flareon
 	db $1A, $3D, $80; Jolteon
 	db $1A, $AA, $FF; Vaporeon
-	db $1F, $DE, $01; Machop
+	db $1F, $ED, $01; Machop
 	db $1D, $E0, $80; Zubat
 	db $17, $12, $40; Ekans
 	db $1E, $20, $E0; Paras
