@@ -2450,7 +2450,7 @@ MoveSoundTable:
 	db SFX_BATTLE_14,         $01,$e0 ; ROCK_THROW
 	db SFX_BATTLE_29,         $0f,$e0 ; EARTHQUAKE
 	db SFX_BATTLE_29,         $11,$20 ; FISSURE
-	db SFX_DAMAGE,            $12,$40 ; DIG
+	db SFX_DAMAGE,            $11,$40 ; DIG
 	db SFX_BATTLE_0F,         $10,$c0 ; TOXIC
 	db SFX_BATTLE_27,         $50,$a0 ; CONFUSION
 	db SFX_PSYCHIC_M,         $00,$80 ; PSYCHIC_M
