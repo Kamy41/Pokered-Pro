@@ -3415,9 +3415,11 @@ CheckPlayerStatusConditions:
 .FrozenCheck
 	bit FRZ, [hl] ; frozen?
 	jr z, .HeldInPlaceCheck
-	call BattleRandom ; chance to defrost naturally
+	; chance to defrost naturally
+	call BattleRandom
 	cp $19
 	jr c, .defrostMon
+	; Original routine continues here
 	ld hl, IsFrozenText
 	call PrintText
 	xor a
@@ -5943,6 +5945,7 @@ CheckEnemyStatusConditions:
 	call BattleRandom
 	cp $19
 	jr c, .defrostMon
+	; Original routine continues here
 	ld hl, IsFrozenText
 	call PrintText
 	xor a
