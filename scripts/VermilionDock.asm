@@ -2,7 +2,10 @@ VermilionDock_Script:
 	call EnableAutoTextBoxDrawing
 	call VermilionDock_SubScript
 	ld hl, MewTrainerHeader
-	ld de, VermilionDock_ScriptPointers	
+	ld de, VermilionDock_ScriptPointers
+	ld a, [wVermilionDockCurScript]	
+	call ExecuteCurMapScriptInTable	
+	ld [wVermilionDockCurScript], a
 	ret
 	
 VermilionDock_ScriptPointers
