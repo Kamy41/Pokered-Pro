@@ -2094,8 +2094,8 @@ _FrozenText::
 	prompt
 
 _FireDefrostedText::
-	text "Fire defrosted"
-	line "<TARGET>!"
+	text "<TARGET>"
+	line "has defrosted!"
 	prompt
 
 _MonsStatsRoseText::
