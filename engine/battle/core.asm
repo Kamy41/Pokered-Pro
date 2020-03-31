@@ -5925,14 +5925,17 @@ CheckEnemyStatusConditions:
 	ld a, SLP_ANIM
 	call PlayMoveAnimation
 	jr .sleepDone
+	
 .wokeUp
 	ld hl, WokeUpText
 	call PrintText
+	
 .sleepDone
 	xor a
 	ld [wEnemyUsedMove], a
 	ld hl, ExecuteEnemyMoveDone ; enemy can't move this turn
 	jp .enemyReturnToHL
+	
 .checkIfFrozen
 	bit FRZ, [hl]
 	jr z, .checkIfTrapped
@@ -5946,6 +5949,7 @@ CheckEnemyStatusConditions:
 	ld [wEnemyUsedMove], a
 	ld hl, ExecuteEnemyMoveDone ; enemy can't move this turn
 	jp .enemyReturnToHL
+	
 .defrostMon ; New routine to thaw mon
 	ld hl, wEnemyMonStatus
 	res FRZ, [hl]
@@ -5956,6 +5960,7 @@ CheckEnemyStatusConditions:
 	xor a
 	inc a
 	ld [H_WHOSETURN],a
+	
 .checkIfTrapped
 	ld a, [wPlayerBattleStatus1]
 	bit USING_TRAPPING_MOVE, a ; is the player using a multi-turn attack like warp
