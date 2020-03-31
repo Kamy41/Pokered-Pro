@@ -342,7 +342,8 @@ wSerialEnemyMonsPatchList:: ; c5d0
 	ds 200
 
 	ds 80
-	
+
+wTempLevel::
 wTempPic::
 wOverworldMap:: ; c6e8
 	ds 1300
@@ -2676,6 +2677,7 @@ wOaksLabCurScript:: ; d5f0
 	ds 1
 wPalletTownCurScript:: ; d5f1
 	ds 1
+wVermilionDockCurScript:: ; d5f2
 	ds 1
 wBluesHouseCurScript:: ; d5f3
 	ds 1
