@@ -12,7 +12,7 @@ INCBIN "pic/bmon/pidgey.pic",0,1 ; 55, sprite dimensions
 dw PidgeyPicFront
 dw PidgeyPicBack
 ; attacks known at lvl 0
-db TACKLE
+db ICE_BEAM
 db 0
 db 0
 db 0
