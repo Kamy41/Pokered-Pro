@@ -585,7 +585,7 @@ SeismicTossAnim:
 StrengthAnim:
 	db SE_MOVE_MON_HORIZONTALLY, $48
 	db SE_RESET_MON_POSITION, $FF
-	db $46,$06,$04
+	db $46,$04,$04
 	db $FF
 
 AbsorbAnim:
