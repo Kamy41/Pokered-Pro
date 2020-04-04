@@ -12,8 +12,8 @@ INCBIN "pic/bmon/psyduck.pic",0,1 ; 55, sprite dimensions
 dw PsyduckPicFront
 dw PsyduckPicBack
 ; attacks known at lvl 0
-db TAIL_WHIP
 db SCRATCH
+db 0
 db 0
 db 0
 db 0 ; growth rate
