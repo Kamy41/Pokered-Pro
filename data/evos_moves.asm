@@ -734,8 +734,8 @@ PsyduckEvosMoves:
 	db 28, TAIL_WHIP
 	db 31, DISABLE
 	db 36, CONFUSION
-	db 40, SCREECH
-	db 44, FURY_SWIPES
+	db 40, FURY_SWIPES
+	db 44, SCREECH
 	db 50, HYDRO_PUMP
 	db 0
 
@@ -1378,7 +1378,7 @@ PoliwrathEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 33,KARATE_CHOP
+	db 33, KARATE_CHOP
 	db 0
 
 WeedleEvosMoves:
@@ -1393,7 +1393,7 @@ KakunaEvosMoves:
 	db EV_LEVEL, 10, BEEDRILL
 	db 0
 ; Learnset
-	db 7,HARDEN
+	db 7, HARDEN
 	db 0
 
 BeedrillEvosMoves:
@@ -1537,8 +1537,8 @@ GolduckEvosMoves:
 	db 28, TAIL_WHIP
 	db 31, DISABLE
 	db 37, CONFUSION
-	db 44, SCREECH
-	db 50, FURY_SWIPES
+	db 44, FURY_SWIPES
+	db 50, SCREECH
 	db 56, HYDRO_PUMP
 	db 0
 
@@ -1764,7 +1764,7 @@ StarmieEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 37,CONFUSE_RAY
+	db 28, CONFUSE_RAY
 	db 0
 
 BulbasaurEvosMoves:
