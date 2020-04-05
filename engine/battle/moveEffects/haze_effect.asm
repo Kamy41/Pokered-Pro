@@ -18,11 +18,6 @@ HazeEffect_:
 	ld a, [H_WHOSETURN]
 	and a	
 	jr z, .cureStatuses
-	ld hl, wEnemyMonStatus
-	ld de, wEnemySelectedMove
-	ld a, [H_WHOSETURN]
-	and a
-	jr z, .cureStatuses
 
 .cureStatuses
 	ld a, [hl]
