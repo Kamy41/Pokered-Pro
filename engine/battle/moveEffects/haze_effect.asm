@@ -12,12 +12,14 @@ HazeEffect_:
 	ld hl, wEnemyMonUnmodifiedAttack
 	ld de, wEnemyMonAttack
 	call ResetStats
-; cure non-volatile status, but only for the target
+; cure non-volatile status, but only for the player
 	ld hl, wBattleMonStatus
 	ld de, wPlayerSelectedMove
 	ld a, [H_WHOSETURN]
 	and a	
 	jr z, .cureStatuses
+	ld hl, wEnemyMonStatus
+	dec de ; wEnemySelectedMove
 
 .cureStatuses
 	ld a, [hl]
