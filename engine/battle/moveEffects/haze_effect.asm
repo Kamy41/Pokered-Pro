@@ -16,14 +16,13 @@ HazeEffect_:
 	ld hl, wBattleMonStatus
 	ld de, wPlayerSelectedMove
 	ld a, [H_WHOSETURN]
-	and a
+	and a	
 	jr z, .cureStatuses
 	ld hl, wEnemyMonStatus
 	ld de, wEnemySelectedMove
 	ld a, [H_WHOSETURN]
 	and a
 	jr z, .cureStatuses
-	dec de ; wPlayerSelectedMove
 
 .cureStatuses
 	ld a, [hl]
