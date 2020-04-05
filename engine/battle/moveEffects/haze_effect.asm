@@ -19,7 +19,10 @@ HazeEffect_:
 	and a
 	jr z, .cureStatuses
 	ld hl, wBattleMonStatus
-	dec de ; wPlayerSelectedMove
+	ld de, wPlayerSelectedMove
+	ld a, [H_WHOSETURN]
+	and a
+	jr z, .cureStatuses
 
 .cureStatuses
 	ld a, [hl]
