@@ -5180,7 +5180,7 @@ HandleBuildingRage:
 	ld hl, BuildingRageText
 	call PrintText
 	call StatModifierUpEffect ; stat modifier raising function	
-	pop hl
+	call DisplayBattleMenu ; show battle menu
 	ret
 
 BuildingRageText:
