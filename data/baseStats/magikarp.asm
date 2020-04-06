@@ -1,6 +1,6 @@
 db DEX_MAGIKARP ; pokedex id
 db 20 ; base hp
-db 10 ; base attack
+db 20 ; base attack
 db 55 ; base defense
 db 80 ; base speed
 db 20 ; base special
