@@ -298,8 +298,8 @@ IvysaurEvosMoves:
 	db 13, VINE_WHIP
 	db 22, POISONPOWDER
 	db 30, RAZOR_LEAF
-	db 38, GROWTH
-	db 46, SLEEP_POWDER
+	db 38, SLEEP_POWDER
+	db 46, GROWTH
 	db 54, SOLARBEAM
 	db 0
 
@@ -1776,8 +1776,8 @@ BulbasaurEvosMoves:
 	db 13, VINE_WHIP
 	db 20, POISONPOWDER
 	db 27, RAZOR_LEAF
-	db 34, GROWTH
-	db 41, SLEEP_POWDER
+	db 34, SLEEP_POWDER
+	db 41, GROWTH
 	db 48, SOLARBEAM
 	db 0
 
@@ -1789,8 +1789,8 @@ VenusaurEvosMoves:
 	db 13, VINE_WHIP
 	db 22, POISONPOWDER
 	db 30, RAZOR_LEAF
-	db 43, GROWTH
-	db 55, SLEEP_POWDER
+	db 43, SLEEP_POWDER
+	db 55, GROWTH
 	db 65, SOLARBEAM
 	db 0
 
