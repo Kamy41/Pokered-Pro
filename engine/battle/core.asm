@@ -5180,11 +5180,16 @@ HandleBuildingRage:
 	ld hl, BuildingRageText
 	call PrintText
 	call StatModifierUpEffect ; stat modifier raising function	
+	pop hl
+	xor a
+	ldd [hl], a ; null move effect
+	ld a, RAGE
+	ld [hl], a ; restore the target pokemon's move number to Rage
 	ld a, [H_WHOSETURN]
 	xor $01 ; flip turn back to the way it was
 	ld [H_WHOSETURN], a
 	ret
-
+	
 BuildingRageText:
 	TX_FAR _BuildingRageText
 	db "@"
