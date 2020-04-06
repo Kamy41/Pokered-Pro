@@ -13,7 +13,7 @@ dw DragonairPicFront
 dw DragonairPicBack
 ; attacks known at lvl 0
 db WRAP
-db LEER
+db TWISTER
 db THUNDER_WAVE
 db 0
 db 5 ; growth rate
