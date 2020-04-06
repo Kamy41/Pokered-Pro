@@ -1765,6 +1765,7 @@ StarmieEvosMoves:
 	db 0
 ; Learnset
 	db 33, CONFUSE_RAY
+	db 48, HYDRO_PUMP
 	db 0
 
 BulbasaurEvosMoves:
