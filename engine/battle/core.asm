@@ -5181,6 +5181,7 @@ HandleBuildingRage:
 	call PrintText
 	call StatModifierUpEffect ; stat modifier raising function	
 	call DisplayBattleMenu ; show battle menu
+	ld a, [H_WHOSETURN]
 	ret
 
 BuildingRageText:
