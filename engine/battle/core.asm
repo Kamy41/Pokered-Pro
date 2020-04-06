@@ -5180,8 +5180,9 @@ HandleBuildingRage:
 	ld hl, BuildingRageText
 	call PrintText
 	call StatModifierUpEffect ; stat modifier raising function	
-	call DisplayBattleMenu ; show battle menu
 	ld a, [H_WHOSETURN]
+	xor $01 ; flip turn back to the way it was
+	ld [H_WHOSETURN], a
 	ret
 
 BuildingRageText:
