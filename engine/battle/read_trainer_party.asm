@@ -140,7 +140,7 @@ ReadTrainer:
 	ld b, BLIZZARD ; must be squirtle
 .GiveStarterMove
 	ld a, b
-	ld [wEnemyMon6Moves + 1], a
+	ld [wEnemyMon6Moves + 2], a
 .FinishUp
 ; clear wAmountMoneyWon addresses
 	xor a
