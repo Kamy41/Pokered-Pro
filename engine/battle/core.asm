@@ -5164,7 +5164,7 @@ HandleBuildingRage:
 	bit USING_RAGE, [hl] ; is the pokemon being attacked under the effect of Rage?
 	ret z ; return if not
 	ld a, [de]
-	cp $00 ; maximum stat modifier value
+	cp $0d ; maximum stat modifier value
 	ret z ; return if attack modifier is already maxed
 	ld a, [H_WHOSETURN]
 	xor $01 ; flip turn for the stat modifier raising function
@@ -5180,13 +5180,8 @@ HandleBuildingRage:
 	ld hl, BuildingRageText
 	call PrintText
 	call StatModifierUpEffect ; stat modifier raising function	
-	pop hl
-	xor a
-	ldd [hl], a ; null move effect
-	ld a, RAGE
-	ld [hl], a ; restore the target pokemon's move number to Rage
 	ld a, [H_WHOSETURN]
-	xor $01 ; flip turn back to the way it was
+	call DisplayBattleMenu
 	ld [H_WHOSETURN], a
 	ret
 	
