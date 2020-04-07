@@ -5152,14 +5152,12 @@ HandleBuildingRage:
 ; values for the player turn
 	ld hl, wEnemyBattleStatus2
 	ld de, wEnemyMonStatMods
-	ld bc, wEnemyMoveNum
 	ld a, [H_WHOSETURN]
 	and a
 	jr z, .next
 ; values for the enemy turn
 	ld hl, wPlayerBattleStatus2
 	ld de, wPlayerMonStatMods
-	ld bc, wPlayerMoveNum
 .next
 	bit USING_RAGE, [hl] ; is the pokemon being attacked under the effect of Rage?
 	ret z ; return if not
