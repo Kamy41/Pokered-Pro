@@ -5164,7 +5164,7 @@ HandleBuildingRage:
 	bit USING_RAGE, [hl] ; is the pokemon being attacked under the effect of Rage?
 	ret z ; return if not
 	ld a, [de]
-	cp $01 ; maximum stat modifier value
+	cp $00 ; maximum stat modifier value
 	ret z ; return if attack modifier is already maxed
 	ld a, [H_WHOSETURN]
 	xor $01 ; flip turn for the stat modifier raising function
