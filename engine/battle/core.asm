@@ -5152,12 +5152,14 @@ HandleBuildingRage:
 ; values for the player turn
 	ld hl, wEnemyBattleStatus2
 	ld de, wEnemyMonStatMods
+	ld bc, wEnemyMoveNum
 	ld a, [H_WHOSETURN]
 	and a
 	jr z, .next
 ; values for the enemy turn
 	ld hl, wPlayerBattleStatus2
 	ld de, wPlayerMonStatMods
+	ld bc, wPlayerMoveNum
 .next
 	bit USING_RAGE, [hl] ; is the pokemon being attacked under the effect of Rage?
 	ret z ; return if not
@@ -5178,8 +5180,14 @@ HandleBuildingRage:
 	ld hl, BuildingRageText
 	call PrintText
 	call StatModifierUpEffect ; stat modifier raising function	
-	call DisplayBattleMenu
+	pop hl
 	xor a
+	ldd [hl], a ; null move effect
+	ld a, RAGE
+	ld [hl], a ; restore the target pokemon's move number to Rage
+	ld a, [H_WHOSETURN]
+	xor $01 ; flip turn back to the way it was
+	ld [H_WHOSETURN], a
 	ret
 	
 BuildingRageText:
