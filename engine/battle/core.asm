@@ -368,21 +368,6 @@ EnemyRanText:
 	db "@"
 
 MainInBattleLoop:
-;joenote - zero the damage from last round if not using a trapping move (for fixing Counter and other stuff)
-	ld a, [wEnemyBattleStatus1]
-	bit USING_TRAPPING_MOVE, a
-	jr nz, .no_trapping_moves
-	ld a, [wPlayerBattleStatus1]
-	bit USING_TRAPPING_MOVE, a
-	jr nz, .no_trapping_moves
-	call ZeroLastDamage	;joenote - prevent counter shenanigans of all sorts
-.no_trapping_moves
-;joenote - clear custom battle flags
-	ld a, [wUnusedC000]
-	res 7, a	;reset the bit that causes counter to miss
-	res 6, a	;reset the bit that specifies a leech seed effect
-	ld [wUnusedC000], a 
-;joenote - back to default flow
 	call ReadPlayerMonCurHPAndStatus
 	ld hl, wBattleMonHP
 	ld a, [hli]
@@ -395,24 +380,6 @@ MainInBattleLoop:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wFirstMonsNotOutYet], a
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - if raging, reset rage's accuracy here to prevent degradation
-	ld a, [wPlayerBattleStatus2]
-	bit USING_RAGE, a
-	jr z, .not_player_raging
-	ld a, $FF
-	ld [wPlayerMoveAccuracy], a
-.not_player_raging
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - if thrashing, reset the move accuracy here to prevent degradation
-	ld a, [wPlayerBattleStatus1]
-	bit THRASHING_ABOUT, a
-	jr z, .not_player_thrashing
-	ld a, $FF
-	ld [wPlayerMoveAccuracy], a
-.not_player_thrashing
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wPlayerBattleStatus2]
 	and (1 << NEEDS_TO_RECHARGE) | (1 << USING_RAGE) ; check if the player is using Rage or needs to recharge
 	jr nz, .selectEnemyMove
