@@ -380,7 +380,6 @@ MainInBattleLoop:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wFirstMonsNotOutYet], a
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - if raging, reset rage's accuracy here to prevent degradation
 	ld a, [wPlayerBattleStatus2]
 	bit USING_RAGE, a
@@ -441,6 +440,7 @@ MainInBattleLoop:
 	call DrawHUDsAndHPBars
 	pop af
 	jr nz, MainInBattleLoop ; if the player didn't select a move, jump
+;blank	
 .selectEnemyMove
 	call SelectEnemyMove
 	ld a, [wLinkState]
