@@ -8,16 +8,23 @@ HealEffect_:
 	ld de, wEnemyMonHP
 	ld hl, wEnemyMonMaxHP
 	ld a, [wEnemyMoveNum]
-.healEffect
+.healEffect	;joenote - fixed the fail on 255 or 511 hp issue
+	;h holds high byte of maxHP, l holds low byte of maxHP
+	;d holds high byte of curHP, e holds low byte of curHP
 	ld b, a
-	ld a, [de]
-	cp [hl] ; most significant bytes comparison is ignored
+	ld a, [de]	;load d into a
+	cp [hl] 	;compare a with h
+			; most significant bytes comparison is ignored
 	        ; causes the move to miss if max HP is 255 or 511 points higher than the current HP
-	inc de
-	inc hl
-	ld a, [de]
-	sbc [hl]
+	;assume h >= d. it does not matter what d or h are, c_flag = 1 if h != d so assume h > d
+	inc de	;incrementing 16-bit registers does not change the flag register
+	inc hl	; however, it does get us working with e & l
+	jr nz, .passed	; if c_flag is set, then h is > d and therefore hl is assumed > de. we can stop checking here
+	ld a, [de]	;if h = d, then load e into a. again, assume l >= e
+	sbc [hl]	;c_flag is still 0. compare a with l. 
+	;A a zero flag means both h and d as well as l and e are equal pairs. hl = de, so already at full hp!
 	jp z, .failed ; no effect if user's HP is already at its maximum
+.passed
 	ld a, b
 	cp REST
 	jr nz, .healHP
@@ -32,9 +39,33 @@ HealEffect_:
 	jr z, .restEffect
 	ld hl, wEnemyMonStatus
 .restEffect
+;;;;;;;;joenote - undo the stat-changing effects of burn and paralyze and clear toxic info
+	callab UndoBurnParStats
+
+;remove toxic and clear toxic counter
+	ld hl, wPlayerBattleStatus3	;load in for toxic bit
+	ld de, wPlayerToxicCounter	;load in for toxic counter
+	ld a, [H_WHOSETURN]
+	and a
+	jr z, .undoToxic
+	ld hl, wEnemyBattleStatus3	;load in for toxic bit
+	ld de, wEnemyToxicCounter	;load in for toxic counter
+.undoToxic
+	res BADLY_POISONED, [hl] ; heal Toxic status
+	xor a	;clear a
+	ld [de], a	;write a to toxic counter
+
+;reload the initial status info so the correct condtions can be cleared
+	ld hl, wBattleMonStatus
+	ld a, [H_WHOSETURN]
+	and a
+	jr z, .noCondition
+	ld hl, wEnemyMonStatus
+.noCondition
+;;;;;;;;
 	ld a, [hl]
 	and a
-	ld [hl], 2 ; clear status and set number of turns asleep to 2
+	ld [hl], 3 ; clear status and set number of turns asleep to 2 / joenote - changed to 3 since attacking on wakeup is now possible
 	ld hl, StartedSleepingEffect ; if mon didn't have an status
 	jr z, .printRestText
 	ld hl, FellAsleepBecameHealthyText ; if mon had an status
