@@ -111,11 +111,6 @@ AIMoveChoiceModificationFunctionPointers:
 
 ; discourages moves that cause no damage but only a status ailment if player's mon already has one
 AIMoveChoiceModification1:
-;joenote - kick out if no-attack bit is set
-	ld a, [wUnusedC000]
-	bit 2, a
-	ret nz
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wBattleMonStatus]
 	and a
 	ret z ; return if no status ailment on player's mon
@@ -161,11 +156,6 @@ StatusAilmentMoveEffects:
 ; in particular, stat-modifying moves and other move effects
 ; that fall in-between
 AIMoveChoiceModification2:
-;joenote - kick out if no-attack bit is set
-	ld a, [wUnusedC000]
-	bit 2, a
-	ret nz
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wAILayer2Encouragement]
 	cp $1
 	ret nz
@@ -199,11 +189,6 @@ AIMoveChoiceModification2:
 ; discourage damaging moves that are ineffective or not very effective against the player's mon,
 ; unless there's no damaging move that deals at least neutral damage
 AIMoveChoiceModification3:
-;joenote - kick out if no-attack bit is set
-	ld a, [wUnusedC000]
-	bit 2, a
-	ret nz
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
 	ld b, NUM_MOVES + 1
