@@ -3962,17 +3962,9 @@ PrintMoveFailureText:
 	ret nz
 
 	; if you get here, the mon used jump kick or hi jump kick and missed
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - set the bit that indicates a pkmn hurt itself in confusion or took crash damage
-	ld a, [wUnusedC000]
-	set 7, a	;setting this bit causes counter to miss
-	ld [wUnusedC000], a 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	;ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
-	                ; Thus, recoil damage will always be equal to 1
-	                ; even if it was intended to be potential damage/8.
-	ld hl, wUnusedD71F ;joenote - threatened damage now gets put in this address on a miss.
-						;This should fix the issue with the proper recoil damage
+	ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
+	               ; Thus, recoil damage will always be equal to 1
+	               ; even if it was intended to be potential damage/8.
 	ld a, [hli]
 	ld b, [hl]
 	srl a
