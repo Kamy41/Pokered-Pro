@@ -12,26 +12,34 @@ HazeEffect_:
 	ld hl, wEnemyMonUnmodifiedAttack
 	ld de, wEnemyMonAttack
 	call ResetStats
-; cure non-volatile status, but only for the player
-	ld hl, wBattleMonStatus
-	ld de, wPlayerSelectedMove
-	ld a, [H_WHOSETURN]
-	and a	
-	jr z, .cureStatuses
+; cure non-volatile status, but only for the target
+; joenote - do the non-volatile statuses even for the user as was originally intended
 	ld hl, wEnemyMonStatus
-	dec de ; wEnemySelectedMove
-
-.cureStatuses
-	ld a, [hl]
-	ld [hl], $0
-	and SLP | (1 << FRZ)
-	jr z, .cureVolatileStatuses
-; prevent the Pokemon from executing a move if it was asleep or frozen
-	ld a, $ff
-	ld [de], a
-
-.cureVolatileStatuses
+	ld de, wEnemySelectedMove
+;	ld a, [H_WHOSETURN]
+;	and a
+;	jr z, .cureStatuses
 	xor a
+	ld [hl], a ; joenote - added
+	ld [wEnemyToxicCounter], a	;joenote - clear toxic counter
+	ld hl, wBattleMonStatus
+	dec de ; de is now wPlayerSelectedMove
+
+;.cureStatuses
+;joenote - making sure to clear statuses and toxic counter
+	ld [wPlayerToxicCounter], a	;clear toxic counter
+	ld [hl], a ;clear status
+;	ld a, [hl]
+;	ld [hl], $0
+;	and SLP | (1 << FRZ)
+;	jr z, .cureVolatileStatuses
+; prevent the Pokemon from executing a move if it was asleep or frozen
+;joenote - causes a glitch with multi-turn moves like bide and hyper beam. don't do this.
+;	ld a, $ff
+;	ld [de], a
+
+;.cureVolatileStatuses
+;	xor a
 	ld [wPlayerDisabledMove], a
 	ld [wEnemyDisabledMove], a
 	ld hl, wPlayerDisabledMoveNumber
