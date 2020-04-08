@@ -111,6 +111,11 @@ AIMoveChoiceModificationFunctionPointers:
 
 ; discourages moves that cause no damage but only a status ailment if player's mon already has one
 AIMoveChoiceModification1:
+;joenote - kick out if no-attack bit is set
+	ld a, [wUnusedC000]
+	bit 2, a
+	ret nz
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wBattleMonStatus]
 	and a
 	ret z ; return if no status ailment on player's mon
@@ -156,6 +161,11 @@ StatusAilmentMoveEffects:
 ; in particular, stat-modifying moves and other move effects
 ; that fall in-between
 AIMoveChoiceModification2:
+;joenote - kick out if no-attack bit is set
+	ld a, [wUnusedC000]
+	bit 2, a
+	ret nz
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wAILayer2Encouragement]
 	cp $1
 	ret nz
@@ -189,6 +199,11 @@ AIMoveChoiceModification2:
 ; discourage damaging moves that are ineffective or not very effective against the player's mon,
 ; unless there's no damaging move that deals at least neutral damage
 AIMoveChoiceModification3:
+;joenote - kick out if no-attack bit is set
+	ld a, [wUnusedC000]
+	bit 2, a
+	ret nz
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
 	ld b, NUM_MOVES + 1
@@ -201,6 +216,42 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+;joenote: fix spamming of buff/debuff moves
+	ld a, [wEnemyMovePower]	;get the base power of the enemy's attack
+	and a	;check if it is zero
+	jr nz, .skipout	;get out of this section if non-zero power
+	;check on certain moves with zero bp but are handled differently
+	ld a, [wEnemyMoveNum]
+	push hl
+	push de
+	push bc
+	ld hl, SpecialZeroBPMoves
+	ld de, $0001
+	call IsInArray	;see if a is found in the hl array (carry flag set if true)
+	pop bc
+	pop de
+	pop hl
+	jp c, .skipout	;carry flag means the move was found in the list
+	ld a, [wEnemyMoveEffect]
+	cp POISON_EFFECT
+	jr nz, .notpoisoneffect
+	ld a, [wBattleMonType]
+	cp POISON
+	jr z, .heavydiscourage2
+	ld a, [wBattleMonType + 1]
+	cp POISON
+	jr z, .heavydiscourage2
+.notpoisoneffect
+.backfromTwave
+	call Random	;else get a random number between 0 and 255
+	cp $20
+	jp c, .givepref	;(12.5% chance) slightly encourage to spice things up
+	cp $A0	;don't set carry flag if number is >= this value
+	jp nc, .notEffectiveMove	;62.5% chance to slightly discourage and would rather do damage
+	jp .nextMove	;else neither encourage nor discourage
+.skipout
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	push hl
 	push bc
 	push de
