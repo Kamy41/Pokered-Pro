@@ -2267,10 +2267,10 @@ ReadTrainerHeaderInfo::
 	jr z, .readPointer ; read after battle text
 	cp $8
 	jr z, .readPointer ; read end battle text
-	; cp $a
-	; jr nz, .done
-	;ld d, [hl]
-	;ld e, a
+	cp $a
+	jr nz, .done
+	ld d, [hl]
+	ld e, a
 	jr .done
 .readPointer
 	ld a, [hli]
