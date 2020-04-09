@@ -348,9 +348,9 @@ AIMoveChoiceModification3:
 	pop de
 	pop hl
 	and a
-	jr z, .nextMove
+	jp z, .nextMove
 	inc [hl] ; slightly discourage this move
-	jr .nextMove
+	jp .nextMove
 	
 AIMoveChoiceModification4:
 	ret
