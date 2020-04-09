@@ -931,3 +931,21 @@ AIPrintItemUse_:
 AIBattleUseItemText:
 	TX_FAR _AIBattleUseItemText
 	db "@"
+
+StrCmpSpeed:	;joenote - function for AI to compare pkmn speeds
+	ld de, wBattleMonSpeed ; player speed value
+	ld hl, wEnemyMonSpeed ; enemy speed value
+	ld c, $2	;bytes to copy
+.spdcmploop	
+	ld a, [de]	
+	cp [hl]
+	ret nz
+	inc de
+	inc hl
+	dec c
+	jr nz, .spdcmploop
+	;At this point:
+	;zero flag set means speeds equal
+	;carry flag not set means player pkmn faster
+	;carry flag set means ai pkmn faster
+	ret
