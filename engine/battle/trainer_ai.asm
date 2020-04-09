@@ -189,6 +189,11 @@ AIMoveChoiceModification2:
 ; discourage damaging moves that are ineffective or not very effective against the player's mon,
 ; unless there's no damaging move that deals at least neutral damage
 AIMoveChoiceModification3:
+;joenote - kick out if no-attack bit is set
+	ld a, [wUnusedC000]
+	bit 2, a
+	ret nz
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
 	ld b, NUM_MOVES + 1
@@ -201,20 +206,106 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
+;joenote: fix spamming of buff/debuff moves
+	ld a, [wEnemyMovePower]	;get the base power of the enemy's attack
+	and a	;check if it is zero
+	jr nz, .skipout	;get out of this section if non-zero power
+	;check on certain moves with zero bp but are handled differently
+	ld a, [wEnemyMoveNum]
+	push hl
+	push de
+	push bc
+	ld hl, SpecialZeroBPMoves
+	ld de, $0001
+	call IsInArray	;see if a is found in the hl array (carry flag set if true)
+	pop bc
+	pop de
+	pop hl
+	jp c, .skipout	;carry flag means the move was found in the list
+	ld a, [wEnemyMoveEffect]
+	cp POISON_EFFECT
+	jr nz, .notpoisoneffect
+	ld a, [wBattleMonType]
+	cp POISON
+	jr z, .heavydiscourage2
+	ld a, [wBattleMonType + 1]
+	cp POISON
+	jr z, .heavydiscourage2
+.notpoisoneffect
+.backfromTwave
+	call Random	;else get a random number between 0 and 255
+	cp $20
+	jp c, .givepref	;(12.5% chance) slightly encourage to spice things up
+	cp $A0	;don't set carry flag if number is >= this value
+	jp nc, .notEffectiveMove	;62.5% chance to slightly discourage and would rather do damage
+	jp .nextMove	;else neither encourage nor discourage
+.skipout
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	push hl
 	push bc
 	push de
+;reset type-effectiveness bit before calling function
+	ld a, [wUnusedC000]
+	res 3, a 
+	ld [wUnusedC000], a
 	callab AIGetTypeEffectiveness
 	pop de
 	pop bc
 	pop hl
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - heavily discourage attack moves that have no effect due to typing
+	ld a, [wTypeEffectiveness]	;get the effectiveness
+	and a 	;check if it's zero
+	jr nz, .skipout2	;skip if it's not immune
+.heavydiscourage2	;at this line the move has no effect due to immunity or other circumstance
+	ld a, [hl]	
+	add $5 ; heavily discourage move
+	ld [hl], a
+	jp .nextMove
+.skipout2
+	;if thunder wave is being used against a non-immune target, jump back a bit since it's not a damaging move
+	ld a, [wEnemyMoveNum]
+	cp THUNDER_WAVE
+	jp z, .backfromTwave
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - do not use ohko moves on faster opponents, since they will auto-miss
+	ld a, [wEnemyMoveEffect]	;load the move effect
+	cp OHKO_EFFECT	;see if it is ohko move
+	jr nz, .skipout3	;skip ahead if not ohko move
+	push hl
+	push bc
+	push de
+	call StrCmpSpeed	;do a speed compare
+	pop de
+	pop bc
+	pop hl
+	jp c, .nextMove	;ai is fast enough so ohko move viable
+	;else ai is slower so don't bother
+	jp .heavydiscourage2
+.skipout3	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote: static damage value moves should not be accounted for typing
+;at the same type, randomly bump their preference to spice things up
+	ld a, [wEnemyMovePower]	;get the base power of the enemy's attack
+	cp $1	;check if it is 1. special damage moves assumed to have 1 base power
+	jr nz, .skipout4	;skip down if it's not a special damage move
+	call Random	;else get a random number between 0 and 255
+	cp $40	
+	jp c, .givepref	;(25% chance) slightly encourage
+	jp .nextMove	;else neither encourage nor discourage
+.skipout4
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wTypeEffectiveness]
-	cp $10
-	jr z, .nextMove
+	cp $0A
+	jp z, .nextMove
 	jr c, .notEffectiveMove
+	;at this line, move is super effective
+.givepref	;joenote - added marker
 	dec [hl] ; slightly encourage this move
-	jr .nextMove
-.notEffectiveMove ; discourages non-effective moves if better moves are available
+	jp .nextMove
+.notEffectiveMove ; discourages non-effective moves if better moves are available 
 	push hl
 	push de
 	push bc
@@ -252,9 +343,10 @@ AIMoveChoiceModification3:
 	pop de
 	pop hl
 	and a
-	jr z, .nextMove
+	jp z, .nextMove
 	inc [hl] ; slightly discourage this move
-	jr .nextMove
+	jp .nextMove
+	
 AIMoveChoiceModification4:
 	ret
 
