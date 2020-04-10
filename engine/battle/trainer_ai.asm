@@ -287,7 +287,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,0    ; HIKER
 	db 1,0    ; BIKER
 	db 1,3,0  ; BURGLAR
-	db 1,3,0  ; ENGINEER
+	db 1,0    ; ENGINEER
 	db 1,2,0  ; JUGGLER_X
 	db 1,3,0  ; FISHER
 	db 1,3,0  ; SWIMMER
@@ -308,20 +308,20 @@ TrainerClassMoveChoiceModifications:
 	db 1,0    ; ROCKET
 	db 1,3,0  ; COOLTRAINER_M
 	db 1,3,0  ; COOLTRAINER_F
-	db 1,3,0  ; BRUNO
-	db 1,3,0  ; BROCK
+	db 1,0    ; BRUNO
+	db 1,0    ; BROCK
 	db 1,3,0  ; MISTY
 	db 1,3,0  ; LT_SURGE
 	db 1,3,0  ; ERIKA
 	db 1,3,0  ; KOGA
 	db 1,3,0  ; BLAINE
 	db 1,3,0  ; SABRINA
-	db 1,2,3,0; GENTLEMAN
+	db 1,2,0  ; GENTLEMAN
 	db 1,3,0  ; SONY2
 	db 1,3,0  ; SONY3
 	db 1,2,3,0; LORELEI
 	db 1,0    ; CHANNELER
-	db 1,3,0  ; AGATHA
+	db 1,0    ; AGATHA
 	db 1,3,0  ; LANCE
 
 INCLUDE "engine/battle/trainer_pic_money_pointers.asm"
