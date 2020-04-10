@@ -278,7 +278,7 @@ ReadMove:
 TrainerClassMoveChoiceModifications:
 	db 0      ; YOUNGSTER
 	db 1,0    ; BUG CATCHER
-	db 1,3,0  ; LASS
+	db 1,0    ; LASS
 	db 1,3,0  ; SAILOR
 	db 1,0    ; JR_TRAINER_M
 	db 1,0    ; JR_TRAINER_F
