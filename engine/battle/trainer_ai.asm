@@ -426,7 +426,7 @@ JugglerAI:
 	jp AISwitchIfEnoughMons
 
 BlackbeltAI:
-	cp 13 percent - 1
+	cp 25 percent - 1
 	ret nc
 	jp AIUseXAttack
 
