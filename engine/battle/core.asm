@@ -4707,12 +4707,15 @@ CriticalHitTest:
 	ld [wd0b5], a
 	call GetMonHeader
 	ld a, [wMonHBaseSpeed]
-	ld b, a	
+	ld b, a
+	srl b                        ; /2 for regular move (effective (base speed / 2)) --> base crit rate
 	ld a, [H_WHOSETURN]
 	and a
+	ld a, [wPlayerMoveEffect]	;joenote - begin storing player move effect
 	ld hl, wPlayerMovePower
 	ld de, wPlayerBattleStatus2
 	jr z, .calcCriticalHitProbability
+	ld a, [wEnemyMoveEffect]	;joenote - begin storing enemy move effect
 	ld hl, wEnemyMovePower
 	ld de, wEnemyBattleStatus2
 .calcCriticalHitProbability
@@ -4727,13 +4730,12 @@ CriticalHitTest:
 	ld c, [hl]                   ; read move id
 	ld a, [de]
 	bit GETTING_PUMPED, a        ; test for focus energy
-	jr z, .noFocusEnergyUsed     ; bug: using focus energy causes a shift to the right instead of left,
-	                             ; resulting in 1/4 the usual crit chance
-	sla b                        ; (effective (base speed/2)*2)
-	jr c, .guaranteedCritical
-        sla b
-        jr c, .guaranteedCritical
-
+	jr z, .noFocusEnergyUsed	 ;if getting pumped bit not set, then focus energy not used
+	;else focus energy was used
+	sla b						 ;*2 for focus energy (effective +2x crit rate)
+	jr c, .capcritical
+	sla b						 ;*2 again for focus energy (effective +4x crit rate)
+	jr c, .capcritical
 .noFocusEnergyUsed
         ld hl, HighCriticalMoves     ; table of high critical hit moves
 .Loop
@@ -4742,24 +4744,23 @@ CriticalHitTest:
 	jr z, .HighCritical          ; if so, the move about to be used is a high critical hit ratio move
 	inc a                        ; move on to the next move, FF terminates loop
 	jr nz, .Loop                 ; check the next move in HighCriticalMoves
-	srl b                        ; /2 for regular move (effective (base speed / 2))
-	jr .SkipHighCritical         ; continue as a normal move
+	jr .finishcalc         		 ; continue as a normal move
 .HighCritical
-	sla b                        ; *2 for high critical hit moves
-	jr nc, .noCarry
-	ld b, $ff                    ; cap at 255/256
-.noCarry
-	sla b                        ; *4 for high critical move (effective (base speed/2)*8))
-	jr nc, .SkipHighCritical
-	ld b, $ff
-.SkipHighCritical
+	sla b                        ; *2 for high critical hit moves (effective +2x crit rate)
+	jr c, .capcritical
+	sla b                        ; *2 again for high critical hit moves (effective +4x crit rate)
+	jr c, .capcritical
+	sla b                        ; *2 again for high critical hit moves (effective +8x crit rate)
+	jr nc, .finishcalc
+.capcritical
+	ld b, $ff					 ; cap at 255/256
+.finishcalc
 	call BattleRandom            ; generates a random value, in "a"
 	rlc a
 	rlc a
 	rlc a
 	cp b                         ; check a against calculated crit rate
 	ret nc                       ; no critical hit if no borrow
-.guaranteedCritical
 	ld a, $1
 	ld [wCriticalHitOrOHKO], a   ; set critical hit flag
 	ret
