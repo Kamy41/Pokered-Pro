@@ -201,18 +201,19 @@ RocketHideout4BattleText4:
 
 RocketHideout4EndBattleText4:
 	TX_FAR _RocketHideout4EndBattleText4
-	db "@"
-
-RocketHideout4AfterBattleText4:
 	TX_ASM
-	ld hl, RocketHideout4Text_455ec
-	call PrintText
 	CheckAndSetEvent EVENT_ROCKET_DROPPED_LIFT_KEY
 	jr nz, .asm_455e9
 	ld a, HS_ROCKET_HIDEOUT_B4F_ITEM_5
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 .asm_455e9
+	jp TextScriptEnd
+
+RocketHideout4AfterBattleText4:
+	TX_ASM
+	ld hl, RocketHideout4Text_455ec
+	call PrintText	
 	jp TextScriptEnd
 
 RocketHideout4Text_455ec:
