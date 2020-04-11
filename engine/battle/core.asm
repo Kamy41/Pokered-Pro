@@ -2473,6 +2473,10 @@ PartyMenuOrRockOrRun:
 	call LoadMonFrontSprite
 	jr .enemyMonPicReloaded
 .doEnemyMonAnimation
+;joenote - fix from pokemon yellow to prevent glitched graphics when exiting status screen
+	ld a, 1
+	ld [H_WHOSETURN], a
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld b, BANK(AnimationSubstitute) ; BANK(AnimationMinimizeMon)
 	call Bankswitch
 .enemyMonPicReloaded ; enemy mon pic has been reloaded, so return to the party menu
