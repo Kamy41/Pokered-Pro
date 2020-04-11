@@ -263,6 +263,9 @@ AIMoveChoiceModification3:
 	add $5 ; heavily discourage move
 	ld [hl], a
 	jp .nextMove
+.givepref	;joenote - added marker
+	dec [hl] ; slightly encourage this move
+	jp .nextMove
 .notEffectiveMove ; discourages non-effective moves if better moves are available
 	push hl
 	push de
@@ -301,9 +304,10 @@ AIMoveChoiceModification3:
 	pop de
 	pop hl
 	and a
-	jr z, .nextMove
+	jp z, .nextMove
 	inc [hl] ; slightly discourage this move
-	jr .nextMove
+	jp .nextMove
+
 AIMoveChoiceModification4:
 	ret
 
