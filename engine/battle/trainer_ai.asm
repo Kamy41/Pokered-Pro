@@ -152,6 +152,12 @@ StatusAilmentMoveEffects:
 	db PARALYZE_EFFECT
 	db $FF
 
+SpecialZeroBPMoves:	;joenote - added this table to tracks 0 bp moves that should not be treated as buffs
+	db BIDE
+	db METRONOME
+	db THUNDER_WAVE
+	db $FF
+
 ; slightly encourage moves with specific effects.
 ; in particular, stat-modifying moves and other move effects
 ; that fall in-between
