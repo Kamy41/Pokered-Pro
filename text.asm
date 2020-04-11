@@ -1428,8 +1428,8 @@ _GainedText::
 	line "@@"
 
 _WithExpAllText::
-	text "with EXP.ALL,"
-	cont "@@"
+	text "EXP.ALL gives team"
+	line "@@"
 
 _BoostedText::
 	text "a boosted"
