@@ -195,11 +195,7 @@ AIMoveChoiceModification2:
 ; discourage damaging moves that are ineffective or not very effective against the player's mon,
 ; unless there's no damaging move that deals at least neutral damage
 AIMoveChoiceModification3:
-;joenote - kick out if no-attack bit is set
-	ld a, [wUnusedC000]
-	bit 2, a
-	ret nz
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - kick out if no-attack bit is set	
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
 	ld b, NUM_MOVES + 1
@@ -250,10 +246,6 @@ AIMoveChoiceModification3:
 	push hl
 	push bc
 	push de
-	;reset type-effectiveness bit before calling function
-	ld a, [wUnusedC000]
-	res 3, a 
-	ld [wUnusedC000], a
 	callab AIGetTypeEffectiveness
 	pop de
 	pop bc
