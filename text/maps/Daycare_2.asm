@@ -3,7 +3,7 @@ _DayCareAllRightThenText::
 	line "@@"
 
 _DayCareComeAgainText::
-	text "come again."
+	text "Come again."
 	done
 
 _DayCareNoRoomForMonText::
