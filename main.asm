@@ -595,6 +595,8 @@ GrowlithePicFront::   INCBIN "pic/bmon/growlithe.pic"
 GrowlithePicBack::    INCBIN "pic/monback/growlitheb.pic"
 OnixPicFront::        INCBIN "pic/bmon/onix.pic"
 OnixPicBack::         INCBIN "pic/monback/onixb.pic"
+FearowPicFront::      INCBIN "pic/bmon/fearow.pic"
+FearowPicBack::       INCBIN "pic/monback/fearowb.pic"
 PidgeyPicFront::      INCBIN "pic/bmon/pidgey.pic"
 PidgeyPicBack::       INCBIN "pic/monback/pidgeyb.pic"
 SlowpokePicFront::    INCBIN "pic/bmon/slowpoke.pic"
@@ -877,8 +879,7 @@ WeepinbellPicFront::   INCBIN "pic/bmon/weepinbell.pic"
 WeepinbellPicBack::    INCBIN "pic/monback/weepinbellb.pic"
 VictreebelPicFront::   INCBIN "pic/bmon/victreebel.pic"
 VictreebelPicBack::    INCBIN "pic/monback/victreebelb.pic"
-FearowPicFront::       INCBIN "pic/bmon/fearow.pic"
-FearowPicBack::        INCBIN "pic/monback/fearowb.pic"
+
 
 SECTION "Battle (BANK D)", ROMX
 
