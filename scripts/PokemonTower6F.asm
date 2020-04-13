@@ -171,7 +171,6 @@ PokemonTower6Text7:
 	jp TextScriptEnd
 
 ;joenote - set a bit to indicate this is a ghost marowak battle
-DeactivateGhostMarowak:
 	ld a, [wUnusedD71F]
 	set 3, a
 	ld [wUnusedD71F], a
