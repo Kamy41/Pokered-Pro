@@ -12,6 +12,8 @@ MistEffect_:
 	ld hl, ShroudedInMistText
 	jp PrintText
 .mistAlreadyInUse
+	ld c, 50
+	call DelayFrames
 	jpab PrintButItFailedText_
 
 ShroudedInMistText:
