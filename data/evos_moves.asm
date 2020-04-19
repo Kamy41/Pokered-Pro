@@ -624,9 +624,9 @@ KadabraEvosMoves:
 	db 0
 ; Learnset
 	db 16, CONFUSION
-	db 20, DISABLE
-	db 24, KINESIS
-	db 27, PSYBEAM
+	db 18, DISABLE
+	db 21, KINESIS
+	db 26, PSYBEAM
 	db 31, RECOVER
 	db 38, PSYCHIC_M
 	db 42, REFLECT
@@ -1400,11 +1400,12 @@ BeedrillEvosMoves:
 	db 0
 ; Learnset
 	db 10, FURY_ATTACK
-	db 16, FOCUS_ENERGY
+	db 15, FOCUS_ENERGY
 	db 20, TWINEEDLE
-	db 25, SWORDS_DANCE
+	db 25, RAGE
 	db 30, PIN_MISSILE
 	db 35, AGILITY
+        db 40, SWORD_DANCE
 	db 0
 
 MissingNo73EvosMoves:
@@ -1504,12 +1505,13 @@ ButterfreeEvosMoves:
 	db 0
 ; Learnset
 	db 10, CONFUSION
-	db 15, POISONPOWDER
-	db 16, STUN_SPORE
-	db 17, SLEEP_POWDER
-	db 21, SUPERSONIC
-	db 26, GUST
-	db 32, PSYBEAM
+	db 13, POISONPOWDER
+	db 14, STUN_SPORE
+	db 15, SLEEP_POWDER
+        db 18, SUPERSONIC
+	db 23, WHIRLWIND
+	db 28, GUST
+	db 34, PSYBEAM
 	db 0
 
 MachampEvosMoves:
@@ -1724,9 +1726,9 @@ AlakazamEvosMoves:
 	db 0
 ; Learnset
 	db 16, CONFUSION
-	db 20, DISABLE
-	db 24, KINESIS
-	db 27, PSYBEAM
+	db 18, DISABLE
+	db 21, KINESIS
+	db 26, PSYBEAM
 	db 31, RECOVER
 	db 38, PSYCHIC_M
 	db 42, REFLECT
@@ -1763,8 +1765,8 @@ StarmieEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 33, CONFUSE_RAY
-	db 48, HYDRO_PUMP
+	db 33, BUBBLEBEAM
+        db 37, CONFUSE_RAY
 	db 0
 
 BulbasaurEvosMoves:
