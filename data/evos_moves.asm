@@ -308,7 +308,7 @@ ExeggutorEvosMoves:
 	db 0
 ; Learnset
 	db 31, STOMP
-	db 42, MEGA_DRAIN
+	db 37, MEGA_DRAIN
 	db 0
 
 LickitungEvosMoves:
