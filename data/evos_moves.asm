@@ -1405,7 +1405,7 @@ BeedrillEvosMoves:
 	db 25, RAGE
 	db 30, PIN_MISSILE
 	db 35, AGILITY
-        db 40, SWORD_DANCE
+        db 40, SWORDS_DANCE
 	db 0
 
 MissingNo73EvosMoves:
