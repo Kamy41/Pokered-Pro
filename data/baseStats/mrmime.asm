@@ -13,7 +13,7 @@ dw MrMimePicFront
 dw MrMimePicBack
 ; attacks known at lvl 0
 db MIMIC
-db BARRIER
+db LIGHT_SCREEN
 db 0
 db 0
 db 0 ; growth rate
