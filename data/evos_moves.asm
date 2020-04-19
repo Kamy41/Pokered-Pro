@@ -308,7 +308,7 @@ ExeggutorEvosMoves:
 	db 0
 ; Learnset
 	db 31, STOMP
-	db 42, RAZOR_LEAF
+	db 42, MEGA_DRAIN
 	db 0
 
 LickitungEvosMoves:
@@ -431,8 +431,7 @@ MewEvosMoves:
 	db 20, MEGA_PUNCH
 	db 30, METRONOME
 	db 40, PSYCHIC_M
-	db 50, PSYWAVE
-	db 0
+        db 0
 
 GyaradosEvosMoves:
 ; Evolutions
@@ -675,9 +674,9 @@ MrMimeEvosMoves:
 	db 0
 ; Learnset
 	db 15, BARRIER
-	db 23, DOUBLESLAP
-	db 31, MEDITATE
-	db 39, PSYBEAM
+	db 23, CONFUSION
+	db 31, DOUBLESLAP
+	db 39, MEDITATE
 	db 47, SUBSTITUTE
 	db 0
 
