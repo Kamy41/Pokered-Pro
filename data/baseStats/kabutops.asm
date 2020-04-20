@@ -14,7 +14,7 @@ dw KabutopsPicBack
 ; attacks known at lvl 0
 db SCRATCH
 db HARDEN
-db WATER_GUN
+db ABSORB
 db 0
 db 0 ; growth rate
 ; learnset
