@@ -6966,8 +6966,8 @@ InitWildBattle:
 	call LoadEnemyMonData
 	call DoBattleTransitionAndInitBattleVariables
 ;joenote - use a bit to determine if this is a ghost marowak battle
-	ld a, [wUnusedD71F]
-	bit 3, a
+	ld a, [wUnusedD720]
+	bit 1, a
 	jr nz, .isGhost
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;	ld a, [wCurOpponent]
