@@ -15,7 +15,7 @@ dw DragonitePicBack
 db WRAP
 db LEER
 db THUNDER_WAVE
-db AGILITY
+db TWISTER
 db 5 ; growth rate
 ; learnset
 	tmlearn 2,6,7,8
