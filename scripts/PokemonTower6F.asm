@@ -34,9 +34,9 @@ PokemonTower6Script0:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 ;joenote - set a bit to indicate this is a ghost marowak battle
-	ld a, [wUnusedD71F]
-	set 3, a
-	ld [wUnusedD71F], a
+	ld a, [wUnusedD720]
+	set 1, a
+	ld [wUnusedD720], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, MAROWAK
 	ld [wCurOpponent], a
@@ -172,9 +172,9 @@ PokemonTower6Text7:
 
 ;joenote - set a bit to indicate this is a ghost marowak battle
 DeactivateGhostMarowak:
-	ld a, [wUnusedD71F]
-	res 3, a
-	ld [wUnusedD71F], a
+	ld a, [wUnusedD720]
+	res 1, a
+	ld [wUnusedD720], a
 	ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
