@@ -1652,8 +1652,7 @@ ItemUsePokedoll:
 	dec a
 	jp nz, ItemUseNotTime
 ;joenote - if this is a ghost marowak battle, prevent using a pokedoll
-	ld a, [wUnusedD720]
-	bit 3, a
+	callab IsGhostBattle
 	jp nz, ItemUseNotTime
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $01
