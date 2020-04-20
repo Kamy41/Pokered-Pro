@@ -8,11 +8,11 @@ PokemonTower6F_Script:
 	ret
 
 PokemonTower6Script_60b02:
-	call DeactivateGhostMarowak	;joenote - deactivate bit on a loss
 	xor a
 	ld [wJoyIgnore], a
 	ld [wPokemonTower6FCurScript], a
 	ld [wCurMapScript], a
+	call DeactivateGhostMarowak	;joenote - deactivate bit on a loss
 	ret
 
 PokemonTower6F_ScriptPointers:
@@ -35,7 +35,7 @@ PokemonTower6Script0:
 	call DisplayTextID
 ;joenote - set a bit to indicate this is a ghost marowak battle
 	ld a, [wUnusedD720]
-	set 1, a
+	set 3, a
 	ld [wUnusedD720], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, MAROWAK
@@ -173,7 +173,7 @@ PokemonTower6Text7:
 ;joenote - reset a bit to indicate this is a ghost marowak battle
 DeactivateGhostMarowak:
 	ld a, [wUnusedD720]
-	res 1, a
+	res 3, a
 	ld [wUnusedD720], a
 	ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
