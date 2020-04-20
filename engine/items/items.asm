@@ -1653,7 +1653,7 @@ ItemUsePokedoll:
 	jp nz, ItemUseNotTime
 ;joenote - if this is a ghost marowak battle, prevent using a pokedoll
 	callab IsGhostBattle
-	jp nz, ItemUseNotTime
+	jp z, ItemUseNotTime
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $01
 	ld [wEscapedFromBattle], a
