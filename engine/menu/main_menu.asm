@@ -109,11 +109,6 @@ MainMenu:
 	call ClearScreen
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerDirection], a
-;joenote - initialize saved wram flags for various things
-	ld a, [wUnusedD71F]
-	and %11111101
-	ld [wUnusedD71F], a
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld c, 10
 	call DelayFrames
 	ld a, [wNumHoFTeams]
