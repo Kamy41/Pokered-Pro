@@ -2963,10 +2963,7 @@ wWhichDungeonWarp:: ; d71e
 wUnusedD71F:: ; d71f
 	ds 1
 
-wUnusedD720:: ; d720
-	ds 1
-
-	ds 7
+	ds 8
 
 wd728:: ; d728
 ; bit 0: using Strength outside of battle
