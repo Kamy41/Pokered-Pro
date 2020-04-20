@@ -1140,9 +1140,9 @@ KabutoEvosMoves:
 	db EV_LEVEL, 40, KABUTOPS
 	db 0
 ; Learnset
-	db 34, WATER_GUN
-	db 39, SLASH
-	db 44, LEER
+	db 34, ABSORB
+	db 39, LEER
+	db 44, MEGA_DRAIN
 	db 49, ROCK_SLIDE
 	db 0
 
@@ -1150,9 +1150,10 @@ KabutopsEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 34, WATER_GUN
-	db 39, SLASH
-	db 46, LEER
+	db 34, ABSORB
+        db 39, LEER
+	db 40, SLASH
+	db 46, MEGA_DRAIN
 	db 53, ROCK_SLIDE
 	db 0
 
@@ -1219,9 +1220,9 @@ OmanyteEvosMoves:
 	db EV_LEVEL, 40, OMASTAR
 	db 0
 ; Learnset
-	db 34, ROCK_THROW
+	db 34, BITE
 	db 39, LEER
-	db 44, SPIKE_CANNON
+	db 44, ROCK_THROW
 	db 49, HYDRO_PUMP
 	db 0
 
@@ -1229,9 +1230,10 @@ OmastarEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 34, ROCK_THROW
+	db 34, BITE
 	db 39, LEER
-	db 46, SPIKE_CANNON
+        db 40, SPIKE_CANNON
+	db 46, ROCK_THROW
 	db 53, HYDRO_PUMP
 	db 0
 
