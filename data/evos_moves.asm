@@ -1141,8 +1141,8 @@ KabutoEvosMoves:
 	db 0
 ; Learnset
 	db 34, ABSORB
-	db 39, LEER
-	db 44, MEGA_DRAIN
+	db 37, LEER
+	db 43, MEGA_DRAIN
 	db 49, ROCK_SLIDE
 	db 0
 
@@ -1151,7 +1151,7 @@ KabutopsEvosMoves:
 	db 0
 ; Learnset
 	db 34, ABSORB
-        db 39, LEER
+        db 37, LEER
 	db 40, SLASH
 	db 46, MEGA_DRAIN
 	db 53, ROCK_SLIDE
@@ -1221,8 +1221,8 @@ OmanyteEvosMoves:
 	db 0
 ; Learnset
 	db 34, BITE
-	db 39, LEER
-	db 44, ROCK_THROW
+	db 37, LEER
+	db 43, ROCK_THROW
 	db 49, HYDRO_PUMP
 	db 0
 
@@ -1231,7 +1231,7 @@ OmastarEvosMoves:
 	db 0
 ; Learnset
 	db 34, BITE
-	db 39, LEER
+	db 37, LEER
         db 40, SPIKE_CANNON
 	db 46, ROCK_THROW
 	db 53, HYDRO_PUMP
