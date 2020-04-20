@@ -13,7 +13,7 @@ dw DratiniPicFront
 dw DratiniPicBack
 ; attacks known at lvl 0
 db WRAP
-db TWISTER
+db LEER
 db 0
 db 0
 db 5 ; growth rate
