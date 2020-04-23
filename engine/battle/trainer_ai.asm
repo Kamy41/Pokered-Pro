@@ -201,6 +201,12 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
+;joenote: fix spamming of buff/debuff moves
+	ld a, [wEnemyMovePower]	;get the base power of the enemy's attack
+	and a	;check if it is zero
+	jr nz, .skipout	;get out of this section if non-zero power
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.skipout
 	push hl
 	push bc
 	push de
