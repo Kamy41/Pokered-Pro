@@ -571,7 +571,7 @@ _CinnabarGymQuizIntroText::
 	prompt
 
 _CinnabarQuizQuestionsText1::
-	text "CATERPIE evolves"
+	text "METAPOD evolves"
 	line "into BUTTERFREE?"
 	done
 
