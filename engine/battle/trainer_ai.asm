@@ -185,9 +185,6 @@ AIMoveChoiceModification2:
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
 
-; encourages moves that are effective against the player's mon (even if non-damaging).
-; discourage damaging moves that are ineffective or not very effective against the player's mon,
-; unless there's no damaging move that deals at least neutral damage
 AIMoveChoiceModification3:
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
@@ -201,11 +198,9 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
-;joenote: fix spamming of buff/debuff moves
 	ld a, [wEnemyMovePower]	;get the base power of the enemy's attack
 	and a	;check if it is zero
 	jr nz, .skipout	;get out of this section if non-zero power
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .skipout
 	push hl
 	push bc
