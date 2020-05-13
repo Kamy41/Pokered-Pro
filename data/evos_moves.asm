@@ -308,7 +308,7 @@ ExeggutorEvosMoves:
 	db 0
 ; Learnset
 	db 31, STOMP
-	db 37, MEGA_DRAIN
+	db 42, MEGA_DRAIN
 	db 0
 
 LickitungEvosMoves:
@@ -1767,7 +1767,7 @@ StarmieEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 33, BUBBLEBEAM
+	db 32, BUBBLEBEAM
         db 37, CONFUSE_RAY
 	db 0
 
