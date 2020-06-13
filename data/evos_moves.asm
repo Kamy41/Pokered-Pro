@@ -1767,8 +1767,8 @@ StarmieEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 32, BUBBLEBEAM
-        db 42, CONFUSE_RAY
+	db 27, BUBBLEBEAM
+        db 37, CONFUSE_RAY
 	db 0
 
 BulbasaurEvosMoves:
