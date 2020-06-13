@@ -1768,7 +1768,7 @@ StarmieEvosMoves:
 	db 0
 ; Learnset
 	db 32, BUBBLEBEAM
-        db 37, CONFUSE_RAY
+        db 42, CONFUSE_RAY
 	db 0
 
 BulbasaurEvosMoves:
