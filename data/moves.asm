@@ -149,7 +149,7 @@ MoveEnd:
 	move HI_JUMP_KICK, JUMP_KICK_EFFECT,            85, FIGHTING,  90, 20
 	move GLARE,        PARALYZE_EFFECT,              0, NORMAL,    75, 30
 	move DREAM_EATER,  DREAM_EATER_EFFECT,         100, PSYCHIC,  100, 15
-	move POISON_GAS,   POISON_EFFECT,                0, POISON,    90, 40
+	move POISON_GAS,   POISON_EFFECT,                0, POISON,    70, 40
 	move BARRAGE,      TWO_TO_FIVE_ATTACKS_EFFECT,  15, NORMAL,    90, 20
 	move LEECH_LIFE,   DRAIN_HP_EFFECT,             25, BUG,      100, 15
 	move LOVELY_KISS,  SLEEP_EFFECT,                 0, NORMAL,    75, 10
