@@ -215,7 +215,6 @@ ZigZagScreenAnim:
 	db $FF
 
 PoundAnim:
-StruggleAnim:
 	db $08,$00,$01
 	db $FF
 
@@ -1136,6 +1135,10 @@ TwisterAnim:
 	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$FF,$04
 	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+
+StruggleAnim:
+	db $08,$A5,$01
 	db $FF
 
 BallTossAnim:
