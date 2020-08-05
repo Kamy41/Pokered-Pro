@@ -307,6 +307,7 @@ ExeggutorEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 28, CONFUSION
 	db 31, STOMP
 	db 0
 
@@ -1766,8 +1767,8 @@ StarmieEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 27, BUBBLEBEAM
-        db 37, CONFUSE_RAY
+	db 28, SWIFT
+        db 33, CONFUSE_RAY
 	db 0
 
 BulbasaurEvosMoves:
