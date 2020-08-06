@@ -28,7 +28,7 @@ LeechSeedEffect_:
 .moveMissed
 	ld c, 50
 	call DelayFrames
-	jpab PrintButItFailedText_
+	jpab PrintDidntAffectText
 
 WasSeededText:
 	TX_FAR _WasSeededText
