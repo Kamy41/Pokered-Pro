@@ -2251,10 +2251,10 @@ _WasSeededText::
 	line "was seeded!"
 	prompt
 
-_EvadedAttackText::
-	text "<TARGET>"
-	line "evaded attack!"
-	prompt
+;_EvadedAttackText::
+;	text "<TARGET>"
+;	line "evaded attack!"
+;	prompt
 
 _HitWithRecoilText::
 	text "<USER>'s"
