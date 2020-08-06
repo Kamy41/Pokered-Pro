@@ -28,13 +28,8 @@ LeechSeedEffect_:
 .moveMissed
 	ld c, 50
 	call DelayFrames
-	ld hl, EvadedAttackText
-	jp PrintText
+	jpab PrintButItFailedText_
 
 WasSeededText:
 	TX_FAR _WasSeededText
-	db "@"
-
-EvadedAttackText:
-	TX_FAR _EvadedAttackText
 	db "@"
