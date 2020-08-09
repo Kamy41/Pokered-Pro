@@ -14,7 +14,7 @@ dw MarowakPicBack
 ; attacks known at lvl 0
 db BONE_CLUB
 db GROWL
-db 0
+db HEADBUTT
 db 0
 db 0 ; growth rate
 ; learnset
