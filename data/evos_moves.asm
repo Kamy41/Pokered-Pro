@@ -1693,7 +1693,6 @@ MarowakEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 18, HEADBUTT
 	db 25, LEER
 	db 33, FOCUS_ENERGY
 	db 41, THRASH
