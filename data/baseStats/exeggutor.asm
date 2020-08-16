@@ -15,7 +15,7 @@ dw ExeggutorPicBack
 db BARRAGE
 db HYPNOSIS
 db LEECH_SEED
-db 0
+db CONFUSION
 db 5 ; growth rate
 ; learnset
 	tmlearn 6
