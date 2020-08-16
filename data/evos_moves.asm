@@ -197,8 +197,7 @@ RhydonEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 30, STOMP
-	db 35, TAIL_WHIP
+	db 35, STOMP
 	db 40, FURY_ATTACK
 	db 48, HORN_DRILL
 	db 55, LEER
@@ -396,8 +395,7 @@ RhyhornEvosMoves:
 	db EV_LEVEL, 42, RHYDON
 	db 0
 ; Learnset
-	db 30, STOMP
-	db 35, TAIL_WHIP
+	db 35, STOMP
 	db 40, FURY_ATTACK
 	db 45, HORN_DRILL
 	db 50, LEER
