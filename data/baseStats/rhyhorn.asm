@@ -15,7 +15,7 @@ dw RhyhornPicBack
 db HORN_ATTACK
 db STOMP
 db TAIL_WHIP
-db 0
+db FURY_ATTACK
 db 5 ; growth rate
 ; learnset
 	tmlearn 6,7,8
