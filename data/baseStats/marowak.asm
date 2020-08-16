@@ -15,7 +15,7 @@ dw MarowakPicBack
 db BONE_CLUB
 db GROWL
 db HEADBUTT
-db 0
+db LEER
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8
