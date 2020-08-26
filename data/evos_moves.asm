@@ -285,7 +285,7 @@ SlowbroEvosMoves:
 	db 33, WATER_GUN
 	db 37, WITHDRAW
 	db 44, AMNESIA
-	db 54, PSYCHIC_M
+	db 55, PSYCHIC_M
 	db 0
 
 IvysaurEvosMoves:
@@ -313,11 +313,12 @@ LickitungEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 7, STOMP
-	db 15, LICK
-	db 23, DEFENSE_CURL
-	db 31, SLAM
-	db 39, SCREECH
+        db 7, SUPERSONIC
+        db 15, STOMP
+	db 23, DISABLE
+	db 31, DEFENSE_CURL
+	db 39, SLAM
+	db 47, SCREECH
 	db 0
 
 ExeggcuteEvosMoves:
@@ -612,7 +613,7 @@ SlowpokeEvosMoves:
 	db 27, GROWL
 	db 33, WATER_GUN
 	db 40, AMNESIA
-	db 47, PSYCHIC_M
+	db 48, PSYCHIC_M
 	db 0
 
 KadabraEvosMoves:
@@ -620,10 +621,10 @@ KadabraEvosMoves:
 	db EV_TRADE, 1, ALAKAZAM
 	db 0
 ; Learnset
-	db 16, CONFUSION
-	db 18, DISABLE
-	db 21, KINESIS
-	db 26, PSYBEAM
+	db 16, KINESIS
+	db 18, CONFUSION
+	db 20, DISABLE
+	db 27, PSYBEAM
 	db 31, RECOVER
 	db 38, PSYCHIC_M
 	db 42, REFLECT
@@ -1723,10 +1724,10 @@ AlakazamEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 16, CONFUSION
-	db 18, DISABLE
-	db 21, KINESIS
-	db 26, PSYBEAM
+	db 16, KINESIS
+	db 18, CONFUSION
+	db 20, DISABLE
+	db 27, PSYBEAM
 	db 31, RECOVER
 	db 38, PSYCHIC_M
 	db 42, REFLECT
