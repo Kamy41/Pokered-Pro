@@ -201,7 +201,7 @@ RhydonEvosMoves:
 	db 40, FURY_ATTACK
 	db 48, HORN_DRILL
 	db 55, LEER
-	db 61, ROCK_SLIDE
+	db 61, EARTHQUAKE
 	db 0
 
 KangaskhanEvosMoves:
@@ -400,7 +400,7 @@ RhyhornEvosMoves:
 	db 40, FURY_ATTACK
 	db 45, HORN_DRILL
 	db 50, LEER
-	db 55, ROCK_SLIDE
+	db 55, EARTHQUAKE
 	db 0
 
 LaprasEvosMoves:
@@ -535,7 +535,7 @@ TangelaEvosMoves:
 	db 0
 ; Learnset
 	db 24, ABSORB
-	db 28, VINE_WHIP
+	db 29, VINE_WHIP
 	db 32, POISONPOWDER
 	db 36, STUN_SPORE
 	db 39, SLEEP_POWDER
@@ -648,7 +648,7 @@ ChanseyEvosMoves:
 ; Learnset
 	db 12, DOUBLESLAP
 	db 24, SING
-	db 30, BIDE
+	db 30, EGG_BOMB
 	db 38, MINIMIZE
 	db 44, DEFENSE_CURL
 	db 48, DOUBLE_EDGE
@@ -814,9 +814,8 @@ KoffingEvosMoves:
 ; Learnset
 	db 32, SLUDGE
 	db 37, SMOKESCREEN
-	db 40, POISON_GAS
+	db 40, SELFDESTRUCT
 	db 45, HAZE
-	db 48, EXPLOSION
 	db 0
 
 MissingNo38EvosMoves:
@@ -835,8 +834,7 @@ MankeyEvosMoves:
 	db 21, FURY_SWIPES
 	db 27, FOCUS_ENERGY
 	db 33, SEISMIC_TOSS
-	db 39, SCREECH
-	db 45, THRASH
+	db 39, THRASH
 	db 0
 
 SeelEvosMoves:
@@ -1435,7 +1433,6 @@ PrimeapeEvosMoves:
 	db 21, FURY_SWIPES
 	db 27, FOCUS_ENERGY
 	db 37, SEISMIC_TOSS
-	db 42, SCREECH
 	db 46, THRASH
 	db 0
 
@@ -1671,9 +1668,8 @@ WeezingEvosMoves:
 ; Learnset
 	db 32, SLUDGE
 	db 39, SMOKESCREEN
-	db 43, POISON_GAS
+	db 43, SELFDESTRUCT
 	db 49, HAZE
-	db 53, EXPLOSION
 	db 0
 
 PersianEvosMoves:
