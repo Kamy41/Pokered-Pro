@@ -13,7 +13,7 @@ dw KakunaPicFront
 dw KakunaPicBack
 ; attacks known at lvl 0
 db HARDEN
-db POISON_STING
+db 0
 db 0
 db 0
 db 0 ; growth rate
