@@ -13,7 +13,7 @@ dw MetapodPicFront
 dw MetapodPicBack
 ; attacks known at lvl 0
 db HARDEN
-db TACKLE
+db 0
 db 0
 db 0
 db 0 ; growth rate
