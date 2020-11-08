@@ -8,7 +8,7 @@ VermilionDock_Script:
 	ld [wVermilionDockCurScript], a
 	ret
 	
-VermilionDock_ScriptPointers
+VermilionDock_ScriptPointers:
 	dw CheckFightingMapTrainers
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
