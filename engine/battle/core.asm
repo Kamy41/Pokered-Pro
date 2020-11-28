@@ -5411,6 +5411,19 @@ AdjustDamageForMoveType:
 	ld b, a
 	ld a, [hl] ; a = damage multiplier
 	ld [H_MULTIPLIER], a
+;;;;;;;;joenote - fixing the wrong effectiveness message for static damage moves
+	and a
+	jr z, .endmulti	;skip to end if the multiplier is zero
+	ld c, a
+	ld a, [wUnusedC000]
+	bit 4, a
+	ld a, c
+	jr z, .skip_static	;don't do anything if not a static move
+	ld a, [wDamageMultipliers]
+	and $7f	;keep the current multiplier if static move (will be either 00 or 0A)
+	jr .endmulti
+.skip_static
+;;;;;;;;
 ;;;;;;;;joenote - fixing the wrong effectiveness message 
 	cp $05	;multiplier is still in a, so see if it's half damage
 	jr nz, .nothalf	;skip ahead if not half
