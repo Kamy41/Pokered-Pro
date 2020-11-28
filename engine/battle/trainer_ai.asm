@@ -209,7 +209,7 @@ AIMoveChoiceModification3:
 	pop bc
 	pop hl
 	ld a, [wTypeEffectiveness]
-	cp $0A
+	cp $10
 	jr z, .nextMove
 	jr c, .notEffectiveMove
 	dec [hl] ; slightly encourage this move
