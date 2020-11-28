@@ -5411,6 +5411,21 @@ AdjustDamageForMoveType:
 	ld b, a
 	ld a, [hl] ; a = damage multiplier
 	ld [H_MULTIPLIER], a
+;;;;;;;;joenote - fixing the wrong effectiveness message 
+	cp $05	;multiplier is still in a, so see if it's half damage
+	jr nz, .nothalf	;skip ahead if not half
+	ld a, [wDamageMultipliers]	;otherwise get the original stored multiplier (should be $0A if first time)
+	and $7f	;a AND 0111111. this makes only the highest bit (used for STAB) zero.
+	srl a	; divide a by 2
+	jr .endmulti	;done with the fix, so skip onward
+.nothalf
+	cp $14	;multiplier is still in a, so see if it's double damage
+	jr nz, .endmulti	;skip ahead if not double since at this point it has to be zero
+	ld a, [wDamageMultipliers]	;otherwise get the original stored multiplier (should be $0A if first time)
+	and $7f	;a AND 0111111. this makes only the highest bit (used for STAB) zero.
+	sla a	; multiply a by 2
+.endmulti	;skip straight to here if a is zero since the fix is not needed for immunity
+;;;;;;;;
 	add b
 	ld [wDamageMultipliers], a
 	xor a
@@ -5454,13 +5469,30 @@ AdjustDamageForMoveType:
 ; ($05 is not very effective, $10 is neutral, $14 is super effective)
 ; as far is can tell, this is only used once in some AI code to help decide which move to use
 AIGetTypeEffectiveness:
+;joenote - if type-effectiveness bit is set, then do wPlayerMoveType and wEnemyMonType
+;		-also changed neutral value from $10 to $0A since it makes more sense
+;		-and modifying this to take into account both types
+	ld a, [wUnusedC000]
+	bit 3, a
+	jr z, .enemyMove	
+	ld a, [wPlayerMoveType]
+	ld d, a                    ; d = type of player move
+	ld hl, wEnemyMonType
+	ld b, [hl]                 ; b = type 1 of enemy's pokemon
+	inc hl
+	ld c, [hl]                 ; c = type 2 of enemy's pokemon
+	ld a, $0A
+	ld [wTypeEffectiveness], a ; initialize to neutral effectiveness
+	ld hl, TypeEffects
+	jr .loop
+.enemyMove
 	ld a, [wEnemyMoveType]
 	ld d, a                    ; d = type of enemy move
 	ld hl, wBattleMonType
 	ld b, [hl]                 ; b = type 1 of player's pokemon
 	inc hl
 	ld c, [hl]                 ; c = type 2 of player's pokemon
-	ld a, $10
+	ld a, $0A
 	ld [wTypeEffectiveness], a ; initialize to neutral effectiveness
 	ld hl, TypeEffects
 .loop
@@ -5471,17 +5503,38 @@ AIGetTypeEffectiveness:
 	jr nz, .nextTypePair1
 	ld a, [hli]
 	cp b                      ; match with type 1 of pokemon
-	jr z, .done
+	jr z, .AImatchingPairFound
 	cp c                      ; or match with type 2 of pokemon
-	jr z, .done
+	jr z, .AImatchingPairFound
 	jr .nextTypePair2
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.AImatchingPairFound
+	ld a, [hl]	;get damage multiplier
+	cp $05	;is it halved?
+	jr nz, .AInothalf	;jump down of not half
+	ld a, [wTypeEffectiveness]	;else get the effectiveness multiplier
+	srl a	;halve the multiplier
+	ld [wTypeEffectiveness], a ; store damage multiplier
+	jr .nextTypePair2	;get next pair in list
+.AInothalf
+	cp $14	;is it double?
+	jr nz, .AImustbezero	;if not double either, it must be zero so skip ahead
+	ld a, [wTypeEffectiveness]	;else get the effectiveness multiplier
+	sla a	;double the multiplier
+	ld [wTypeEffectiveness], a ; store damage multiplier
+	jr .nextTypePair2	;get next pair in list
+.AImustbezero
+	ld a, [wTypeEffectiveness]	;else get the effectiveness multiplier
+	xor a	;clear a to 00
+	jr .done
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .nextTypePair1
 	inc hl
 .nextTypePair2
 	inc hl
 	jr .loop
 .done
-	ld a, [hl]
+	;joenote - removed		ld a, [hl]
 	ld [wTypeEffectiveness], a ; store damage multiplier
 	ret
 
