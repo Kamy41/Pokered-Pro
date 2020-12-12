@@ -731,9 +731,8 @@ PsyduckEvosMoves:
 	db 28, TAIL_WHIP
 	db 31, DISABLE
 	db 36, CONFUSION
-	db 40, FURY_SWIPES
-	db 44, SCREECH
-	db 50, HYDRO_PUMP
+	db 43, FURY_SWIPES
+	db 52, HYDRO_PUMP
 	db 0
 
 DrowzeeEvosMoves:
@@ -1534,10 +1533,9 @@ GolduckEvosMoves:
 ; Learnset
 	db 28, TAIL_WHIP
 	db 31, DISABLE
-	db 37, CONFUSION
-	db 44, FURY_SWIPES
-	db 50, SCREECH
-	db 56, HYDRO_PUMP
+	db 39, CONFUSION
+	db 48, FURY_SWIPES
+	db 59, HYDRO_PUMP
 	db 0
 
 HypnoEvosMoves:
