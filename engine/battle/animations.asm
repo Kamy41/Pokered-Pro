@@ -2485,7 +2485,7 @@ MoveSoundTable:
 	db SFX_NOT_VERY_EFFECTIVE,$10,$ff ; SMOG
 	db SFX_BATTLE_2A,         $20,$20 ; SLUDGE
 	db SFX_BATTLE_32,         $00,$80 ; BONE_CLUB
-	db SFX_BATTLE_29,         $1f,$20 ; FIRE_BLAST
+	db SFX_BATTLE_29,         $1f,$40 ; FIRE_BLAST
 	db SFX_BATTLE_25,         $2f,$80 ; WATERFALL
 	db SFX_BATTLE_0F,         $1f,$ff ; CLAMP
 	db SFX_BATTLE_2B,         $1f,$60 ; SWIFT
@@ -2524,7 +2524,7 @@ MoveSoundTable:
 	db SFX_BATTLE_26,         $f0,$ff ; SUPER_FANG
 	db SFX_NOT_VERY_EFFECTIVE,$01,$ff ; SLASH
 	db SFX_BATTLE_2C,         $d8,$04 ; SUBSTITUTE
-	db SFX_BATTLE_29,         $28,$c0 ; TWISTER
+	db SFX_BATTLE_29,         $24,$c0 ; TWISTER
 	db SFX_BATTLE_22,         $10,$80 ; STRUGGLE
 	db SFX_BATTLE_0B,         $00,$80
 
