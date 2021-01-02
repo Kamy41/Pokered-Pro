@@ -2366,9 +2366,9 @@ MoveSoundTable:
 	db SFX_BATTLE_0B,         $01,$80 ; COMET_PUNCH
 	db SFX_BATTLE_0D,         $00,$40 ; MEGA_PUNCH
 	db SFX_SILPH_SCOPE,       $00,$ff ; PAY_DAY
-	db SFX_BATTLE_22,         $10,$c0 ; FIRE_PUNCH
-	db SFX_BATTLE_22,         $10,$c0 ; ICE_PUNCH
-	db SFX_BATTLE_22,         $10,$c0 ; THUNDERPUNCH
+	db SFX_BATTLE_19,         $10,$c0 ; FIRE_PUNCH
+	db SFX_BATTLE_28,         $40,$a0 ; ICE_PUNCH
+	db SFX_BATTLE_26,         $00,$80 ; THUNDERPUNCH
 	db SFX_DAMAGE,            $00,$80 ; SCRATCH
 	db SFX_BATTLE_0F,         $20,$40 ; VICEGRIP
 	db SFX_BATTLE_0F,         $00,$80 ; GUILLOTINE
