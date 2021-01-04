@@ -1374,7 +1374,7 @@ PoliwrathEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 33, KARATE_CHOP
+	db 33, SUBMISSION
 	db 0
 
 WeedleEvosMoves:
@@ -1758,7 +1758,7 @@ StarmieEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-        db 33, CONFUSE_RAY
+        db 37, CONFUSE_RAY
 	db 0
 
 BulbasaurEvosMoves:
