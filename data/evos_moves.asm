@@ -1083,7 +1083,7 @@ PikachuEvosMoves:
 ; Learnset
 	db 9, THUNDER_WAVE
 	db 16, QUICK_ATTACK
-	db 25, SWIFT
+	db 26, SWIFT
 	db 33, AGILITY
 	db 43, THUNDER
 	db 0
@@ -1758,7 +1758,7 @@ StarmieEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-        db 37, CONFUSE_RAY
+        db 32, CONFUSE_RAY
 	db 0
 
 BulbasaurEvosMoves:
