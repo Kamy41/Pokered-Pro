@@ -197,9 +197,10 @@ RhydonEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 35, STOMP
-	db 40, FURY_ATTACK
-	db 48, HORN_DRILL
+        db 30, STOMP
+	db 35, TAIL_WHIP
+	db 40, HORN_DRILL
+	db 48, FURY_ATTACK
 	db 55, LEER
 	db 61, EARTHQUAKE
 	db 0
@@ -396,9 +397,10 @@ RhyhornEvosMoves:
 	db EV_LEVEL, 42, RHYDON
 	db 0
 ; Learnset
-	db 35, STOMP
-	db 40, FURY_ATTACK
-	db 45, HORN_DRILL
+        db 30, STOMP
+	db 35, TAIL_WHIP
+	db 40, HORN_DRILL
+	db 45, FURY_ATTACK
 	db 50, LEER
 	db 55, EARTHQUAKE
 	db 0
@@ -812,8 +814,8 @@ KoffingEvosMoves:
 ; Learnset
 	db 32, SLUDGE
 	db 37, SMOKESCREEN
-	db 40, HAZE
-	db 45, EXPLOSION
+	db 40, SELFDESTRUCT
+	db 45, HAZE
 	db 0
 
 MissingNo38EvosMoves:
@@ -1665,8 +1667,8 @@ WeezingEvosMoves:
 ; Learnset
 	db 32, SLUDGE
 	db 39, SMOKESCREEN
-	db 43, HAZE
-	db 49, EXPLOSION
+	db 43, SELFDESTRUCT
+	db 49, HAZE
 	db 0
 
 PersianEvosMoves:
