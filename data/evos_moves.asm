@@ -571,7 +571,6 @@ OnixEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 15, BIND
 	db 19, ROCK_THROW
 	db 25, RAGE
 	db 33, SLAM
@@ -813,8 +812,8 @@ KoffingEvosMoves:
 ; Learnset
 	db 32, SLUDGE
 	db 37, SMOKESCREEN
-	db 40, SELFDESTRUCT
-	db 45, HAZE
+	db 40, HAZE
+	db 45, EXPLOSION
 	db 0
 
 MissingNo38EvosMoves:
@@ -1666,8 +1665,8 @@ WeezingEvosMoves:
 ; Learnset
 	db 32, SLUDGE
 	db 39, SMOKESCREEN
-	db 43, SELFDESTRUCT
-	db 49, HAZE
+	db 43, HAZE
+	db 49, EXPLOSION
 	db 0
 
 PersianEvosMoves:
