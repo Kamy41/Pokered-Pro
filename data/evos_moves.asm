@@ -1084,7 +1084,7 @@ PikachuEvosMoves:
 ; Learnset
 	db 9, THUNDER_WAVE
 	db 16, QUICK_ATTACK
-	db 26, THUNDERBOLT
+	db 26, SWIFT
 	db 33, AGILITY
 	db 43, THUNDER
 	db 0
