@@ -332,8 +332,8 @@ ExeggcuteEvosMoves:
 	db 31, CONFUSION
 	db 34, STUN_SPORE
 	db 37, POISONPOWDER
-	db 42, SLEEP_POWDER
-	db 48, SOLARBEAM
+	db 41, SLEEP_POWDER
+	db 46, SOLARBEAM
 	db 0
 
 GrimerEvosMoves:
