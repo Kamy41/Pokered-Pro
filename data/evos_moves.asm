@@ -537,12 +537,12 @@ TangelaEvosMoves:
 	db 0
 ; Learnset
 	db 24, ABSORB
-	db 29, VINE_WHIP
+	db 27, VINE_WHIP
 	db 32, POISONPOWDER
 	db 36, STUN_SPORE
 	db 39, SLEEP_POWDER
-	db 45, SLAM
-	db 49, GROWTH
+	db 44, SLAM
+	db 48, GROWTH
 	db 0
 
 MissingNo1FEvosMoves:
