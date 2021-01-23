@@ -18,8 +18,8 @@ db SCRATCH
 db 0
 db 3 ; growth rate
 ; learnset
-	tmlearn 6,7,8
-	tmlearn 9,10,11,12,13,14
+	tmlearn 6,8,9
+	tmlearn 10,11,12,13,14
 	tmlearn 20,24
 	tmlearn 25,31,32
 	tmlearn 33,34,40
