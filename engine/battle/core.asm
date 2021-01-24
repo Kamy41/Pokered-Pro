@@ -385,9 +385,11 @@ MainInBattleLoop:
 	ld a, [wPlayerBattleStatus2]
 	bit USING_RAGE, a
 	jr z, .not_player_raging
+	call DecAttackPlayer
+	call DeactivateRageInA
+	ld [wPlayerBattleStatus2], a
 	ld a, $FF
 	ld [wPlayerMoveAccuracy], a
-	call DecAttackPlayer
 .not_player_raging
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - if thrashing, reset the move accuracy here to prevent degradation
@@ -8885,3 +8887,8 @@ PlayBattleAnimationGotID:
 	pop de
 	pop hl
 	ret	
+
+DeactivateRageInA:
+	ret nz
+	res USING_RAGE, a
+	ret
