@@ -387,6 +387,7 @@ MainInBattleLoop:
 	jr z, .not_player_raging
 	ld a, $FF
 	ld [wPlayerMoveAccuracy], a
+	call DecAttackPlayer
 .not_player_raging
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - if thrashing, reset the move accuracy here to prevent degradation
@@ -3034,6 +3035,28 @@ SelectEnemyMove:
 	ld a, [hl]
 	jr .done
 .noLinkBattle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - if raging, reset rage's accuracy here to prevent degradation
+;	and also decrement the rage counter
+	ld a, [wEnemyBattleStatus2]
+	bit USING_RAGE, a
+	jr z, .not_enemy_raging
+	call DecAttackEnemy
+	call DeactivateRageInA
+	ld [wEnemyBattleStatus2], a	
+	ld a, $FF
+	ld [wEnemyMoveAccuracy], a
+.not_enemy_raging
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - if thrashing, reset the move accuracy here to prevent degradation
+	ld a, [wEnemyBattleStatus1]
+	bit THRASHING_ABOUT, a
+	jr z, .not_enemy_thrashing
+	ld a, $FF
+	ld [wEnemyMoveAccuracy], a
+.not_enemy_thrashing
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wEnemyBattleStatus2]
 	and (1 << NEEDS_TO_RECHARGE) | (1 << USING_RAGE) ; need to recharge or using rage
 	ret nz
@@ -3657,7 +3680,7 @@ CheckPlayerStatusConditions:
 	dec a ; did multi-turn move end?
 	ld [wPlayerNumAttacksLeft], a
 	ld hl, getPlayerAnimationType ; if it didn't, skip damage calculation (deal damage equal to last hit),
-	                ; DecrementPP and MoveHitTest
+	; DecrementPP and MoveHitTest
 	jp nz, .returnToHL
 	jp .returnToHL
 
@@ -8548,14 +8571,21 @@ ClearHyperBeam:
 	pop hl
 	ret
 
-RageEffect:
+RageEffect:    ;joenote - modified to last 2 to 3 turns
 	ld hl, wPlayerBattleStatus2
+	ld bc, wPlayerNumAttacksLeft
 	ld a, [H_WHOSETURN]
 	and a
 	jr z, .player
 	ld hl, wEnemyBattleStatus2
+	ld bc, wEnemyNumAttacksLeft
 .player
-	set USING_RAGE, [hl] ; mon is now in "rage" mode
+	set USING_RAGE, [hl]   ; mon is now in "rage" mode
+	call BattleRandom
+	and $1
+	inc a
+	inc a
+	ld [bc], a ; set Rage counter to 2 or 3 at random
 	ret
 
 MimicEffect:
