@@ -3035,7 +3035,7 @@ SelectEnemyMove:
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
-	jr .done
+	jp .done
 .noLinkBattle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - if raging, reset rage's accuracy here to prevent degradation
@@ -8887,6 +8887,19 @@ PlayBattleAnimationGotID:
 	pop de
 	pop hl
 	ret	
+
+DecAttackPlayer:
+	push hl
+	ld hl, wPlayerNumAttacksLeft
+	jr DecAttack
+DecAttackEnemy:
+	push hl
+	ld hl, wEnemyNumAttacksLeft
+	;fall through
+DecAttack:
+	dec [hl]
+	pop hl
+	ret
 
 DeactivateRageInA:
 	ret nz
