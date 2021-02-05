@@ -598,9 +598,9 @@ PidgeyEvosMoves:
 	db 5, SAND_ATTACK
 	db 9, GUST
 	db 15, QUICK_ATTACK
-	db 19, AGILITY
+	db 19, WHIRLWIND
 	db 28, WING_ATTACK
-	db 36, WHIRLWIND
+	db 36, AGILITY
 	db 44, MIRROR_MOVE
 	db 0
 
@@ -1736,9 +1736,9 @@ PidgeottoEvosMoves:
 	db 5, SAND_ATTACK
 	db 9, GUST
 	db 15, QUICK_ATTACK
-	db 21, AGILITY
+	db 21, WHIRLWIND
 	db 31, WING_ATTACK
-	db 40, WHIRLWIND
+	db 40, AGILITY
 	db 49, MIRROR_MOVE
 	db 0
 
@@ -1749,9 +1749,9 @@ PidgeotEvosMoves:
 	db 5, SAND_ATTACK
 	db 9, GUST
 	db 15, QUICK_ATTACK
-	db 21, AGILITY
+	db 21, WHIRLWIND
 	db 31, WING_ATTACK
-	db 44, WHIRLWIND
+	db 44, AGILITY
 	db 54, MIRROR_MOVE
 	db 0
 
