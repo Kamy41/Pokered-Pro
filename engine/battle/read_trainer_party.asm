@@ -127,7 +127,7 @@ ReadTrainer:
 
 ; pidgeot
 	ld a, SKY_ATTACK
-	ld [wEnemyMon1Moves + 2], a
+	ld [wEnemyMon1Moves + 0], a
 
 ; starter
 	ld a, [wRivalStarter]
