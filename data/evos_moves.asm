@@ -332,8 +332,8 @@ ExeggcuteEvosMoves:
 	db 31, CONFUSION
 	db 34, STUN_SPORE
 	db 37, POISONPOWDER
-	db 41, SLEEP_POWDER
-	db 46, SOLARBEAM
+	db 42, SLEEP_POWDER
+	db 48, SOLARBEAM
 	db 0
 
 GrimerEvosMoves:
@@ -541,8 +541,8 @@ TangelaEvosMoves:
 	db 32, POISONPOWDER
 	db 36, STUN_SPORE
 	db 39, SLEEP_POWDER
-	db 44, SLAM
-	db 48, GROWTH
+	db 45, SLAM
+	db 49, GROWTH
 	db 0
 
 MissingNo1FEvosMoves:
@@ -1208,7 +1208,7 @@ SandslashEvosMoves:
 	db 17, SLASH
 	db 27, POISON_STING
 	db 36, SWIFT
-	db 47, DIG
+	db 45, DIG
 	db 0
 
 OmanyteEvosMoves:
@@ -1277,7 +1277,7 @@ FlareonEvosMoves:
 	db 40, BITE
 	db 42, SMOG
 	db 44, FIRE_SPIN
-	db 48, LEER
+	db 48, RAGE
 	db 54, FLAMETHROWER
 	db 0
 
@@ -1305,7 +1305,7 @@ VaporeonEvosMoves:
 	db 40, BITE
 	db 42, ACID_ARMOR
 	db 44, HAZE
-	db 48, MIST
+	db 48, AURORA_BEAM
 	db 54, HYDRO_PUMP
 	db 0
 
