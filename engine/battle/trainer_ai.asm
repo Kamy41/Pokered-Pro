@@ -201,6 +201,25 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
+;joenote: fix spamming of buff/debuff moves
+	ld a, [wEnemyMovePower]	;get the base power of the enemy's attack
+	and a	;check if it is zero
+	jr nz, .skipout	;get out of this section if non-zero power
+;heavily discourage 0 BP moves if one was used just previously
+	ld a, [wAILastMovePower]
+	and a
+	jp z, .heavydiscourage2
+;else apply a random bias to the 0 bp move we are on
+	call Random	
+;outcome desired: 	50% chance to heavily discourage and would rather do damage
+;					12.5% chance to slightly encourage
+;					else neither encourage nor discourage
+	cp 128	;don't set carry flag if number is >= this value
+	jp nc, .heavydiscourage2	
+	cp 32
+	jp .nextMove	;neither encourage nor discourage
+.skipout
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	push hl
 	push bc
 	push de
@@ -208,6 +227,16 @@ AIMoveChoiceModification3:
 	pop de
 	pop bc
 	pop hl
+;joenote - heavily discourage attack moves that have no effect due to typing
+	ld a, [wTypeEffectiveness]	;get the effectiveness
+	and a 	;check if it's zero
+	jr nz, .skipout2	;skip if it's not immune
+.heavydiscourage2	;at this line the move has no effect due to immunity or other circumstance
+	ld a, [hl]	
+	add $5 ; heavily discourage move
+	ld [hl], a
+	jp .nextMove
+.skipout2
 	ld a, [wTypeEffectiveness]
 	cp $0A
 	jr z, .nextMove
@@ -255,6 +284,7 @@ AIMoveChoiceModification3:
 	jr z, .nextMove
 	inc [hl] ; slightly discourage this move
 	jr .nextMove
+	
 AIMoveChoiceModification4:
 	ret
 
