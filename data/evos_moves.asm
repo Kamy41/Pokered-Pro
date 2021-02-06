@@ -573,6 +573,7 @@ OnixEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 15, BIND
 	db 19, ROCK_THROW
 	db 25, RAGE
 	db 33, SLAM
@@ -697,7 +698,7 @@ HitmonchanEvosMoves:
 	db 33, FIRE_PUNCH
 	db 38, ICE_PUNCH
 	db 43, THUNDERPUNCH
-	db 48, DIZZY_PUNCH
+	db 48, MEGA_PUNCH
 	db 53, COUNTER
 	db 0
 
@@ -1958,7 +1959,7 @@ AerodactylEvosMoves:
 ; Learnset
 	db 33, SUPERSONIC
 	db 38, BITE
-	db 45, SKY_ATTACK
+	db 45, TAKE_DOWN
 	db 54, HYPER_BEAM
 	db 0
 
