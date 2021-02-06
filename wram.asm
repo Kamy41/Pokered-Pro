@@ -630,9 +630,6 @@ wForceEvolution:: ; ccd4
 ; if [ccd5] != 1, the second AI layer is not applied
 wAILayer2Encouragement:: ; ccd5
 	ds 1
-	
-;joenote - store the power of the enemy move used last turn for AI layer 3 use
-wAILastMovePower:: ; cdd6
 	ds 1
 
 ; current HP of player and enemy substitutes
