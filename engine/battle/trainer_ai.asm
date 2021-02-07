@@ -107,7 +107,6 @@ AIMoveChoiceModificationFunctionPointers:
 	dw AIMoveChoiceModification1
 	dw AIMoveChoiceModification2
 	dw AIMoveChoiceModification3
-	dw AIMoveChoiceModification4 ; unused, does nothing
 
 ; discourages moves that cause no damage but only a status ailment if player's mon already has one
 AIMoveChoiceModification1:
@@ -200,8 +199,7 @@ AIMoveChoiceModification3:
 	and a
 	ret z ; no more moves in move set
 	inc de
-	call ReadMove
-;joenote: fix spamming of buff/debuff moves
+	call ReadMove   ;joenote: fix spamming of buff/debuff moves
 	ld a, [wEnemyMovePower]	;get the base power of the enemy's attack
 	and a	;check if it is zero
 	jr nz, .skipout	;get out of this section if non-zero power	
@@ -237,8 +235,6 @@ AIMoveChoiceModification3:
 	jr z, .done
 	call ReadMove
 	ld a, [wEnemyMoveEffect]
-	cp SUPER_FANG_EFFECT
-	jr z, .betterMoveFound ; Super Fang is considered to be a better move
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
 	cp FLY_EFFECT
@@ -261,8 +257,6 @@ AIMoveChoiceModification3:
 	jr z, .nextMove
 	inc [hl] ; slightly discourage this move
 	jr .nextMove
-AIMoveChoiceModification4:
-	ret
 
 ReadMove:
 	push hl
