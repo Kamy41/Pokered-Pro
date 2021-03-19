@@ -13,7 +13,7 @@ dw PsyduckPicFront
 dw PsyduckPicBack
 ; attacks known at lvl 0
 db SCRATCH
-db AMNESIA
+db 0
 db 0
 db 0
 db 0 ; growth rate
