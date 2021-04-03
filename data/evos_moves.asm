@@ -735,6 +735,7 @@ PsyduckEvosMoves:
 	db 36, CONFUSION
 	db 43, FURY_SWIPES
 	db 52, HYDRO_PUMP
+	db 63, AMNESIA
 	db 0
 
 DrowzeeEvosMoves:
