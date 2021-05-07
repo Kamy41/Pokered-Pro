@@ -91,7 +91,7 @@ ReadTrainer:
 	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
-	ld hl, wEnemyMon1Moves + 3
+	ld hl, wEnemyMon1Moves + 2
 	ld bc, wEnemyMon2 - wEnemyMon1
 	call AddNTimes
 	ld [hl], d
@@ -121,7 +121,7 @@ ReadTrainer:
 	jr .FinishUp ; nope
 .GiveTeamMoves
 	ld a, [hl]
-	ld [wEnemyMon6Moves + 0], a
+	ld [wEnemyMon5Moves], a
 	jr .FinishUp
 .ChampionRival ; give moves to his team
 
