@@ -1762,7 +1762,7 @@ StarmieEvosMoves:
 	db 0
 ; Learnset
         db 27, RECOVER
-        db 32, CONFUSE_RAY
+        db 37, CONFUSE_RAY
 	db 0
 
 BulbasaurEvosMoves:
