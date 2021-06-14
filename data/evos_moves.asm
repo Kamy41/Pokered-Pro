@@ -222,8 +222,8 @@ NidoranMEvosMoves:
 	db 0
 ; Learnset
 	db 8, HORN_ATTACK
-	db 12, DOUBLE_KICK
-	db 17, POISON_STING
+	db 12, POISON_STING
+	db 17, DOUBLE_KICK
 	db 21, FOCUS_ENERGY
 	db 29, FURY_ATTACK
 	db 36, HORN_DRILL
@@ -362,8 +362,8 @@ NidoranFEvosMoves:
 	db 0
 ; Learnset
 	db 8, SCRATCH
-	db 12, DOUBLE_KICK
-	db 17, POISON_STING
+	db 12, POISON_STING
+	db 17, DOUBLE_KICK
 	db 21, TAIL_WHIP
 	db 29, BITE
 	db 36, FURY_SWIPES
@@ -1761,8 +1761,7 @@ StarmieEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-        db 27, RECOVER
-        db 37, CONFUSE_RAY
+        db 32, CONFUSE_RAY
 	db 0
 
 BulbasaurEvosMoves:
@@ -1913,9 +1912,9 @@ NidorinoEvosMoves:
 	db 0
 ; Learnset
 	db 8, HORN_ATTACK
-	db 12, DOUBLE_KICK
-	db 19, POISON_STING
-	db 23, FOCUS_ENERGY
+        db 12, POISON_STING
+	db 19, DOUBLE_KICK
+        db 23, FOCUS_ENERGY
 	db 32, FURY_ATTACK
 	db 41, HORN_DRILL
 	db 0
@@ -1926,9 +1925,9 @@ NidorinaEvosMoves:
 	db 0
 ; Learnset
 	db 8, SCRATCH
-	db 12, DOUBLE_KICK
-	db 19, POISON_STING
-	db 23, TAIL_WHIP
+	db 12, POISON_STING
+	db 19, DOUBLE_KICK
+        db 23, TAIL_WHIP
 	db 32, BITE
 	db 41, FURY_SWIPES
 	db 0
