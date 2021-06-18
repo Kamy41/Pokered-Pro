@@ -264,7 +264,7 @@ TitleScreenPickNewMon:
 .loop
 ; Keep looping until a mon different from the current one is picked.
 	call Random
-	and $2
+	and $f
 	ld c, a
 	ld b, 0
 	ld hl, TitleMons
