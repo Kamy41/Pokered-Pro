@@ -460,7 +460,7 @@ SupersonicAnim:
 SonicBoomAnim:
 	db $46,$2D,$15
 	db $46,$2D,$15
-	db $46,$0F,$10
+	db $06,$2F,$16
 	db $46,$FF,$05
 	db $FF
 
@@ -775,7 +775,6 @@ DoubleTeamAnim:
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db SE_SHAKE_BACK_AND_FORTH, $67
 	db SE_SHOW_MON_PIC, $FF
-	db $46,$6F,$33
 	db $FF
 
 RecoverAnim:
