@@ -266,7 +266,8 @@ TitleScreenPickNewMon:
 .loop
 ; Keep looping until a mon different from the current one is picked.
 	call Random
-	and $3
+	cp NUM_TITLE_MONS ; compare a with NUM_TITLE_MONS and set the carry flag c if a < NUM_TITLE_MONS
+        jr nc, .loop ; if the carry flag is not set, then a >= NUM_TITLE_MONS, so try again
 	ld c, a
 	ld b, 0
 	ld hl, TitleMons
