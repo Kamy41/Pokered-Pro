@@ -123,7 +123,9 @@ ENDC
 IF DEF(_BLUE)
 	ld a, SQUIRTLE ; which Pokemon to show first on the title screen
 ENDC
-
+IF DEF(_GREEN)
+	ld a, BULBASAUR ; which Pokemon to show first on the title screen
+ENDC
 	ld [wTitleMonSpecies], a
 	call LoadTitleMonSprite
 	ld a, (vBGMap0 + $300) / $100
