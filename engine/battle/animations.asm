@@ -2408,7 +2408,7 @@ MoveSoundTable:
 	db SFX_BATTLE_0B,         $00,$40 ; ROAR
 	db SFX_BATTLE_35,         $00,$80 ; SING
 	db SFX_BATTLE_27,         $40,$60 ; SUPERSONIC
-	db SFX_BATTLE_27,         $38,$70 ; SONICBOOM
+	db SFX_BATTLE_27,         $3a,$70 ; SONICBOOM
 	db SFX_BATTLE_27,         $ff,$40 ; DISABLE
 	db SFX_BATTLE_2A,         $80,$c0 ; ACID
 	db SFX_BATTLE_19,         $10,$a0 ; EMBER
