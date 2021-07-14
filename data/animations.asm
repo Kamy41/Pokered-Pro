@@ -460,7 +460,7 @@ SupersonicAnim:
 SonicBoomAnim:
 	db $46,$2D,$15
 	db $46,$2D,$15
-	db $03,$2F,$31
+	db $03,$30,$31
 	db $46,$FF,$05
 	db $FF
 
