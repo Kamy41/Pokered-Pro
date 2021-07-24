@@ -83,7 +83,7 @@ CryData:
 	db $0E, $E0, $60; MissingNo.
 	db $24, $4F, $10; Vulpix
 	db $24, $88, $60; Ninetales
-	db $0F, $EF, $B0; Pikachu
+	db $0F, $EF, $0B; Pikachu
 	db $09, $EE, $08; Raichu
 	db $00, $00, $00; MissingNo.
 	db $00, $00, $00; MissingNo.
