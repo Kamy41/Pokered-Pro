@@ -14,7 +14,7 @@ dw VileplumePicBack
 ; attacks known at lvl 0
 db ACID
 db PETAL_DANCE
-db POISON_POWDER
+db POISONPOWDER
 db SLEEP_POWDER
 db 3 ; growth rate
 ; learnset
