@@ -1368,6 +1368,8 @@ TilePairCollisionsWater::
 	db FOREST, $14, $2E
 	db FOREST, $48, $2E
 	db CAVERN, $14, $05
+	db GYM	 , $14, $32
+	db GYM	 , $14, $33
 	db $FF
 
 ; this builds a tile map from the tile block map based on the current X/Y coordinates of the player's character
