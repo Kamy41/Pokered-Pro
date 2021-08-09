@@ -47,8 +47,8 @@ Run setup and leave the default settings. At "Select Packages", choose to instal
 - `make`
 - `git`
 - `gettext`
-- `pyton2`
-- `pyton-setuptools`
+- `python2`
+- `python-setuptools`
 - `gcc-core`
 
 Then download [**rgbds**] version 4.1 or below (https://github.com/rednex/rgbds/releases/): the latest **win64.tar.gz** or **win32.tar.gz** release. Extract it and put all the `exe` and `dll` files individually in **C:\cygwin64\usr\local\bin**.
