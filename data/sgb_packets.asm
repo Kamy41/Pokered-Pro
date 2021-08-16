@@ -61,8 +61,8 @@ BlkPacket_WholeScreen:
 BlkPacket_Battle:
 	ATTR_BLK 5
 	ATTR_BLK_DATA %111, 2,2,0, 00,12, 19,17 ; message box: pal 2
-	ATTR_BLK_DATA %011, 1,1,0, 01,00, 10,03 ; enemy HP bar: pal 1
-	ATTR_BLK_DATA %011, 0,0,0, 10,07, 19,10 ; player HP bar: pal 0
+	ATTR_BLK_DATA %011, 1,1,1, 01,00, 10,03 ; enemy HP bar: pal 1
+	ATTR_BLK_DATA %011, 0,0,1, 10,07, 19,10 ; player HP bar: pal 0
 	ATTR_BLK_DATA %011, 2,2,0, 00,04, 08,11 ; player mon: pal 2
 	ATTR_BLK_DATA %011, 3,3,0, 11,00, 19,06 ; enemy mon : pal 3
 
@@ -207,7 +207,7 @@ PalPacket_Pokedex:        PAL_SET PAL_BROWNMON, 0, 0, 0
 PalPacket_Slots:          PAL_SET PAL_SLOTS1, PAL_SLOTS2, PAL_SLOTS3, PAL_SLOTS4
 PalPacket_Titlescreen:    PAL_SET PAL_LOGO2, PAL_LOGO1, PAL_MEWMON, PAL_PURPLEMON
 PalPacket_TrainerCard:    PAL_SET PAL_MEWMON, PAL_BADGE, PAL_REDMON, PAL_YELLOWMON
-PalPacket_Generic:        PAL_SET PAL_MEWMON, PAL_MEWMON, PAL_MEWMON, PAL_MEWMON
+PalPacket_Generic:        PAL_SET PAL_MEWMON, 0, 0, 0
 PalPacket_NidorinoIntro:  PAL_SET PAL_PURPLEMON, PAL_BLACK, 0, 0
 PalPacket_GameFreakIntro: PAL_SET PAL_GAMEFREAK, PAL_REDMON, PAL_VIRIDIAN, PAL_BLUEMON
 
