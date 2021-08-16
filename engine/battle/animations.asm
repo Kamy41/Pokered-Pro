@@ -523,8 +523,11 @@ SetAnimationPalette:
 	and a
 	ld a, $e4
 	jr z, .notSGB
-	ld a, $f0
+	ld a, $e4
 	ld [wAnimPalette], a
+	ld [rOBP0], a
+	ld a, $6c
+	ld [rOBP1], a
 	ld b, $e4
 	ld a, [wAnimationID]
 	cp TRADE_BALL_DROP_ANIM
