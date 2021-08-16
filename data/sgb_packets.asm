@@ -63,8 +63,8 @@ BlkPacket_Battle:
 	ATTR_BLK_DATA %111, 2,2,0, 00,12, 19,17 ; message box: pal 2
 	ATTR_BLK_DATA %011, 1,1,0, 01,00, 10,03 ; enemy HP bar: pal 1
 	ATTR_BLK_DATA %011, 0,0,0, 10,07, 19,10 ; player HP bar: pal 0
-	ATTR_BLK_DATA %011, 2,2,1, 00,04, 08,11 ; player mon: pal 2
-	ATTR_BLK_DATA %011, 3,3,1, 11,00, 19,06 ; enemy mon : pal 3
+	ATTR_BLK_DATA %011, 2,2,0, 00,04, 08,11 ; player mon: pal 2
+	ATTR_BLK_DATA %011, 3,3,0, 11,00, 19,06 ; enemy mon : pal 3
 
 	db $03,$00,$00,$13,$0b,$00
 	db $03,$00,$0c,$13,$11,$02
