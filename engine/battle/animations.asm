@@ -523,7 +523,7 @@ SetAnimationPalette:
 	and a
 	ld a, $e4
 	jr z, .notSGB
-	ld a, $8e
+	ld a, PAL_MEWMON
 	ld [wAnimPalette], a
 	ld b, $e4
 	ld a, [wAnimationID]
