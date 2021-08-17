@@ -525,9 +525,7 @@ SetAnimationPalette:
 	jr z, .notSGB
 	ld a, $f0
 	ld [wAnimPalette], a
-	ld [rOBP0], a
 	ld b, $e4
-	ld [rOBP1], b
 	ld a, [wAnimationID]
 	cp TRADE_BALL_DROP_ANIM
 	jr c, .next
