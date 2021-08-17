@@ -523,9 +523,10 @@ SetAnimationPalette:
 	and a
 	ld a, $e4
 	jr z, .notSGB
-	ld a, $f0
 	ld [wAnimPalette], a
-	ld b, $e4
+	ld [rBGP], a
+	ld a, $6c
+	ld [rBGP], a
 	ld a, [wAnimationID]
 	cp TRADE_BALL_DROP_ANIM
 	jr c, .next
@@ -534,13 +535,9 @@ SetAnimationPalette:
 	ld b, $f0
 .next
 	ld a, b
-	;ld [rOBP0], a ; HAX: don't mess with these palettes in-battle
-	nop
-	nop
+	ld [rOBP0], a	
 	ld a, $6c
-	;ld [rOBP1], a ; HAX
-	nop
-	nop
+	ld [rOBP1], a
 	ret
 .notSGB
 	ld a, $e4
