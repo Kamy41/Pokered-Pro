@@ -534,9 +534,13 @@ SetAnimationPalette:
 	ld b, $f0
 .next
 	ld a, b
-	ld [rOBP0], a
+	;ld [rOBP0], a ; HAX: don't mess with these palettes in-battle
+	nop
+	nop
 	ld a, $6c
-	ld [rOBP1], a
+	;ld [rOBP1], a ; HAX
+	nop
+	nop
 	ret
 .notSGB
 	ld a, $e4
