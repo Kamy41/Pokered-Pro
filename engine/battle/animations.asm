@@ -523,7 +523,7 @@ SetAnimationPalette:
 	and a
 	ld a, $e4
 	jr z, .notSGB
-	ld a, $f3
+	ld a, $e4
 	ld [wAnimPalette], a
 	ld b, $e4
 	ld a, [wAnimationID]
@@ -531,7 +531,7 @@ SetAnimationPalette:
 	jr c, .next
 	cp TRADE_BALL_POOF_ANIM + 1
 	jr nc, .next
-	ld b, $f3
+	ld b, $e4
 .next
 	ld a, b
 	ld [rOBP0], a
