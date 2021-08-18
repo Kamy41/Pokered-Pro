@@ -521,11 +521,11 @@ AnimationShakeScreenHorizontallySlow:
 SetAnimationPalette:
 	ld a, [wOnSGB]
 	and a
-	; ld a, PAL_MEWMON
-	; jr z, .notSGB
-	; ld a, PAL_MEWMON
-	; ld [wAnimPalette], a
-	; ld b, PAL_MEWMON
+	ld a, PAL_MEWMON
+	jr z, .notSGB
+	ld a, PAL_MEWMON
+	ld [wAnimPalette], a
+	ld b, PAL_MEWMON
 	ld a, [wAnimationID]
 	cp TRADE_BALL_DROP_ANIM
 	jr c, .next
