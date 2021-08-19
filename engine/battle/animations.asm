@@ -3043,11 +3043,3 @@ PlayApplyingAttackSound:
 	ld a, c
 	jp PlaySound
 
-; Hooks for engine/battle/animations.asm
-
-_LoadAnimationTilesetPalettes:
-	ld b, BANK(LoadAnimationTilesetPalettes)
-	ld hl, LoadAnimationTilesetPalettes
-	rst $18
-	ret
-
