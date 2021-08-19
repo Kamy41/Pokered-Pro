@@ -244,9 +244,7 @@ PlayAnimation:
 	ld a, [rOBP0]
 	push af
 	ld a, [wAnimPalette]
-	; ld [rOBP0], a
-	nop
-	nop
+	ld [rOBP0], a
 	call LoadAnimationTileset
 	call LoadSubanimation
 	call PlaySubanimation
@@ -330,29 +328,24 @@ GetSubanimationTransform2:
 
 ; loads tile patterns for battle animations
 LoadAnimationTileset:
-	ld a,[wWhichBattleAnimTileset]
+	ld a, [wWhichBattleAnimTileset]
 	add a
 	add a
-	ld e,a
-	ld d,0
-
-	; HAX: Load corresponding palettes as well
-	call _LoadAnimationTilesetPalettes
-
-	ld hl,AnimationTilesetPointers
-	add hl,de
-	ld a,[hli]
-	ld [wTempTilesetNumTiles],a ; number of tiles
-	ld c,a
-	ld a,[hli]
-	ld e,a
-	ld d,[hl] ; de = address of tileset
-	ld hl,vSprites + $310
+	ld hl, AnimationTilesetPointers
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hli]
+	ld [wTempTilesetNumTiles], a ; number of tiles
+	ld a, [hli]
+	ld e, a
+	ld a, [hl]
+	ld d, a ; de = address of tileset
+	ld hl, vSprites + $310
 	ld b, BANK(AnimationTileset1) ; ROM bank
+	ld a, [wTempTilesetNumTiles]
+	ld c, a ; number of tiles
 	jp CopyVideoData ; load tileset
-
-	; Padding to prevent data shifting
-	nop
 
 AnimationTilesetPointers:
 	db 79 ; number of tiles
@@ -541,13 +534,9 @@ SetAnimationPalette:
 	ld b, $f0
 .next
 	ld a, b
-	; ld [rOBP0], a
-	nop
-	nop
+	ld [rOBP0], a	
 	ld a, $6c
-	; ld [rOBP1], a
-	nop
-	nop
+	ld [rOBP1], a
 	ret
 .notSGB
 	ld a, $e4
@@ -2693,9 +2682,7 @@ AnimationLeavesFalling:
 	ld a, [rOBP0]
 	push af
 	ld a, [wAnimPalette]
-	; ld [rOBP0], a
-	nop
-	nop
+	ld [rOBP0], a
 	ld d, $37 ; leaf tile
 	ld a, 3 ; number of leaves
 	ld [wNumFallingObjects], a
@@ -3042,4 +3029,3 @@ PlayApplyingAttackSound:
 	ld [wTempoModifier], a
 	ld a, c
 	jp PlaySound
-
