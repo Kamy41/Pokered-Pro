@@ -213,6 +213,7 @@ SetScrollXForSlidingPlayerBodyLeft:
 	jr nz, SetScrollXForSlidingPlayerBodyLeft
 	ld a, h
 	ld [rSCX], a
+	ld [hSCX], a
 .loop
 	ld a, [rLY]
 	cp h
