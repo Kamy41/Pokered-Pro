@@ -242,17 +242,17 @@ PayDayAnim:
 	db $FF
 
 FirePunchAnim:
-	db $06,$06,$06
+	db $06,$06,$02
 	db $46,$FF,$11
 	db $FF
 
 IcePunchAnim:
-	db $06,$07,$07
+	db $06,$07,$02
 	db $10,$FF,$2F 
 	db $FF
 
 ThunderPunchAnim:
-	db $06,$08,$08
+	db $06,$08,$02
 	db SE_DARK_SCREEN_PALETTE, $FF
 	db $46,$FF,$2B
 	db SE_RESET_SCREEN_PALETTE, $FF
