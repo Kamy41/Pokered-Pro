@@ -69,7 +69,7 @@ FanClubChairStoryText::
 	cont "love it!"
 
 	para "Hug it...when..."
-	cont "sleeping...warm"
+        line "sleeping...warm"
 	cont "and cuddly..."
 	cont "spectacular..."
 	cont "ravishing..."
