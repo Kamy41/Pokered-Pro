@@ -12,10 +12,10 @@ MapHSPointers:
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHSXX
+	dw MapHS07
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHSXX
-	dw MapHS0A
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHS0D
@@ -285,7 +285,7 @@ MapHS03:
 	db CERULEAN_CITY,$06,Hide
 	db CERULEAN_CITY,$0A,Show
 	db CERULEAN_CITY,$0B,Show
-MapHS0A:
+MapHS07:
 	db SAFFRON_CITY,$01,Show
 	db SAFFRON_CITY,$02,Show
 	db SAFFRON_CITY,$03,Show
