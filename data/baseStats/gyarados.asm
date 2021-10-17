@@ -14,7 +14,7 @@ dw GyaradosPicBack
 ; attacks known at lvl 0
 db BITE
 db DRAGON_RAGE
-db TWISTER
+db LEER
 db HYDRO_PUMP
 db 5 ; growth rate
 ; learnset
