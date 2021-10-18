@@ -676,7 +676,7 @@ Audio1_note:
 	push af
 	push bc
 	call Audio1_GetNextMusicByte ; get drum_note instrument
-.playDnote:
+.playDnote
 	ld d, a
 	ld a, [wDisableChannelOutputWhenSfxEnds]
 	and a
