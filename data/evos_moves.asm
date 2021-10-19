@@ -1962,7 +1962,7 @@ AerodactylEvosMoves:
 ; Learnset
 	db 33, SUPERSONIC
 	db 38, BITE
-	db 45, TAKE_DOWN
+	db 45, SKY_ATTACK
 	db 54, HYPER_BEAM
 	db 0
 
