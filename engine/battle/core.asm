@@ -6587,7 +6587,7 @@ LoadPlayerBackPic:
 	ld b, $7 ; 7 columns
 	ld e, $a0 ; X for the left-most column
 .loop ; each loop iteration writes 3 OAM entries in a vertical column
-	ld c, $6 ; 3 tiles per column
+	ld c, $3 ; 3 tiles per column
 	ld d, $38 ; Y for the top of each column
 .innerLoop ; each loop iteration writes 1 OAM entry in the column
 	ld [hl], d ; OAM Y
@@ -6602,8 +6602,8 @@ LoadPlayerBackPic:
 	inc a ; increment tile number
 	ld [hOAMTile], a
 	; gbcnote - load correct palette for hat object
-	; ld a, $2
-	; ld [hl], a
+	ld a, SET_PAL_BATTLE
+	ld [hl], a
 	inc hl
 	dec c
 	jr nz, .innerLoop
