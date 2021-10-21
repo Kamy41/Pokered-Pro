@@ -152,11 +152,11 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	ld c, $90
 	ld a, c
 	ld [hSCX], a
-	call DelayFrame
-	ld a, %11111100 ; make the mon a black silhouette
-	ld [rBGP], a
+	call DelayFrame	
 	; ld a, %11100100 ; inverted palette for silhouette effect
 	; ld [rBGP], a
+	ld a, %11111100 ; make the mon a black silhouette
+	ld [rBGP], a
 	ld [rOBP0], a
 	ld [rOBP1], a
 	
