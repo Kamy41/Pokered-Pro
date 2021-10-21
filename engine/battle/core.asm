@@ -6587,8 +6587,8 @@ LoadPlayerBackPic:
 	ld b, $7 ; 7 columns
 	ld e, $a0 ; X for the left-most column
 .loop ; each loop iteration writes 3 OAM entries in a vertical column
-	ld c, $4 ; 4 tiles per column
-	ld d, $02 ; Y for the top of each column
+	ld c, $6 ; 3 tiles per column
+	ld d, $38 ; Y for the top of each column
 .innerLoop ; each loop iteration writes 1 OAM entry in the column
 	ld [hl], d ; OAM Y
 	inc hl
