@@ -146,7 +146,7 @@ MoveEnd:
 	move AMNESIA,      SPECIAL_UP2_EFFECT,           0, PSYCHIC,  100, 20
 	move KINESIS,      ACCURACY_DOWN1_EFFECT,        0, PSYCHIC,   85, 15
 	move SOFTBOILED,   HEAL_EFFECT,                  0, NORMAL,   100, 10
-	move HI_JUMP_KICK, JUMP_KICK_EFFECT,           85, FIGHTING,   90, 20
+	move HI_JUMP_KICK, JUMP_KICK_EFFECT,            85, FIGHTING,  90, 20
 	move GLARE,        PARALYZE_EFFECT,              0, NORMAL,    90, 30
 	move DREAM_EATER,  DREAM_EATER_EFFECT,         100, PSYCHIC,  100, 15
 	move POISON_GAS,   POISON_EFFECT,                0, POISON,    80, 40
@@ -176,4 +176,4 @@ MoveEnd:
 	move SLASH,        NO_ADDITIONAL_EFFECT,        70, NORMAL,   100, 20
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,   100, 10
 	move TWISTER,      FLINCH_SIDE_EFFECT2,         40, DRAGON,   100, 20
-	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,     100, 10
+	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,     100, 40
