@@ -460,7 +460,7 @@ SupersonicAnim:
 SonicBoomAnim:
 	db $46,$2D,$15
 	db $46,$2D,$15
-	db $03,$30,$31
+	db $04,$30,$31
 	db $46,$FF,$05
 	db $FF
 
@@ -1134,7 +1134,7 @@ SubstituteAnim:
 
 TwisterAnim:
 	db SE_DARK_SCREEN_PALETTE, $FF
-	db $44,$A4,$10
+	db $45,$A4,$10
 	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$FF,$04
 	db SE_RESET_SCREEN_PALETTE, $FF
