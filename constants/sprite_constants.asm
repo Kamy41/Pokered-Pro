@@ -91,7 +91,7 @@ const_value = 1
 
 ; different kinds of people events
 ITEM    EQU $80
-TRAINER EQU $41
+TRAINER EQU $40
 
 BOULDER_MOVEMENT_BYTE_2 EQU $10
 
