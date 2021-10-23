@@ -75,19 +75,19 @@ const_value = 1
 	const SPRITE_BRUNO                     ; $3a
 	const SPRITE_LORELEI                   ; $3b
 	const SPRITE_SEEL                      ; $3c
-	const SPRITE_BALL                      ; $3d
-	const SPRITE_OMANYTE                   ; $3e
-	const SPRITE_BOULDER                   ; $3f
-	const SPRITE_PAPER_SHEET               ; $40
-	const SPRITE_BOOK_MAP_DEX              ; $41
-	const SPRITE_CLIPBOARD                 ; $42
-	const SPRITE_SNORLAX                   ; $43
-	const SPRITE_OLD_AMBER_COPY            ; $44
-	const SPRITE_OLD_AMBER                 ; $45
-	const SPRITE_LYING_OLD_MAN_UNUSED_1    ; $46
-	const SPRITE_LYING_OLD_MAN_UNUSED_2    ; $47
-	const SPRITE_LYING_OLD_MAN             ; $48
-	const SPRITE_BLAINE                    ; $49
+	const SPRITE_BLAINE                    ; $3d
+	const SPRITE_BALL                      ; $3e
+	const SPRITE_OMANYTE                   ; $3f
+	const SPRITE_BOULDER                   ; $40
+	const SPRITE_PAPER_SHEET               ; $41
+	const SPRITE_BOOK_MAP_DEX              ; $42
+	const SPRITE_CLIPBOARD                 ; $43
+	const SPRITE_SNORLAX                   ; $44
+	const SPRITE_OLD_AMBER_COPY            ; $45
+	const SPRITE_OLD_AMBER                 ; $46
+	const SPRITE_LYING_OLD_MAN_UNUSED_1    ; $47
+	const SPRITE_LYING_OLD_MAN_UNUSED_2    ; $48
+	const SPRITE_LYING_OLD_MAN             ; $49
 
 ; different kinds of people events
 ITEM    EQU $80
