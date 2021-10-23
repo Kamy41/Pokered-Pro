@@ -490,6 +490,11 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(SeelSprite)
 
+        ; SPRITE_BLAINE
+	dw BlaineSprite
+	db $c0 ; byte count
+	db BANK(BlaineSprite)
+
 	; SPRITE_BALL
 	dw BallSprite
 	db $40 ; byte count
@@ -549,8 +554,3 @@ SpriteSheetPointerTable:
 	dw LyingOldManSprite
 	db $40 ; byte count
 	db BANK(LyingOldManSprite)
-	
-	; SPRITE_BLAINE
-	dw BlaineSprite
-	db $40 ; byte count
-	db BANK(BlaineSprite)
