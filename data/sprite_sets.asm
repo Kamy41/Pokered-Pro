@@ -549,3 +549,8 @@ SpriteSheetPointerTable:
 	dw LyingOldManSprite
 	db $40 ; byte count
 	db BANK(LyingOldManSprite)
+	
+	; SPRITE_BLAINE
+	dw BlaineSprite
+	db $40 ; byte count
+	db BANK(BlaineSprite)
