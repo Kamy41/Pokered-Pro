@@ -6605,7 +6605,7 @@ LoadPlayerBackPic:
 	ld [hOAMTile], a
 	; gbcnote - load correct palette for hat object
 	ld [rBGPI], a
-	; ld [hl], a
+	ld [hl], a
 	inc hl
 	dec c
 	jr nz, .innerLoop
