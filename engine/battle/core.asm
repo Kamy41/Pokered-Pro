@@ -152,7 +152,8 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	ld c, $90
 	ld a, c
 	ld [hSCX], a
-	call DelayFrame	
+	call DelayFrame
+	call DelayFrame ; joenote - do one extra frame to make sure the screen can update.
 	ld a, %11100100 ; inverted palette for silhouette effect
 	ld [rBGP], a	
 	ld [rOBP0], a
@@ -6603,7 +6604,7 @@ LoadPlayerBackPic:
 	inc a ; increment tile number
 	ld [hOAMTile], a
 	; gbcnote - load correct palette for hat object
-	ld a, $0
+	ld [rBGPD], a
 	ld [hl], a
 	inc hl
 	dec c
