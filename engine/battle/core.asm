@@ -154,12 +154,14 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	ld [hSCX], a
 	call DelayFrame
 	call DelayFrame ; joenote - do one extra frame to make sure the screen can update.
-	ld a, %11100100 ; inverted palette for silhouette effect
-	ld [rBGP], a	
+	; ld a, %11100100 ; inverted palette for silhouette effect
+	; ld [rBGP], a	
+	; ld [rOBP0], a
+	; ld [rOBP1], a
+	ld a, %11111100 ; make the mon a black silhouette
+	ld [rBGP], a
 	ld [rOBP0], a
 	ld [rOBP1], a
-	; ld a, %11111100 ; make the mon a black silhouette
-	; ld [rBGP], a
 .slideSilhouettesLoop ; slide silhouettes of the player's pic and the enemy's pic onto the screen
 	ld h, b
 	ld l, $40
@@ -6604,8 +6606,8 @@ LoadPlayerBackPic:
 	inc a ; increment tile number
 	ld [hOAMTile], a
 	; gbcnote - load correct palette for hat object
-	ld [rBGPI], a
-	ld [hl], a
+	; ld [rBGPI], a
+	; ld [hl], a
 	inc hl
 	dec c
 	jr nz, .innerLoop
