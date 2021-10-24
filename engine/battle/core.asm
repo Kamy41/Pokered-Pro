@@ -6603,7 +6603,7 @@ LoadPlayerBackPic:
 	inc a ; increment tile number
 	ld [hOAMTile], a
 	; gbcnote - load correct palette for hat object
-	ld a, $1
+	ld a, $0
 	ld [hl], a
 	inc hl
 	dec c
