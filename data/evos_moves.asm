@@ -222,11 +222,11 @@ NidoranMEvosMoves:
 	db 0
 ; Learnset
 	db 8, HORN_ATTACK
-	db 12, POISON_STING
-	db 17, DOUBLE_KICK
-	db 21, FOCUS_ENERGY
-	db 29, FURY_ATTACK
-	db 36, HORN_DRILL
+	db 12, DOUBLE_KICK
+	db 17, POISON_STING
+	db 23, FOCUS_ENERGY
+	db 30, FURY_ATTACK
+	db 38, HORN_DRILL
 	db 0
 
 ClefairyEvosMoves:
@@ -362,11 +362,11 @@ NidoranFEvosMoves:
 	db 0
 ; Learnset
 	db 8, SCRATCH
-	db 12, POISON_STING
-	db 17, DOUBLE_KICK
-	db 21, TAIL_WHIP
-	db 29, BITE
-	db 36, FURY_SWIPES
+	db 12, DOUBLE_KICK
+	db 17, POISON_STING
+	db 23, TAIL_WHIP
+	db 30, BITE
+	db 38, FURY_SWIPES
 	db 0
 
 NidoqueenEvosMoves:
@@ -1914,11 +1914,11 @@ NidorinoEvosMoves:
 	db 0
 ; Learnset
 	db 8, HORN_ATTACK
-        db 12, POISON_STING
-	db 19, DOUBLE_KICK
-        db 23, FOCUS_ENERGY
-	db 32, FURY_ATTACK
-	db 41, HORN_DRILL
+        db 12, DOUBLE_KICK
+	db 19, POISON_STING
+        db 27, FOCUS_ENERGY
+	db 36, FURY_ATTACK
+	db 46, HORN_DRILL
 	db 0
 
 NidorinaEvosMoves:
@@ -1927,11 +1927,11 @@ NidorinaEvosMoves:
 	db 0
 ; Learnset
 	db 8, SCRATCH
-	db 12, POISON_STING
-	db 19, DOUBLE_KICK
-        db 23, TAIL_WHIP
-	db 32, BITE
-	db 41, FURY_SWIPES
+	db 12, DOUBLE_KICK
+	db 19, POISON_STING
+        db 27, TAIL_WHIP
+	db 36, BITE
+	db 46, FURY_SWIPES
 	db 0
 
 GeodudeEvosMoves:
