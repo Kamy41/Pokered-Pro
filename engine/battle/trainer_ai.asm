@@ -217,10 +217,7 @@ AIMoveChoiceModification3:
 	jr c, .notEffectiveMove
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
-.notEffectiveMove ; discourages non-effective moves if better moves are available
-	push hl
-	push de
-	push bc
+.notEffectiveMove ; discourages non-effective moves if better moves are available	
 	ld a, [wEnemyMoveType]
 	ld d, a
 	ld hl, wEnemyMonMoves  ; enemy moves
@@ -237,7 +234,9 @@ AIMoveChoiceModification3:
 	cp SUPER_FANG_EFFECT
 	jr z, .betterMoveFound ; Super Fang is considered to be a better move
 	cp SPECIAL_DAMAGE_EFFECT
-	jr z, .betterMoveFound ; any special damage moves are considered to be better moves	
+	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
+	cp FLY_EFFECT
+	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
 	ld a, [wEnemyMoveType]
 	cp d
 	jr z, .loopMoves
