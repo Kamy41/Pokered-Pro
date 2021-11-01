@@ -538,7 +538,10 @@ wNPCMovementScriptBank:: ; cc58
 
 	ds 2
 
-wUnusedCC5B:: ; cc5b
+;wUnusedCC5B:: ; cc5b
+;joenote - store the power of the enemy move used last turn for AI layer 3 use
+wAILastMovePower:: ;cc5b
+	ds 1
 
 wVermilionDockTileMapBuffer:: ; cc5b
 ; 180 bytes
