@@ -213,7 +213,7 @@ AIMoveChoiceModification3:
 	pop hl
 	ld a, [wTypeEffectiveness]
 	cp $0A
-	jr z, .nextMove
+	;jr z, .nextMove
 	jr c, .notEffectiveMove
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
@@ -224,9 +224,9 @@ AIMoveChoiceModification3:
 	ld b, NUM_MOVES + 1
 	ld c, $0
 .loopMoves
-	;push hl
-	;push de
-	;push bc
+	push hl
+	push de
+	push bc
 	dec b
 	jr z, .done
 	ld a, [hli]
@@ -238,8 +238,8 @@ AIMoveChoiceModification3:
 	jr z, .betterMoveFound ; Super Fang is considered to be a better move
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
-	cp FLY_EFFECT
-	jr z, .betterMoveFound ; Fly is considered to be a better move
+	;cp FLY_EFFECT
+	;jr z, .betterMoveFound ; Fly is considered to be a better move
 	ld a, [wEnemyMoveType]
 	cp d
 	jr z, .loopMoves
