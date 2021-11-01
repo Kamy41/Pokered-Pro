@@ -139,11 +139,64 @@ AIMoveChoiceModification1:
 	pop bc
 	pop de
 	pop hl
-	jr nc, .nextMove
+	; jr nc, .nextMove
+;joenote: fix spamming of buff/debuff moves
+	;See if the move has an effect that should not be dissuaded
+	ld a, [wEnemyMoveEffect]
+	push hl
+	push de
+	push bc
+	ld hl, EffectsToNotDissuade
+	ld de, $0001
+	call IsInArray
+	pop bc
+	pop de
+	pop hl
+	jp c, .skipoutspam	;If found on list, do not run anti-spam on it
+;heavily discourage 0 BP moves if health is below 1/3 max
+	ld a, 3
+	call AICheckIfHPBelowFraction
+	jp c, .heavydiscourage
+;heavily discourage 0 BP moves if one was used just previously
+	ld a, [wAILastMovePower]
+	and a
+	jp z, .heavydiscourage
+;else apply a random bias to the 0 bp move we are on
+	call Random	
+;outcome desired: 	50% chance to heavily discourage and would rather do damage
+;					12.5% chance to slightly encourage
+;					else neither encourage nor discourage
+	cp 128	;don't set carry flag if number is >= this value
+	jp nc, .heavydiscourage	
+	cp 32
+	jp c, .givepref	;if not discouraged, then there is a chance to slightly encourage to spice things up
+	;else neither encourage nor discourage
+.skipoutspam
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - end of this AI layer
+	jp .nextMove
+.heavydiscourage
 	ld a, [hl]
 	add $5 ; heavily discourage move
 	ld [hl], a
-	jr .nextMove
+	jp .nextMove
+.givepref	;joenote - added marker
+	dec [hl] ; slightly encourage this move
+	jp .nextMove
+        ; ld a, [hl]
+	; add $5 ; heavily discourage move
+	; ld [hl], a
+	; jr .nextMove
+
+EffectsToNotDissuade:
+	db CONFUSION_EFFECT
+	db LEECH_SEED_EFFECT
+	db DISABLE_EFFECT
+	db HEAL_EFFECT
+	db FOCUS_ENERGY_EFFECT
+	db SUBSTITUTE_EFFECT
+	;fall through
 
 StatusAilmentMoveEffects:
 	db $01 ; unused sleep effect
