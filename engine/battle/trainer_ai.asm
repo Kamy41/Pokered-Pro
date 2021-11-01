@@ -216,7 +216,7 @@ AIMoveChoiceModification3:
 	jr z, .nextMove
 	jr c, .notEffectiveMove
 	dec [hl] ; slightly encourage this move
-	;jr .nextMove
+	jr .nextMove
 .notEffectiveMove ; discourages non-effective moves if better moves are available	
 	ld a, [wEnemyMoveType]
 	ld d, a
@@ -234,18 +234,18 @@ AIMoveChoiceModification3:
 	jr z, .done
 	call ReadMove	
 	ld a, [wEnemyMoveEffect]
-	;cp SUPER_FANG_EFFECT
-	;jr z, .betterMoveFound ; Super Fang is considered to be a better move
+	cp SUPER_FANG_EFFECT
+	jr z, .betterMoveFound ; Super Fang is considered to be a better move
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
-	;cp FLY_EFFECT
-	;jr z, .betterMoveFound ; Fly is considered to be a better move
+	cp FLY_EFFECT
+	jr z, .betterMoveFound ; Fly is considered to be a better move
 	ld a, [wEnemyMoveType]
 	cp d
 	jr z, .loopMoves
-	ld a, [wEnemyMovePower]
-	and a
-	jr nz, .betterMoveFound ; damaging moves of a different type are considered to be better moves
+	;ld a, [wEnemyMovePower]
+	;and a
+	;jr nz, .betterMoveFound ; damaging moves of a different type are considered to be better moves
 	jr .loopMoves
 .betterMoveFound
 	ld c, a
