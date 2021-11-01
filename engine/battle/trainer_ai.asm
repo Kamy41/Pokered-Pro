@@ -201,6 +201,11 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
+;;;;;;;;;;;;;;;;;
+	ld a, [wEnemyMovePower]
+	and a
+	jp .nextMove     ;neither encourage nor discourage if the current move is zero-power
+;;;;;;;;;;;;;;;;;
 	push hl
 	push bc
 	push de
