@@ -7,6 +7,11 @@ AIEnemyTrainerChooseMoves:
 	ld [hli], a   ; move 2
 	ld [hli], a   ; move 3
 	ld [hl], a    ; move 4
+	
+	;joenote - backup the power of the last moved used
+	ld a, [wEnemyMovePower]
+	ld [wAILastMovePower], a
+	
 	ld a, [wEnemyDisabledMove] ; forbid disabled move (if any)
 	swap a
 	and $f
