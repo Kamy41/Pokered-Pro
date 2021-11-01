@@ -201,9 +201,9 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
-	ld a, [wEnemyMovePower]     ;check if the current move is zero-power
-	and a
-	jr .nextMove     ;neither encourage nor discourage if the current move is zero-power
+	;ld a, [wEnemyMovePower]     ;check if the current move is zero-power
+	;and a
+	;jr .nextMove     ;neither encourage nor discourage if the current move is zero-power
 	push hl
 	push bc
 	push de
@@ -224,6 +224,9 @@ AIMoveChoiceModification3:
 	ld b, NUM_MOVES + 1
 	ld c, $0
 .loopMoves
+	push hl
+	push de
+	push bc
 	dec b
 	jr z, .done
 	ld a, [hli]
@@ -236,7 +239,7 @@ AIMoveChoiceModification3:
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
 	cp FLY_EFFECT
-	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
+	jr z, .betterMoveFound ; Fly is considered to be a better move
 	ld a, [wEnemyMoveType]
 	cp d
 	jr z, .loopMoves
