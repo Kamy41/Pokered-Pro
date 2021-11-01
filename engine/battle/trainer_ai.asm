@@ -203,7 +203,7 @@ AIMoveChoiceModification3:
 	call ReadMove
 	ld a, [wEnemyMovePower]     ;check if the current move is zero-power
 	and a
-	jr .nextMove     ;neither encourage nor discourage if the current move is zero-power
+	jr z, .nextMove     ;skip if the current move is zero-power
 	push hl
 	push bc
 	push de
@@ -213,7 +213,7 @@ AIMoveChoiceModification3:
 	pop hl
 	ld a, [wTypeEffectiveness]
 	cp $0A
-	jr z, .nextMove
+	;jr z, .nextMove
 	jr c, .notEffectiveMove
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
@@ -234,8 +234,8 @@ AIMoveChoiceModification3:
 	jr z, .done
 	call ReadMove	
 	ld a, [wEnemyMoveEffect]
-	cp SUPER_FANG_EFFECT
-	jr z, .betterMoveFound ; Super Fang is considered to be a better move
+	;cp SUPER_FANG_EFFECT
+	;jr z, .betterMoveFound ; Super Fang is considered to be a better move
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
 	cp FLY_EFFECT
@@ -243,9 +243,9 @@ AIMoveChoiceModification3:
 	ld a, [wEnemyMoveType]
 	cp d
 	jr z, .loopMoves
-	;ld a, [wEnemyMovePower]
-	;and a
-	;jr nz, .betterMoveFound ; damaging moves of a different type are considered to be better moves
+	ld a, [wEnemyMovePower]
+	and a
+	jr nz, .betterMoveFound ; damaging moves of a different type are considered to be better moves
 	jr .loopMoves
 .betterMoveFound
 	ld c, a
