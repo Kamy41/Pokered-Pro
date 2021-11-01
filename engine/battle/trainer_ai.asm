@@ -157,7 +157,7 @@ StatusAilmentMoveEffects:
 ; that fall in-between
 AIMoveChoiceModification2:
 	ld a, [wAILayer2Encouragement]
-	and a ;cp $1	;joenote - AI layer 2 should activate on 1st turn instead of 2nd turn after sendout
+	cp $1
 	ret nz
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
@@ -201,9 +201,9 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
-	;ld a, [wEnemyMovePower]     ;check if the current move is zero-power
-	;and a
-	;jr .nextMove     ;neither encourage nor discourage if the current move is zero-power
+	ld a, [wEnemyMovePower]     ;check if the current move is zero-power
+	and a
+	jr .nextMove     ;neither encourage nor discourage if the current move is zero-power
 	push hl
 	push bc
 	push de
@@ -224,9 +224,9 @@ AIMoveChoiceModification3:
 	ld b, NUM_MOVES + 1
 	ld c, $0
 .loopMoves
-	push hl
-	push de
-	push bc
+	;push hl
+	;push de
+	;push bc
 	dec b
 	jr z, .done
 	ld a, [hli]
