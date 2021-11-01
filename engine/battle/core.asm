@@ -420,7 +420,8 @@ MainInBattleLoop:
 	and a
 	ret nz ; return if pokedoll was used to escape from battle
 	ld a, [wBattleMonStatus]
-	and (1 << FRZ) | SLP ; is mon frozen or asleep?
+	;and (1 << FRZ) | SLP ; is mon frozen or asleep?
+	and (1 << FRZ)  ; is mon frozen?	;joedebug - sleep won't waste turn
 	jr nz, .selectEnemyMove ; if so, jump
 	ld a, [wPlayerBattleStatus1]
 	and (1 << STORING_ENERGY) | (1 << USING_TRAPPING_MOVE) ; check player is using Bide or using a multi-turn attack like wrap
@@ -3069,7 +3070,8 @@ SelectEnemyMove:
 	and (1 << CHARGING_UP) | (1 << THRASHING_ABOUT) ; using a charging move or thrash/petal dance
 	ret nz
 	ld a, [wEnemyMonStatus]
-	and SLP | 1 << FRZ ; sleeping or frozen
+	;and SLP | 1 << FRZ ; sleeping or frozen
+	and (1 << FRZ)	;joedebug - sleep won't waste turn
 	ret nz
 	ld a, [wEnemyBattleStatus1]
 	and (1 << USING_TRAPPING_MOVE) | (1 << STORING_ENERGY) ; using a trapping move like wrap or bide
@@ -3454,6 +3456,7 @@ CheckPlayerStatusConditions:
 .WakeUp
 	ld hl, WokeUpText
 	call PrintText
+	jr z, .FrozenCheck	;joedebug - sleep won't waste turn
 .sleepDone
 	xor a
 	ld [wPlayerUsedMove], a
@@ -6049,6 +6052,7 @@ CheckEnemyStatusConditions:
 .wokeUp
 	ld hl, WokeUpText
 	call PrintText
+	jr z, .checkIfFrozen	;joedebug - sleep won't waste turn
 	
 .sleepDone
 	xor a
