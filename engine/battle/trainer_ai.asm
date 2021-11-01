@@ -201,11 +201,9 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
-;;;;;;;;;;;;;;;;;
-	ld a, [wEnemyMovePower]
+	ld a, [wEnemyMovePower]     ;check if the current move is zero-power
 	and a
-	jp .nextMove     ;neither encourage nor discourage if the current move is zero-power
-;;;;;;;;;;;;;;;;;
+	jr .nextMove     ;neither encourage nor discourage if the current move is zero-power
 	push hl
 	push bc
 	push de
@@ -239,9 +237,7 @@ AIMoveChoiceModification3:
 	cp SUPER_FANG_EFFECT
 	jr z, .betterMoveFound ; Super Fang is considered to be a better move
 	cp SPECIAL_DAMAGE_EFFECT
-	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
-	cp FLY_EFFECT
-	jr z, .betterMoveFound ; Fly is considered to be a better move
+	jr z, .betterMoveFound ; any special damage moves are considered to be better moves	
 	ld a, [wEnemyMoveType]
 	cp d
 	jr z, .loopMoves
