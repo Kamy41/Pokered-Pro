@@ -538,10 +538,8 @@ wNPCMovementScriptBank:: ; cc58
 
 	ds 2
 
-;wUnusedCC5B:: ; cc5b
-;joenote - store the power of the enemy move used last turn for AI layer 3 use
-wAILastMovePower:: ;cc5b
-	ds 1
+wUnusedCC5B:: ; cc5b
+
 
 wVermilionDockTileMapBuffer:: ; cc5b
 ; 180 bytes
@@ -602,6 +600,9 @@ wSwitchPartyMonTempBuffer:: ; cc97
 ; temporary buffer when swapping party mon data
 	ds 10
 
+;joenote - Use the fat block at cca1 as a buffer for  moves
+wMoveBuffer::
+
 wNumStepsToTake:: ; cca1
 ; used in Pallet Town scripted movement
 	ds 49
@@ -633,6 +634,10 @@ wForceEvolution:: ; ccd4
 ; if [ccd5] != 1, the second AI layer is not applied
 wAILayer2Encouragement:: ; ccd5
 	ds 1
+	;ds 1
+
+;joenote - store the power of the enemy move used last turn for AI layer 3 use
+wAILastMovePower:: ;cc5b
 	ds 1
 
 ; current HP of player and enemy substitutes
