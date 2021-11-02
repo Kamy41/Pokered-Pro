@@ -203,7 +203,7 @@ AIMoveChoiceModification3:
 	call ReadMove
 	ld a, [wEnemyMovePower]       ; check move 0
 	and a
-	jr nz, .nextMove              ; if so skip
+	jr z, .nextMove              ; if so skip
 	push hl
 	push bc
 	push de
