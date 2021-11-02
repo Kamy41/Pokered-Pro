@@ -20,13 +20,13 @@ TeamMoves:
 ; these are used for elite four.
 ; this is automatic, based on trainer class.
 ; don't be confused by LoneMoves above, the two data structures are
-	; _completely_ unrelated.
+; _completely_ unrelated.
 
 ; first byte: trainer (all trainers in this class have this move)
 ; second byte: move
 ; ff-terminated
 	db LORELEI,BLIZZARD
-	db BRUNO,FISSURE
+	db BRUNO,ROCK_SLIDE
 	db AGATHA,TOXIC
-	db LANCE,BARRIER
+	db LANCE,DOUBLE_TEAM
 	db $FF
