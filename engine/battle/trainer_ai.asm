@@ -201,9 +201,6 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
-	ld a, [wEnemyMovePower]       ; check move 0
-	and a
-	jr z, .nextMove              ; if so skip
 	push hl
 	push bc
 	push de
@@ -215,6 +212,9 @@ AIMoveChoiceModification3:
 	cp $0A
 	;jr z, .nextMove
 	jr c, .notEffectiveMove
+	ld a, [wEnemyMovePower]       ; check move 0
+	and a
+	jr z, .nextMove               ; if so skip
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
 .notEffectiveMove ; discourages non-effective moves if better moves are available	
