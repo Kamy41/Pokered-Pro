@@ -201,6 +201,9 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
+	ld a, [wEnemyMovePower]       ; check move 0
+	and a
+	jr nz, .nextMove              ; if so skip
 	push hl
 	push bc
 	push de
@@ -210,20 +213,20 @@ AIMoveChoiceModification3:
 	pop hl
 	ld a, [wTypeEffectiveness]
 	cp $0A
-	jr z, .nextMove
+	;jr z, .nextMove
 	jr c, .notEffectiveMove
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
 .notEffectiveMove ; discourages non-effective moves if better moves are available	
+	push hl
+	push de
+	push bc
 	ld a, [wEnemyMoveType]
 	ld d, a
 	ld hl, wEnemyMonMoves  ; enemy moves
 	ld b, NUM_MOVES + 1
 	ld c, $0
-.loopMoves
-	push hl
-	push de
-	push bc
+.loopMoves	
 	dec b
 	jr z, .done
 	ld a, [hli]
@@ -231,8 +234,8 @@ AIMoveChoiceModification3:
 	jr z, .done
 	call ReadMove	
 	ld a, [wEnemyMoveEffect]
-	cp SUPER_FANG_EFFECT
-	jr z, .betterMoveFound ; Super Fang is considered to be a better move
+	;cp SUPER_FANG_EFFECT
+	;jr z, .betterMoveFound ; Super Fang is considered to be a better move
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
 	cp FLY_EFFECT
