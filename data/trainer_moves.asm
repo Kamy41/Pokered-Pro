@@ -26,7 +26,7 @@ TeamMoves:
 ; second byte: move
 ; ff-terminated
 	db LORELEI,BLIZZARD
-	db BRUNO,ROCK_SLIDE
+	db BRUNO,FISSURE
 	db AGATHA,TOXIC
 	db LANCE,DOUBLE_TEAM
 	db $FF
