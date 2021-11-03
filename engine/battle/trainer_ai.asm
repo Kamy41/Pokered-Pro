@@ -433,7 +433,7 @@ BlackbeltAI:
 GiovanniAI:
 	cp 25 percent + 1
 	ret nc
-	jp AIUseXAccuracy
+	jp AIUseXSpeed
 
 CooltrainerMAI:
 	cp 25 percent + 1
@@ -523,8 +523,8 @@ LoreleiAI:
 BrunoAI:
 	cp 25 percent + 1
 	ret nc
-	jp AIUseXDefend
-
+	jp AIUseXSpeed
+	
 AgathaAI:
 	cp 8 percent
 	jp c, AISwitchIfEnoughMons
