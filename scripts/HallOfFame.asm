@@ -25,6 +25,7 @@ HallofFameRoomScript2:
 	push af
 	xor a
 	ld [wJoyIgnore], a
+	predef HealParty
 	predef HallOfFamePC
 	pop af
 	ld [wLetterPrintingDelayFlags], a
