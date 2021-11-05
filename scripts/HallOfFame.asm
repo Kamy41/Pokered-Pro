@@ -45,9 +45,9 @@ HallofFameRoomScript2:
 	ld [wHallOfFameCurScript], a
 	ld a, PALLET_TOWN
 	ld [wLastBlackoutMap], a
-	predef_jump HealParty
 	callba SaveSAVtoSRAM
 	ld b, 5
+	predef_jump HealParty
 .delayLoop
 	ld c, 600 / 5
 	call DelayFrames
