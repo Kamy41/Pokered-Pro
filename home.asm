@@ -285,9 +285,9 @@ LoadFrontSpriteByMonIndex::
 	; ld a, RHYDON ; $1
 	; ld [wcf91], a
 	; ret
-; .validDexNumber
-        nop
+; .validDexNumber        
 	push hl
+	nop
 	ld de, vFrontPic
 	call LoadMonFrontSprite
 	pop hl
