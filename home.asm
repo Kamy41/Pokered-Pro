@@ -286,6 +286,7 @@ LoadFrontSpriteByMonIndex::
 	; ld [wcf91], a
 	; ret
 ; .validDexNumber
+        nop
 	push hl
 	ld de, vFrontPic
 	call LoadMonFrontSprite
