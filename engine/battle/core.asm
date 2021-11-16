@@ -5611,9 +5611,12 @@ MoveHitTest:
 	jr z, .checkForDigOrFlyStatus
 ; this code is buggy. it's supposed to prevent HP draining moves from working on substitutes.
 ; since $7b79 overwrites a with either $00 or $01, it never works.
+	ld a, [de] ;joenote - reload the effect info so that drain moves & dreameater miss substitutes
 	cp DRAIN_HP_EFFECT
 	jp z, .moveMissed
 	cp DREAM_EATER_EFFECT
+	jp z, .moveMissed
+	cp LEECH_SEED_EFFECT	;joenote - leech seed should miss a substitute
 	jp z, .moveMissed
 .checkForDigOrFlyStatus
 	bit INVULNERABLE, [hl]
