@@ -224,7 +224,7 @@ ENDM
 	music_const SFX_BATTLE_0E,          SFX_Battle_0E
 	music_const SFX_BATTLE_0F,          SFX_Battle_0F
 	music_const SFX_DAMAGE,             SFX_Damage
-	music_const SFX_DAMAGE_1            SFX_Damage_1
+	music_const SFX_DAMAGE_1,           SFX_Damage_1
 	music_const SFX_NOT_VERY_EFFECTIVE, SFX_Not_Very_Effective
 	music_const SFX_BATTLE_12,          SFX_Battle_12
 	music_const SFX_BATTLE_13,          SFX_Battle_13
