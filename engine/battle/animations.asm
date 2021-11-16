@@ -2369,7 +2369,7 @@ MoveSoundTable:
 	db SFX_BATTLE_22,         $10,$c0 ; FIRE_PUNCH
 	db SFX_BATTLE_22,         $11,$c0 ; ICE_PUNCH
 	db SFX_BATTLE_22,         $00,$c0 ; THUNDERPUNCH
-	db SFX_DAMAGE,            $00,$40 ; SCRATCH
+	db SFX_DAMAGE,            $00,$80 ; SCRATCH
 	db SFX_BATTLE_0F,         $20,$40 ; VICEGRIP
 	db SFX_BATTLE_0F,         $00,$80 ; GUILLOTINE
 	db SFX_BATTLE_0E,         $00,$a0 ; RAZOR_WIND
@@ -2450,7 +2450,7 @@ MoveSoundTable:
 	db SFX_BATTLE_14,         $01,$e0 ; ROCK_THROW
 	db SFX_BATTLE_29,         $0f,$e0 ; EARTHQUAKE
 	db SFX_BATTLE_29,         $11,$20 ; FISSURE
-	db SFX_DAMAGE,            $10,$20 ; DIG
+	db SFX_DAMAGE,            $10,$40 ; DIG
 	db SFX_BATTLE_0F,         $10,$c0 ; TOXIC
 	db SFX_BATTLE_27,         $50,$a0 ; CONFUSION
 	db SFX_PSYCHIC_M,         $00,$80 ; PSYCHIC_M
