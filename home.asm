@@ -287,6 +287,7 @@ LoadFrontSpriteByMonIndex::
 	; ret
 ; .validDexNumber        
 	push hl
+	nop
 	ld de, vFrontPic
 	call LoadMonFrontSprite
 	pop hl
