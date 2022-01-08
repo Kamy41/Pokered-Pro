@@ -475,7 +475,7 @@ ItemUseBall:
 	jr z, .notTransformed
 	ld a, [wCurMap] ; check which map we're on
 	cp VERMILION_DOCK ; If we're on vermiliondock, the only Pokemon that can transform is MEW
-	ld a,MEW
+	ld a, MEW
 	jr z, .vermiliondock ; if we're on vermiliondock, we're done. Otherwise, load DITTO instead
 	ld a, DITTO
 .vermiliondock
