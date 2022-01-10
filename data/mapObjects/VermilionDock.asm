@@ -9,7 +9,6 @@ VermilionDock_Object:
 
 	db 1 ; objects
 	object SPRITE_SLOWBRO, 22, 0, STAY, DOWN, 1, MEW, 30
-	object, 10, 5, STAY, UP, 2
 
 	; warp-to
 	warp_to 14, 0, VERMILION_DOCK_WIDTH
