@@ -607,7 +607,7 @@ PidgeyEvosMoves:
 
 SlowpokeEvosMoves:
 ; Evolutions
-	db EV_LEVEL, 37, SLOWBRO
+	db EV_ITEM, THUNDERBADGE, 1, SLOWBRO
 	db 0
 ; Learnset
 	db 18, DISABLE
