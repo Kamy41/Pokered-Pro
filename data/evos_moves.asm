@@ -606,6 +606,8 @@ PidgeyEvosMoves:
 	db 0
 
 SlowpokeEvosMoves:
+;;;;;;;; This is intentional, it makes Slowpoke evolve at any level 
+;;;;;;;; as long as a Shellder in your party ends the battle.
 ; Evolutions
 	db EV_ITEM, THUNDERBADGE, 1, SLOWBRO
 	db 0
