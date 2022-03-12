@@ -12,8 +12,8 @@ INCBIN "pic/bmon/nidoranf.pic",0,1 ; 55, sprite dimensions
 dw NidoranFPicFront
 dw NidoranFPicBack
 ; attacks known at lvl 0
-db GROWL
 db TACKLE
+db GROWL
 db 0
 db 0
 db 3 ; growth rate
