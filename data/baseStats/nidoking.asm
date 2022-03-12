@@ -14,8 +14,8 @@ dw NidokingPicBack
 ; attacks known at lvl 0
 db TACKLE
 db HORN_ATTACK
-db FOCUS_ENERGY
-db THRASH
+db DOUBLE_KICK
+db POISON_STING
 db 3 ; growth rate
 ; learnset
 	tmlearn 1,5,6,7,8
