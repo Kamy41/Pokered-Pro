@@ -110,7 +110,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	push hl
 	push de
 	push bc
-	callba Func_2171b
+	callba KnowsHMMove
 	pop bc
 	pop de
 	pop hl
@@ -163,7 +163,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld [hl], a
 	pop hl
 	ld a, [wLoadedMonLevel]
-	jr .asm_3adb6
+	jr .doEvolution
 .checkTradeEvo
 	ld a, [wLinkState]
 	cp LINK_STATE_TRADING
@@ -323,7 +323,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	push hl
 	xor a
 	ld [wRemovePokemon], a
-	ld [wcf95], a
+	ld [wRemoveMonFromBox], a
 	ld a, [wWhichPokemon]
 	push af
 	ld hl, wWhichPokemonRemove
