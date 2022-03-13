@@ -3196,6 +3196,9 @@ wBoxMonNicksEnd:: ; dee2
 
 wBoxDataEnd::
 
+wRemovePokemon::      ds 1
+wWhichPokemonRemove:: ds 6
+
 ; dee2
 
 SECTION "Stack", WRAM0

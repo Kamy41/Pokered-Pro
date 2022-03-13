@@ -67,21 +67,103 @@ Evolution_PartyMonLoop: ; loop over party mons
 	and a ; have we reached the end of the evolution data?
 	jr z, Evolution_PartyMonLoop
 	ld b, a ; evolution type
+	cp EV_FUSE
+	jr z, .checkFuseEvo
 	cp EV_TRADE
-	jr z, .checkTradeEvo
+	jp z, .checkTradeEvo
 ; not trade evolution
 	ld a, [wLinkState]
 	cp LINK_STATE_TRADING
 	jr z, Evolution_PartyMonLoop ; if trading, go the next mon
 	ld a, b
 	cp EV_ITEM
-	jr z, .checkItemEvo
+	jp z, .checkItemEvo
 	ld a, [wForceEvolution]
 	and a
 	jr nz, Evolution_PartyMonLoop
 	ld a, b
 	cp EV_LEVEL
-	jr z, .checkLevel
+	jp z, .checkLevel
+	jr .checkTradeEvo
+.checkFuseEvo
+	ld a, $ff
+	ld [wWhichPokemonRemove], a
+	ld a, [hli] ; mon required
+	ld b, a
+	push hl
+	ld hl, wPartySpecies
+	ld c, 0
+	ld d, 0
+	ld a, [wWhichPokemon]
+	ld e, a
+.countPartyMonLoop
+	ld a, [hli]
+	cp $ff
+	jr z, .doneCounting
+	cp b
+	jr nz, .noMatch
+	ld a, d
+	cp e
+	jr z, .noMatch
+	ld a, d
+	ld [wWhichPokemon], a
+	push hl
+	push de
+	push bc
+	callba KnowsHMMove
+	pop bc
+	pop de
+	pop hl
+	ld a, e
+	ld [wWhichPokemon], a
+	jr c, .noMatch
+	inc c
+	push hl
+	push de
+	ld d, $ff
+	ld hl, wWhichPokemonRemove
+.notff
+	inc d
+	ld a, [hli]
+	cp $ff
+	jr nz, .notff
+	ld [hld], a
+.keepShifting
+	ld a, d
+	and a
+	jr z, .doneShifting
+	dec hl
+	ld a, [hli]
+	ld [hld], a
+	dec d
+	jr .keepShifting
+.doneShifting
+	pop de
+	ld a, d
+	ld [hl], a
+	pop hl
+.noMatch
+	inc d
+	jr .countPartyMonLoop
+.doneCounting
+	pop hl
+	ld a, [hli] ; number required
+	ld b, a
+	ld a, c
+	cp b
+	jp c, .nextEvoEntry1
+	ld a, 1
+	ld [wRemovePokemon], a
+	push hl
+	ld hl, wWhichPokemonRemove
+	ld c, b
+	ld b, 0
+	add hl, bc
+	ld a, $ff
+	ld [hl], a
+	pop hl
+	ld a, [wLoadedMonLevel]
+	jr .doEvolution
 .checkTradeEvo
 	ld a, [wLinkState]
 	cp LINK_STATE_TRADING
@@ -115,6 +197,8 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld hl, wPartyMonNicks
 	call GetPartyMonName
 	call CopyStringToCF4B
+	ld a, [wRemovePokemon]
+	and a	
 	ld hl, IsEvolvingText
 	call PrintText
 	ld c, 50
@@ -131,6 +215,8 @@ Evolution_PartyMonLoop: ; loop over party mons
 	call ClearSprites
 	callab EvolveMon
 	jp c, CancelledEvolution
+	ld a, [wRemovePokemon]
+	and a
 	ld hl, EvolvedText
 	call PrintText
 	pop hl
@@ -231,6 +317,30 @@ Evolution_PartyMonLoop: ; loop over party mons
 	push hl
 	ld l, e
 	ld h, d
+	ld a, [wRemovePokemon]
+	and a
+	jr z, .skipRemovePokemon
+	push hl
+	xor a
+	ld [wRemovePokemon], a
+	ld [wRemoveMonFromBox], a
+	ld a, [wWhichPokemon]
+	push af
+	ld hl, wWhichPokemonRemove
+.removeMonLoop
+	ld a, [hli]
+	cp $ff
+	jr z, .doneRemoving
+	ld [wWhichPokemon], a
+	push hl
+	call RemovePokemon
+	pop hl
+	jr .removeMonLoop
+.doneRemoving
+	pop af
+	ld [wWhichPokemon], a
+	pop hl
+.skipRemovePokemon
 	jr .nextEvoEntry2
 
 .nextEvoEntry1
@@ -288,6 +398,8 @@ RenameEvolvedMon:
 	jp CopyData
 
 CancelledEvolution:
+	xor a
+	ld [wRemovePokemon], a
 	ld hl, StoppedEvolvingText
 	call PrintText
 	call ClearScreen
