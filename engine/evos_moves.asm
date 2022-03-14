@@ -174,10 +174,13 @@ Evolution_PartyMonLoop: ; loop over party mons
 	cp b ; is the mon's level greater than the evolution requirement?
 	jp c, Evolution_PartyMonLoop ; if so, go the next mon
 	jr .doEvolution
-.checkItemEvo
+checkItemEvo	;joenote - .checkItemEvo updated to match pokemon yellow. this prevents erroneos stone evolutions
+	ld a, [wIsInBattle] ; are we in battle?
+	and a
 	ld a, [hli]
+	jp nz, .nextEvoEntry1 ; don't evolve if we're in a battle as wcf91 could be holding the last mon sent out
 	ld b, a ; evolution item
-	ld a, [wcf91] ; this is supposed to be the last item used, but it is also used to hold species numbers
+	ld a, [wcf91] ; *fixed above* this is supposed to be the last item used, but it is also used to hold species numbers
 	cp b ; was the evolution item in this entry used?
 	jp nz, .nextEvoEntry1 ; if not, go to the next evolution entry
 .checkLevel
