@@ -33,9 +33,9 @@ NameRaterScript_1da20:
 	jr nz, .asm_1da47
 	and a
 	ret
-; .asm_1da52
-	; scf
-	; ret
+.asm_1da52
+	scf
+	ret
 
 NameRatersHouse_TextPointers:
 	dw NameRaterText1
