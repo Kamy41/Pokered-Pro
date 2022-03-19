@@ -26,16 +26,16 @@ NameRaterScript_1da20:
 .asm_1da47
 	ld a, [de]
 	cp [hl]
-	jr nz, .asm_1da52
+	; jr nz, .asm_1da52
 	inc hl
 	inc de
 	dec c
 	jr nz, .asm_1da47
 	and a
 	ret
-.asm_1da52
-	scf
-	ret
+; .asm_1da52
+	; scf
+	; ret
 
 NameRatersHouse_TextPointers:
 	dw NameRaterText1
