@@ -130,10 +130,10 @@ InGameTrade_DoTrade:
 	ld a, [wInGameTradeReceiveMonSpecies]
 	ld [wcf91], a
 	xor a
-	ld [wMonDataLocation], a ; not used
+	; ld [wMonDataLocation], a ; not used
 	ld [wRemoveMonFromBox], a
 	call RemovePokemon
-	ld a, $80 ; prevent the player from naming the mon
+	; ld a, $80 ; prevent the player from naming the mon
 	ld [wMonDataLocation], a
 	call AddPartyMon
 	call InGameTrade_CopyDataToReceivedMon
