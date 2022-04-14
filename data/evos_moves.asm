@@ -523,7 +523,7 @@ PinsirEvosMoves:
 	db 25, SEISMIC_TOSS
 	db 30, GUILLOTINE
 	db 36, FOCUS_ENERGY
-	db 43, COUNTER
+	db 43, HARDEN
 	db 49, SLASH
 	db 54, SWORDS_DANCE
 	db 0
@@ -602,8 +602,8 @@ PidgeyEvosMoves:
 	db 0
 
 SlowpokeEvosMoves:
-;;;;;;;; This is intentional, it makes Slowpoke evolve at any level 
-;;;;;;;; as long as a Shellder is in your party.
+; This is intentional, it makes Slowpoke evolve at any level, 
+; as long as a Shellder is in your party.
 ; Evolutions
 	db EV_FUSE, SHELLDER, 1, SLOWBRO
 	db 0
@@ -720,7 +720,6 @@ ParasectEvosMoves:
 	db 30, SPORE
 	db 39, SLASH
 	db 48, GROWTH
-	db 54, MEGA_DRAIN
 	db 0
 
 PsyduckEvosMoves:
@@ -733,7 +732,6 @@ PsyduckEvosMoves:
 	db 36, CONFUSION
 	db 43, FURY_SWIPES
 	db 52, HYDRO_PUMP
-	db 63, AMNESIA
 	db 0
 
 DrowzeeEvosMoves:
@@ -829,8 +827,7 @@ MankeyEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 28, PRIMEAPE
 	db 0
-; Learnset
-	db 9, LOW_KICK 
+; Learnset	
 	db 15, KARATE_CHOP
 	db 21, FURY_SWIPES
 	db 27, FOCUS_ENERGY
@@ -1139,7 +1136,7 @@ KabutoEvosMoves:
 ; Learnset
 	db 34, ABSORB
 	db 37, LEER
-	db 43, MEGA_DRAIN
+	db 43, LEECH_LIFE
 	db 49, ROCK_SLIDE
 	db 0
 
@@ -1150,7 +1147,7 @@ KabutopsEvosMoves:
 	db 34, ABSORB
         db 37, LEER
 	db 40, SLASH
-	db 46, MEGA_DRAIN
+	db 46, LEECH_LIFE
 	db 53, ROCK_SLIDE
 	db 0
 
@@ -1356,7 +1353,6 @@ ParasEvosMoves:
 	db 27, SPORE
 	db 34, SLASH
 	db 41, GROWTH
-	db 48, MEGA_DRAIN
 	db 0
 
 PoliwhirlEvosMoves:
@@ -1429,7 +1425,6 @@ PrimeapeEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 9, LOW_KICK
 	db 15, KARATE_CHOP
 	db 21, FURY_SWIPES
 	db 27, FOCUS_ENERGY
