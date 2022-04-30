@@ -201,7 +201,7 @@ RhydonEvosMoves:
 	db 35, TAIL_WHIP
 	db 40, FURY_ATTACK
 	db 48, HORN_DRILL
-	db 55, LEER
+	db 54, TAKE_DOWN
 	db 61, EARTHQUAKE
 	db 0
 
@@ -260,7 +260,7 @@ VoltorbEvosMoves:
 	db 0
 ; Learnset
 	db 17, SONICBOOM
-	db 22, THUNDERSHOCK
+	db 22, SELFDESTRUCT
 	db 29, LIGHT_SCREEN
 	db 36, SWIFT
 	db 43, EXPLOSION
@@ -313,11 +313,10 @@ LickitungEvosMoves:
 	db 0
 ; Learnset
         db 7, SUPERSONIC
-        db 15, STOMP
-	db 23, DISABLE
-	db 31, DEFENSE_CURL
-	db 39, SLAM
-	db 47, SCREECH
+	db 15, STOMP
+	db 23, DEFENSE_CURL
+	db 31, SLAM
+	db 39, SCREECH
 	db 0
 
 ExeggcuteEvosMoves:
@@ -397,7 +396,7 @@ RhyhornEvosMoves:
 	db 35, TAIL_WHIP
 	db 40, FURY_ATTACK
 	db 45, HORN_DRILL
-	db 50, LEER
+	db 50, TAKE_DOWN
 	db 55, EARTHQUAKE
 	db 0
 
@@ -979,7 +978,7 @@ JynxEvosMoves:
 	db 31, ICE_PUNCH
 	db 39, BODY_SLAM
 	db 47, THRASH
-	db 55, BLIZZARD
+	db 58, BLIZZARD
 	db 0
 
 MoltresEvosMoves:
@@ -1195,7 +1194,6 @@ SandshrewEvosMoves:
 	db 17, SLASH
 	db 24, POISON_STING
 	db 31, SWIFT
-	db 38, DIG
 	db 0
 
 SandslashEvosMoves:
@@ -1206,7 +1204,6 @@ SandslashEvosMoves:
 	db 17, SLASH
 	db 27, POISON_STING
 	db 36, SWIFT
-	db 45, DIG
 	db 0
 
 OmanyteEvosMoves:
@@ -1645,7 +1642,7 @@ ElectrodeEvosMoves:
 	db 0
 ; Learnset
 	db 17, SONICBOOM
-	db 22, THUNDERSHOCK
+	db 22, SELFDESTRUCT
 	db 29, LIGHT_SCREEN
 	db 40, SWIFT
 	db 50, EXPLOSION
