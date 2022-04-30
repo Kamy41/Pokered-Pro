@@ -406,9 +406,9 @@ LaprasEvosMoves:
 ; Learnset
 	db 16, SING
 	db 20, MIST
-	db 25, BODY_SLAM
+	db 25, ICE_BEAM
 	db 31, CONFUSE_RAY
-	db 38, ICE_BEAM
+	db 38, BODY_SLAM
 	db 46, HYDRO_PUMP
 	db 0
 
