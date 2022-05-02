@@ -121,7 +121,7 @@ ReadTrainer:
 	jr .FinishUp ; nope
 .GiveTeamMoves
 	ld a, [hl]
-	ld [wEnemyMon5Moves], a
+	ld [wEnemyMon5Moves + 0], a
 	jr .FinishUp
 .ChampionRival ; give moves to his team
 
