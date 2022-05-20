@@ -401,6 +401,7 @@ RhyhornEvosMoves:
 	db 0
 
 LaprasEvosMoves:
+; Swapped order of IceBeam and BodySlam to fix new TeamMoves
 ; Evolutions
 	db 0
 ; Learnset
