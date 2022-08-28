@@ -9,4 +9,4 @@ TradeMons:
 	db POLIWHIRL, JYNX,     0,"JYNX@@@@@@@"
 	db RAICHU,    ELECTRODE,2,"ELECTRODE@@"
 	db VENONAT,   TANGELA,  2,"TANGELA@@@@"
-	db RATTATA,   POLIWAG,  1,"POLIWAG@@@@"
+	db NIDORAN_M, NIDORAN_F,1,"NIDORAN@@@@"
