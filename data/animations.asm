@@ -712,6 +712,7 @@ ToxicAnim:
 
 ConfusionAnim:
 	db SE_FLASH_SCREEN_LONG, $5C
+        db SE_FLASH_SCREEN_LONG, $FF
 	db $FF
 
 PsychicAnim:
