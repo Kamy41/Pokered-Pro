@@ -14,8 +14,8 @@ dw ExeggutorPicBack
 ; attacks known at lvl 0
 db BARRAGE
 db HYPNOSIS
-db LEECH_SEED
 db CONFUSION
+db MEGA_DRAIN
 db 5 ; growth rate
 ; learnset
 	tmlearn 6
