@@ -269,9 +269,9 @@ BadgeBlkDataLengths:
 	db 6     ; Earth Badge
 
 DeterminePaletteID:
-	bit TRANSFORMED, a ; a is battle status 3
-	ld a, PAL_MEWMON  ; if the mon has used Transform, use Ditto's palette
-	ret nz
+	; bit TRANSFORMED, a ; a is battle status 3
+	; ld a, PAL_MEWMON  ; if the mon has used Transform, use Ditto's palette
+	; ret nz
 	ld a, [hl]
 DeterminePaletteIDOutOfBattle:
 	ld [wd11e], a
