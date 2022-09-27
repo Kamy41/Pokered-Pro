@@ -1135,7 +1135,7 @@ KabutoEvosMoves:
 	db 0
 ; Learnset
 	db 34, ABSORB
-	db 37, FURY_SWIPES
+	db 37, LEECH_LIFE
 	db 43, LEER
 	db 49, ROCK_SLIDE
 	db 0
@@ -1145,7 +1145,7 @@ KabutopsEvosMoves:
 	db 0
 ; Learnset
 	db 34, ABSORB
-        db 37, FURY_SWIPES
+        db 37, LEECH_LIFE
 	db 40, SLASH
 	db 46, LEER
 	db 53, ROCK_SLIDE
@@ -1212,9 +1212,9 @@ OmanyteEvosMoves:
 	db EV_LEVEL, 40, OMASTAR
 	db 0
 ; Learnset
-	db 34, BITE
+	db 34, BIND
 	db 37, LEER
-	db 43, BIND
+	db 43, BITE
 	db 49, HYDRO_PUMP
 	db 0
 
@@ -1222,10 +1222,10 @@ OmastarEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 34, BITE
+	db 34, BIND
 	db 37, LEER
         db 40, SPIKE_CANNON
-	db 46, BIND
+	db 46, BITE
 	db 53, HYDRO_PUMP
 	db 0
 
