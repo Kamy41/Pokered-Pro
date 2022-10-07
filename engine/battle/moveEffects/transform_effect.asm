@@ -1,14 +1,14 @@
 TransformEffect_:
 	ld hl, wBattleMonSpecies
 	ld de, wEnemyMonSpecies
-	; ld bc, wEnemyBattleStatus3
+	ld bc, wEnemyBattleStatus3
 	ld a, [wEnemyBattleStatus1]
 	ld a, [H_WHOSETURN]
 	and a
 	jr nz, .hitTest
 	ld hl, wEnemyMonSpecies
 	ld de, wBattleMonSpecies
-	; ld bc, wPlayerBattleStatus3
+	ld bc, wPlayerBattleStatus3
 	ld [wPlayerMoveListIndex], a
 	ld a, [wPlayerBattleStatus1]
 .hitTest
@@ -16,7 +16,7 @@ TransformEffect_:
 	jp nz, .failed
 	push hl
 	push de
-	; push bc
+	push bc
 	ld hl, wPlayerBattleStatus2
 	ld a, [H_WHOSETURN]
 	and a
@@ -42,10 +42,10 @@ TransformEffect_:
 	ld b, BANK(ReshowSubstituteAnim)
 	pop af
 	call nz, Bankswitch
-	; pop bc
-	; ld a, [bc]
-	; set TRANSFORMED, a ; mon is now transformed
-	; ld [bc], a
+	pop bc
+	ld a, [bc]
+	set TRANSFORMED, a ; mon is now transformed
+	ld [bc], a
 	pop de
 	pop hl
 	push hl
@@ -66,30 +66,15 @@ TransformEffect_:
 	call CopyData
 	ld a, [H_WHOSETURN]
 	and a
-	ld bc, wPlayerBattleStatus3
 	jr z, .next
 ; save enemy mon DVs at wTransformedEnemyMonOriginalDVs
-; joenote - there is a bug here. It assumes the enemy mon is not transformed already.
-; If the enemy has already transformed once before, then the DVs for that form 
-; end up getting written to wTransformedEnemyMonOriginalDVs.
-; This causes the true original untransformed DVs to be overwritten with the DVs of 
-; the prior form. Further transformations will continue to overwrite this with the DVs
-; of the last form  utilized.
-; Therefore, a check is needed to skip this if the enemy is already transformed.
-	ld bc, wEnemyBattleStatus3
-	ld a, [bc]
-	bit 3, a 	;check the state of the enemy transformed bit
-	jr nz, .next	;skip ahead if bit is set
 	ld a, [de]
 	ld [wTransformedEnemyMonOriginalDVs], a
 	inc de
 	ld a, [de]
 	ld [wTransformedEnemyMonOriginalDVs + 1], a
 	dec de
-.next
-        ld a, [bc]
-	set TRANSFORMED, a ; mon is now transformed
-	ld [bc], a
+.next        
 ; DVs
 	ld a, [hli]
 	ld [de], a
