@@ -31,13 +31,7 @@ SetPal_Battle:
 	ld bc, $10
 	call CopyData
 	ld a, [wPlayerBattleStatus3]
-	ld hl, wBattleMonSpecies
-	
-	bit TRANSFORMED, a
-	jr z, .transformcheck
-	ld hl, wBattleMonSpecies2	;joenote - Fixing a gamefreak typo. Needed for transformed mon's to retain their palette.
-.transformcheck
-	
+	ld hl, wBattleMonSpecies	
 	call DeterminePaletteID
 	ld b, a
 	ld a, [wEnemyBattleStatus3]
@@ -57,8 +51,7 @@ SetPal_Battle:
 	ld [hli], a
 	inc hl
 	ld a, c
-	ld [hl], a
-	
+	ld [hl], a	
 	ld hl, wPalPacket
 	ld de, BlkPacket_Battle
 	ld a, SET_PAL_BATTLE
@@ -276,9 +269,13 @@ BadgeBlkDataLengths:
 	db 6     ; Earth Badge
 
 DeterminePaletteID:
-	;bit TRANSFORMED, a ; a is battle status 3
-	;ld a, PAL_GREYMON  ; if the mon has used Transform, use Ditto's palette
-	;ret nz
+	bit TRANSFORMED, a ; a is battle status 3
+	ld a, MEW
+	ld a, PAL_MEWMON  ; if the mon has used Transform is Mew, use Mew's palette
+	jr z, .mewpalette
+	ld a, PAL_GREYMON  ; if the mon has used Transform, use Ditto's palette
+.mewpalette
+	ret nz
 	ld a, [hl]
 DeterminePaletteIDOutOfBattle:
 	ld [wd11e], a
