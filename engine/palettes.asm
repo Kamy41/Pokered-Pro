@@ -32,6 +32,12 @@ SetPal_Battle:
 	call CopyData
 	ld a, [wPlayerBattleStatus3]
 	ld hl, wBattleMonSpecies
+	
+	bit TRANSFORMED, a
+	jr z, .transformcheck
+	ld hl, wBattleMonSpecies2	;joenote - Fixing a gamefreak typo. Needed for transformed mon's to retain their palette.
+.transformcheck
+	
 	call DeterminePaletteID
 	ld b, a
 	ld a, [wEnemyBattleStatus3]
@@ -52,6 +58,7 @@ SetPal_Battle:
 	inc hl
 	ld a, c
 	ld [hl], a
+	
 	ld hl, wPalPacket
 	ld de, BlkPacket_Battle
 	ld a, SET_PAL_BATTLE
