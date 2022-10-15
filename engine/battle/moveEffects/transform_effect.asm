@@ -1,14 +1,14 @@
 TransformEffect_:
 	ld hl, wBattleMonSpecies
 	ld de, wEnemyMonSpecies
-	ld bc, wEnemyBattleStatus3
+	; ld bc, wEnemyBattleStatus3
 	ld a, [wEnemyBattleStatus1]
 	ld a, [H_WHOSETURN]
 	and a
 	jr nz, .hitTest
 	ld hl, wEnemyMonSpecies
 	ld de, wBattleMonSpecies
-	ld bc, wPlayerBattleStatus3
+	; ld bc, wPlayerBattleStatus3
 	ld [wPlayerMoveListIndex], a
 	ld a, [wPlayerBattleStatus1]
 .hitTest
@@ -16,7 +16,7 @@ TransformEffect_:
 	jp nz, .failed
 	push hl
 	push de
-	push bc
+	; push bc
 	ld hl, wPlayerBattleStatus2
 	ld a, [H_WHOSETURN]
 	and a
@@ -42,10 +42,10 @@ TransformEffect_:
 	ld b, BANK(ReshowSubstituteAnim)
 	pop af
 	call nz, Bankswitch
-	pop bc
-	ld a, [bc]
-	set TRANSFORMED, a ; mon is now transformed
-	ld [bc], a
+	; pop bc
+	; ld a, [bc]
+	; set TRANSFORMED, a ; mon is now transformed
+	; ld [bc], a
 	pop de
 	pop hl
 	push hl
@@ -66,15 +66,23 @@ TransformEffect_:
 	call CopyData
 	ld a, [H_WHOSETURN]
 	and a
+	ld bc, wPlayerBattleStatus3
 	jr z, .next
 ; save enemy mon DVs at wTransformedEnemyMonOriginalDVs
+	ld bc, wEnemyBattleStatus3
+	ld a, [bc]
+	bit 3, a 	;check the state of the enemy transformed bit
+	jr nz, .next	;skip ahead if bit is set
 	ld a, [de]
 	ld [wTransformedEnemyMonOriginalDVs], a
 	inc de
 	ld a, [de]
 	ld [wTransformedEnemyMonOriginalDVs + 1], a
 	dec de
-.next        
+.next   
+        ld a, [bc]
+	set TRANSFORMED, a ; mon is now transformed
+	ld [bc], a
 ; DVs
 	ld a, [hli]
 	ld [de], a
