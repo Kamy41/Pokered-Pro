@@ -603,7 +603,7 @@ PidgeyEvosMoves:
 
 SlowpokeEvosMoves:
 ; This is intentional, it makes Slowpoke evolve at any level, 
-; as long as a Shellder is in your party.
+; as long as a Shellder is in your party, then Shellder disappears.
 ; Evolutions
 	db EV_FUSE, SHELLDER, 1, SLOWBRO
 	db 0
@@ -849,7 +849,7 @@ SeelEvosMoves:
 
 DiglettEvosMoves:
 ; Evolutions
-	db EV_LEVEL, 26, DUGTRIO
+	db EV_FUSE, DIGLETT, DIGLETT, DIGLETT, 1, DUGTRIO
 	db 0
 ; Learnset
 	db 15, GROWL
@@ -1965,7 +1965,7 @@ MissingNoACEvosMoves:
 
 MagnemiteEvosMoves:
 ; Evolutions
-	db EV_LEVEL, 30, MAGNETON
+	db EV_FUSE, MAGNEMITE, MAGNEMITE, MAGNEMITE, 1, MAGNETON
 	db 0
 ; Learnset
 	db 21, SONICBOOM
