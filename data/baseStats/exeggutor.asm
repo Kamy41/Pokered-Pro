@@ -15,7 +15,7 @@ dw ExeggutorPicBack
 db BARRAGE
 db HYPNOSIS
 db CONFUSION
-db MEGA_DRAIN
+db ABSORB
 db 5 ; growth rate
 ; learnset
 	tmlearn 6
