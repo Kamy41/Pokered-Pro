@@ -2524,7 +2524,7 @@ MoveSoundTable:
 	db SFX_BATTLE_26,         $f0,$ff ; SUPER_FANG
 	db SFX_NOT_VERY_EFFECTIVE,$01,$ff ; SLASH
 	db SFX_BATTLE_2C,         $d8,$04 ; SUBSTITUTE
-	db SFX_BATTLE_29,         $27,$c0 ; TWISTER
+	db SFX_BATTLE_29,         $24,$c0 ; TWISTER
 	db SFX_BATTLE_22,         $10,$80 ; STRUGGLE
 	db SFX_BATTLE_0B,         $00,$80
 
