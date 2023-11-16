@@ -15,7 +15,7 @@ dw ArcaninePicBack
 db BITE
 db EMBER
 db LEER
-db TAKE_DOWN
+db 0
 db 5 ; growth rate
 ; learnset
 	tmlearn 6,8
