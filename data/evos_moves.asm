@@ -1074,7 +1074,7 @@ NinetalesEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 28, CONFUSE_RAY
+	db 42, FIRE_SPIN
 	db 0
 
 PikachuEvosMoves:
