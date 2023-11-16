@@ -417,6 +417,7 @@ ArcanineEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 50, FLAMETHROWER
 	db 0
 
 MewEvosMoves:
@@ -1073,6 +1074,7 @@ NinetalesEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 28, CONFUSE_RAY
 	db 0
 
 PikachuEvosMoves:
