@@ -401,15 +401,15 @@ RhyhornEvosMoves:
 	db 0
 
 LaprasEvosMoves:
-; Swapped order of IceBeam and BodySlam to fix new TeamMoves
+; Swapped order of ConfuseRay and BodySlam to fix new TeamMoves
 ; Evolutions
 	db 0
 ; Learnset
 	db 16, SING
 	db 20, MIST
-	db 25, ICE_BEAM
-	db 31, CONFUSE_RAY
-	db 38, BODY_SLAM
+	db 25, CONFUSE_RAY
+	db 31, BODY_SLAM
+	db 38, ICE_BEAM
 	db 46, HYDRO_PUMP
 	db 0
 
