@@ -2101,7 +2101,8 @@ GloomEvosMoves:
 VileplumeEvosMoves:
 ; Evolutions
 	db 0
-; Learnset	
+; Learnset
+	db 15, POISONPOWDER
 	db 0
 
 BellsproutEvosMoves:
@@ -2136,4 +2137,5 @@ VictreebelEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 13, WRAP
 	db 0
