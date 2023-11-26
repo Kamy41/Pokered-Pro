@@ -271,7 +271,6 @@ NidokingEvosMoves:
 	db 0
 ; Learnset	
 	db 23, THRASH
-	db 41, EARTHQUAKE
 	db 0
 
 SlowbroEvosMoves:
@@ -370,8 +369,7 @@ NidoqueenEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset	
-	db 23, BODY_SLAM	
-	db 41, EARTHQUAKE
+	db 23, BODY_SLAM
 	db 0
 
 CuboneEvosMoves:
@@ -812,8 +810,8 @@ KoffingEvosMoves:
 	db 0
 ; Learnset
 	db 32, SLUDGE
-	db 37, POISON_GAS
-	db 40, SMOKESCREEN
+	db 37, SMOKESCREEN
+	db 40, POISON_GAS
 	db 45, HAZE
 	db 48, EXPLOSION
 	db 0
@@ -1662,8 +1660,8 @@ WeezingEvosMoves:
 	db 0
 ; Learnset
 	db 32, SLUDGE
-	db 39, POISON_GAS
-	db 43, SMOKESCREEN
+	db 39, SMOKESCREEN
+	db 43, POISON_GAS
 	db 49, HAZE
 	db 53, EXPLOSION
 	db 0
