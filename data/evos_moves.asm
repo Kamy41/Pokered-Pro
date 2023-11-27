@@ -1136,7 +1136,7 @@ KabutoEvosMoves:
 ; Learnset
 	db 34, ABSORB
 	db 44, LEER
-	db 49, ROCK_THROW
+	db 49, ROCK_SLIDE
 	db 0
 
 KabutopsEvosMoves:
@@ -1146,7 +1146,7 @@ KabutopsEvosMoves:
 	db 34, ABSORB
 	db 40, SLASH
 	db 46, LEER
-	db 53, ROCK_THROW
+	db 53, ROCK_SLIDE
 	db 0
 
 HorseaEvosMoves:
