@@ -2103,6 +2103,7 @@ VileplumeEvosMoves:
 	db 0
 ; Learnset
 	db 15, POISONPOWDER
+	db 17, STUN_SPORE
 	db 0
 
 BellsproutEvosMoves:
@@ -2138,4 +2139,5 @@ VictreebelEvosMoves:
 	db 0
 ; Learnset
 	db 13, WRAP
+	db 18, SLEEP_POWDER
 	db 0
