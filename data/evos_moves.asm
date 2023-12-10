@@ -848,7 +848,7 @@ SeelEvosMoves:
 
 DiglettEvosMoves:
 ; Evolutions
-	db  EV_FUSE, DIGLETT, DIGLETT, 1, DUGTRIO
+	db  EV_FUSE, DIGLETT DIGLETT, 1, DUGTRIO
 	db 0
 ; Learnset
 	db 15, GROWL
@@ -1961,7 +1961,7 @@ MissingNoACEvosMoves:
 
 MagnemiteEvosMoves:
 ; Evolutions
-	db EV_FUSE, MAGNEMITE, MAGNEMITE, 1, MAGNETON
+	db EV_FUSE, MAGNEMITE MAGNEMITE, 1, MAGNETON
 	db 0
 ; Learnset
 	db 21, SONICBOOM
