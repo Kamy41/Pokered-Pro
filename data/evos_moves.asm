@@ -806,7 +806,7 @@ MagnetonEvosMoves:
 
 KoffingEvosMoves:
 ; Evolutions
-	db EV_LEVEL, 35, WEEZING
+	db EV_FUSE, KOFFING, 1, WEEZING
 	db 0
 ; Learnset
 	db 32, SLUDGE
@@ -848,7 +848,7 @@ SeelEvosMoves:
 
 DiglettEvosMoves:
 ; Evolutions
-	db  EV_LEVEL, 26, DUGTRIO
+	db  EV_FUSE, DIGLETT, DIGLETT, 1, DUGTRIO
 	db 0
 ; Learnset
 	db 15, GROWL
@@ -1961,7 +1961,7 @@ MissingNoACEvosMoves:
 
 MagnemiteEvosMoves:
 ; Evolutions
-	db EV_LEVEL, 30, MAGNETON
+	db EV_FUSE, MAGNEMITE, MAGNEMITE, 1, MAGNETON
 	db 0
 ; Learnset
 	db 21, SONICBOOM
