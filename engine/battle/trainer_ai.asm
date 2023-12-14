@@ -202,9 +202,9 @@ AIMoveChoiceModification3:
 	inc de
 	call ReadMove
 ;
-;	ld a, [wEnemyMovePower]
-;	and a
-;	jp z, .nextMove	;go to next move if the current move is zero-power
+	ld a, [wEnemyMovePower]
+	and a
+	jp z, .nextMove	;go to next move if the current move is zero-power
 ;
 	push hl
 	push bc
@@ -214,10 +214,10 @@ AIMoveChoiceModification3:
 	pop bc
 	pop hl
 ;
-	ld a, [wTypeEffectiveness]	;get the effectiveness
-	and a 	;check if it's zero
-	jr nz, .skipoutagi	;skip if it's not immune
-.skipoutagi
+;	ld a, [wTypeEffectiveness]	;get the effectiveness
+;	and a 	;check if it's zero
+;	jr nz, .skipoutagi	;skip if it's not immune
+;.skipoutagi
 ;
 	ld a, [wTypeEffectiveness]
 	cp $0A
