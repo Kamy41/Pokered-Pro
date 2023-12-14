@@ -107,7 +107,7 @@ MoveEnd:
 	move PSYCHIC_M,    SPECIAL_DOWN_SIDE_EFFECT,    90, PSYCHIC,  100, 10
 	move HYPNOSIS,     SLEEP_EFFECT,                 0, PSYCHIC,   60, 20
 	move MEDITATE,     ATTACK_UP1_EFFECT,            0, PSYCHIC,  100, 40
-	move AGILITY,      SPEED_UP2_EFFECT,             0, NORMAL,   100, 30
+	move AGILITY,      SPEED_UP2_EFFECT,             0, PSYCHIC,  100, 30
 	move QUICK_ATTACK, NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 30
 	move RAGE,         RAGE_EFFECT,                 20, NORMAL,   100, 20
 	move TELEPORT,     SWITCH_AND_TELEPORT_EFFECT,   0, PSYCHIC,  100, 20
