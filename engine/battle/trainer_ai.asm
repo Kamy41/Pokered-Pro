@@ -201,11 +201,11 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
 	ld a, [wEnemyMovePower]
 	and a
 	jp z, .nextMove	;go to next move if the current move is zero-power
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
 	push hl
 	push bc
 	push de
@@ -213,12 +213,12 @@ AIMoveChoiceModification3:
 	pop de
 	pop bc
 	pop hl
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, [wTypeEffectiveness]	;get the effectiveness
-	and a 	;check if it's zero
-	jr nz, .skipoutagi	;skip if it's not immune
-.skipoutagi
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;	ld a, [wTypeEffectiveness]	;get the effectiveness
+;	and a 	;check if it's zero
+;	jr nz, .skipoutagi	;skip if it's not immune
+;.skipoutagi
+;
 	ld a, [wTypeEffectiveness]
 	cp $0A
 	jr z, .nextMove
