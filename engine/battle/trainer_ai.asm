@@ -210,8 +210,8 @@ AIMoveChoiceModification3:
 	pop hl
 	ld a, [wTypeEffectiveness]
 	cp $0A
-	ld a, [wEnemyMovePower]            ;;;;;
-	and a 	;check if it's zero        ;;;;;
+;	ld a, [wEnemyMovePower]            ;;;;;
+;	and a 	;check if it's zero        ;;;;;
 	jr z, .nextMove
 	jr c, .notEffectiveMove
 	dec [hl] ; slightly encourage this move
