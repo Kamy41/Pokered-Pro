@@ -207,11 +207,11 @@ AIMoveChoiceModification3:
 	callab AIGetTypeEffectiveness
 	pop de
 	pop bc
-	pop hl
-	ld a, [wEnemyMovePower]            ;;;;;
-	and a 	;check if it's zero        ;;;;;
+	pop hl	
 	ld a, [wTypeEffectiveness]
 	cp $0A
+	ld a, [wEnemyMovePower]            ;;;;;
+	and a 	;check if it's zero        ;;;;;
 	jp z, .nextMove
 	jr c, .notEffectiveMove
 	dec [hl] ; slightly encourage this move
