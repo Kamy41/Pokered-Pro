@@ -210,7 +210,7 @@ AIMoveChoiceModification3:
 	pop hl	
 	ld a, [wTypeEffectiveness]
 	cp $0A
-	jr z, .nextMove
+	jr z, .notEffectiveMove
 	ld a, [wEnemyMovePower]  ; added for BP check          
 	or a 	                 ; check if it's zero
 	jr z, .notEffectiveMove  ; changed from jr c
@@ -233,8 +233,8 @@ AIMoveChoiceModification3:
 	jr z, .done
 	call ReadMove	
 	ld a, [wEnemyMoveEffect]
-;	cp SUPER_FANG_EFFECT
-;	jr z, .betterMoveFound ; Super Fang is considered to be a better move
+	cp SUPER_FANG_EFFECT
+	jr z, .betterMoveFound ; Super Fang is considered to be a better move
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
 ;	cp FLY_EFFECT
