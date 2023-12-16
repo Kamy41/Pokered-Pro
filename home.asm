@@ -283,7 +283,7 @@ LoadFrontSpriteByMonIndex::
 	jr c, .validDexNumber   ; dex >#151 invalid
 .invalidDexNumber
 	ld a, MISSINGNO_1F ; $1
-	ld [wcf91], a
+;	ld [wcf91], a
 	ret
 .validDexNumber        
 	push hl
