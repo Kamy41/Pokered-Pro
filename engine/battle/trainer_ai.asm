@@ -216,8 +216,8 @@ AIMoveChoiceModification3:
 	and a 	                 ; check if it's zero
 	jr z, .nextMove		 ; added for BP check
 	dec [hl] ; slightly encourage this move
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
+	nop	                 ; added to preserve Missingno
+	nop	                 ; added to preserve Missingno
 	jr .nextMove
 .notEffectiveMove ; discourages non-effective moves if better moves are available	
 	push hl
@@ -734,7 +734,7 @@ AICureStatus:
 	call AddNTimes
 	xor a
 	ld [hl], a ; clear status in enemy team roster
-	callab UndoBurnParStats	;undo brn/par stat changes
+	; callab UndoBurnParStats ;undo brn/par stat changes
 	ld [wEnemyMonStatus], a ; clear status of active enemy
 	ld hl, wEnemyBattleStatus3
 	res 0, [hl]
