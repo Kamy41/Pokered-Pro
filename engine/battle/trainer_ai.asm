@@ -733,10 +733,10 @@ AICureStatus:
 	ld bc, wEnemyMon2 - wEnemyMon1
 	call AddNTimes
 	xor a
-        callab UndoBurnParStats ;undo brn/par stat changes
 	ld [hl], a ; clear status in enemy team roster
 	ld [wEnemyMonStatus], a ; clear status of active enemy
-	ld hl, wEnemyBattleStatus3
+	callab UndoBurnParStats ;undo brn/par stat changes
+        ld hl, wEnemyBattleStatus3
 	res 0, [hl]
 	ret
 
