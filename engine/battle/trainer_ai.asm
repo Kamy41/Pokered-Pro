@@ -214,7 +214,7 @@ AIMoveChoiceModification3:
 	jr c, .notEffectiveMove
 	ld a, [wEnemyMovePower]  ; added for BP check
 	and a 	                 ; check if it's zero
-	jr z, .notEffectiveMove  ; added for BP check	
+	jr z, .notEffectiveMove  ; added for BP check
 	dec [hl] ; slightly encourage this move
 	nop	                 ; added to preserve Missingno
 	nop	                 ; added to preserve Missingno
