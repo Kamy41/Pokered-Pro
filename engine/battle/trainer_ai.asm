@@ -735,7 +735,7 @@ AICureStatus:
 	xor a
 	ld [hl], a ; clear status in enemy team roster
 	ld [wEnemyMonStatus], a ; clear status of active enemy
-	;callab UndoBurnParStats ;undo brn/par stat changes
+	callab UndoBurnParStats ;undo brn/par stat changes
         ld hl, wEnemyBattleStatus3
 	res 0, [hl]
 	ret
