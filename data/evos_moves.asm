@@ -639,6 +639,7 @@ GravelerEvosMoves:
 	db 21, SELFDESTRUCT
 	db 29, HARDEN
 	db 36, EARTHQUAKE
+        db 43, EXPLOSION
 	db 0
 
 ChanseyEvosMoves:
@@ -647,7 +648,7 @@ ChanseyEvosMoves:
 ; Learnset
 	db 12, DOUBLESLAP
 	db 24, SING
-	db 30, EGG_BOMB
+	db 30, GROWL
 	db 38, MINIMIZE
 	db 44, DEFENSE_CURL
 	db 48, DOUBLE_EDGE
@@ -755,6 +756,7 @@ GolemEvosMoves:
 	db 21, SELFDESTRUCT
 	db 29, HARDEN
 	db 36, EARTHQUAKE
+        db 43, EXPLOSION
 	db 0
 
 MissingNo32EvosMoves:
@@ -1444,7 +1446,7 @@ VenomothEvosMoves:
 	db 24, POISONPOWDER
 	db 27, LEECH_LIFE
 	db 30, STUN_SPORE
-	db 38, PSYBEAM
+	db 37, PSYBEAM
 	db 43, SLEEP_POWDER
 	db 50, PSYCHIC_M
 	db 0
@@ -1931,6 +1933,7 @@ GeodudeEvosMoves:
 	db 21, SELFDESTRUCT
 	db 26, HARDEN
 	db 31, EARTHQUAKE
+        db 36, EXPLOSION
 	db 0
 
 PorygonEvosMoves:
