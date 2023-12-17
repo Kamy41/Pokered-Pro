@@ -286,11 +286,11 @@ AIMoveChoiceModification4:
 	nop	                 ; added to preserve Missingno
 	nop	                 ; added to preserve Missingno 
 	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
+	nop	                 ; added to preserve Missingno 
+	nop	                 ; added to preserve Missingno
+	nop	                 ; added to preserve Missingno
+	nop	                 ; added to preserve Missingno
+	nop	                 ; added to preserve Missingno
 ;	nop	                 ; added to preserve Missingno 
 	ret
 	
