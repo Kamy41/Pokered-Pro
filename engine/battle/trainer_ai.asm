@@ -293,6 +293,7 @@ AIMoveChoiceModification4:
 	nop	                 ; added to preserve Missingno
 ;	nop	                 ; added to preserve Missingno    ; 1GHOST 2NORMAL, SPECIAL 
 	nop	                 ; added to preserve Missingno
+	nop	                 ; added to preserve Missingno   ;   1--- 2NORMAL, SPECIAL 
 	nop	                 ; added to preserve Missingno
 	ret
 	
