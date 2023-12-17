@@ -38,8 +38,6 @@ HealEffect_:
 	ld hl, StartedSleepingEffect ; if mon didn't have an status
 	jr z, .printRestText
 	ld hl, FellAsleepBecameHealthyText ; if mon had an status
-;;;;;;;;joenote - undo the stat-changing effects of burn and paralyze and clear toxic info
-	callab UndoBurnParStats
 .printRestText
 	call PrintText
 	pop af
