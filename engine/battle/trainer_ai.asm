@@ -260,41 +260,7 @@ AIMoveChoiceModification3:
 	jr .nextMove
 AIMoveChoiceModification4:
 	nop	                 ; added to preserve Missingno
-	nop	                 ; added to preserve Missingno    ; forced untile here
-	nop	                 ; added to preserve Missingno
-	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno    ; 1GHOST 2NORMAL, SPECIAL 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno   ;   1--- 2NORMAL, SPECIAL 
-;	nop	                 ; added to preserve Missingno
-;	nop	                 ; added to preserve Missingno
+	nop	                 ; added to preserve Missingno	
 	ret
 	
 ReadMove:
