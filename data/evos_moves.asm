@@ -261,6 +261,7 @@ VoltorbEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
+	db 26, THUNDERSHOCK
 	db 29, LIGHT_SCREEN
 	db 36, SWIFT
 	db 43, EXPLOSION
@@ -414,8 +415,7 @@ LaprasEvosMoves:
 ArcanineEvosMoves:
 ; Evolutions
 	db 0
-; Learnset
-	db 50, FLAMETHROWER
+; Learnset	
 	db 0
 
 MewEvosMoves:
@@ -601,8 +601,7 @@ PidgeyEvosMoves:
 	db 0
 
 SlowpokeEvosMoves:
-; This is intentional, it makes Slowpoke evolve at any level, 
-; as long as a Shellder is in your party, then Shellder disappears.
+; Slowpoke evolves at any level, as long as a Shellder is in your party, then Shellder disappears
 ; Evolutions
 	db EV_FUSE, SHELLDER, 1, SLOWBRO
 	db 0
@@ -905,7 +904,6 @@ VenonatEvosMoves:
 	db EV_LEVEL, 31, VENOMOTH
 	db 0
 ; Learnset
-	db 11, SUPERSONIC
 	db 19, CONFUSION
 	db 24, POISONPOWDER
 	db 27, LEECH_LIFE
@@ -1073,8 +1071,7 @@ VulpixEvosMoves:
 NinetalesEvosMoves:
 ; Evolutions
 	db 0
-; Learnset
-	db 42, FIRE_SPIN
+; Learnset	
 	db 0
 
 PikachuEvosMoves:
@@ -1253,12 +1250,11 @@ EeveeEvosMoves:
 	db EV_ITEM, THUNDER_STONE, 1, JOLTEON
 	db EV_ITEM, WATER_STONE, 1, VAPOREON
 	db 0
-; Learnset
-	db 16, GROWL
-	db 23, QUICK_ATTACK
-	db 30, TAIL_WHIP
-	db 36, BITE
-	db 42, TAKE_DOWN
+; Learnset	
+	db 27, QUICK_ATTACK
+	db 31, TAIL_WHIP
+	db 37, BITE
+	db 45, TAKE_DOWN
 	db 0
 
 FlareonEvosMoves:
@@ -1295,7 +1291,7 @@ VaporeonEvosMoves:
 ; Learnset
 	db 27, QUICK_ATTACK
 	db 31, WATER_GUN
-	db 37, AURORA_BEAM
+	db 37, TAIL_WHIP
 	db 40, BITE
 	db 42, ACID_ARMOR
 	db 44, HAZE
@@ -1642,6 +1638,7 @@ ElectrodeEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
+	db 26, THUNDERSHOCK
 	db 29, LIGHT_SCREEN
 	db 40, SWIFT
 	db 50, EXPLOSION
