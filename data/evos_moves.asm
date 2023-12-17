@@ -284,7 +284,7 @@ SlowbroEvosMoves:
 	db 33, WATER_GUN
 	db 37, WITHDRAW
 	db 44, AMNESIA
-	db 55, PSYCHIC_M
+	db 54, PSYCHIC_M
 	db 0
 
 IvysaurEvosMoves:
