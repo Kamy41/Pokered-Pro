@@ -38,7 +38,6 @@ HealEffect_:
 	ld hl, StartedSleepingEffect ; if mon didn't have an status
 	jr z, .printRestText
 	ld hl, FellAsleepBecameHealthyText ; if mon had an status
-	callab UndoBurnParStats ;undo brn/par stat changes
 .printRestText
 	call PrintText
 	pop af
