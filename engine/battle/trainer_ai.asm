@@ -216,8 +216,8 @@ AIMoveChoiceModification3:
 	and a 	                 ; check if it's zero
 	jr z, .nextMove		 ; added for BP check
 	dec [hl] ; slightly encourage this move
-        nop	                 ; added to preserve Missingno
-	nop	                 ; added to preserve Missingno
+;       nop	                 ; added to preserve Missingno
+;	nop	                 ; added to preserve Missingno
 	jr .nextMove
 .notEffectiveMove ; discourages non-effective moves if better moves are available	
 	push hl
