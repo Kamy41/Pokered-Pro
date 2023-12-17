@@ -14,7 +14,7 @@ dw NidoqueenPicBack
 ; attacks known at lvl 0
 db SCRATCH
 db POISON_STING
-db DOUBLE_KICK
+db TAIL_WHIP
 db EARTHQUAKE
 db 3 ; growth rate
 ; learnset
