@@ -212,10 +212,11 @@ AIMoveChoiceModification3:
 	cp $0A
 	jr z, .nextMove
 	jr c, .notEffectiveMove
-	nop			 ; added for BP check
 	ld a, [wEnemyMovePower]  ; added for BP check
 	and a 	                 ; check if it's zero
 	jr z, .notEffectiveMove  ; added for BP check
+	nop
+	nop
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
 .notEffectiveMove ; discourages non-effective moves if better moves are available	
