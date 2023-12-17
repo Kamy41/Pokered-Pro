@@ -14,8 +14,8 @@ dw VenomothPicBack
 ; attacks known at lvl 0
 db TACKLE
 db DISABLE
-db SUPERSONIC
 db CONFUSION
+db 0
 db 0 ; growth rate
 ; learnset
 	tmlearn 2,4,6
