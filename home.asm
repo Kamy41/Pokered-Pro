@@ -282,7 +282,7 @@ LoadFrontSpriteByMonIndex::
 	cp NUM_POKEMON + 1
 	jr c, .validDexNumber   ; dex >#151 invalid
 .invalidDexNumber
-	nop  ;ld a, MISSINGNO_1F ; $1
+	nop  ; ld a, RHYDON ; $1
 ;	ld [wcf91], a
 	ret
 .validDexNumber        
