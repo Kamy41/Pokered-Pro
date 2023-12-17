@@ -14,7 +14,7 @@ dw NidokingPicBack
 ; attacks known at lvl 0
 db HORN_ATTACK
 db POISON_STING
-db DOUBLE_KICK
+db FOCUS_ENERGY
 db EARTHQUAKE
 db 3 ; growth rate
 ; learnset
