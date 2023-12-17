@@ -1,15 +1,7 @@
-; does nothing since no stats are ever selected (barring glitches)
 DoubleSelectedStats:	
 	ret
-
-; does nothing since no stats are ever selected (barring glitches)
 HalveSelectedStats:	
 	ret
-
-;joenote - this function checks to see if a pkmn is paralyzed or burned
-;then it doubles attack if burned or quadruples speed if paralyzed.
-;It's meant to be run right before healing paralysis or burn so as to 
-;undo the stat changes.
 UndoBurnParStats:
 	ld hl, wBattleMonStatus
 	ld de, wPlayerStatsToDouble
@@ -31,7 +23,7 @@ UndoBurnParStats:
 	and 1 << PAR	;test for paralyze 
 	jr z, .return
 	ld a, $04
-	ld [de], a	;set speed to be doubled (done twice) to undo the stat change of BRN
+	ld [de], a	;set speed to be doubled (done twice) to undo the stat change of PAR
 	call DoubleSelectedStats
 	call DoubleSelectedStats
 .return
