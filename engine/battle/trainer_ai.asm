@@ -237,11 +237,11 @@ AIMoveChoiceModification3:
 	call ReadMove	
 	ld a, [wEnemyMoveEffect]
 ; 	cp SUPER_FANG_EFFECT  ; deleted to preserve Missingno
-;	jr z, .betterMoveFound ; Super Fang is considered to be a better move . deleted to preserve Missingno
+;	jr z, .betterMoveFound ; Super Fang is considered to be a better move ; deleted to preserve Missingno
 	cp SPECIAL_DAMAGE_EFFECT
-	jr z, .betterMoveFound ; any special damage moves are considered to be better moves . deleted to preserve Missingno
+	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
 ;	cp FLY_EFFECT
-;	jr z, .betterMoveFound ; Fly is considered to be a better move . deleted to preserve Missingno
+;	jr z, .betterMoveFound ; Fly is considered to be a better move ; deleted to preserve Missingno
 	ld a, [wEnemyMoveType]
 	cp d
 	jr z, .loopMoves
