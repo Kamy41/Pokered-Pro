@@ -216,8 +216,8 @@ AIMoveChoiceModification3:
 	and a 	                 ; check if it's zero
 	jr z, .notEffectiveMove  ; added for BP check	
 	dec [hl] ; slightly encourage this move
-	nop
-	nop
+	nop	                 ; added to preserve Missingno
+	nop	                 ; added to preserve Missingno
 	jr .nextMove
 .notEffectiveMove ; discourages non-effective moves if better moves are available	
 	push hl
@@ -236,12 +236,12 @@ AIMoveChoiceModification3:
 	jr z, .done
 	call ReadMove	
 	ld a, [wEnemyMoveEffect]
-;	cp SUPER_FANG_EFFECT
-;	jr z, .betterMoveFound ; Super Fang is considered to be a better move
+; 	cp SUPER_FANG_EFFECT  ; deleted to preserve Missingno
+;	jr z, .betterMoveFound ; Super Fang is considered to be a better move . deleted to preserve Missingno
 	cp SPECIAL_DAMAGE_EFFECT
-	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
+	jr z, .betterMoveFound ; any special damage moves are considered to be better moves . deleted to preserve Missingno
 ;	cp FLY_EFFECT
-;	jr z, .betterMoveFound ; Fly is considered to be a better move
+;	jr z, .betterMoveFound ; Fly is considered to be a better move . deleted to preserve Missingno
 	ld a, [wEnemyMoveType]
 	cp d
 	jr z, .loopMoves
