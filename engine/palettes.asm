@@ -269,17 +269,18 @@ BadgeBlkDataLengths:
 	db 6     ; Earth Badge
 
 DeterminePaletteID:
-	bit TRANSFORMED, a ; a is battle status 3
-	ld a, DEX_DITTO
-	cp DITTO
-	jr nz, .checkIfMew
-	ld a, PAL_GREYMON  ; if the mon has used Transform is Ditto or other, use Ditto's palette
-	ret nz
-	ld a, [hl]
-.checkIfMew
-	ld a, PAL_MEWMON  ; if the mon has used Transform is Mew, use Mew's palette
-	ret nz
-	ld a, [hl]
+	bit TRANSFORMED, a    ; a is battle status 3
+	jr nz, .CheckIfDitto   ; Jump if the mon has used Transform	
+	ret
+.CheckIfDitto
+	ld a, DEX_DITTO       ; Load Ditto's identifier or flag
+	cp DITTO              ; Compare with Ditto's ID
+	jr nz, .NotDitto      ; Jump if it's not Ditto
+	ld a, PAL_PURPLEMON   ; Load Ditto's palette
+	ret
+.NotDitto
+	ld a, PAL_MEWMON      ; Load Mew's palette for other transformed Pokémon
+	ret
 DeterminePaletteIDOutOfBattle:
 	ld [wd11e], a
 	and a ; is the mon index 0?
