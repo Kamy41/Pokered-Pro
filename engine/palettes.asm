@@ -269,8 +269,15 @@ BadgeBlkDataLengths:
 	db 6     ; Earth Badge
 
 DeterminePaletteID:
-	bit TRANSFORMED, a ; a is battle status 3	
-	ld a, PAL_MEWMON  ; if the mon has used Transform, use Ditto's palette
+	bit TRANSFORMED, a ; a is battle status 3
+	ld a, DEX_DITTO
+	cp DITTO
+	jr nz, .checkIfMew
+	ld a, PAL_GREYMON  ; if the mon has used Transform is Ditto or other, use Ditto's palette
+	ret nz
+	ld a, [hl]
+.checkIfMew
+	ld a, PAL_MEWMON  ; if the mon has used Transform is Mew, use Mew's palette
 	ret nz
 	ld a, [hl]
 DeterminePaletteIDOutOfBattle:
