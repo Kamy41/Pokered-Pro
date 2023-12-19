@@ -107,7 +107,7 @@ AIMoveChoiceModificationFunctionPointers:
 	dw AIMoveChoiceModification1
 	dw AIMoveChoiceModification2
 	dw AIMoveChoiceModification3
-	dw AIMoveChoiceModification4 ; unused
+; 	dw AIMoveChoiceModification4 ; unused
 
 ; discourages moves that cause no damage but only a status ailment if player's mon already has one
 AIMoveChoiceModification1:
@@ -234,12 +234,12 @@ AIMoveChoiceModification3:
 	jr z, .done
 	call ReadMove	
 	ld a, [wEnemyMoveEffect]
-; 	cp SUPER_FANG_EFFECT   ; deleted to preserve Missingno
-;	jr z, .betterMoveFound ; Super Fang is considered to be a better move ; deleted to preserve Missingno
+ 	cp SUPER_FANG_EFFECT   ; deleted to preserve Missingno
+	jr z, .betterMoveFound ; Super Fang is considered to be a better move ; deleted to preserve Missingno
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
-;	cp FLY_EFFECT          ; deleted to preserve Missingno
-;	jr z, .betterMoveFound ; Fly is considered to be a better move ; deleted to preserve Missingno
+	cp FLY_EFFECT          ; deleted to preserve Missingno
+	jr z, .betterMoveFound ; Fly is considered to be a better move ; deleted to preserve Missingno
 	ld a, [wEnemyMoveType]
 	cp d
 	jr z, .loopMoves
@@ -258,10 +258,8 @@ AIMoveChoiceModification3:
 	jr z, .nextMove
 	inc [hl] ; slightly discourage this move
 	jr .nextMove
-AIMoveChoiceModification4:
-	nop	                 ; added to preserve Missingno
-	nop	                 ; added to preserve Missingno	
-	ret
+;AIMoveChoiceModification4:	
+;	ret
 	
 ReadMove:
 	push hl
