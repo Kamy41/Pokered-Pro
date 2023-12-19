@@ -273,11 +273,22 @@ BadgeBlkDataLengths:
 	db 6     ; Earth Badge
 
 DeterminePaletteID:
-;	bit TRANSFORMED, a    ; a is battle status 3
-;	ld a, PAL_MEWMON      ; Load Mew's palette for other transformed Pokémon
-;	ret nz
-        ld a, [hl]
+	bit TRANSFORMED, a    ; a is battle status 3
+	jr nz, .CheckPKM
+	ret z
+.CheckPKM
+	ld a, DEX_MEW
+	cp MEW
+	jr z, .MewPal
+	jr nz, .DittoPal	
+.MewPal
+	ld a, PAL_MEWMON      ; Load Mew's palette for other transformed Pokémon	
 	ret nz
+        ld a, [hl]
+.DittoPal
+	ld a, PAL_GREYMON      ; Load Mew's palette for other transformed Pokémon	
+	ret nz
+        ld a, [hl]
 DeterminePaletteIDOutOfBattle:
 	ld [wd11e], a
 	and a ; is the mon index 0?
