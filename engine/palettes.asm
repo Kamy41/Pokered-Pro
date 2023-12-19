@@ -274,8 +274,9 @@ BadgeBlkDataLengths:
 
 DeterminePaletteID:
 	bit TRANSFORMED, a    ; a is battle status 3
-	jr nz, .CheckPKM
-	ret z
+	jr z, .CheckPKM
+	ret nz
+ 	ld a, [hl]
 .CheckPKM
 	ld a, DEX_MEW
 	cp MEW
@@ -283,11 +284,9 @@ DeterminePaletteID:
 	jr nz, .DittoPal	
 .MewPal
 	ld a, PAL_MEWMON      ; Load Mew's palette for other transformed Pokémon	
-	ret nz
         ld a, [hl]
 .DittoPal
-	ld a, PAL_GREYMON      ; Load Mew's palette for other transformed Pokémon	
-	ret nz
+	ld a, PAL_GREYMON      ; Load Mew's palette for other transformed Pokémon
         ld a, [hl]
 DeterminePaletteIDOutOfBattle:
 	ld [wd11e], a
