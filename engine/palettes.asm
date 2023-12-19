@@ -30,15 +30,17 @@ SetPal_Battle:
 	ld de, wPalPacket
 	ld bc, $10
 	call CopyData
-	ld a, [wPlayerBattleStatus3]
 	ld hl, wBattleMonSpecies
-	; bit TRANSFORMED, a
-	; jr z, .transformcheck
-	; ld hl, wBattleMonSpecies2	;joenote - Fixing a gamefreak typo. Needed for transformed mon's to retain their palette.
-; .transformcheck	
+	ld a, [hl]
+	and a
+	jr z, .asm_71ef9
+	ld hl, wPartyMon1
+	ld a, [wPlayerMonNumber]
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+.asm_71ef9
 	call DeterminePaletteID
 	ld b, a
-	ld a, [wEnemyBattleStatus3]
 	ld hl, wEnemyMonSpecies2
 	call DeterminePaletteID
 	ld c, a
@@ -273,9 +275,9 @@ BadgeBlkDataLengths:
 	db 6     ; Earth Badge
 
 DeterminePaletteID:
-	bit TRANSFORMED, a    ; a is battle status 3
-	ld a, PAL_MEWMON      ; Load Mew's palette for other transformed Pokémon
-	ret nz
+;	bit TRANSFORMED, a    ; a is battle status 3
+;	ld a, PAL_MEWMON      ; Load Mew's palette for other transformed Pokémon
+;	ret nz
  	ld a, [hl]
 DeterminePaletteIDOutOfBattle:
 	ld [wd11e], a
