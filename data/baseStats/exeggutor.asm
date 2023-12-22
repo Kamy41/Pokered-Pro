@@ -15,7 +15,7 @@ dw ExeggutorPicBack
 db BARRAGE
 db HYPNOSIS
 db CONFUSION
-db SOLARBEAM
+db 0
 db 5 ; growth rate
 ; learnset
 	tmlearn 6
