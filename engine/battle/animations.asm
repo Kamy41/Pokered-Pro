@@ -525,13 +525,13 @@ SetAnimationPalette:
     jr z, .notSGB
     ; Se è un Super Game Boy
     ld a, $f0 ; Imposta la paletta del SGB per la scala di grigi
-    ldh [rSGBPal0], a ; Bianco
-    ld a, $d0
-    ldh [rSGBPal1], a ; Grigio chiaro
-    ld a, $60
-    ldh [rSGBPal2], a ; Grigio scuro
-    ld a, $10
-    ldh [rSGBPal3], a ; Nero
+    ld [$FF68], a ; Imposta il registro della prima riga della palette SGB
+    ld a, $b5
+    ld [$FF69], a ; Imposta il registro della seconda riga della palette SGB
+    ld a, $6b
+    ld [$FF6A], a ; Imposta il registro della terza riga della palette SGB
+    ld a, $00
+    ld [$FF6B], a ; Imposta il registro della quarta riga della palette SGB
 
     ld b, $e4
     ld a, [wAnimationID]
@@ -542,17 +542,17 @@ SetAnimationPalette:
     ld b, $f0
 .next
     ld a, b
-    ld [rOBP0], a    
+    ld [$FF6C], a ; Imposta il registro della prima palette dei sprite SGB
     ld a, $6c
-    ld [rOBP1], a
+    ld [$FF6D], a ; Imposta il registro della seconda palette dei sprite SGB
     ret
 .notSGB
     ; Se non è un Super Game Boy
     ld a, $e4
     ld [wAnimPalette], a
-    ld [rOBP0], a
+    ld [$FF6C], a ; Imposta il registro della prima palette dei sprite SGB
     ld a, $6c
-    ld [rOBP1], a
+    ld [$FF6D], a ; Imposta il registro della seconda palette dei sprite SGB
     ret
 
 PlaySubanimation:
