@@ -544,7 +544,7 @@ SetAnimationPalette:
 	ld [rOBP1], a
 ;	call UpdateGBCPal_OBP0
 ;	call UpdateGBCPal_OBP1
-	predef SetAttackAnimPal	;joenote - new function to handle animation palettes
+	call SetAttackAnimPal	;joenote - new function to handle animation palettes
 	ret
 
 SetAttackAnimPal:
@@ -590,7 +590,7 @@ SetAttackAnimPal:
 	add hl, bc
 	ld a, [hl]
 	ld b, a
-	ret            ; ADDED TO CLOSE THE FUNCTION BEFORE THE JOJOBEAR'S ONE 
+	; ret            ; ADDED TO CLOSE THE FUNCTION BEFORE THE JOJOBEAR'S ONE 
 
 ;This function copies BGP colors 0-3 into OBP colors 0-3
 ;It is meant to reset the object palettes on the fly
