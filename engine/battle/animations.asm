@@ -544,7 +544,7 @@ SetAnimationPalette:
 	ld [rOBP1], a
 ;	call UpdateGBCPal_OBP0
 ;	call UpdateGBCPal_OBP1
-	call SetAttackAnimPal	;joenote - new function to handle animation palettes
+	jp z, SetAttackAnimPal	;joenote - new function to handle animation palettes
 	ret
 
 SetAttackAnimPal:
