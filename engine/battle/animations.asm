@@ -524,6 +524,7 @@ SetAnimationPalette:
 	and a
 	;ld a, $e4	;redundant
 	jr z, .notSGB
+	predef SetAttackAnimPal	;joenote - new function to handle animation palettes
 	;ld a, $f0
 	;ld [wAnimPalette], a	;will handle in a SetAttackAnimPal
 
