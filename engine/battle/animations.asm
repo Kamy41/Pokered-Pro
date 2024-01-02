@@ -519,33 +519,36 @@ AnimationShakeScreenHorizontallySlow:
 	ret
 
 SetAnimationPalette:
-	ld b, $e4
 	ld a, [wOnSGB]
 	and a
 	;ld a, $e4	;redundant
 	jr z, .notSGB
-	predef SetAttackAnimPal	;joenote - new function to handle animation palettes
 	;ld a, $f0
-	;ld [wAnimPalette], a	;will handle in a SetAttackAnimPal
-
-	;if animation is TRADE_BALL_DROP_ANIM to TRADE_BALL_POOF_ANIM, load f0 into rOBP0
+	;ld [wAnimPalette], a
+	predef SetAttackAnimPal	;joenote - new function to handle animation palettes
+	ld b, $e4
 	ld a, [wAnimationID]
 	cp TRADE_BALL_DROP_ANIM
 	jr c, .next
 	cp TRADE_BALL_POOF_ANIM + 1
 	jr nc, .next
-	ld b, $f0	
+	ld b, $f0
 .next
-.notSGB
 	ld a, b
-;	ld a, $e4
-;	ld [wAnimPalette], a	;will handle in SetAttackAnimPal
 	ld [rOBP0], a
 	ld a, $6c
 	ld [rOBP1], a
-;	call UpdateGBCPal_OBP0
-;	call UpdateGBCPal_OBP1
-	predef SetAttackAnimPal	;joenote - new function to handle animation palettes
+	call UpdateGBCPal_OBP0
+	call UpdateGBCPal_OBP1
+	ret
+.notSGB
+	ld a, $e4
+	ld [wAnimPalette], a
+	ld [rOBP0], a
+	ld a, $6c
+	ld [rOBP1], a
+	call UpdateGBCPal_OBP0
+	call UpdateGBCPal_OBP1
 	ret
 
 PlaySubanimation:
