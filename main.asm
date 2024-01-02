@@ -2095,13 +2095,8 @@ INCLUDE "data/animations.asm"
 
 INCLUDE "engine/evolution.asm"
 
-; INCLUDE "engine/overworld/elevator.asm"
+INCLUDE "engine/overworld/elevator.asm"
 
 INCLUDE "engine/items/tm_prices.asm"
 
 
-SECTION "bank2D",ROMX,BANK[$2D]	;joenote - This is a known empty bank. Going to start moving stuff here
-
-INCLUDE "engine/overworld/elevator.asm"
-
-INCLUDE "engine/battle/animations_pal.asm"
