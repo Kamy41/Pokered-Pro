@@ -535,11 +535,7 @@ SetAnimationPalette:
 	jr c, .next
 	cp TRADE_BALL_POOF_ANIM + 1
 	jr nc, .next
-	ld b, $f0
-	ld [$FF68], b ; Prima riga della palette SGB
-    	ld b, $a8 ; Seconda riga della palette SGB (grigio chiaro)
-	ld [$FF69], b ; Seconda riga della palette SGB
- 	ld b, $58 ; Terza riga della palette SGB (grigio scuro)
+	ld b, $f0	
 .next
 	ld a, b
 	ld [rOBP0], a	
