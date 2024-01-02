@@ -523,7 +523,7 @@ SetAnimationPalette:
 	and a
 ;	ld a, $e4
 	jr z, .notSGB
-	ld a, $f0
+	ld a, $e4
 ;	ld a, PAL_MEWMON             ; new move pal
 	ld [wAnimPalette], a
 	ld b, $e4
