@@ -4,7 +4,7 @@ SetAttackAnimPal:
 	ld a, $f0
 	ld [wAnimPalette], a
 	
-	ld a, [hGBC]
+	ld a, [wGBC]
 	and a
 	ret z 
 	
