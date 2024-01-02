@@ -519,41 +519,32 @@ AnimationShakeScreenHorizontallySlow:
 	ret
 
 SetAnimationPalette:
-    ld a, [wOnSGB]
-    and a
-    ld a, $e4
-    jr z, .notSGB
-    ; Se è un Super Game Boy
-    ld a, $f0 ; Imposta la paletta del SGB per la scala di grigi
-    ld [$FF68], a ; Imposta il registro della prima riga della palette SGB
-    ld a, $b5
-    ld [$FF69], a ; Imposta il registro della seconda riga della palette SGB
-    ld a, $6b
-    ld [$FF6A], a ; Imposta il registro della terza riga della palette SGB
-    ld a, $00
-    ld [$FF6B], a ; Imposta il registro della quarta riga della palette SGB
-
-    ld b, $e4
-    ld a, [wAnimationID]
-    cp TRADE_BALL_DROP_ANIM
-    jr c, .next
-    cp TRADE_BALL_POOF_ANIM + 1
-    jr nc, .next
-    ld b, $f0
+	ld a, [wOnSGB]
+	and a
+	ld a, $e4
+	jr z, .notSGB
+	ld a, PAL_GREYMON
+	ld [wAnimPalette], a
+	ld b, $e4
+	ld a, [wAnimationID]
+	cp TRADE_BALL_DROP_ANIM
+	jr c, .next
+	cp TRADE_BALL_POOF_ANIM + 1
+	jr nc, .next
+	ld b, PAL_GREYMON
 .next
-    ld a, b
-    ld [$FF6C], a ; Imposta il registro della prima palette dei sprite SGB
-    ld a, $6c
-    ld [$FF6D], a ; Imposta il registro della seconda palette dei sprite SGB
-    ret
+	ld a, b
+	ld [rOBP0], a	
+	ld a, $6c
+	ld [rOBP1], a
+	ret
 .notSGB
-    ; Se non è un Super Game Boy
-    ld a, $e4
-    ld [wAnimPalette], a
-    ld [$FF6C], a ; Imposta il registro della prima palette dei sprite SGB
-    ld a, $6c
-    ld [$FF6D], a ; Imposta il registro della seconda palette dei sprite SGB
-    ret
+	ld a, $e4
+	ld [wAnimPalette], a
+	ld [rOBP0], a
+	ld a, $6c
+	ld [rOBP1], a
+	ret
 
 PlaySubanimation:
 	ld a, [wAnimSoundID]
