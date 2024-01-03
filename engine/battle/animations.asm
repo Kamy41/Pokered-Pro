@@ -522,8 +522,8 @@ SetAnimationPalette:
 	ld a, [wOnSGB]
 	and a
 ;	ld a, $e4
-	jr z, .notSGB
-	ld a, $e4
+	jr nz, .notSGB
+	ld a, $f0
 ;	ld a, PAL_MEWMON             ; new move pal
 	ld [wAnimPalette], a
 	ld b, $e4
@@ -532,22 +532,18 @@ SetAnimationPalette:
 	jr c, .next
 	cp TRADE_BALL_POOF_ANIM + 1
 	jr nc, .next
-	ld b, PAL_MEWMON
 	ld b, $f0
 .next
 	ld a, b
 	ld [rOBP0], a	
-	ld a, PAL_MEWMON
-;	ld a, $6c
+	ld a, $6c
 	ld [rOBP1], a
 	ret
 .notSGB
-	ld a, PAL_MEWMON
-;	ld a, $e4
+	ld a, $e4
 	ld [wAnimPalette], a
 	ld [rOBP0], a
-	ld a, PAL_MEWMON
-;	ld a, $6c
+	ld a, $6c
 	ld [rOBP1], a
 	ret
 
