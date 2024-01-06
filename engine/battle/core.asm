@@ -1302,10 +1302,6 @@ SlideDownFaintedMonPic:
 	push de
 	push hl
 	ld b, 6 ; number of rows
-
-	xor a	;joenote - fix screen tearing by not letting BG transfer while looping through rows
-	ld [H_AUTOBGTRANSFERENABLED], a
-
 .rowLoop
 	push bc
 	push hl
@@ -1355,10 +1351,6 @@ SlideTrainerPicOffScreen:
 	push bc
 	push hl
 	ld b, 7 ; number of rows
-
-	xor a	;joenote - fix screen tearing by not letting BG transfer while looping through rows
-	ld [H_AUTOBGTRANSFERENABLED], a
-
 .rowLoop
 	push hl
 	ld a, [hSlideAmount]
