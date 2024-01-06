@@ -201,7 +201,7 @@ SlidePlayerHeadLeft:
 	ld c, $15 ; number of OAM entries
 	ld de, $4 ; size of OAM entry
 .loop
-;	dec [hl] ; decrement X
+	dec [hl] ; decrement X
 	dec [hl] ; decrement X
 	add hl, de ; next OAM entry
 	dec c
@@ -210,11 +210,22 @@ SlidePlayerHeadLeft:
 	ret
 
 SetScrollXForSlidingPlayerBodyLeft:
-	ld a, [rLY]
+	ld a, NOT_VBLANKED	;set H_VBLANKOCCURRED to a non-zero value ; it becomes zero to indicate vblank happened
+	ld [H_VBLANKOCCURRED], a
+.wait
+	ld a, [rLY] ; rLY
 	cp l
-	jr nz, SetScrollXForSlidingPlayerBodyLeft
+	jr z, .update	;update SCX if we have reached the line specified in 'l'
+	ld a, [H_VBLANKOCCURRED]	;otherwise see if vblank happened in the meantime
+	and a
+	jr nz, .wait	;if vblank hasn't happened, then keep waiting to reach the needed line
+	ld a, [rLY]	;otherwise vblank happened already while waiting; get the current line
+	cp l	;is the current line still less than the needed line?
+	jr c, .wait	;if so keep waiting; otherwise just go ahead and update SCX to head off another vblank
+.update
 	ld a, h
 	ld [rSCX], a
+	ret
 .loop
 	ld a, [rLY]
 	cp h
