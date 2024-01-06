@@ -201,7 +201,7 @@ SlidePlayerHeadLeft:
 	ld c, $15 ; number of OAM entries
 	ld de, $4 ; size of OAM entry
 .loop
-	dec [hl] ; decrement X
+;	dec [hl] ; decrement X
 	dec [hl] ; decrement X
 	add hl, de ; next OAM entry
 	dec c
