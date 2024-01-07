@@ -284,7 +284,7 @@ SlowbroEvosMoves:
 	db 33, WATER_GUN
 	db 37, WITHDRAW
 	db 44, AMNESIA
-	db 54, PSYCHIC_M
+	db 54, PSYCHIC_M   ; edited for Elite Four fun
 	db 0
 
 IvysaurEvosMoves:
@@ -399,13 +399,12 @@ RhyhornEvosMoves:
 	db 0
 
 LaprasEvosMoves:
-; Swapped order of ConfuseRay and BodySlam to fix new TeamMoves
 ; Evolutions
 	db 0
 ; Learnset
 	db 16, SING
 	db 20, MIST
-	db 25, CONFUSE_RAY
+	db 25, CONFUSE_RAY   ; Swapped order to fix new TeamMoves
 	db 31, BODY_SLAM
 	db 38, ICE_BEAM
 	db 46, HYDRO_PUMP
@@ -600,7 +599,6 @@ PidgeyEvosMoves:
 	db 0
 
 SlowpokeEvosMoves:
-; Slowpoke evolves at any level, as long as a Shellder is in your party, then Shellder disappears
 ; Evolutions
 	db EV_FUSE, SHELLDER, 1, SLOWBRO
 	db 0
@@ -972,8 +970,8 @@ JynxEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 18, LICK
-	db 23, DOUBLESLAP
+	db 18, DOUBLESLAP   ; edited for Elite Four fun
+	db 23, LICK
 	db 31, ICE_PUNCH
 	db 39, BODY_SLAM
 	db 47, THRASH
