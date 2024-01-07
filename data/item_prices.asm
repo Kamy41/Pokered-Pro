@@ -30,9 +30,9 @@ ItemPrices:
 	money 550   ; ESCAPE_ROPE
 	money 350   ; REPEL
 	money 0     ; OLD_AMBER
-	money 2100  ; FIRE_STONE
-	money 2100  ; THUNDER_STONE
-	money 2100  ; WATER_STONE
+	money 21000 ; FIRE_STONE
+	money 21000 ; THUNDER_STONE
+	money 21000 ; WATER_STONE
 	money 9800  ; HP_UP
 	money 9800  ; PROTEIN
 	money 9800  ; IRON
@@ -45,7 +45,7 @@ ItemPrices:
 	money 0     ; XXX
 	money 0     ; BIKE_VOUCHER
 	money 950   ; X_ACCURACY
-	money 2100  ; LEAF_STONE
+	money 21000 ; LEAF_STONE
 	money 0     ; CARD_KEY
 	money 10000 ; NUGGET
 	money 9800  ; XXX PP_UP
