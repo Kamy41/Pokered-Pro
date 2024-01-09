@@ -926,10 +926,10 @@ FireBlastAnim:
 	db $FF
 
 WaterfallAnim:
-	db SE_SLIDE_MON_DOWN, $48
+	db SE_SLIDE_MON_UP, $48
 	db $06,$37,$1A
 	db $08,$FF,$02
-	db SE_SLIDE_MON_UP, $FF
+	db SE_SLIDE_MON_DOWN, $FF
 	db $FF
 
 ClampAnim:
