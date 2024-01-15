@@ -4016,9 +4016,6 @@ PrintMoveFailureText:
 	ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
 	               ; Thus, recoil damage will always be equal to 1
 	               ; even if it was intended to be potential damage/8.
-; aggiungi 2 al registro A
-	ld c, 2
-	add a, c    ; fine addizione
 	ld a, [hli]
 	ld b, [hl]
 	srl a
