@@ -4013,7 +4013,7 @@ PrintMoveFailureText:
 	ret nz
 
 	; if you get here, the mon used jump kick or hi jump kick and missed
-	ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
+	ld hl, wDamage+9 ; since the move missed, wDamage will always contain 0 at this point.
 	               ; Thus, recoil damage will always be equal to 1
 	               ; even if it was intended to be potential damage/8.
 	ld a, [hli]
