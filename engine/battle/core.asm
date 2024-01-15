@@ -4024,8 +4024,8 @@ PrintMoveFailureText:
 	rr b
 	srl a
 	rr b
-; aggiungi 9 al registro A
-	ld c, 9
+; aggiungi 2 al registro A
+	ld c, 2
 	add a, c    ; fine addizione
 	ld [hl], b
 	dec hl
