@@ -4026,7 +4026,7 @@ PrintMoveFailureText:
 	rr b
 ;;;;;
 	ld hl, wDamage
-	ld c, $9
+	ld c, $1
 	add a, c
 ;;;;;
 	ld [hl], b
