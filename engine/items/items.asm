@@ -251,7 +251,7 @@ ItemUseBall:
 
 ; Determine BallFactor. It's 8 for Great Balls and 12 for the others.
 	ld a, [wcf91]
-	cp GREAT_BALL
+	cp SAFARI_BALL
 	ld a, 12
 	jr nz, .skip1
 	ld a, 8
