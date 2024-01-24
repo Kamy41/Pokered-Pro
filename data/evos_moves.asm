@@ -305,6 +305,7 @@ ExeggutorEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 25, CONFUSION	
 	db 28, STOMP
 	db 0
 
