@@ -215,6 +215,7 @@ AIMoveChoiceModification3:
 	ld a, [wEnemyMovePower]  ; added for BP check
 	and a 	                 ; check if it's zero
 	jr z, .nextMove		 ; added for BP check
+	cp SLEEP_EFFECT
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
 .notEffectiveMove ; discourages non-effective moves if better moves are available	
