@@ -5602,7 +5602,7 @@ MoveHitTest:
 	jr nz, .swiftCheck
 	ld a, [bc]
 	and SLP ; is the target pokemon sleeping?
-	jp z, .useRandomMove ; .moveMissed
+	jp z, .moveMissed
 .swiftCheck
 	ld a, [de]
 	cp SWIFT_EFFECT
