@@ -809,9 +809,8 @@ KoffingEvosMoves:
 ; Learnset
 	db 32, SLUDGE
 	db 37, SMOKESCREEN
-	db 40, POISON_GAS
-	db 45, HAZE
-	db 48, EXPLOSION
+	db 40, HAZE
+	db 45, EXPLOSION
 	db 0
 
 MissingNo38EvosMoves:
@@ -1653,9 +1652,8 @@ WeezingEvosMoves:
 ; Learnset
 	db 32, SLUDGE
 	db 39, SMOKESCREEN
-	db 43, POISON_GAS
-	db 49, HAZE
-	db 53, EXPLOSION
+	db 43, HAZE
+	db 49, EXPLOSION
 	db 0
 
 PersianEvosMoves:
