@@ -939,8 +939,8 @@ ClampAnim:
 	db $FF
 
 SwiftAnim:
-	db $46,$80,$3F
-	db $46,$FF,$3F
+	db $42,$80,$3F
+	db $42,$FF,$3F
 	db $FF
 
 SkullBashAnim:
