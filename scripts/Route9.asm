@@ -81,7 +81,7 @@ Route9TrainerHeader5:
 
 Route9TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROUTE_9_TRAINER_6
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 3) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_9_TRAINER_6
 	dw Route9BattleText7 ; TextBeforeBattle
 	dw Route9AfterBattleText7 ; TextAfterBattle
