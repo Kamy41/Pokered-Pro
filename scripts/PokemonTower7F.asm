@@ -77,6 +77,8 @@ PokemonTower7Script4:
 	ld [wDestinationWarpID], a
 	ld a, LAVENDER_TOWN
 	ld [wLastMap], a
+	ld hl, wd736
+	set 2, [hl] ; joenote - set standing on warp flag for when Fuji's house is entered to prevent being blocked from leaving
 	ld hl, wd72d
 	set 3, [hl]
 	ld a, $0
