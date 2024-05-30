@@ -56,6 +56,8 @@ Route16GateScript1:
 	ret nz
 	ld a, $f0
 	ld [wJoyIgnore], a
+	;joenote - prevent amazing man from happening here
+	call UpdateSprites
 
 Route16GateScript2:
 	ld a, $1
