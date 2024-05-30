@@ -27,7 +27,8 @@ Route8GateScript0:
 	ld hl, CoordsData_1e22c
 	call ArePlayerCoordsInArray
 	ret nc
-	ld a, PLAYER_DIR_LEFT
+	;ld a, PLAYER_DIR_LEFT
+	ld a, PLAYER_DIR_UP	;joenote - fixing what was probably a typo
 	ld [wPlayerMovingDirection], a
 	xor a
 	ld [hJoyHeld], a
