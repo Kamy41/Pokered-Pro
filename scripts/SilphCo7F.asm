@@ -199,6 +199,13 @@ SilphCo7Script3:
 	ld a, $9
 .asm_51cc0
 	ld [wTrainerNo], a
+
+	ld a, $9
+	ld [H_SPRITEINDEX], a
+	ld a, SPRITE_FACING_UP
+	ld [hSpriteFacingDirection], a
+	call SetSpriteFacingDirectionAndDelay
+
 	ld a, $4
 	jp SilphCo7Text_51c10
 
@@ -211,11 +218,11 @@ SilphCo7Script4:
 	SetEvent EVENT_BEAT_SILPH_CO_RIVAL
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
-	ld a, $9
-	ld [H_SPRITEINDEX], a
-	ld a, SPRITE_FACING_UP
-	ld [hSpriteFacingDirection], a
-	call SetSpriteFacingDirectionAndDelay
+	; ld a, $9
+	; ld [H_SPRITEINDEX], a
+	; ld a, SPRITE_FACING_UP
+	; ld [hSpriteFacingDirection], a
+	; call SetSpriteFacingDirectionAndDelay
 	ld a, $f
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
