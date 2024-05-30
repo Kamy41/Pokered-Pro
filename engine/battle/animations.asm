@@ -1996,7 +1996,11 @@ AnimationWavyScreen:
 	ld c, $ff
 	ld hl, WavyScreenLineOffsets
 .loop
-	push hl
+	;joenote - Sync hSCX to the first line. This avoids the top 3 pixels from being overridden by the vsync interrupt
+	;credit to easyaspi314 for finding this
+	ld a, [hl]
+	ld [hSCX], a
+        push hl
 .innerLoop
 	call WavyScreen_SetSCX
 	ld a, [rLY]
@@ -2012,6 +2016,7 @@ AnimationWavyScreen:
 	dec c
 	jr nz, .loop
 	xor a
+        ld [hSCX], a	;joenote - reset the X scroll
 	ld [hWY], a
 	call SaveScreenTilesToBuffer2
 	call ClearScreen
@@ -2088,7 +2093,14 @@ CopySlowbroSpriteData:
 	jp FarCopyData2
 
 HideSubstituteShowMonAnim:
-	ld a, [H_WHOSETURN]
+;joenote - if in the middle of a multi-attack move, only hide on the first attack (attaks left = 0)
+        callba TestMultiAttackMoveUse
+	jr nz, .next
+	callba TestMultiAttackMoveUse_firstAttack
+	ret nz ;don't hide substitute if attacks left >= 1
+	;will hide if substitute broken because attacks left should be zero
+.next
+        ld a, [H_WHOSETURN]
 	and a
 	ld hl, wPlayerMonMinimized
 	ld a, [wPlayerBattleStatus2]
@@ -2113,7 +2125,14 @@ HideSubstituteShowMonAnim:
 	jp AnimationShowMonPic
 
 ReshowSubstituteAnim:
-	call AnimationSlideMonOff
+;joenote - if in the middle of a multi-attack move, only reshow after the last attack
+;Note that ReshowSubstituteAnim is not called if a substitute gets broken
+	callba TestMultiAttackMoveUse
+	jr nz, .next
+	callba TestMultiAttackMoveUse_lastAttack
+	ret nz
+.next
+        call AnimationSlideMonOff
 	call AnimationSubstitute
 	jp AnimationShowMonPic
 
