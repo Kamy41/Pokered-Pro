@@ -22,6 +22,12 @@ CinnabarIslandScript0:
 	ld a, [wXCoord]
 	cp $12
 	ret nz
+
+	;This will make it so the player cannot get stuck in this coordinate by a blocking NPC.
+	ld a, [wSpriteStateData1 + 9]
+	cp SPRITE_FACING_DOWN
+	ret z
+
 	ld a, PLAYER_DIR_UP
 	ld [wPlayerMovingDirection], a
 	ld a, $8
