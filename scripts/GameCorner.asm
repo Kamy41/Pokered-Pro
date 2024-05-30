@@ -13,7 +13,8 @@ CeladonGameCornerScript_48bcf:
 	ret z
 	call Random
 	ld a, [hRandomAdd]
-	cp $7
+	; cp $7
+	cp $8
 	jr nc, .asm_48be2
 	ld a, $8
 .asm_48be2
