@@ -54,7 +54,8 @@ HallofFameRoomScript2:
 	dec b
 	jr nz, .delayLoop
 	call WaitForTextScrollButtonPress
-	jp Init
+	; jp Init
+	jp SoftReset ;joenote - fix an issue where junk tiles display for 1 frame because SoftReset whites-out the screen
 
 HallofFameRoomScript0:
 	ld a, $ff
