@@ -524,9 +524,9 @@ SetAnimationPalette:
 	and a
 ;	ld a, $e4    ;redundant
 	jr z, .notSGB
-;	ld a, $f0
-	ld a, PAL_MEWMON             ; new move pal
-;	ld [wAnimPalette], a
+	ld a, $f0
+;	ld a, PAL_MEWMON             ; new move pal
+	ld [wAnimPalette], a
 	ld a, [wAnimationID]
 	cp TRADE_BALL_DROP_ANIM
 	jr c, .next
@@ -534,11 +534,11 @@ SetAnimationPalette:
 	jr nc, .next
 	ld b, $f0
 .next
-;	ld a, b
-;	ld [rOBP0], a	
-;	ld a, $6c
-;	ld [rOBP1], a
-;	ret
+	ld a, b
+	ld [rOBP0], a	
+	ld a, $6c
+	ld [rOBP1], a
+	ret
 .notSGB
 	ld a, b
 	ld [wAnimPalette], a
