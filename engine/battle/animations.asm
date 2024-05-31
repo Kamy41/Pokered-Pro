@@ -526,7 +526,7 @@ SetAnimationPalette:
 	jr z, .notSGB
 ;	ld a, $f0
 	ld a, PAL_MEWMON             ; new move pal
-	ld [wAnimPalette], a
+;	ld [wAnimPalette], a
 	ld a, [wAnimationID]
 	cp TRADE_BALL_DROP_ANIM
 	jr c, .next
