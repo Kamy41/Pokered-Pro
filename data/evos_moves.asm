@@ -404,9 +404,9 @@ LaprasEvosMoves:
 ; Learnset
 	db 16, SING
 	db 20, MIST
-	db 25, CONFUSE_RAY   ; Swapped order to fix new TeamMoves
+	db 25, ICE_BEAM   ; Swapped order to fix new TeamMoves
 	db 31, BODY_SLAM
-	db 38, ICE_BEAM
+	db 38, CONFUSE_RAY
 	db 46, HYDRO_PUMP
 	db 0
 
