@@ -2373,7 +2373,7 @@ MoveSoundTable:
 	db SFX_BATTLE_0D,         $00,$40 ; MEGA_PUNCH
 	db SFX_SILPH_SCOPE,       $00,$ff ; PAY_DAY
 	db SFX_BATTLE_22,         $10,$c0 ; FIRE_PUNCH
-	db SFX_BATTLE_22,         $11,$c0 ; ICE_PUNCH
+	db SFX_BATTLE_14,         $00,$20 ; ICE_PUNCH    unused, reused as backup for CONFUSION 
 	db SFX_BATTLE_22,         $00,$c0 ; THUNDERPUNCH
 	db SFX_DAMAGE_1,          $00,$80 ; SCRATCH
 	db SFX_BATTLE_0F,         $20,$40 ; VICEGRIP
