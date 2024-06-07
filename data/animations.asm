@@ -584,7 +584,7 @@ SeismicTossAnim:
 StrengthAnim:
 	db SE_MOVE_MON_HORIZONTALLY, $48
 	db SE_RESET_MON_POSITION, $FF
-	db $46,$04,$04
+	db $46,$06,$04
 	db $FF
 
 AbsorbAnim:
@@ -1051,7 +1051,7 @@ FlashAnim:
 
 PsywaveAnim:
 	db $06,$2F,$31
-	db SE_WAVY_SCREEN, $5C
+	db SE_WAVY_SCREEN, $07
 	db $FF
 
 SplashAnim:
