@@ -4949,18 +4949,22 @@ ApplyAttackToEnemyPokemon:
 	jr z, .storeDamage
 ; Psywave
 	ld a, [hl]
-	ld b, a
+	ld b, a       ; b = level
 	srl a
-	add b
-	ld b, a ; b = level * 1.5
+	ld c, a       ; c = level / 2
+ 	ld a, b
+ 	add a, c
+  	ld b, a       ; b = level + level / 2 = level * 1.5
 ; loop until a random number in the range [1, b) is found
 .loop
 	call BattleRandom
-	and a
-	jr z, .loop
-	cp b
-	jr nc, .loop
-	ld b, a
+   	and a
+   	jr z, .loop
+   	cp c
+  	jr c, .loop    ; if a < level / 2, repeat
+  	cp b
+  	jr nc, .loop   ; if a >= level * 1.5, repeat
+  	ld b, a
 .storeDamage ; store damage value at b
 	ld hl, wDamage
 	xor a
@@ -5068,18 +5072,22 @@ ApplyAttackToPlayerPokemon:
 	jr z, .storeDamage
 ; Psywave
 	ld a, [hl]
-	ld b, a
+	ld b, a       ; b = level
 	srl a
-	add b
-	ld b, a ; b = attacker's level * 1.5
+	ld c, a       ; c = level / 2
+ 	ld a, b
+ 	add a, c
+  	ld b, a       ; b = level + level / 2 = level * 1.5
 ; loop until a random number in the range [1, b) is found
 .loop
 	call BattleRandom
-	and a
-	jr z, .loop
-	cp b
-	jr nc, .loop
-	ld b, a
+        and a
+        jr z, .loop
+        cp c
+        jr c, .loop    ; if a < level / 2, repeat
+        cp b
+        jr nc, .loop   ; if a >= level * 1.5, repeat
+        ld b, a
 .storeDamage
 	ld hl, wDamage
 	xor a
