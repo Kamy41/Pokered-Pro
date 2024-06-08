@@ -314,7 +314,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,0    ; ROCKET
 	db 1,3,0  ; COOLTRAINER_M
 	db 1,3,0  ; COOLTRAINER_F
-	db 1,2,0  ; BRUNO
+	db 1,3,0  ; BRUNO
 	db 1,0    ; BROCK
 	db 1,3,0  ; MISTY
 	db 1,3,0  ; LT_SURGE
