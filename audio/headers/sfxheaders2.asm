@@ -240,9 +240,6 @@ SFX_Battle_0F::
 
 SFX_Damage::
 	audio_header SFX_Damage, Ch8
-	
-SFX_Damage_1::
-	audio_header SFX_Damage_1, Ch8
 
 SFX_Not_Very_Effective::
 	audio_header SFX_Not_Very_Effective, Ch8
