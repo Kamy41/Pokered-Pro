@@ -4955,7 +4955,7 @@ ApplyAttackToEnemyPokemon:
  	ld a, b
  	add a, c
   	ld b, a       ; b = level + level / 2 = level * 1.5
-; loop until a random number in the range [1, b) is found
+; loop until a random number in the range (c, b) is found
 .loop
 	call BattleRandom
    	and a
@@ -5078,7 +5078,7 @@ ApplyAttackToPlayerPokemon:
  	ld a, b
  	add a, c
   	ld b, a       ; b = level + level / 2 = level * 1.5
-; loop until a random number in the range [1, b) is found
+; loop until a random number in the range (c, b) is found
 .loop
 	call BattleRandom
         and a
