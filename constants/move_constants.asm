@@ -164,7 +164,7 @@ const_value = 1
 	const SUPER_FANG   ; a2
 	const SLASH        ; a3
 	const SUBSTITUTE   ; a4
-	const TWISTER      ; a5
+;       const TWISTER      ; a5
 
 NUM_ATTACKS EQU const_value + -1
 

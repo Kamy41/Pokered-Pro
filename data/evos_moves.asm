@@ -1150,7 +1150,7 @@ HorseaEvosMoves:
 	db 0
 ; Learnset
 	db 19, SMOKESCREEN
-	db 24, TWISTER
+	db 24, MIST
 	db 30, WATER_GUN
 	db 37, AGILITY
 	db 45, HYDRO_PUMP
@@ -1161,7 +1161,7 @@ SeadraEvosMoves:
 	db 0
 ; Learnset
 	db 19, SMOKESCREEN
-	db 24, TWISTER
+	db 24, MIST
 	db 30, WATER_GUN
 	db 41, AGILITY
 	db 52, HYDRO_PUMP

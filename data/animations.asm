@@ -163,7 +163,7 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
-	dw TwisterAnim
+;       dw TwisterAnim
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -1134,13 +1134,13 @@ SubstituteAnim:
 	db SE_SUBSTITUTE_MON, $FF
 	db $FF
 
-TwisterAnim:
-	db SE_DARK_SCREEN_PALETTE, $FF
-	db $45,$A4,$10
-	db SE_DARK_SCREEN_FLASH, $FF
-	db $46,$FF,$04
-	db SE_RESET_SCREEN_PALETTE, $FF
-	db $FF
+; TwisterAnim:
+; 	db SE_DARK_SCREEN_PALETTE, $FF
+; 	db $45,$A4,$10
+; 	db SE_DARK_SCREEN_FLASH, $FF
+; 	db $46,$FF,$04
+; 	db SE_RESET_SCREEN_PALETTE, $FF
+; 	db $FF
 
 StruggleAnim:
 	db $08,$A5,$01

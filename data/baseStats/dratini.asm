@@ -14,7 +14,7 @@ dw DratiniPicBack
 ; attacks known at lvl 0
 db WRAP
 db LEER
-db TWISTER
+db 0
 db 0
 db 5 ; growth rate
 ; learnset
