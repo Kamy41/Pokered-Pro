@@ -224,13 +224,12 @@ ENDM
 	music_const SFX_BATTLE_0E,          SFX_Battle_0E
 	music_const SFX_BATTLE_0F,          SFX_Battle_0F
 	music_const SFX_DAMAGE,             SFX_Damage
-	music_const SFX_DAMAGE_1,           SFX_Damage_1
 	music_const SFX_NOT_VERY_EFFECTIVE, SFX_Not_Very_Effective
 	music_const SFX_BATTLE_12,          SFX_Battle_12
 	music_const SFX_BATTLE_13,          SFX_Battle_13
 	music_const SFX_BATTLE_14,          SFX_Battle_14
 	music_const SFX_VINE_WHIP,          SFX_Vine_Whip
-	music_const SFX_BATTLE_16,          SFX_Battle_16 ; unused?
+	music_const SFX_BATTLE_16,          SFX_Battle_16 ; unused? reused like Damage for other moves
 	music_const SFX_BATTLE_17,          SFX_Battle_17
 	music_const SFX_BATTLE_18,          SFX_Battle_18
 	music_const SFX_BATTLE_19,          SFX_Battle_19
