@@ -404,8 +404,8 @@ LaprasEvosMoves:
 ; Learnset
 	db 16, SING
 	db 20, MIST
-	db 25, ICE_BEAM   ; Swapped order to fix new TeamMoves
-	db 31, BODY_SLAM
+	db 25, BODY_SLAM
+	db 31, ICE_BEAM    ; Swapped order to fix new TeamMoves
 	db 38, CONFUSE_RAY
 	db 46, HYDRO_PUMP
 	db 0
@@ -915,8 +915,8 @@ DragoniteEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 35, SLAM
-	db 45, DRAGON_RAGE
+	db 35, DRAGON_RAGE    ; Swapped order to fix new TeamMoves
+	db 45, SLAM
 	db 55, WING_ATTACK
 	db 60, HYPER_BEAM
 	db 0
@@ -1107,8 +1107,8 @@ DratiniEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 30, SLAM
-	db 40, DRAGON_RAGE
+	db 30, DRAGON_RAGE    ; Swapped order to fix new TeamMoves
+	db 40, SLAM
 	db 50, HYPER_BEAM
 	db 0
 
@@ -1119,8 +1119,8 @@ DragonairEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 35, SLAM
-	db 45, DRAGON_RAGE
+	db 35, DRAGON_RAGE    ; Swapped order to fix new TeamMoves
+	db 45, SLAM
 	db 55, HYPER_BEAM
 	db 0
 
