@@ -904,7 +904,7 @@ VenonatEvosMoves:
 	db 24, POISONPOWDER
 	db 27, LEECH_LIFE
 	db 30, STUN_SPORE
-	db 35, PSYBEAM
+	db 34, PSYBEAM
 	db 38, SLEEP_POWDER
 	db 43, PSYCHIC_M
 	db 0
@@ -915,8 +915,8 @@ DragoniteEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 35, DRAGON_RAGE    ; Swapped order to fix new TeamMoves
-	db 45, SLAM
+	db 35, SLAM
+	db 45, DRAGON_RAGE
 	db 55, WING_ATTACK
 	db 60, HYPER_BEAM
 	db 0
@@ -1107,8 +1107,8 @@ DratiniEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 30, DRAGON_RAGE    ; Swapped order to fix new TeamMoves
-	db 40, SLAM
+	db 30, SLAM
+	db 40, DRAGON_RAGE
 	db 50, HYPER_BEAM
 	db 0
 
@@ -1119,8 +1119,8 @@ DragonairEvosMoves:
 ; Learnset
 	db 10, THUNDER_WAVE
 	db 20, AGILITY
-	db 35, DRAGON_RAGE    ; Swapped order to fix new TeamMoves
-	db 45, SLAM
+	db 35, SLAM
+	db 45, DRAGON_RAGE
 	db 55, HYPER_BEAM
 	db 0
 
