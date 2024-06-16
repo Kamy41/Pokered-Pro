@@ -508,7 +508,7 @@ Sony2AI:
 	ld a, 5
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseHyperPotion
+	jp AIUseSuperPotion
 
 Sony3AI:
 	cp 13 percent - 1
