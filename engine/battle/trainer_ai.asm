@@ -589,11 +589,11 @@ AIUseFullRestore:
 	ld [wEnemyMonHP], a
 	jr AIPrintItemUseAndUpdateHPBar
 
-;AIUsePotion:
+AIUsePotion:
 ; enemy trainer heals his monster with a potion
-;	ld a, POTION
-;	ld b, 20
-;	jr AIRecoverHP
+	ld a, POTION
+	ld b, 20
+	jr AIRecoverHP
 
 AIUseSuperPotion:
 ; enemy trainer heals his monster with a super potion
