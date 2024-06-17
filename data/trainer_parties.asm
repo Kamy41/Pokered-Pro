@@ -486,7 +486,7 @@ ScientistData:
 ; Silph Co. 3F/Mansion 1F
 	db 29,ELECTRODE,WEEZING,0
 ; Silph Co. 4F
-	db 35,ELECTABUZZ,0
+	db 33,ELECTABUZZ,0
 ; Silph Co. 5F
 	db 26,MAGNETON,KOFFING,WEEZING,MAGNEMITE,0
 ; Silph Co. 6F
