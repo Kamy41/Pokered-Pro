@@ -492,7 +492,7 @@ BlaineAI:
 	ld a, 10
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseHyperPotion
+	jp AIUseSuperPotion
 
 SabrinaAI:
 	cp 25 percent + 1
@@ -589,11 +589,11 @@ AIUseFullRestore:
 	ld [wEnemyMonHP], a
 	jr AIPrintItemUseAndUpdateHPBar
 
-AIUsePotion: ; unused
+;AIUsePotion:
 ; enemy trainer heals his monster with a potion
-	ld a, POTION
-	ld b, 20
-	jr AIRecoverHP
+;	ld a, POTION
+;	ld b, 20
+;	jr AIRecoverHP
 
 AIUseSuperPotion:
 ; enemy trainer heals his monster with a super potion
@@ -747,14 +747,14 @@ AIUseXAccuracy:
 	ld a, X_ACCURACY
 	jp AIPrintItemUse
 
-AIUseGuardSpec: ; unused
+AIUseGuardSpec:
 	call AIPlayRestoringSFX
 	ld hl, wEnemyBattleStatus2
 	set 1, [hl]
 	ld a, GUARD_SPEC
 	jp AIPrintItemUse
 
-AIUseDireHit: ; unused
+AIUseDireHit:
 	call AIPlayRestoringSFX
 	ld hl, wEnemyBattleStatus2
 	set 2, [hl]
