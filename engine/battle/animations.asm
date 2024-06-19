@@ -839,16 +839,19 @@ DoRockSlideSpecialEffects:
 
 FlashScreenEveryEightFrameBlocks:
 	ld a, [wSubAnimCounter]
-	and 7 ; is the subanimation counter exactly 8?
-	call z, AnimationFlashScreen ; if so, flash the screen
+;	and 7 ; is the subanimation counter exactly 8?
+;	call z, AnimationFlashScreen ; if so, flash the screen
+	srl a
+	call c, AnimationFlashScreen
 	ret
 
 ; flashes the screen if the subanimation counter is divisible by 4
 FlashScreenEveryFourFrameBlocks:
-	ld a, [wSubAnimCounter]
-	and 3
-	call z, AnimationFlashScreen
-	ret
+	jp AnimationFlashScreen	
+;	ld a, [wSubAnimCounter]
+;	and 3
+;	call z, AnimationFlashScreen
+;	ret
 
 ; used for Explosion and Selfdestruct
 DoExplodeSpecialEffects:
@@ -1165,11 +1168,11 @@ AnimationFlashScreen:
 	push af ; save initial palette
 	ld a, %00011011 ; 0, 1, 2, 3 (inverted colors)
 	ld [rBGP], a
-	ld c, 1
+	ld c, 2
 	call DelayFrames
 	xor a ; white out background
 	ld [rBGP], a
-	ld c, 1
+	ld c, 2
 	call DelayFrames
 	pop af
 	ld [rBGP], a ; restore initial palette
