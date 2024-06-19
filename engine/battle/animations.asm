@@ -1165,11 +1165,11 @@ AnimationFlashScreen:
 	push af ; save initial palette
 	ld a, %00011011 ; 0, 1, 2, 3 (inverted colors)
 	ld [rBGP], a
-	ld c, 6
+	ld c, 1
 	call DelayFrames
 	xor a ; white out background
 	ld [rBGP], a
-	ld c, 6
+	ld c, 1
 	call DelayFrames
 	pop af
 	ld [rBGP], a ; restore initial palette
