@@ -839,19 +839,19 @@ DoRockSlideSpecialEffects:
 
 FlashScreenEveryEightFrameBlocks:
 	ld a, [wSubAnimCounter]
-;	and 7 ; is the subanimation counter exactly 8?
-;	call z, AnimationFlashScreen ; if so, flash the screen
-	srl a
-	call c, AnimationFlashScreen
+	and 3 ; is the subanimation counter exactly 4?
+	call z, AnimationFlashScreen ; if so, flash the screen
+;	srl a
+;	call c, AnimationFlashScreen
 	ret
 
 ; flashes the screen if the subanimation counter is divisible by 4
 FlashScreenEveryFourFrameBlocks:
-	jp AnimationFlashScreen	
-;	ld a, [wSubAnimCounter]
-;	and 3
-;	call z, AnimationFlashScreen
-;	ret
+;	jp AnimationFlashScreen	
+	ld a, [wSubAnimCounter]
+	and 1
+	call z, AnimationFlashScreen
+	ret
 
 ; used for Explosion and Selfdestruct
 DoExplodeSpecialEffects:
