@@ -534,7 +534,7 @@ AuroraBeamAnim:
 HyperBeamAnim:
 	db SE_DARK_SCREEN_PALETTE, $48
 	db SE_SPIRAL_BALLS_INWARD, $FF
-	db $02,$3E,$2E
+	db $03,$3E,$2E
 	db SE_DARK_SCREEN_FLASH, $FF
 	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$04,$04
