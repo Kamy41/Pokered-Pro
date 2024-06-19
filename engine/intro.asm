@@ -137,14 +137,6 @@ PlayIntroScene:
 	call CheckForUserInterruption
 	ret c
 
-; lunge
-	ld a, SFX_INTRO_LUNGE
-	call PlaySound
-	ld a, (FightIntroFrontMon3 - FightIntroFrontMon) / BYTES_PER_TILE
-	ld [wIntroNidorinoBaseTile], a
-	ld de, IntroNidorinoAnimation7
-	jp AnimateIntroNidorino
-
 ; raise 2
 	ld b, GENGAR_INTRO_TILES2
 	call IntroCopyTiles
@@ -155,6 +147,14 @@ PlayIntroScene:
 	ld c, 30
 	call CheckForUserInterruption
 	ret c
+
+; lunge
+	ld a, SFX_INTRO_LUNGE
+	call PlaySound
+	ld a, (FightIntroFrontMon3 - FightIntroFrontMon) / BYTES_PER_TILE
+	ld [wIntroNidorinoBaseTile], a
+	ld de, IntroNidorinoAnimation7
+	jp AnimateIntroNidorino
 
 AnimateIntroNidorino:
 	ld a, [de]
