@@ -969,7 +969,7 @@ JynxEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 18, DOUBLESLAP   ; edited for Elite Four fun
+	db 18, DOUBLESLAP   ; swapped for Elite Four fun
 	db 23, LICK
 	db 31, ICE_PUNCH
 	db 39, BODY_SLAM
@@ -1131,7 +1131,7 @@ KabutoEvosMoves:
 ; Learnset
 	db 34, ABSORB
 	db 44, LEER
-	db 49, ROCK_SLIDE
+	db 49, ROCK_THROW
 	db 0
 
 KabutopsEvosMoves:
@@ -1141,7 +1141,7 @@ KabutopsEvosMoves:
 	db 34, ABSORB
 	db 40, SLASH
 	db 46, LEER
-	db 53, ROCK_SLIDE
+	db 53, ROCK_THROW
 	db 0
 
 HorseaEvosMoves:
@@ -1150,7 +1150,7 @@ HorseaEvosMoves:
 	db 0
 ; Learnset
 	db 19, SMOKESCREEN
-	db 24, MIST
+	db 24, FOCUS_ENERGY
 	db 30, WATER_GUN
 	db 37, AGILITY
 	db 45, HYDRO_PUMP
@@ -1161,7 +1161,7 @@ SeadraEvosMoves:
 	db 0
 ; Learnset
 	db 19, SMOKESCREEN
-	db 24, MIST
+	db 24, FOCUS_ENERGY
 	db 30, WATER_GUN
 	db 41, AGILITY
 	db 52, HYDRO_PUMP
@@ -1188,6 +1188,7 @@ SandshrewEvosMoves:
 	db 17, SLASH
 	db 24, POISON_STING
 	db 31, SWIFT
+	db 38, FURY_SWIPES
 	db 0
 
 SandslashEvosMoves:
@@ -1198,6 +1199,7 @@ SandslashEvosMoves:
 	db 17, SLASH
 	db 27, POISON_STING
 	db 36, SWIFT
+	db 47, FURY_SWIPES
 	db 0
 
 OmanyteEvosMoves:
