@@ -1,6 +1,6 @@
 db DEX_ARTICUNO ; pokedex id
 db 90 ; base hp
-db 85 ; base attack
+db 90 ; base attack
 db 100 ; base defense
 db 85 ; base speed
 db 125 ; base special
