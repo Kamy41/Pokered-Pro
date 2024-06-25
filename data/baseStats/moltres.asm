@@ -1,7 +1,7 @@
 db DEX_MOLTRES ; pokedex id
 db 90 ; base hp
 db 100 ; base attack
-db 90 ; base defense
+db 85 ; base defense
 db 90 ; base speed
 db 125 ; base special
 db FIRE ; species type 1
