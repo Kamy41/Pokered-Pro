@@ -947,9 +947,8 @@ DoduoEvosMoves:
 	db 20, GROWL
 	db 24, FURY_ATTACK
 	db 30, DRILL_PECK
-	db 36, RAGE
-	db 40, TRI_ATTACK
-	db 44, AGILITY
+	db 36, RAGE	
+	db 40, AGILITY
 	db 0
 
 PoliwagEvosMoves:
@@ -1263,7 +1262,7 @@ FlareonEvosMoves:
 	db 31, EMBER
 	db 37, TAIL_WHIP
 	db 40, BITE
-	db 42, SMOG
+	db 42, LEER
 	db 44, FIRE_SPIN
 	db 48, RAGE
 	db 54, FLAMETHROWER
@@ -1293,7 +1292,7 @@ VaporeonEvosMoves:
 	db 40, BITE
 	db 42, ACID_ARMOR
 	db 44, HAZE
-	db 48, AURORA_BEAM
+	db 48, MIST
 	db 54, HYDRO_PUMP
 	db 0
 
@@ -1406,9 +1405,9 @@ DodrioEvosMoves:
 	db 20, GROWL
 	db 24, FURY_ATTACK
 	db 30, DRILL_PECK
+	db 31, TRI_ATTACK
 	db 39, RAGE
-	db 45, TRI_ATTACK
-	db 51, AGILITY
+	db 45, AGILITY
 	db 0
 
 PrimeapeEvosMoves:
