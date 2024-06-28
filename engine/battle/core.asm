@@ -4013,9 +4013,17 @@ PrintMoveFailureText:
 	ret nz
 
 	; if you get here, the mon used jump kick or hi jump kick and missed
-	ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
-	               ; Thus, recoil damage will always be equal to 1
-	               ; even if it was intended to be potential damage/8.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - set the bit that indicates a pkmn hurt itself in confusion or took crash damage
+	ld a, [wUnusedC000]
+	set 7, a	;setting this bit causes counter to miss
+	ld [wUnusedC000], a 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	;ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
+	                ; Thus, recoil damage will always be equal to 1
+	                ; even if it was intended to be potential damage/8.
+	ld hl, wUnusedD71F ;joenote - threatened damage now gets put in this address on a miss.
+						;This should fix the issue with the proper recoil damage
 	ld a, [hli]
 	ld b, [hl]
 	srl a
@@ -4024,6 +4032,7 @@ PrintMoveFailureText:
 	rr b
 	srl a
 	rr b
+	ld hl, wDamage+1
 	ld [hl], b
 	dec hl
 	ld [hli], a
@@ -4758,7 +4767,8 @@ CriticalHitTest:
 	ld [wd0b5], a
 	call GetMonHeader
 	ld a, [wMonHBaseSpeed]
-	ld b, a	                     ; srl b (deleted below)
+	ld b, a
+	srl b                   ; /2 for regular move (effective (base speed / 2))
 	ld a, [H_WHOSETURN]
 	and a
 	ld hl, wPlayerMovePower
@@ -4767,23 +4777,26 @@ CriticalHitTest:
 	ld hl, wEnemyMovePower
 	ld de, wEnemyBattleStatus2
 .calcCriticalHitProbability
-;joenote - do not do a critical hit if a special damage move is being used
-	cp SPECIAL_DAMAGE_EFFECT
-	ret z
-;;;;;;;;;;;;	
+; normal hit is (base speed) / 2
+; focus energy is 2*(base speed) for a 4x crit rate
+; high crit move is 4*(base speed) for a 8x crit rate
         ld a, [hld]                  ; read base power from RAM
 	and a
 	ret z                        ; do nothing if zero
+; joenote - Also do not do a critical hit if a special damage move is being used (dragon rage, seismic toss, etc)
+; base power of 1 now signifies an expanded range to include moves like bide and counter 
+	cp 2
+	ret c	; do nothing if base power is 0 or 1
 	dec hl
 	ld c, [hl]                   ; read move id
 	ld a, [de]
 	bit GETTING_PUMPED, a        ; test for focus energy
-	jr z, .noFocusEnergyUsed     ; (fixed) bug: using focus energy causes a shift to the right instead of left
-                                     ; resulting in 1/4 the usual crit chance
-	sla b
-        jr c, .guaranteedCritical
-        sla b
-        jr c, .guaranteedCritical
+	jr z, .noFocusEnergyUsed     ; if getting pumped bit not set, then focus energy not used
+	                             ; else focus energy was used
+	sla b						 ;*2 for focus energy (effective +2x crit rate)
+	jr c, .capcritical
+	sla b						 ;*2 again for focus energy (effective +4x crit rate)
+	jr c, .capcritical
 
 .noFocusEnergyUsed
 	ld hl, HighCriticalMoves     ; table of high critical hit moves
@@ -4793,25 +4806,25 @@ CriticalHitTest:
 	jr z, .HighCritical          ; if so, the move about to be used is a high critical hit ratio move
 	inc a                        ; move on to the next move, FF terminates loop
 	jr nz, .Loop                 ; check the next move in HighCriticalMoves
-	srl b                        ; /2 for regular move (effective (base speed / 2))
-	jr .SkipHighCritical         ; continue as a normal move
+	jr .finishcalc               ; continue as a normal move
 .HighCritical
-	sla b                        ; *2 for high critical hit moves
-	jr nc, .noCarry
-	ld b, $ff                    ; cap at 255/256
-.noCarry
-	sla b                        ; *4 for high critical move (effective (base speed/2)*8))
-	jr nc, .SkipHighCritical
-	ld b, $ff
-.SkipHighCritical
+	sla b                        ; *2 for high critical hit moves (effective +2x crit rate)
+	jr c, .capcritical
+	sla b                        ; *2 again for high critical hit moves (effective +4x crit rate)
+	jr c, .capcritical
+	sla b                        ; *2 again for high critical hit moves (effective +8x crit rate)
+	jr nc, .finishcalc
+.capcritical
+	ld b, $ff					 ; cap at 255/256
+.finishcalc
 	call BattleRandom            ; generates a random value, in "a"
-	rlc a
-	rlc a
-	rlc a
+;joenote - this is redundant and seems like its messing with the statistical uniformity (somehow...)
+;	rlc a
+;	rlc a
+;	rlc a
 	cp b                         ; check a against calculated crit rate
 	ret nc                       ; no critical hit if no borrow
-.guaranteedCritical	
-        ld a, $1
+	ld a, $1
 	ld [wCriticalHitOrOHKO], a   ; set critical hit flag
 	ret
 
