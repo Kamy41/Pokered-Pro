@@ -410,12 +410,12 @@ TrainerAIPointers:
 	dbw 3,GenericAI
 	dbw 2,CooltrainerMAI ; cooltrainerm
 	dbw 1,CooltrainerFAI ; cooltrainerf
-	dbw 2,BrunoAI ; bruno
+	dbw 1,BrunoAI ; bruno
 	dbw 5,BrockAI ; brock
 	dbw 1,MistyAI ; misty
 	dbw 1,LtSurgeAI ; surge
 	dbw 1,ErikaAI ; erika
-	dbw 2,KogaAI ; koga
+	dbw 1,KogaAI ; koga
 	dbw 2,BlaineAI ; blaine
 	dbw 1,SabrinaAI ; sabrina
 	dbw 3,GenericAI
@@ -439,7 +439,7 @@ BlackbeltAI:
 GiovanniAI:
 	cp 25 percent + 1
 	ret nc
-	jp AIUseXSpeed
+	jp AIUseDireHit
 
 CooltrainerMAI:
 	cp 25 percent + 1
