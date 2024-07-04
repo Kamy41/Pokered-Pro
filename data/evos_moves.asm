@@ -279,7 +279,7 @@ SlowbroEvosMoves:
 	db 0
 ; Learnset
 	db 18, DISABLE
-	db 22, HEADBUTT
+	db 22, CONFUSION
 	db 27, GROWL
 	db 33, WATER_GUN
 	db 37, WITHDRAW
@@ -605,7 +605,7 @@ SlowpokeEvosMoves:
 	db 0
 ; Learnset
 	db 18, DISABLE
-	db 22, HEADBUTT
+	db 22, CONFUSION
 	db 27, GROWL
 	db 33, WATER_GUN
 	db 40, AMNESIA
