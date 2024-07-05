@@ -261,9 +261,8 @@ VoltorbEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
-	db 26, THUNDERSHOCK
 	db 29, LIGHT_SCREEN
-	db 36, SWIFT
+	db 36, THUNDERSHOCK
 	db 43, EXPLOSION
 	db 0
 
@@ -326,8 +325,8 @@ ExeggcuteEvosMoves:
 ; Learnset
 	db 25, GROWTH
 	db 28, LEECH_SEED
-	db 32, EGG_BOMB
-	db 34, STUN_SPORE
+	db 32, STUN_SPORE
+	db 34, EGG_BOMB
 	db 37, POISONPOWDER
 	db 42, SOLARBEAM
 	db 48, SLEEP_POWDER
@@ -531,12 +530,12 @@ TangelaEvosMoves:
 	db 0
 ; Learnset
 	db 24, ABSORB
-	db 27, VINE_WHIP
+	db 29, VINE_WHIP
 	db 32, POISONPOWDER
 	db 36, STUN_SPORE
 	db 39, SLEEP_POWDER
 	db 45, SLAM
-	db 49, GROWTH
+	db 48, GROWTH
 	db 0
 
 MissingNo1FEvosMoves:
@@ -811,7 +810,7 @@ KoffingEvosMoves:
 	db 32, SLUDGE
 	db 37, SELFDESTRUCT
 	db 40, SMOKESCREEN
-	db 45, HAZE
+	db 45, EXPLOSION
 	db 0
 
 MissingNo38EvosMoves:
@@ -1488,13 +1487,13 @@ ButterfreeEvosMoves:
 	db 0
 ; Learnset
 	db 10, CONFUSION
-	db 13, POISONPOWDER
-	db 14, STUN_SPORE
-	db 15, SLEEP_POWDER
-        db 18, SUPERSONIC
-	db 23, WHIRLWIND
-	db 28, GUST
-	db 34, PSYBEAM
+	db 15, POISONPOWDER
+	db 16, STUN_SPORE
+	db 17, SLEEP_POWDER
+        db 21, SUPERSONIC
+	db 26, WHIRLWIND
+	db 32, GUST
+	db 40, PSYBEAM
 	db 0
 
 MachampEvosMoves:
@@ -1636,9 +1635,8 @@ ElectrodeEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
-	db 26, THUNDERSHOCK
 	db 29, LIGHT_SCREEN
-	db 40, SWIFT
+	db 40, THUNDERSHOCK
 	db 50, EXPLOSION
 	db 0
 
@@ -1655,7 +1653,7 @@ WeezingEvosMoves:
 	db 32, SLUDGE
 	db 39, SELFDESTRUCT
 	db 43, SMOKESCREEN
-	db 49, HAZE
+	db 49, EXPLOSION
 	db 0
 
 PersianEvosMoves:
@@ -1673,6 +1671,7 @@ MarowakEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 18, HEADBUTT
 	db 25, LEER
 	db 33, FOCUS_ENERGY
 	db 41, THRASH
