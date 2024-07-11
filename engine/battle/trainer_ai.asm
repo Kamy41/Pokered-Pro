@@ -492,7 +492,7 @@ BlaineAI:
 	ld a, 10
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseSuperPotion
+	jp AIUseHyperPotion
 
 SabrinaAI:
 	cp 25 percent + 1
@@ -500,7 +500,7 @@ SabrinaAI:
 	ld a, 10
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseSuperPotion
+	jp AIUseHyperPotion
 
 Sony2AI:
 	cp 13 percent - 1
