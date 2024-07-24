@@ -6857,9 +6857,16 @@ CalculateModifiedStat:
 ApplyBadgeStatBoosts:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	ret z ; return if link battle
+	jr z, .return ; return if link battle
+;	ret z ; return if link battle
+;joenote - only apply badge stat boosts in wild battles to keep parity with ai trainers
+	ld a, [wIsInBattle]
+	cp $1 ; is it a wild battle?
+	jr nz, .return ; return if not wild
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wObtainedBadges]
 	ld b, a
+	call .selectiveBadgeBoost	;joenote - jump down and run new section
 	ld hl, wBattleMonAttack
 	ld c, $4
 ; the boost is applied for badges whose bit position is even
@@ -6877,7 +6884,10 @@ ApplyBadgeStatBoosts:
 	dec c
 	jr nz, .loop
 	ret
-
+.return	;joenote - clear out stat mod address offset backup
+	xor a
+	ld [wUnusedD71B], a
+	ret
 ; multiply stat at hl by 1.125
 ; cap stat at 999
 .applyBoostToStat
@@ -6906,6 +6916,32 @@ ApplyBadgeStatBoosts:
 	ld a, 999 % $100
 	ld [hld], a
 	ret
+
+;joenote - check for backed up stat mod address offset to selectively apply badge boosts
+.selectiveBadgeBoost
+	;b holds the obtained badge bits that are used to apply boosts
+	ld a, [wUnusedD71B]	;get the backed-up offset into 'a'
+	and a
+	ret z	;kick out if zero so the function will apply all normal badge boosts
+	ld c, $5	;load a value of 5 into c
+	cp c	;set carry  flag if the offset in a is < c's value (stat being affected is neither accuracy or evasion)
+	ret nc 	;kick out if carry flag not set so the function will apply all normal badge boosts
+	ld c, b	;put the badge bits into c and push onto stack
+	push bc
+	ld c, a	;put the offset value into c. it should be 1, 2, 3, or 4. use it as a loop counter.
+	ld a, $80	;set an initial bit that gets rolled around
+.selectloop
+	rla
+	rla
+	dec c
+	jr nz, .selectloop
+	pop bc	;get the badge bits back into c
+	ld b, a	;put the selected badge boost into b
+	ld a, c ;put badge bits into 'a'
+	and b	;AND a with b to clear the badge boost if you don't have that badge
+	ld b, a	;store it back into b
+	ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 LoadHudAndHpBarAndStatusTilePatterns:
 	call LoadHpBarAndStatusTilePatterns
