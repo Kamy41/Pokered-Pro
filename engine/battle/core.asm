@@ -7934,8 +7934,44 @@ UpdateStatDone:
 	call PrintText
 
 ; these shouldn't be here
-	call QuarterSpeedDueToParalysis ; apply speed penalty to the player whose turn is not, if it's paralyzed
-	jp HalveAttackDueToBurn ; apply attack penalty to the player whose turn is not, if it's burned
+	;call QuarterSpeedDueToParalysis ; apply speed penalty to the player whose turn is not, if it's paralyzed
+	;jp HalveAttackDueToBurn ; apply attack penalty to the player whose turn is not, if it's burned
+;joenote - now to fix this to properly apply the BRN and PAR stat penalties.
+;In pokemon generation 1, stat-ups are always dealt to a pkmn's self on its own turn.
+;But the default penalty functions are written to apply penalties to the opponent of whoever's turn it is.
+;So if speed or attack rises: invert H_WHOSETURN, call the appropriate function, when revert H_WHOSETURN.
+;This make it so the penalties are applied to the self of whoever's turn it is.
+;All that remains is to check which stat-up is applied and call the appropriate function.
+	push de	;preserve de on the stack
+	ld de, wPlayerMoveEffect	;get the player move effect
+	ld a, [H_WHOSETURN]	;load the turn
+	and a	;check the turn
+	jr z, .skip1	;if it is not the player's turn...
+	ld de, wEnemyMoveEffect	;...then it's the enemy's turn - load enemy move effect
+.skip1
+	xor $1	;invert the turn
+	ld [H_WHOSETURN], a	;store the inverted turn
+	ld a, [de]	;get the move effect into a
+	cp ATTACK_UP1_EFFECT
+	jr z, .skip_brn	;attack effect. skip to brn penalty
+	cp ATTACK_UP2_EFFECT
+	jr z, .skip_brn	;attack effect. skip to brn penalty
+	cp SPEED_UP1_EFFECT
+	jr z, .skip_par	;speed effect. skip to par penalty.
+	cp SPEED_UP2_EFFECT
+	jr z, .skip_par	;speed effect. skip to par penalty.
+	jr .skip_end	;no attack or speed effect if at this line. skip to end.
+.skip_brn
+	call HalveAttackDueToBurn	;the active pkmn has a new recalculated attack. the non-active pkmn applies brn penalty to its opponent.
+	jr .skip_end
+.skip_par
+	call QuarterSpeedDueToParalysis	;the active pkmn has a new recalculated speed. the non-active pkmn applies par penalty to its opponent.
+.skip_end
+	ld a, [H_WHOSETURN]	;load the inverted turn
+	xor $1	;revert the turn back to normal
+	ld [H_WHOSETURN], a	;store the normal turn
+	pop de	;restore de from the stack
+	ret	;remember to return
 
 RestoreOriginalStatModifier:
 	pop hl
@@ -8126,8 +8162,37 @@ UpdateLoweredStatDone:
 ; These where probably added given that a stat-down move affecting speed or attack will override
 ; the stat penalties from paralysis and burn respectively.
 ; But they are always called regardless of the stat affected by the stat-down move.
-	call QuarterSpeedDueToParalysis
-	jp HalveAttackDueToBurn
+	;call QuarterSpeedDueToParalysis ; apply speed penalty to the player whose turn is not, if it's paralyzed
+	;jp HalveAttackDueToBurn ; apply attack penalty to the player whose turn is not, if it's burned
+;joenote - now to fix this to properly apply the BRN and PAR stat penalties.
+;In pokemon generation 1, stat-downs are always dealt to an opponent during the active pkmn's turn.
+;So the penalty functions have the correct assumption that whoever is getting a stat-down is not their turn
+;The correct function needs to be called depending on the stat-down being applied
+	push de	;preserve de on the stack
+	ld de, wPlayerMoveEffect	;get the player move effect
+	ld a, [H_WHOSETURN]	;load the turn
+	and a	;check the turn
+	jr z, .skip1	;if it is not the player's turn...
+	ld de, wEnemyMoveEffect	;...then it's the enemy's turn - load enemy move effect
+.skip1
+	ld a, [de]	;get the move effect into a
+	cp ATTACK_DOWN1_EFFECT
+	jr z, .skip_brn	;attack effect. skip to brn penalty
+	cp ATTACK_DOWN2_EFFECT
+	jr z, .skip_brn	;attack effect. skip to brn penalty
+	cp SPEED_DOWN1_EFFECT
+	jr z, .skip_par	;speed effect. skip to par penalty.
+	cp SPEED_DOWN2_EFFECT
+	jr z, .skip_par	;speed effect. skip to par penalty.
+	jr .skip_end	;no attack or speed effect if at this line. skip to end.
+.skip_brn
+	call HalveAttackDueToBurn	;the non-active pkmn has a new recalculated attack. the active pkmn applies brn penalty to its opponent.
+	jr .skip_end
+.skip_par
+	call QuarterSpeedDueToParalysis	;the non-active pkmn has a new recalculated speed. the active pkmn applies par penalty to its opponent.
+.skip_end
+	pop de	;restore de from the stack
+	ret	;remember to return 
 
 CantLowerAnymore_Pop:
 	pop de
