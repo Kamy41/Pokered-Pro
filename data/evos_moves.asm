@@ -198,8 +198,8 @@ RhydonEvosMoves:
 	db 0
 ; Learnset
         db 30, STOMP
-	db 35, FURY_ATTACK
-	db 40, TAIL_WHIP
+	db 35, TAIL_WHIP
+	db 40, FURY_ATTACK
 	db 48, HORN_DRILL
 	db 54, TAKE_DOWN
 	db 61, EARTHQUAKE
@@ -391,8 +391,8 @@ RhyhornEvosMoves:
 	db 0
 ; Learnset
         db 30, STOMP
-	db 35, FURY_ATTACK
-	db 40, TAIL_WHIP
+	db 35, TAIL_WHIP
+	db 40, FURY_ATTACK
 	db 45, HORN_DRILL
 	db 50, TAKE_DOWN
 	db 55, EARTHQUAKE
