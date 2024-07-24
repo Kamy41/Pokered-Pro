@@ -508,7 +508,7 @@ Sony2AI:
 	jp AIUseSuperPotion
 
 Sony3AI:
-	cp 13 percent - 1
+	cp 25 percent - 1
 	ret nc
 	ld a, 5
 	call AICheckIfHPBelowFraction
@@ -524,7 +524,7 @@ LoreleiAI:
 	jp AIUseHyperPotion
 
 BrunoAI:
-	cp 25 percent + 1
+	cp 50 percent + 1
 	ret nc
 	jp AIUseXAccuracy
 	
