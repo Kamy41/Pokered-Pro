@@ -810,7 +810,8 @@ KoffingEvosMoves:
 	db 32, SLUDGE
 	db 37, SELFDESTRUCT
 	db 40, SMOKESCREEN
-	db 45, EXPLOSION
+	db 45, HAZE
+	db 48, EXPLOSION
 	db 0
 
 MissingNo38EvosMoves:
@@ -1653,7 +1654,8 @@ WeezingEvosMoves:
 	db 32, SLUDGE
 	db 39, SELFDESTRUCT
 	db 43, SMOKESCREEN
-	db 49, EXPLOSION
+	db 49, HAZE
+	db 53, EXPLOSION
 	db 0
 
 PersianEvosMoves:
