@@ -31,7 +31,7 @@ MoveEnd:
 	move WHIRLWIND,    SWITCH_AND_TELEPORT_EFFECT,   0, NORMAL,   100, 20
 	move FLY,          FLY_EFFECT,                  70, FLYING,    95, 15
 	move BIND,         TRAPPING_EFFECT,             15, NORMAL,    95, 20
-	move SLAM,         NO_ADDITIONAL_EFFECT,        80, NORMAL,    75, 20
+	move SLAM,         NO_ADDITIONAL_EFFECT,        80, NORMAL,    85, 20
 	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        35, GRASS,    100, 15
 	move STOMP,        FLINCH_SIDE_EFFECT2,         65, NORMAL,   100, 20
 	move DOUBLE_KICK,  ATTACK_TWICE_EFFECT,         30, FIGHTING, 100, 30
@@ -133,7 +133,7 @@ MoveEnd:
 	move SELFDESTRUCT, EXPLODE_EFFECT,             130, NORMAL,   100,  5
 	move EGG_BOMB,     NO_ADDITIONAL_EFFECT,       100, NORMAL,    75, 10
 	move LICK,         PARALYZE_SIDE_EFFECT2,       30, GHOST,    100, 30
-	move SMOG,         POISON_SIDE_EFFECT2,         30, POISON,    70, 20
+	move SMOG,         POISON_SIDE_EFFECT2,         30, POISON,    75, 20
 	move SLUDGE,       POISON_SIDE_EFFECT2,         65, POISON,   100, 20
 	move BONE_CLUB,    FLINCH_SIDE_EFFECT1,         65, GROUND,    85, 20
 	move FIRE_BLAST,   BURN_SIDE_EFFECT2,          120, FIRE,      85,  5
