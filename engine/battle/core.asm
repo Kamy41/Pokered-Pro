@@ -4923,6 +4923,8 @@ ApplyAttackToEnemyPokemon:
 	jr z, .superFangEffect
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .specialDamage
+        cp TRAPPING_EFFECT	;joenote - clear hyper beam if target hit with trapping effect
+	call z, ClearHyperBeam
 	ld a, [wPlayerMovePower]
 	and a
 	jp z, ApplyAttackToEnemyPokemonDone ; no attack to apply if base power is 0
@@ -5046,6 +5048,8 @@ ApplyAttackToPlayerPokemon:
 	jr z, .superFangEffect
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .specialDamage
+        cp TRAPPING_EFFECT	;joenote - clear hyper beam if target hit with trapping effect
+	call z, ClearHyperBeam
 	ld a, [wEnemyMovePower]
 	and a
 	jp z, ApplyAttackToPlayerPokemonDone
@@ -8595,18 +8599,36 @@ DugAHoleText:
 	db "@"
 
 TrappingEffect:
+;joenote - make it so the effect won't take hold if target has type immunity
+	ld hl, wUnusedC000
+	set 3, [hl]
 	ld hl, wPlayerBattleStatus1
 	ld de, wPlayerNumAttacksLeft
 	ld a, [H_WHOSETURN]
 	and a
 	jr z, .trappingEffect
+	ld hl, wUnusedC000
+	res 3, [hl]
 	ld hl, wEnemyBattleStatus1
 	ld de, wEnemyNumAttacksLeft
 .trappingEffect
 	bit USING_TRAPPING_MOVE, [hl]
 	ret nz
-	call ClearHyperBeam ; since this effect is called before testing whether the move will hit,
+	
+	push hl
+	push bc
+	push de
+	call AIGetTypeEffectiveness
+	pop de
+	pop bc
+	pop hl
+	ld a, [wTypeEffectiveness]
+	and a
+	ret z
+	
+;	call ClearHyperBeam ; since this effect is called before testing whether the move will hit,
                         ; the target won't need to recharge even if the trapping move missed
+						;joenote - will do this later under ApplyAttackToEnemy/Player functions
 	set USING_TRAPPING_MOVE, [hl] ; mon is now using a trapping move
 	call BattleRandom ; 3/8 chance for 2 and 3 attacks, and 1/8 chance for 4 and 5 attacks
 	and $3
