@@ -1034,8 +1034,8 @@ BubbleAnim:
 
 DizzyPunchAnim:
 	db $06,$24,$02
-	db $06,$91,$17
-	db $06,$91,$17
+	db $06,$84,$17
+	db $06,$84,$17
 	db $FF
 
 SporeAnim:
