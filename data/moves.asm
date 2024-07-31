@@ -93,7 +93,7 @@ MoveEnd:
 	move PETAL_DANCE,  THRASH_PETAL_DANCE_EFFECT,   70, GRASS,    100, 20
 	move STRING_SHOT,  SPEED_DOWN1_EFFECT,           0, BUG,       95, 40
 	move DRAGON_RAGE,  SPECIAL_DAMAGE_EFFECT,        1, DRAGON,   100, 10
-	move FIRE_SPIN,    TRAPPING_EFFECT,             25, FIRE,      75, 15
+	move FIRE_SPIN,    TRAPPING_EFFECT,             20, FIRE,      75, 15
 	move THUNDERSHOCK, PARALYZE_SIDE_EFFECT1,       40, ELECTRIC, 100, 30
 	move THUNDERBOLT,  PARALYZE_SIDE_EFFECT1,       95, ELECTRIC, 100, 15
 	move THUNDER_WAVE, PARALYZE_EFFECT,              0, ELECTRIC, 100, 20
@@ -133,12 +133,12 @@ MoveEnd:
 	move SELFDESTRUCT, EXPLODE_EFFECT,             130, NORMAL,   100,  5
 	move EGG_BOMB,     NO_ADDITIONAL_EFFECT,       100, NORMAL,    75, 10
 	move LICK,         PARALYZE_SIDE_EFFECT2,       30, GHOST,    100, 30
-	move SMOG,         POISON_SIDE_EFFECT2,         30, POISON,    75, 20
+	move SMOG,         POISON_SIDE_EFFECT2,         20, POISON,    75, 20
 	move SLUDGE,       POISON_SIDE_EFFECT2,         65, POISON,   100, 20
 	move BONE_CLUB,    FLINCH_SIDE_EFFECT1,         65, GROUND,    85, 20
 	move FIRE_BLAST,   BURN_SIDE_EFFECT2,          120, FIRE,      85,  5
 	move WATERFALL,    NO_ADDITIONAL_EFFECT,        80, WATER,    100, 15
-	move CLAMP,        TRAPPING_EFFECT,             25, WATER,     75, 15
+	move CLAMP,        TRAPPING_EFFECT,             20, WATER,     75, 15
 	move SWIFT,        SWIFT_EFFECT,                60, NORMAL,   100, 20
 	move SKULL_BASH,   CHARGE_EFFECT,              100, NORMAL,   100, 15
 	move SPIKE_CANNON, TWO_TO_FIVE_ATTACKS_EFFECT,  20, NORMAL,   100, 15
@@ -151,7 +151,7 @@ MoveEnd:
 	move DREAM_EATER,  DREAM_EATER_EFFECT,         100, PSYCHIC,  100, 15
 	move POISON_GAS,   POISON_EFFECT,                0, POISON,    80, 40
 	move BARRAGE,      TWO_TO_FIVE_ATTACKS_EFFECT,  15, GRASS,     85, 20
-	move LEECH_LIFE,   DRAIN_HP_EFFECT,             25, BUG,      100, 15
+	move LEECH_LIFE,   DRAIN_HP_EFFECT,             30, BUG,      100, 15
 	move LOVELY_KISS,  SLEEP_EFFECT,                 0, NORMAL,    75, 10
 	move SKY_ATTACK,   CHARGE_EFFECT,              140, FLYING,    90,  5
 	move TRANSFORM,    TRANSFORM_EFFECT,             0, NORMAL,   100, 10
