@@ -326,7 +326,7 @@ ExeggcuteEvosMoves:
 	db 25, GROWTH
 	db 28, LEECH_SEED
 	db 32, STUN_SPORE
-	db 34, ABSORB
+	db 34, BARRAGE
 	db 37, POISONPOWDER
 	db 42, SOLARBEAM
 	db 48, SLEEP_POWDER
