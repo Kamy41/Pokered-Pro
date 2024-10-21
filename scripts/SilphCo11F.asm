@@ -229,7 +229,7 @@ SilphCo11Script5:
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
-	call PlayDefaultMusic
+	call PlayDefaultMusic     ;;;;; added to change music after Giovanni loses
 	SetEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	xor a
 	ld [wJoyIgnore], a
