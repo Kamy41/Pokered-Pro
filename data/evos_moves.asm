@@ -326,7 +326,7 @@ ExeggcuteEvosMoves:
 ; Learnset
 	db 25, CONFUSION
 	db 28, LEECH_SEED
-	db 33, STUN_SPORE
+	db 32, STUN_SPORE
 	db 37, POISONPOWDER
 	db 42, SOLARBEAM
 	db 48, SLEEP_POWDER
