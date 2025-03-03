@@ -133,7 +133,7 @@ MoveEnd:
 	move SELFDESTRUCT, EXPLODE_EFFECT,             150, NORMAL,   100,  5
 	move EGG_BOMB,     NO_ADDITIONAL_EFFECT,       100, NORMAL,    75, 10
 	move LICK,         PARALYZE_SIDE_EFFECT2,       30, GHOST,    100, 30
-	move SMOG,         POISON_SIDE_EFFECT2,         20, POISON,    75, 20
+	move SMOG,         POISON_SIDE_EFFECT2,         20, POISON,    80, 20
 	move SLUDGE,       POISON_SIDE_EFFECT2,         65, POISON,   100, 20
 	move BONE_CLUB,    FLINCH_SIDE_EFFECT1,         65, GROUND,    85, 20
 	move FIRE_BLAST,   BURN_SIDE_EFFECT2,          120, FIRE,      85,  5
