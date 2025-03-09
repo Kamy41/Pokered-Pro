@@ -863,7 +863,7 @@ TaurosEvosMoves:
 ; Learnset
 	db 21, STOMP
 	db 28, TAIL_WHIP
-	db 35, HORN_ATTACK
+	db 35, REST
 	db 44, RAGE
 	db 51, TAKE_DOWN
 	db 0
