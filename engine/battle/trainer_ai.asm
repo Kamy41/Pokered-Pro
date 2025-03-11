@@ -6,7 +6,7 @@ AIEnemyTrainerChooseMoves:
 	ld [hli], a   ; move 1
 	ld [hli], a   ; move 2
 	ld [hli], a   ; move 3
-	ld [hl], a    ; move 4		
+	ld [hl], a    ; move 4
 	ld a, [wEnemyDisabledMove] ; forbid disabled move (if any)
 	swap a
 	and $f
@@ -107,7 +107,7 @@ AIMoveChoiceModificationFunctionPointers:
 	dw AIMoveChoiceModification1
 	dw AIMoveChoiceModification2
 	dw AIMoveChoiceModification3
- 	dw AIMoveChoiceModification4 ; unused
+	dw AIMoveChoiceModification4 ; unused, does nothing
 
 ; discourages moves that cause no damage but only a status ailment if player's mon already has one
 AIMoveChoiceModification1:
@@ -140,7 +140,7 @@ AIMoveChoiceModification1:
 	pop de
 	pop hl
 	jr nc, .nextMove
-        ld a, [hl]
+	ld a, [hl]
 	add $5 ; heavily discourage move
 	ld [hl], a
 	jr .nextMove
@@ -157,8 +157,7 @@ StatusAilmentMoveEffects:
 ; that fall in-between
 AIMoveChoiceModification2:
 	ld a, [wAILayer2Encouragement]
-;	and a 	;joenote - AI layer 2 should activate on 1st turn instead of 2nd turn after send
-        cp $0
+	cp $1
 	ret nz
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
@@ -186,7 +185,7 @@ AIMoveChoiceModification2:
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
 
-; encourages moves that are effective against the player's mon (even if non-damaging [FIXED]).
+; encourages moves that are effective against the player's mon (even if non-damaging).
 ; discourage damaging moves that are ineffective or not very effective against the player's mon,
 ; unless there's no damaging move that deals at least neutral damage
 AIMoveChoiceModification3:
@@ -208,17 +207,14 @@ AIMoveChoiceModification3:
 	callab AIGetTypeEffectiveness
 	pop de
 	pop bc
-	pop hl	
+	pop hl
 	ld a, [wTypeEffectiveness]
-	cp $0A
+	cp $10
 	jr z, .nextMove
 	jr c, .notEffectiveMove
-	ld a, [wEnemyMovePower]  ; added for BP check
-	and a 	                 ; check if it's zero
-	jr z, .nextMove 	 ; added for BP check
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
-.notEffectiveMove ; discourages non-effective moves if better moves are available	
+.notEffectiveMove ; discourages non-effective moves if better moves are available
 	push hl
 	push de
 	push bc
@@ -227,20 +223,20 @@ AIMoveChoiceModification3:
 	ld hl, wEnemyMonMoves  ; enemy moves
 	ld b, NUM_MOVES + 1
 	ld c, $0
-.loopMoves	
+.loopMoves
 	dec b
 	jr z, .done
 	ld a, [hli]
 	and a
 	jr z, .done
-	call ReadMove	
+	call ReadMove
 	ld a, [wEnemyMoveEffect]
-; 	cp SUPER_FANG_EFFECT   ; deleted to preserve Missingno
-;	jr z, .betterMoveFound ; Super Fang is considered to be a better move ; deleted to preserve Missingno
+	cp SUPER_FANG_EFFECT
+	jr z, .betterMoveFound ; Super Fang is considered to be a better move
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
-;	cp FLY_EFFECT          ; deleted to preserve Missingno
-;	jr z, .betterMoveFound ; Fly is considered to be a better move ; deleted to preserve Missingno
+	cp FLY_EFFECT
+	jr z, .betterMoveFound ; Fly is considered to be a better move
 	ld a, [wEnemyMoveType]
 	cp d
 	jr z, .loopMoves
@@ -259,12 +255,9 @@ AIMoveChoiceModification3:
 	jr z, .nextMove
 	inc [hl] ; slightly discourage this move
 	jr .nextMove
-
-AIMoveChoiceModification4:	
-	nop        ; added to preserve Missingno
-	nop        ; added to preserve Missingno
+AIMoveChoiceModification4:
 	ret
-	
+
 ReadMove:
 	push hl
 	push de
@@ -286,7 +279,7 @@ TrainerClassMoveChoiceModifications:
 	db 0      ; YOUNGSTER
 	db 1,0    ; BUG CATCHER
 	db 1,0    ; LASS
-	db 1,0    ; SAILOR
+	db 1,3,0  ; SAILOR
 	db 1,0    ; JR_TRAINER_M
 	db 1,0    ; JR_TRAINER_F
 	db 1,2,3,0; POKEMANIAC
@@ -299,12 +292,12 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,0  ; FISHER
 	db 1,3,0  ; SWIMMER
 	db 0      ; CUE_BALL
-	db 1,3,0  ; GAMBLER
+	db 1,0    ; GAMBLER
 	db 1,3,0  ; BEAUTY
 	db 1,2,0  ; PSYCHIC_TR
-	db 1,0    ; ROCKER
+	db 1,3,0  ; ROCKER
 	db 1,0    ; JUGGLER
-	db 1,3,0  ; TAMER
+	db 1,0    ; TAMER
 	db 1,0    ; BIRD_KEEPER
 	db 1,0    ; BLACKBELT
 	db 1,0    ; SONY1
@@ -411,13 +404,13 @@ TrainerAIPointers:
 	dbw 3,GenericAI
 	dbw 2,CooltrainerMAI ; cooltrainerm
 	dbw 1,CooltrainerFAI ; cooltrainerf
-	dbw 1,BrunoAI ; bruno
+	dbw 2,BrunoAI ; bruno
 	dbw 5,BrockAI ; brock
 	dbw 1,MistyAI ; misty
 	dbw 1,LtSurgeAI ; surge
 	dbw 1,ErikaAI ; erika
-	dbw 1,KogaAI ; koga
-	dbw 1,BlaineAI ; blaine
+	dbw 2,KogaAI ; koga
+	dbw 2,BlaineAI ; blaine
 	dbw 1,SabrinaAI ; sabrina
 	dbw 3,GenericAI
 	dbw 1,Sony2AI ; sony2
@@ -433,14 +426,14 @@ JugglerAI:
 	jp AISwitchIfEnoughMons
 
 BlackbeltAI:
-	cp 25 percent - 1
+	cp 13 percent - 1
 	ret nc
 	jp AIUseXAttack
 
 GiovanniAI:
 	cp 25 percent + 1
 	ret nc
-	jp AIUseDireHit
+	jp AIUseGuardSpec
 
 CooltrainerMAI:
 	cp 25 percent + 1
@@ -489,8 +482,8 @@ KogaAI:
 
 BlaineAI:
 	cp 25 percent + 1
-	ret nc	
-	jp AIUseXSpecial
+	ret nc
+	jp AIUseSuperPotion
 
 SabrinaAI:
 	cp 25 percent + 1
@@ -506,10 +499,10 @@ Sony2AI:
 	ld a, 5
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseSuperPotion
+	jp AIUsePotion
 
 Sony3AI:
-	cp 25 percent - 1
+	cp 13 percent - 1
 	ret nc
 	ld a, 5
 	call AICheckIfHPBelowFraction
@@ -522,13 +515,13 @@ LoreleiAI:
 	ld a, 5
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseHyperPotion
+	jp AIUseSuperPotion
 
 BrunoAI:
-	cp 50 percent + 1
+	cp 25 percent + 1
 	ret nc
-	jp AIUseXAccuracy
-	
+	jp AIUseXDefend
+
 AgathaAI:
 	cp 8 percent
 	jp c, AISwitchIfEnoughMons
@@ -537,7 +530,7 @@ AgathaAI:
 	ld a, 4
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseHyperPotion
+	jp AIUseSuperPotion
 
 LanceAI:
 	cp 50 percent + 1
@@ -545,7 +538,7 @@ LanceAI:
 	ld a, 5
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseFullRestore
+	jp AIUseHyperPotion
 
 GenericAI:
 	and a ; clear carry
@@ -734,11 +727,11 @@ AICureStatus:
 	xor a
 	ld [hl], a ; clear status in enemy team roster
 	ld [wEnemyMonStatus], a ; clear status of active enemy
-        ld hl, wEnemyBattleStatus3
+	ld hl, wEnemyBattleStatus3
 	res 0, [hl]
 	ret
 
-AIUseXAccuracy:
+AIUseXAccuracy: ; unused
 	call AIPlayRestoringSFX
 	ld hl, wEnemyBattleStatus2
 	set 0, [hl]
@@ -752,7 +745,7 @@ AIUseGuardSpec:
 	ld a, GUARD_SPEC
 	jp AIPrintItemUse
 
-AIUseDireHit:
+AIUseDireHit: ; unused
 	call AIPlayRestoringSFX
 	ld hl, wEnemyBattleStatus2
 	set 2, [hl]
