@@ -12,7 +12,7 @@ INCBIN "pic/bmon/arcanine.pic",0,1 ; 77, sprite dimensions
 dw ArcaninePicFront
 dw ArcaninePicBack
 ; attacks known at lvl 0
-db AGILITY  ;LEER
+db LEER
 db BITE
 db FLAMETHROWER
 db TAKE_DOWN
