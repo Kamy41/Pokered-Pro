@@ -413,11 +413,7 @@ LaprasEvosMoves:
 ArcanineEvosMoves:
 ; Evolutions
 	db 0
-; Learnset	
-	db 23, LEER
-	db 30, TAKE_DOWN
-	db 39, AGILITY
-	db 50, FLAMETHROWER	
+; Learnset
 	db 0
 
 MewEvosMoves:
