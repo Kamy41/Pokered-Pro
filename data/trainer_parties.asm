@@ -272,8 +272,8 @@ BikerData:
 	db 29,WEEZING,MUK,0
 	db 25,KOFFING,WEEZING,KOFFING,KOFFING,WEEZING,0
 ; Route 14
-	db 26,KOFFING,KOFFING,GRIMER,KOFFING,0
-	db 28,GRIMER,GRIMER,KOFFING,0
+	db 26,KOFFING,WEEZING,GRIMER,KOFFING,0            ; switched a weezing to edit Missingno. moovepool
+	db 28,WEEZING,GRIMER,KOFFING,0                    ; switched a weezing to edit Missingno. moovepool
 	db 29,KOFFING,MUK,0
 BurglarData:
 ; Unused
