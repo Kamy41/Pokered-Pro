@@ -809,9 +809,10 @@ KoffingEvosMoves:
 	db EV_FUSE, KOFFING, 1, WEEZING
 	db 0
 ; Learnset
+	db 29, HEADBUTT	
 	db 32, SLUDGE
-	db 37, HAZE
-	db 40, SMOKESCREEN
+	db 37, SMOKESCREEN
+	db 40, HAZE
 	db 45, EXPLOSION
 	db 0
 
@@ -1653,9 +1654,10 @@ WeezingEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 29, HEADBUTT
 	db 32, SLUDGE
-	db 39, HAZE
-	db 43, SMOKESCREEN
+	db 39, SMOKESCREEN
+	db 43, HAZE
 	db 49, EXPLOSION
 	db 0
 
