@@ -15,7 +15,7 @@ dw MukPicBack
 db POUND
 db DISABLE
 db POISON_GAS
-db 0
+db MINIMIZE
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8
