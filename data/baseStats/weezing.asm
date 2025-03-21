@@ -14,8 +14,8 @@ dw WeezingPicBack
 ; attacks known at lvl 0
 db TACKLE
 db SMOG
+db HEADBUTT
 db SLUDGE
-db 0
 db 0 ; growth rate
 ; learnset
 	tmlearn 6
