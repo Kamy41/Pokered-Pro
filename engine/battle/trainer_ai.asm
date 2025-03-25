@@ -157,9 +157,9 @@ StatusAilmentMoveEffects:
 ; that fall in-between
 AIMoveChoiceModification2:
 	ld a, [wAILayer2Encouragement]
-	and a 	;joenote - AI layer 2 should activate on 1st turn instead of 2nd turn after send
-;       cp $0
-	ret z
+;	and a 	;joenote - AI layer 2 should activate on 1st turn instead of 2nd turn after send
+      	cp $1
+	ret nz
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
 	ld b, NUM_MOVES + 1
@@ -186,7 +186,7 @@ AIMoveChoiceModification2:
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
 
-; encourages moves that are effective against the player's mon (even if non-damaging [FIXED]).
+; encourages moves that are effective against the player's mon (even if non-damaging - FIXED).
 ; discourage damaging moves that are ineffective or not very effective against the player's mon,
 ; unless there's no damaging move that deals at least neutral damage
 AIMoveChoiceModification3:
@@ -263,7 +263,7 @@ AIMoveChoiceModification3:
 AIMoveChoiceModification4:	
 	nop        ; added to preserve Missingno
 	nop        ; added to preserve Missingno
-	nop        ; added to preserve Missingno
+;	nop        ; added to preserve Missingno
 	ret
 	
 ReadMove:
