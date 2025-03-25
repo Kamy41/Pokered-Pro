@@ -13,7 +13,7 @@ dw ArcaninePicFront
 dw ArcaninePicBack
 ; attacks known at lvl 0
 db LEER
-db BITE
+db AGILITY
 db FLAMETHROWER
 db TAKE_DOWN
 db 5 ; growth rate
