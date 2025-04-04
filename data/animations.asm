@@ -482,9 +482,9 @@ EmberAnim:
 	db $FF
 
 FlamethrowerAnim:
-	db $46,$34,$1F
-	db $46,$34,$0C
-	db $46,$34,$0D
+	db $46,$33,$1F
+	db $46,$33,$0C
+	db $46,$33,$0D
 	db $FF
 
 MistAnim:
