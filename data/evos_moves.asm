@@ -648,8 +648,8 @@ ChanseyEvosMoves:
 	db 30, GROWL
 	db 38, MINIMIZE
 	db 44, DEFENSE_CURL
-	db 48, DOUBLE_EDGE
-	db 54, LIGHT_SCREEN
+	db 48, LIGHT_SCREEN
+	db 54, DOUBLE_EDGE
 	db 0
 
 MachokeEvosMoves:
