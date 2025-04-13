@@ -1209,7 +1209,7 @@ OmanyteEvosMoves:
 	db EV_LEVEL, 40, OMASTAR
 	db 0
 ; Learnset
-	db 34, CONSTRICT
+	db 34, BITE
 	db 41, LEER
 	db 49, HYDRO_PUMP
 	db 0
@@ -1218,7 +1218,7 @@ OmastarEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 34, CONSTRICT
+	db 34, BITE
         db 40, SPIKE_CANNON
 	db 46, LEER
 	db 53, HYDRO_PUMP
