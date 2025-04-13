@@ -12,7 +12,7 @@ INCBIN "pic/bmon/articuno.pic",0,1 ; 77, sprite dimensions
 dw ArticunoPicFront
 dw ArticunoPicBack
 ; attacks known at lvl 0
-db PECK
+db GUST
 db ICE_BEAM
 db 0
 db 0
