@@ -1132,7 +1132,7 @@ KabutoEvosMoves:
 	db 0
 ; Learnset
 	db 34, ABSORB
-	db 44, LEER
+	db 41, LEER
 	db 49, ROCK_THROW
 	db 0
 
@@ -1210,7 +1210,7 @@ OmanyteEvosMoves:
 	db 0
 ; Learnset
 	db 34, CONSTRICT
-	db 44, LEER
+	db 41, LEER
 	db 49, HYDRO_PUMP
 	db 0
 
