@@ -1,7 +1,7 @@
 db DEX_EXEGGUTOR ; pokedex id
 db 95 ; base hp
-db 95 ; base attack
-db 85 ; base defense
+db 85 ; base attack
+db 95 ; base defense
 db 55 ; base speed
 db 125 ; base special
 db GRASS ; species type 1
