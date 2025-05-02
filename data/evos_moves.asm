@@ -261,9 +261,9 @@ VoltorbEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
-	db 29, LIGHT_SCREEN
+	db 29, THUNDERSHOCK
 	db 36, SWIFT
-	db 43, THUNDERSHOCK
+	db 43, LIGHT_SCREEN
 	db 48, EXPLOSION
 	db 0
 
@@ -327,7 +327,7 @@ ExeggcuteEvosMoves:
 	db 22, CONFUSION
 	db 28, LEECH_SEED
 	db 32, STUN_SPORE
-	db 37, POISONPOWDER
+	db 38, POISONPOWDER
 	db 42, SOLARBEAM
 	db 48, SLEEP_POWDER
 	db 0
@@ -1493,9 +1493,9 @@ ButterfreeEvosMoves:
 	db 15, POISONPOWDER
 	db 16, STUN_SPORE
 	db 17, SLEEP_POWDER
-        db 21, SUPERSONIC
-	db 26, WHIRLWIND
-	db 32, GUST
+        db 21, GUST
+        db 26, SUPERSONIC
+	db 32, WHIRLWIND
 	db 40, PSYBEAM
 	db 0
 
@@ -1638,9 +1638,9 @@ ElectrodeEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
-	db 29, LIGHT_SCREEN
+	db 29, THUNDERSHOCK
 	db 40, SWIFT
-	db 50, THUNDERSHOCK
+	db 50, LIGHT_SCREEN
 	db 55, EXPLOSION
 	db 0
 
