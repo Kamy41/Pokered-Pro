@@ -272,8 +272,8 @@ BikerData:
 	db 29,WEEZING,MUK,0
 	db 25,KOFFING,WEEZING,KOFFING,KOFFING,WEEZING,0
 ; Route 14
-	db 26,KOFFING,WEEZING,GRIMER,KOFFING,0            ; switched a weezing to edit Missingno. moovepool
-	db 28,WEEZING,GRIMER,KOFFING,0                    ; switched a weezing to edit Missingno. moovepool
+	db 26,KOFFING,WEEZING,GRIMER,KOFFING,0            ; switched for a weezing to edit Missingno.'s moovepool
+	db 28,WEEZING,GRIMER,KOFFING,0                    ; switched for a weezing to edit Missingno.'s moovepool
 	db 29,KOFFING,MUK,0
 BurglarData:
 ; Unused
@@ -472,9 +472,9 @@ Green1Data:
 	db $FF,18,PIDGEOTTO,15,ABRA,15,RATTATA,17,CHARMANDER,0
 ProfOakData:
 ; Unused
-	db $FF,66,TAUROS,67,EXEGGUTOR,68,ARCANINE,69,BLASTOISE,70,GYARADOS,0
-	db $FF,66,TAUROS,67,EXEGGUTOR,68,ARCANINE,69,VENUSAUR,70,GYARADOS,0
-	db $FF,66,TAUROS,67,EXEGGUTOR,68,ARCANINE,69,CHARIZARD,70,GYARADOS,0
+	db $FF,66,TAUROS,67,EXEGGUTOR,68,RAPIDASH,69,BLASTOISE,70,GYARADOS,0
+	db $FF,66,TAUROS,67,EXEGGUTOR,68,RAPIDASH,69,VENUSAUR,70,GYARADOS,0
+	db $FF,66,TAUROS,67,EXEGGUTOR,68,RAPIDASH,69,CHARIZARD,70,GYARADOS,0
 ChiefData:
 ; none
 ScientistData:
