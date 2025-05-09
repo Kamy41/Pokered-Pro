@@ -864,7 +864,7 @@ TaurosEvosMoves:
 ; Learnset
 	db 21, STOMP
 	db 28, TAIL_WHIP
-	db 35, AGILITY
+	db 35, REST
 	db 44, RAGE
 	db 51, TAKE_DOWN
 	db 0
@@ -2048,7 +2048,6 @@ CharizardEvosMoves:
 	db 31, SLASH
 	db 42, FLAMETHROWER
 	db 52, FIRE_SPIN
-	db 62, BARRIER
 	db 0
 
 MissingNoB5EvosMoves:
