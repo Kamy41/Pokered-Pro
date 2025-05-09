@@ -156,10 +156,10 @@ StatusAilmentMoveEffects:
 ; in particular, stat-modifying moves and other move effects
 ; that fall in-between
 AIMoveChoiceModification2:
-;	ld a, [wAILayer2Encouragement]
-;	and a 	;joenote - AI layer 2 should activate on 1st turn instead of 2nd turn after send
+	ld a, [wAILayer2Encouragement]
+	and a 	;joenote - AI layer 2 should activate on 1st turn instead of 2nd turn after send
 ;      	cp $1
-;	ret nz
+	ret nz
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
 	ld b, NUM_MOVES + 1
