@@ -439,7 +439,7 @@ BlackbeltAI:
 	jp AIUseXAttack
 
 GiovanniAI:
-	cp 25 percent + 1
+	cp 50 percent + 1
 	ret nc
 	jp AIUseDireHit
 
