@@ -570,7 +570,7 @@ OnixEvosMoves:
 	db 19, ROCK_THROW
 	db 25, RAGE
 	db 33, SLAM
-	db 43, HARDEN
+	db 43, DIG
 	db 0
 
 FearowEvosMoves:
