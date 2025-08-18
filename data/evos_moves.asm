@@ -197,7 +197,7 @@ RhydonEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-        db 30, STOMP
+    db 30, STOMP
 	db 35, TAIL_WHIP
 	db 40, FURY_ATTACK
 	db 48, HORN_DRILL
@@ -312,7 +312,7 @@ LickitungEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-        db 7, SUPERSONIC
+    db 7, SUPERSONIC
 	db 15, STOMP
 	db 23, DEFENSE_CURL
 	db 31, SLAM
@@ -390,7 +390,7 @@ RhyhornEvosMoves:
 	db EV_LEVEL, 42, RHYDON
 	db 0
 ; Learnset
-        db 30, STOMP
+    db 30, STOMP
 	db 35, TAIL_WHIP
 	db 40, FURY_ATTACK
 	db 45, HORN_DRILL
@@ -424,7 +424,7 @@ MewEvosMoves:
 	db 20, MEGA_PUNCH
 	db 30, METRONOME
 	db 40, PSYCHIC_M
-        db 0
+    db 0
 
 GyaradosEvosMoves:
 ; Evolutions
@@ -636,7 +636,7 @@ GravelerEvosMoves:
 	db 29, HARDEN
 	db 36, EARTHQUAKE
 	db 43, DOUBLE_EDGE
-        db 52, EXPLOSION
+    db 52, EXPLOSION
 	db 0
 
 ChanseyEvosMoves:
@@ -753,7 +753,7 @@ GolemEvosMoves:
 	db 21, SELFDESTRUCT
 	db 29, HARDEN
 	db 36, EARTHQUAKE
-        db 43, DOUBLE_EDGE
+    db 43, DOUBLE_EDGE
 	db 52, EXPLOSION
 	db 0
 
@@ -848,7 +848,7 @@ SeelEvosMoves:
 
 DiglettEvosMoves:
 ; Evolutions
-	db  EV_FUSE, DIGLETT, 2, DUGTRIO
+	db EV_FUSE, DIGLETT, 2, DUGTRIO
 	db 0
 ; Learnset
 	db 15, GROWL
@@ -1219,7 +1219,7 @@ OmastarEvosMoves:
 	db 0
 ; Learnset
 	db 34, BITE
-        db 40, SPIKE_CANNON
+    db 40, SPIKE_CANNON
 	db 46, LEER
 	db 53, HYDRO_PUMP
 	db 0
@@ -1392,7 +1392,7 @@ BeedrillEvosMoves:
 	db 25, RAGE
 	db 30, PIN_MISSILE
 	db 35, SWORDS_DANCE
-        db 40, AGILITY
+    db 40, AGILITY
 	db 0
 
 MissingNo73EvosMoves:
@@ -1493,8 +1493,8 @@ ButterfreeEvosMoves:
 	db 15, POISONPOWDER
 	db 16, STUN_SPORE
 	db 17, SLEEP_POWDER
-        db 21, GUST
-        db 26, SUPERSONIC
+    db 21, GUST
+    db 26, SUPERSONIC
 	db 32, WHIRLWIND
 	db 40, PSYBEAM
 	db 0
@@ -1750,7 +1750,7 @@ StarmieEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-        db 32, CONFUSE_RAY
+    db 32, CONFUSE_RAY
 	db 0
 
 BulbasaurEvosMoves:
@@ -1902,7 +1902,7 @@ NidorinoEvosMoves:
 ; Learnset
 	db 8, HORN_ATTACK
 	db 14, POISON_STING
-        db 23, FOCUS_ENERGY
+    db 23, FOCUS_ENERGY
 	db 32, FURY_ATTACK
 	db 41, HORN_DRILL
 	db 50, DOUBLE_KICK
@@ -1915,7 +1915,7 @@ NidorinaEvosMoves:
 ; Learnset
 	db 8, SCRATCH
 	db 14, POISON_STING
-        db 23, TAIL_WHIP
+    db 23, TAIL_WHIP
 	db 32, BITE
 	db 41, FURY_SWIPES
 	db 50, DOUBLE_KICK
@@ -1931,7 +1931,7 @@ GeodudeEvosMoves:
 	db 21, SELFDESTRUCT
 	db 26, HARDEN
 	db 31, EARTHQUAKE
-        db 36, DOUBLE_EDGE
+    db 36, DOUBLE_EDGE
 	db 41, EXPLOSION
 	db 0
 
