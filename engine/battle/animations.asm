@@ -518,15 +518,14 @@ AnimationShakeScreenHorizontallySlow:
 	jr nz, AnimationShakeScreenHorizontallySlow
 	ret
 
-SetAnimationPalette:
-	ld b, $e4	
+SetAnimationPalette:		
 	ld a, [wOnSGB]
 	and a
-;	ld a, $e4    ;redundant
+	ld a, $e4
 	jr z, .notSGB
 	ld a, $f0
-;	ld a, PAL_MEWMON             ; new move pal
 	ld [wAnimPalette], a
+	ld b, $e4
 	ld a, [wAnimationID]
 	cp TRADE_BALL_DROP_ANIM
 	jr c, .next
@@ -535,12 +534,12 @@ SetAnimationPalette:
 	ld b, $f0
 .next
 	ld a, b
-	ld [rOBP0], a	
+	ld [rOBP0], a
 	ld a, $6c
 	ld [rOBP1], a
 	ret
 .notSGB
-	ld a, b
+	ld a, $e4
 	ld [wAnimPalette], a
 	ld [rOBP0], a
 	ld a, $6c
