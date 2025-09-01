@@ -521,7 +521,7 @@ AnimationShakeScreenHorizontallySlow:
 SetAnimationPalette:		
 	ld a, [wOnSGB]
 	and a
-	ld a, $e4
+;	ld a, $e4      ;redundant
 	jr z, .notSGB
 	ld a, $f0
 	ld [wAnimPalette], a
