@@ -522,7 +522,7 @@ SetAnimationPalette:
 	ld a, [wOnSGB]
 	and a
 	jr z, .notSGB
-	ld a, $e4
+	ld a, $f0
 	ld [wAnimPalette], a
 	ld b, $e4
 	ld a, [wAnimationID]
