@@ -523,7 +523,7 @@ SetAnimationPalette:
 	and a
 ;	ld a, $e4      ;redundant
 	jr z, .notSGB
-	ld a, $f0
+	ld a, $e4
 	ld [wAnimPalette], a
 	ld b, $e4
 	ld a, [wAnimationID]
