@@ -534,14 +534,14 @@ SetAnimationPalette:
     ; prima qui era ld b, $f0 (B/N): lo manteniamo a 4 toni
     ld b, $e4
 .next
-    ld a, b
-    ld [rOBP0], a              ; sprite palette 0 = $e4 (4 toni)
-    ld a, $6c
-    ld [rOBP1], a              ; sprite palette 1 (come in originale)
-    ; NOVITÀ: forza anche il BG a grigi, così l’effetto non prende colori SGB
-    ld a, $e4
-    ld [rBGP], a               ; background palette = 4 toni grigi
-    ret
+;    ld a, b
+;    ld [rOBP0], a              ; sprite palette 0 = $e4 (4 toni)
+;    ld a, $6c
+;    ld [rOBP1], a              ; sprite palette 1 (come in originale)
+;    ; NOVITÀ: forza anche il BG a grigi, così l’effetto non prende colori SGB
+;    ld a, $e4
+;    ld [rBGP], a               ; background palette = 4 toni grigi
+;    ret
 .notSGB
 	ld a, $e4
 	ld [wAnimPalette], a
