@@ -1791,7 +1791,7 @@ Subanimation1e:
 
 Subanimation20:
 	;db $42	   fixed to center
-	db $43
+	db $52
 	db $42,$07,$00
 	db $43,$07,$00
 
