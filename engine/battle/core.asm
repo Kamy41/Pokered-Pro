@@ -2724,6 +2724,19 @@ SelectMenuItem:
 	bit 2, a
 	jp nz, SwapMovesInMenu ; select
 	bit 1, a ; B, but was it reset above?
+;;;;;;;;;;;;;;;;;;;;;;;
+	jr z, .Bnotpressed
+	;joenote
+	;This is the point where B has been pressed 
+	;to exit out of the move selection menu during battle.
+	;Write 0 to wPlayerMovePower and wPlayerSelectedMove to nullify any previous 
+	;cursor selection when this line is reached. 
+	;This prevents a de-sync and some other Counter shenanigans.
+	ld a, $00
+	ld [wPlayerMovePower], a
+	ld [wPlayerSelectedMove], a
+.Bnotpressed
+	;;;;;;;;;;;;;;;;;;;;;;;	
 	push af
 	xor a
 	ld [wMenuItemToSwap], a
