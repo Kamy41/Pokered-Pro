@@ -8826,31 +8826,11 @@ MimicEffect:
 	add hl, bc
 	ld a, d
 	ld [hl], a
-	ld [wd11e], a
-	push af               ;added for fix below, I suppose
+	ld [wd11e], a	
 	call GetMoveName
 	call PlayCurrentMoveAnimation
 	ld hl, MimicLearnedMoveText
 	jp PrintText
-;;;;;;;;;; PureRGBnote: CHANGED: Now immediately use the move
-	ldh a, [hWhoseTurn]
-	and a
-	ld hl, wPlayerSelectedMove
-	ld de, wPlayerMoveNum
-	jr z, .playerTurn2
-	ld hl, wEnemySelectedMove
-	ld de, wEnemyMoveNum
-.playerTurn2
-	pop af
-	ld [hl], a
-	call ReloadMoveData
-	; fall through
-ExecuteReplacedMove::
-	ldh a, [hWhoseTurn]
-	and a
-	jp z, CheckIfPlayerNeedsToChargeUp
-	jp CheckIfEnemyNeedsToChargeUp
-;;;;;;;;;;
 .mimicMissed
 	jp PrintButItFailedText_
 
