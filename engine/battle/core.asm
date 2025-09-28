@@ -2695,8 +2695,8 @@ SelectMenuItem:
 	dec a
 	jr nz, .select
 	coord hl, 1, 14
-	ld de, WhichTechniqueString
-	call PlaceString
+	;ld de, WhichTechniqueString
+	;call PlaceString
 	jr .select
 .battleselect
 	ld a, [wFlags_D733]
@@ -2724,19 +2724,6 @@ SelectMenuItem:
 	bit 2, a
 	jp nz, SwapMovesInMenu ; select
 	bit 1, a ; B, but was it reset above?
-;;;;;;;;;;;;;;;;;;;;;;;
-	jr z, .Bnotpressed
-	;joenote
-	;This is the point where B has been pressed 
-	;to exit out of the move selection menu during battle.
-	;Write 0 to wPlayerMovePower and wPlayerSelectedMove to nullify any previous 
-	;cursor selection when this line is reached. 
-	;This prevents a de-sync and some other Counter shenanigans.
-	ld a, $00
-	ld [wPlayerMovePower], a
-	ld [wPlayerSelectedMove], a
-.Bnotpressed
-	;;;;;;;;;;;;;;;;;;;;;;;	
 	push af
 	xor a
 	ld [wMenuItemToSwap], a
@@ -2805,8 +2792,7 @@ MoveDisabledText:
 	db "@"
 
 WhichTechniqueString:
-	db "WHICH TECHNIQUE"
-	db "TO CHOOSE?@"
+	db "WHICH TECHNIQUE@"
 
 SelectMenuItem_CursorUp:
 	ld a, [wCurrentMenuItem]
@@ -8766,7 +8752,7 @@ MimicEffect:
 	call MoveHitTest
 	ld a, [wMoveMissed]
 	and a
-	jr nz, .mimicMissed
+	jp nz, MimicMissed
 	ld a, [H_WHOSETURN]
 	and a
 	ld hl, wBattleMonMoves
@@ -8779,7 +8765,7 @@ MimicEffect:
 	ld a, [wEnemyBattleStatus1]
 .enemyTurn
 	bit INVULNERABLE, a
-	jr nz, .mimicMissed
+	jr nz, MimicMissed
 .getRandomMove
 	push hl
 	call BattleRandom
@@ -8803,7 +8789,7 @@ MimicEffect:
 .letPlayerChooseMove
 	ld a, [wEnemyBattleStatus1]
 	bit INVULNERABLE, a
-	jr nz, .mimicMissed
+	jr nz, MimicMissed
 	;call SaveScreenTilesToBuffer1	   ;joenote - need to save the tiles in case the opponent switched before mimic	
 	ld a, [wCurrentMenuItem]
 	push af
@@ -8825,12 +8811,32 @@ MimicEffect:
 	add hl, bc
 	ld a, d
 	ld [hl], a
-	ld [wd11e], a	
+	ld [wd11e], a
+	push af
 	call GetMoveName
 	call PlayCurrentMoveAnimation
 	ld hl, MimicLearnedMoveText
 	jp PrintText
-.mimicMissed
+;;;;;;;;;; PureRGBnote: CHANGED: Now immediately use the move
+	ldh a, [hWhoseTurn]
+	and a
+	ld hl, wPlayerSelectedMove
+	ld de, wPlayerMoveNum
+	jr z, .playerTurn2
+	ld hl, wEnemySelectedMove
+	ld de, wEnemyMoveNum
+.playerTurn2
+	pop af
+	ld [hl], a
+	call ReloadMoveData
+	; fall through
+ExecuteReplacedMove::
+	ldh a, [hWhoseTurn]
+	and a
+	jp z, CheckIfPlayerNeedsToChargeUp
+	jp CheckIfEnemyNeedsToChargeUp
+;;;;;;;;;;
+MimicMissed:
 	jp PrintButItFailedText_
 
 MimicLearnedMoveText:
