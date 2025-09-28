@@ -8803,9 +8803,7 @@ MimicEffect:
 	ld a, [wEnemyBattleStatus1]
 	bit INVULNERABLE, a
 	jr nz, .mimicMissed
-
-	call SaveScreenTilesToBuffer1	;joenote - need to save the tiles in case the opponent switched before mimic
-	
+	;call SaveScreenTilesToBuffer1	   ;joenote - need to save the tiles in case the opponent switched before mimic	
 	ld a, [wCurrentMenuItem]
 	push af
 	ld a, $1
