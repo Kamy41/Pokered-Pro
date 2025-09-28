@@ -2792,7 +2792,7 @@ MoveDisabledText:
 	db "@"
 
 WhichTechniqueString:
-	db "WHICH TECHNIQUE@"
+	db "WHICH TECHNIQUE?@"
 
 SelectMenuItem_CursorUp:
 	ld a, [wCurrentMenuItem]
@@ -8752,7 +8752,7 @@ MimicEffect:
 	call MoveHitTest
 	ld a, [wMoveMissed]
 	and a
-	jp nz, MimicMissed
+	jr nz, .mimicMissed
 	ld a, [H_WHOSETURN]
 	and a
 	ld hl, wBattleMonMoves
@@ -8765,7 +8765,7 @@ MimicEffect:
 	ld a, [wEnemyBattleStatus1]
 .enemyTurn
 	bit INVULNERABLE, a
-	jr nz, MimicMissed
+	jr nz, .mimicMissed
 .getRandomMove
 	push hl
 	call BattleRandom
@@ -8789,8 +8789,7 @@ MimicEffect:
 .letPlayerChooseMove
 	ld a, [wEnemyBattleStatus1]
 	bit INVULNERABLE, a
-	jr nz, MimicMissed
-	;call SaveScreenTilesToBuffer1	   ;joenote - need to save the tiles in case the opponent switched before mimic	
+	jr nz, .mimicMissed
 	ld a, [wCurrentMenuItem]
 	push af
 	ld a, $1
@@ -8812,31 +8811,11 @@ MimicEffect:
 	ld a, d
 	ld [hl], a
 	ld [wd11e], a
-	push af
 	call GetMoveName
 	call PlayCurrentMoveAnimation
 	ld hl, MimicLearnedMoveText
 	jp PrintText
-;;;;;;;;;; PureRGBnote: CHANGED: Now immediately use the move
-	ldh a, [H_WHOSETURN]
-	and a
-	ld hl, wPlayerSelectedMove
-	ld de, wPlayerMoveNum
-	jr z, .playerTurn2
-	ld hl, wEnemySelectedMove
-	ld de, wEnemyMoveNum
-.playerTurn2
-	pop af
-	ld [hl], a
-	call ReloadMoveData
-	; fall through
-ExecuteReplacedMove::
-	ldh a, [H_WHOSETURN]
-	and a
-	jp z, CheckIfPlayerNeedsToChargeUp
-	jp CheckIfEnemyNeedsToChargeUp
-;;;;;;;;;;
-MimicMissed:
+.mimicMissed
 	jp PrintButItFailedText_
 
 MimicLearnedMoveText:
@@ -8942,8 +8921,6 @@ PayDayEffect:
 
 ConversionEffect:
 	jpab ConversionEffect_
-	ret nc
-	jp ExecuteReplacedMove
 
 HazeEffect:
 	jpab HazeEffect_
