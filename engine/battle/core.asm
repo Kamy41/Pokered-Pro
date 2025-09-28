@@ -2806,6 +2806,7 @@ MoveDisabledText:
 
 WhichTechniqueString:
 	db "WHICH TECHNIQUE?@"
+	db "       @"
 
 SelectMenuItem_CursorUp:
 	ld a, [wCurrentMenuItem]
