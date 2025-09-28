@@ -8942,6 +8942,8 @@ PayDayEffect:
 
 ConversionEffect:
 	jpab ConversionEffect_
+	ret nc
+	jp ExecuteReplacedMove
 
 HazeEffect:
 	jpab HazeEffect_
