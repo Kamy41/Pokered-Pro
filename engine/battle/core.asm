@@ -8818,7 +8818,7 @@ MimicEffect:
 	ld hl, MimicLearnedMoveText
 	jp PrintText
 ;;;;;;;;;; PureRGBnote: CHANGED: Now immediately use the move
-	ldh a, [hWhoseTurn]
+	ldh a, [H_WHOSETURN]
 	and a
 	ld hl, wPlayerSelectedMove
 	ld de, wPlayerMoveNum
@@ -8831,7 +8831,7 @@ MimicEffect:
 	call ReloadMoveData
 	; fall through
 ExecuteReplacedMove::
-	ldh a, [hWhoseTurn]
+	ldh a, [H_WHOSETURN]
 	and a
 	jp z, CheckIfPlayerNeedsToChargeUp
 	jp CheckIfEnemyNeedsToChargeUp
