@@ -8836,7 +8836,7 @@ MimicEffect:
 	ld [hl], a
 	call ReloadMoveData
 	; fall through
-;ExecuteReplacedMove::
+ExecuteReplacedMove::
 	ldh a, [H_WHOSETURN]
 	and a
 	jp z, CheckIfPlayerNeedsToChargeUp
@@ -8948,6 +8948,8 @@ PayDayEffect:
 
 ConversionEffect:
 	jpab ConversionEffect_
+	ret nc
+	jp ExecuteReplacedMove
 
 HazeEffect:
 	jpab HazeEffect_
