@@ -8754,7 +8754,7 @@ MimicEffect:
 	ld a, [wMoveMissed]
 	and a
 	jp nz, MimicMissed
-	ld a, [H_WHOSETURN]
+	ldh a, [H_WHOSETURN]
 	and a
 	ld hl, wBattleMonMoves
 	ld a, [wPlayerBattleStatus1]
@@ -8779,7 +8779,7 @@ MimicEffect:
 	and a
 	jr z, .getRandomMove
 	ld d, a
-	ld a, [H_WHOSETURN]
+	ldh a, [H_WHOSETURN]
 	and a
 	ld hl, wBattleMonMoves
 	ld a, [wPlayerMoveListIndex]
@@ -8812,13 +8812,13 @@ MimicEffect:
 	ld a, d
 	ld [hl], a
 	ld [wd11e], a
-	push af
+	;push af
 	call GetMoveName
 	call PlayCurrentMoveAnimation
 	ld hl, MimicLearnedMoveText
 	jp PrintText
 ;;;;;;;;;; PureRGBnote: CHANGED: Now immediately use the move
-	ld a, [H_WHOSETURN]
+	ldh a, [H_WHOSETURN]
 	and a
 	ld hl, wPlayerSelectedMove
 	ld de, wPlayerMoveNum
@@ -8831,7 +8831,7 @@ MimicEffect:
 	call ReloadMoveData
 	; fall through
 ExecuteReplacedMove::
-	ld a, [H_WHOSETURN]
+	ldh a, [H_WHOSETURN]
 	and a
 	jp z, CheckIfPlayerNeedsToChargeUp
 	jp CheckIfEnemyNeedsToChargeUp
