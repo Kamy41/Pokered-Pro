@@ -8759,8 +8759,8 @@ MimicEffect:
 	call MoveHitTest
 	ld a, [wMoveMissed]
 	and a
-	jp nz, MimicMissed
-	ldh a, [H_WHOSETURN]
+	jr nz, .mimicMissed
+	ld a, [H_WHOSETURN]
 	and a
 	ld hl, wBattleMonMoves
 	ld a, [wPlayerBattleStatus1]
@@ -8772,7 +8772,7 @@ MimicEffect:
 	ld a, [wEnemyBattleStatus1]
 .enemyTurn
 	bit INVULNERABLE, a
-	jr nz, MimicMissed
+	jr nz, .mimicMissed
 .getRandomMove
 	push hl
 	call BattleRandom
@@ -8785,7 +8785,7 @@ MimicEffect:
 	and a
 	jr z, .getRandomMove
 	ld d, a
-	ldh a, [H_WHOSETURN]
+	ld a, [H_WHOSETURN]
 	and a
 	ld hl, wBattleMonMoves
 	ld a, [wPlayerMoveListIndex]
@@ -8796,7 +8796,7 @@ MimicEffect:
 .letPlayerChooseMove
 	ld a, [wEnemyBattleStatus1]
 	bit INVULNERABLE, a
-	jr nz, MimicMissed
+	jr nz, .mimicMissed
 	ld a, [wCurrentMenuItem]
 	push af
 	ld a, $1
@@ -8818,31 +8818,11 @@ MimicEffect:
 	ld a, d
 	ld [hl], a
 	ld [wd11e], a
-	push af
 	call GetMoveName
 	call PlayCurrentMoveAnimation
 	ld hl, MimicLearnedMoveText
 	jp PrintText
-;;;;;;;;;; PureRGBnote: CHANGED: Now immediately use the move
-	ldh a, [H_WHOSETURN]
-	and a
-	ld hl, wPlayerSelectedMove
-	ld de, wPlayerMoveNum
-	jr z, .playerTurn2
-	ld hl, wEnemySelectedMove
-	ld de, wEnemyMoveNum
-.playerTurn2
-	pop af
-	ld [hl], a
-	call ReloadMoveData
-	; fall through
-ExecuteReplacedMove::
-	ldh a, [H_WHOSETURN]
-	and a
-	jp z, CheckIfPlayerNeedsToChargeUp
-	jp CheckIfEnemyNeedsToChargeUp
-;;;;;;;;;;
-MimicMissed:
+.mimicMissed:
 	jp PrintButItFailedText_
 
 MimicLearnedMoveText:
@@ -8947,9 +8927,7 @@ PayDayEffect:
 	jpab PayDayEffect_
 
 ConversionEffect:
-	jpab ConversionEffect_
-	ret nc
-	jp ExecuteReplacedMove
+	jpab ConversionEffect_	
 
 HazeEffect:
 	jpab HazeEffect_
