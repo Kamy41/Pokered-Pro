@@ -19,7 +19,7 @@ MonPartyData:
 	dn SPRITE_FAIRY, SPRITE_FAIRY           ;Clefairy/Clefable
 	dn SPRITE_QUADRUPED, SPRITE_QUADRUPED   ;Vulpix/Ninetales
 	dn SPRITE_FAIRY, SPRITE_FAIRY           ;Jigglypuff/Wigglytuff
-	dn SPRITE_BIRD_M, SPRITE_BIRD_M         ;Zubat/Golbat
+	dn SPRITE_MON, SPRITE_MON               ;Zubat/Golbat
 	dn SPRITE_GRASS, SPRITE_GRASS           ;Oddish/Gloom
 	dn SPRITE_GRASS, SPRITE_BUG             ;Vileplume/Paras
 	dn SPRITE_BUG, SPRITE_BUG               ;Parasect/Venonat
@@ -69,7 +69,7 @@ MonPartyData:
 	dn SPRITE_QUADRUPED, SPRITE_QUADRUPED   ;Jolteon/Flareon
 	dn SPRITE_BALL_M, SPRITE_HELIX          ;Porygon/Omanyte
 	dn SPRITE_HELIX, SPRITE_HELIX           ;Omastar/Kabuto
-	dn SPRITE_HELIX, SPRITE_BIRD_M          ;Kabutops/Aerodactyl
+	dn SPRITE_HELIX, SPRITE_MON             ;Kabutops/Aerodactyl
 	dn SPRITE_MON, SPRITE_BIRD_M            ;Snorlax/Articuno
 	dn SPRITE_BIRD_M, SPRITE_BIRD_M         ;Zapdos/Moltres
 	dn SPRITE_SNAKE, SPRITE_SNAKE           ;Dratini/Dragonair
