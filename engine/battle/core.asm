@@ -8775,24 +8775,26 @@ MimicEffect:
 	jr nz, .mimicMissed
 .getRandomMove
 	push hl
-	call BattleRandom
-	and $3
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, [hl]
-	pop hl
-	and a
-	jr z, .getRandomMove
-	ld d, a
-	ld a, [H_WHOSETURN]
-	and a
-	ld hl, wBattleMonMoves
-	ld a, [wPlayerMoveListIndex]
-	jr z, .playerTurn
-	ld hl, wEnemyMonMoves
-	ld a, [wEnemyMoveListIndex]
-	jr .playerTurn
+        call BattleRandom
+        and $3
+        ld c, a
+        ld b, $0
+        add hl, bc
+        ld a, [hl]
+        pop hl
+        and a
+        jr z, .getRandomMove
+        ld d, a
+        ld a, [H_WHOSETURN]
+        and a
+        ld hl, wBattleMonMoves
+        ld de, wBattleMonPP
+        ld a, [wPlayerMoveListIndex]
+        jr z, .copyMimickedMove
+        ld hl, wEnemyMonMoves
+        ld de, wEnemyMonPP
+        ld a, [wEnemyMoveListIndex]
+        jr .copyMimickedMove
 .letPlayerChooseMove
 	ld a, [wEnemyBattleStatus1]
 	bit INVULNERABLE, a
@@ -8805,26 +8807,43 @@ MimicEffect:
 	call MoveSelectionMenu
 	call LoadScreenTilesFromBuffer1
 	ld hl, wEnemyMonMoves
-	ld a, [wCurrentMenuItem]
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld d, [hl]
-	pop af
-	ld hl, wBattleMonMoves
-.playerTurn
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, d
-	ld [hl], a
-	ld [wd11e], a
-	call GetMoveName
-	call PlayCurrentMoveAnimation
-	ld hl, MimicLearnedMoveText
-	jp PrintText
+        ld a, [wCurrentMenuItem]
+        ld c, a
+        ld b, $0
+        add hl, bc
+        ld d, [hl]
+        pop af
+        ld hl, wBattleMonMoves
+        ld de, wBattleMonPP
+.copyMimickedMove
+        call .storeMimickedMove
+        call GetMoveName
+        call PlayCurrentMoveAnimation
+        ld hl, MimicLearnedMoveText
+        jp PrintText
 .mimicMissed:
 	jp PrintButItFailedText_
+
+.storeMimickedMove
+        ld c, a
+        ld b, $0
+        add hl, bc
+        ld a, c
+        and a
+        jr z, .gotPPPointer
+.ppOffsetLoop
+        inc de
+        dec a
+        jr nz, .ppOffsetLoop
+.gotPPPointer
+        ld a, d
+        ld [hl], a
+        ld [wd11e], a
+        and a
+        ret z
+        ld a, $5
+        ld [de], a
+        ret
 
 MimicLearnedMoveText:
 	TX_FAR _MimicLearnedMoveText
