@@ -8775,24 +8775,24 @@ MimicEffect:
 	jr nz, .mimicMissed
 .getRandomMove
 	push hl
-	call BattleRandom
-	and $3
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, [hl]
-	pop hl
-	and a
-	jr z, .getRandomMove
-	ld d, a
-	ld a, [H_WHOSETURN]
-	and a
-	ld hl, wBattleMonMoves
-	ld a, [wPlayerMoveListIndex]
-	jr z, .playerTurn
-	ld hl, wEnemyMonMoves
-	ld a, [wEnemyMoveListIndex]
-	jr .playerTurn
+        call BattleRandom
+        and $3
+        ld c, a
+        ld b, $0
+        add hl, bc
+        ld a, [hl]
+        pop hl
+        and a
+        jr z, .getRandomMove
+        ld [wd11e], a
+        ld a, [H_WHOSETURN]
+        and a
+        ld hl, wBattleMonMoves
+        ld a, [wPlayerMoveListIndex]
+        jr z, .playerTurn
+        ld hl, wEnemyMonMoves
+        ld a, [wEnemyMoveListIndex]
+        jr .playerTurn
 .letPlayerChooseMove
 	ld a, [wEnemyBattleStatus1]
 	bit INVULNERABLE, a
@@ -8805,24 +8805,46 @@ MimicEffect:
 	call MoveSelectionMenu
 	call LoadScreenTilesFromBuffer1
 	ld hl, wEnemyMonMoves
-	ld a, [wCurrentMenuItem]
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld d, [hl]
-	pop af
-	ld hl, wBattleMonMoves
+	 ld a, [wCurrentMenuItem]
+        ld c, a
+        ld b, $0
+        add hl, bc
+        ld a, [hl]
+        ld [wd11e], a
+        pop af
+        ld hl, wBattleMonMoves
 .playerTurn
 	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, d
-	ld [hl], a
-	ld [wd11e], a
-	call GetMoveName
-	call PlayCurrentMoveAnimation
-	ld hl, MimicLearnedMoveText
-	jp PrintText
+        ld a, [H_WHOSETURN]
+        and a
+        jr nz, .enemyCopy
+        ld hl, wBattleMonPP
+        ld b, $0
+        add hl, bc
+        ld a, [hl]
+        ld e, a
+        ld hl, wBattleMonMoves
+        jr .writeMimicMove
+.enemyCopy
+        ld hl, wEnemyMonMoves
+.writeMimicMove
+        ld b, $0
+        add hl, bc
+        ld a, [wd11e]
+        ld [hl], a
+        ld a, [H_WHOSETURN]
+        and a
+        jr nz, .skipRestorePlayerPP
+        ld hl, wBattleMonPP
+        ld b, $0
+        add hl, bc
+        ld a, e
+        ld [hl], a
+.skipRestorePlayerPP
+        call GetMoveName
+        call PlayCurrentMoveAnimation
+        ld hl, MimicLearnedMoveText
+        jp PrintText
 .mimicMissed:
 	jp PrintButItFailedText_
 
