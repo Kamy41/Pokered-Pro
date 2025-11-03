@@ -8759,7 +8759,7 @@ MimicEffect:
 	call MoveHitTest
 	ld a, [wMoveMissed]
 	and a
-	jr nz, .mimicMissed
+	jp nz, .mimicMissed
 	ld a, [H_WHOSETURN]
 	and a
 	ld hl, wBattleMonMoves
@@ -8767,12 +8767,12 @@ MimicEffect:
 	jr nz, .enemyTurn
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jr nz, .letPlayerChooseMove
+	jp nz, .letPlayerChooseMove
 	ld hl, wEnemyMonMoves
 	ld a, [wEnemyBattleStatus1]
 .enemyTurn
 	bit INVULNERABLE, a
-	jr nz, .mimicMissed
+	jp nz, .mimicMissed
 .getRandomMove
 	push hl
         call BattleRandom
@@ -8789,10 +8789,10 @@ MimicEffect:
         and a
         ld hl, wBattleMonMoves
         ld a, [wPlayerMoveListIndex]
-        jr z, .playerTurn
+        jp z, .playerTurn
         ld hl, wEnemyMonMoves
         ld a, [wEnemyMoveListIndex]
-        jr .playerTurn
+        jp .playerTurn
 .letPlayerChooseMove
 	ld a, [wEnemyBattleStatus1]
 	bit INVULNERABLE, a
