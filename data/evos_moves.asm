@@ -667,10 +667,10 @@ MachokeEvosMoves:
 MrMimeEvosMoves:
 ; Evolutions
 	db 0
-; Learnset
-	db 15, CONFUSION
-	db 23, LIGHT_SCREEN
-	db 31, DOUBLESLAP
+; Learnset	
+	db 15, LIGHT_SCREEN
+	db 23, DOUBLESLAP
+	db 31, PSYBEAM
 	db 39, MEDITATE
 	db 47, SUBSTITUTE
 	db 0
