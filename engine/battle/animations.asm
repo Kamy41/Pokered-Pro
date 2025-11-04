@@ -1398,7 +1398,7 @@ ShakeEnemyHUD_WritePlayerMonPicOAM:
 .loop
 	ld a, [wBaseCoordY]
 	ld e, a
-	ld b, 2
+	ld b, 7
 .innerLoop
 	call BattleAnimWriteOAMEntry
 	inc d
