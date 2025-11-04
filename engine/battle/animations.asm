@@ -1422,8 +1422,16 @@ BattleAnimWriteOAMEntry:
 	add 8
 	ld e, a
 	ld [hli], a
+	cp $38
+	jr c, .asm_793d8
+	inc a
+.asm_793d8
 	ld a, [wBaseCoordX]
 	ld [hli], a
+	cp $58	;is X < $58
+	jr c, .asm_793e8
+	add $2
+.asm_793e8
 	ld a, d
 	ld [hli], a
 	xor a
