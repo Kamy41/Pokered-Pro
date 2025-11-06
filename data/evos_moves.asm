@@ -1548,6 +1548,7 @@ GolbatEvosMoves:
 	db 21, CONFUSE_RAY
 	db 32, WING_ATTACK
 	db 43, HAZE
+	db 54, LICK        ; added for Elite Four fun
 	db 0
 
 MewtwoEvosMoves:
