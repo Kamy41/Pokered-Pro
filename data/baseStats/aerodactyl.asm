@@ -12,7 +12,7 @@ INCBIN "pic/bmon/aerodactyl.pic",0,1 ; 77, sprite dimensions
 dw AerodactylPicFront
 dw AerodactylPicBack
 ; attacks known at lvl 0
-db WING_ATTACK
+db BITE
 db AGILITY
 db 0
 db 0
