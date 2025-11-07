@@ -47,8 +47,8 @@ MonPartyData:
 	dn SPRITE_HELIX, SPRITE_MON             ;Cloyster/Gastly
 	dn SPRITE_MON, SPRITE_MON               ;Haunter/Gengar
 	dn SPRITE_SNAKE, SPRITE_MON             ;Onix/Drowzee
-	dn SPRITE_MON, SPRITE_WATER             ;Hypno/Krabby
-	dn SPRITE_WATER, SPRITE_BALL_M          ;Kingler/Voltorb
+	dn SPRITE_MON, SPRITE_HELIX             ;Hypno/Krabby
+	dn SPRITE_HELIX, SPRITE_BALL_M          ;Kingler/Voltorb
 	dn SPRITE_BALL_M, SPRITE_GRASS          ;Electrode/Exeggcute
 	dn SPRITE_GRASS, SPRITE_MON             ;Exeggutor/Cubone
 	dn SPRITE_MON, SPRITE_MON               ;Marowak/Hitmonlee
