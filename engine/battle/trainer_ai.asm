@@ -422,11 +422,11 @@ TrainerAIPointers:
 	dbw 1,SabrinaAI ; sabrina
 	dbw 3,GenericAI
 	dbw 1,Sony2AI ; sony2
-	dbw 1,Sony3AI ; sony3
+	dbw 2,Sony3AI ; sony3
 	dbw 2,LoreleiAI ; lorelei
 	dbw 3,GenericAI
 	dbw 2,AgathaAI ; agatha
-	dbw 1,LanceAI ; lance
+	dbw 2,LanceAI ; lance
 
 JugglerAI:
 	cp 25 percent + 1
