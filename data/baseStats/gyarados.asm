@@ -12,10 +12,10 @@ INCBIN "pic/bmon/gyarados.pic",0,1 ; 77, sprite dimensions
 dw GyaradosPicFront
 dw GyaradosPicBack
 ; attacks known at lvl 0
+db WATER_GUN
 db BITE
 db DRAGON_RAGE
 db LEER
-db HYDRO_PUMP
 db 5 ; growth rate
 ; learnset
 	tmlearn 6,8
