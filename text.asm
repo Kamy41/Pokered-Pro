@@ -1134,9 +1134,10 @@ _TrainerAboutToUseText::
 	TX_RAM wTrainerName
 	text " is"
 	line "about to use"
-	cont"@"
-	TX_RAM wEnemyMonNick
-	text "!"
+;	cont"@"
+;	TX_RAM wEnemyMonNick
+;	text "!"
+	cont "another #MON!"
 
 	para "Will <PLAYER>"
 	line "change #MON?"
