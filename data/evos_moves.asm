@@ -971,11 +971,11 @@ JynxEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 18, DOUBLESLAP   ; swapped for Elite Four fun
-	db 23, LICK
+	db 18, LICK
+	db 23, DOUBLESLAP
 	db 31, ICE_PUNCH
 	db 39, BODY_SLAM
-	db 47, THRASH
+	db 47, METRONOME      ; changed for Elite Four fun
 	db 58, BLIZZARD
 	db 0
 
@@ -1548,7 +1548,6 @@ GolbatEvosMoves:
 	db 21, CONFUSE_RAY
 	db 32, WING_ATTACK
 	db 43, HAZE
-	db 54, LICK        ; added for Elite Four fun
 	db 0
 
 MewtwoEvosMoves:
