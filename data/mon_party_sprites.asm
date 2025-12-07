@@ -64,7 +64,7 @@ MonPartyData:
 	dn SPRITE_MON, SPRITE_MON               ;Electabuzz/Magmar
 	dn SPRITE_BUG, SPRITE_QUADRUPED         ;Pinsir/Tauros
 	dn SPRITE_WATER, SPRITE_SNAKE           ;Magikarp/Gyarados
-	dn SPRITE_WATER, SPRITE_MON             ;Lapras/Ditto
+	dn SPRITE_WATER, SPRITE_BLOB            ;Lapras/Ditto
 	dn SPRITE_QUADRUPED, SPRITE_QUADRUPED   ;Eevee/Vaporeon
 	dn SPRITE_QUADRUPED, SPRITE_QUADRUPED   ;Jolteon/Flareon
 	dn SPRITE_BALL_M, SPRITE_HELIX          ;Porygon/Omanyte
