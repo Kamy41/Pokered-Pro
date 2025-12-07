@@ -552,5 +552,5 @@ SpriteSheetPointerTable:
 
 	; SPRITE_BLOB (party icon placeholder)
     dw BlobSprite
-    db $40 ; byte count
+    db $80 ; byte count
     db BANK(BlobSprite)
