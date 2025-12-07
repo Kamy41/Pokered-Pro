@@ -150,7 +150,6 @@ Fisher2Sprite:         INCBIN "gfx/sprites/fisher2.2bpp"
 BlackbeltSprite:       INCBIN "gfx/sprites/blackbelt.2bpp"
 GuardSprite:           INCBIN "gfx/sprites/guard.2bpp"
 BallSprite:            INCBIN "gfx/sprites/ball.2bpp"
-BlobSprite:            INCBIN "gfx/sprites/blob.2bpp"
 OmanyteSprite:         INCBIN "gfx/sprites/omanyte.2bpp"
 BoulderSprite:         INCBIN "gfx/sprites/boulder.2bpp"
 PaperSheetSprite:      INCBIN "gfx/sprites/paper_sheet.2bpp"
@@ -159,6 +158,7 @@ ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
 SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
+BlobSprite:            INCBIN "gfx/sprites/blob.2bpp"
 
 
 
