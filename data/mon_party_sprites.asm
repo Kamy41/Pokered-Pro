@@ -34,18 +34,18 @@ MonPartyData:
 	dn SPRITE_MON, SPRITE_MON               ;Alakazam/Machop
 	dn SPRITE_MON, SPRITE_MON               ;Machoke/Machamp
 	dn SPRITE_GRASS, SPRITE_GRASS           ;Bellsprout/Weepinbell
-	dn SPRITE_GRASS, SPRITE_WATER           ;Victreebel/Tentacool
-	dn SPRITE_WATER, SPRITE_MON             ;Tentacruel/Geodude
+	dn SPRITE_GRASS, SPRITE_BLOB            ;Victreebel/Tentacool
+	dn SPRITE_BLOB, SPRITE_MON              ;Tentacruel/Geodude
 	dn SPRITE_MON, SPRITE_MON               ;Graveler/Golem
 	dn SPRITE_QUADRUPED, SPRITE_QUADRUPED   ;Ponyta/Rapidash
 	dn SPRITE_QUADRUPED, SPRITE_MON         ;Slowpoke/Slowbro
 	dn SPRITE_BALL_M, SPRITE_BALL_M         ;Magnemite/Magneton
 	dn SPRITE_BIRD_M, SPRITE_BIRD_M         ;Farfetch'd/Doduo
 	dn SPRITE_BIRD_M, SPRITE_WATER          ;Dodrio/Seel
-	dn SPRITE_WATER, SPRITE_MON             ;Dewgong/Grimer
-	dn SPRITE_MON, SPRITE_HELIX             ;Muk/Shellder
-	dn SPRITE_HELIX, SPRITE_MON             ;Cloyster/Gastly
-	dn SPRITE_MON, SPRITE_MON               ;Haunter/Gengar
+	dn SPRITE_WATER, SPRITE_BLOB            ;Dewgong/Grimer
+	dn SPRITE_BLOB, SPRITE_HELIX            ;Muk/Shellder
+	dn SPRITE_HELIX, SPRITE_BLOB            ;Cloyster/Gastly
+	dn SPRITE_BLOB, SPRITE_MON              ;Haunter/Gengar
 	dn SPRITE_SNAKE, SPRITE_MON             ;Onix/Drowzee
 	dn SPRITE_MON, SPRITE_HELIX             ;Hypno/Krabby
 	dn SPRITE_HELIX, SPRITE_BALL_M          ;Kingler/Voltorb
@@ -53,7 +53,7 @@ MonPartyData:
 	dn SPRITE_GRASS, SPRITE_MON             ;Exeggutor/Cubone
 	dn SPRITE_MON, SPRITE_MON               ;Marowak/Hitmonlee
 	dn SPRITE_MON, SPRITE_MON               ;Hitmonchan/Lickitung
-	dn SPRITE_MON, SPRITE_MON               ;Koffing/Weezing
+	dn SPRITE_BLOB, SPRITE_BLOB             ;Koffing/Weezing
 	dn SPRITE_QUADRUPED, SPRITE_MON         ;Rhyhorn/Rhydon
 	dn SPRITE_FAIRY, SPRITE_GRASS           ;Chansey/Tangela
 	dn SPRITE_MON, SPRITE_SNAKE             ;Kangaskhan/Horsea
