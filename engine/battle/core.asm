@@ -8813,16 +8813,34 @@ MimicEffect:
 	pop af
 	ld hl, wBattleMonMoves
 .playerTurn
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, d
-	ld [hl], a
-	ld [wd11e], a
-	call GetMoveName
-	call PlayCurrentMoveAnimation
-	ld hl, MimicLearnedMoveText
-	jp PrintText
+; VERSION 1
+        ld c, a
+        ld b, $0
+        add hl, bc
+        ld a, d
+        ld [hl], a
+        ld [wd11e], a
+        push bc
+        ld a, [H_WHOSETURN]
+        and a
+        ld hl, wBattleMonPP
+        ld a, [wPlayerMoveListIndex]
+        jr z, .setCopiedPP
+        ld hl, wEnemyMonPP
+        ld a, [wEnemyMoveListIndex]
+.setCopiedPP
+        ld c, a
+        ld b, $0
+        add hl, bc
+        ld a, [hl]
+        and %11000000 ; keep PP Up count from the original move slot
+        or $05         ; copied move starts with 5 PP, like Transform
+        ld [hl], a
+        pop bc
+        call GetMoveName
+        call PlayCurrentMoveAnimation
+        ld hl, MimicLearnedMoveText
+        jp PrintText
 .mimicMissed:
 	jp PrintButItFailedText_
 
