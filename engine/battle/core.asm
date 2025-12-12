@@ -8759,7 +8759,7 @@ MimicEffect:
 	call MoveHitTest
 	ld a, [wMoveMissed]
 	and a
-	jr nz, .mimicMissed
+	jp nz, MimicMissed
 	ld a, [H_WHOSETURN]
 	and a
 	ld hl, wBattleMonMoves
@@ -8772,7 +8772,7 @@ MimicEffect:
 	ld a, [wEnemyBattleStatus1]
 .enemyTurn
 	bit INVULNERABLE, a
-	jr nz, .mimicMissed
+	jp nz, MimicMissed
 .getRandomMove
 	push hl
 	call BattleRandom
@@ -8796,7 +8796,7 @@ MimicEffect:
 .letPlayerChooseMove
 	ld a, [wEnemyBattleStatus1]
 	bit INVULNERABLE, a
-	jr nz, .mimicMissed
+	jp nz, MimicMissed
 	call SaveScreenTilesToBuffer1	  ;joenote - need to save the tiles in case the opponent switched before mimic
 	ld a, [wCurrentMenuItem]
 	push af
@@ -8841,7 +8841,7 @@ MimicEffect:
         call PlayCurrentMoveAnimation
         ld hl, MimicLearnedMoveText
         jp PrintText
-.mimicMissed:
+MimicMissed:
 	jp PrintButItFailedText_
 
 MimicLearnedMoveText:
