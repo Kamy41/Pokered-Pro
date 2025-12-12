@@ -112,7 +112,7 @@ MoveEnd:
 	move RAGE,         RAGE_EFFECT,                 20, NORMAL,   100, 20
 	move TELEPORT,     SWITCH_AND_TELEPORT_EFFECT,   0, PSYCHIC,  100, 20
 	move NIGHT_SHADE,  SPECIAL_DAMAGE_EFFECT,        1, GHOST,    100, 15
-	move MIMIC,        MIMIC_EFFECT,                 0, NORMAL,   100, 20
+	move MIMIC,        MIMIC_EFFECT,                 0, NORMAL,   100, 10
 	move SCREECH,      DEFENSE_DOWN2_EFFECT,         0, NORMAL,    85, 40
 	move DOUBLE_TEAM,  EVASION_UP1_EFFECT,           0, NORMAL,   100, 15
 	move RECOVER,      HEAL_EFFECT,                  0, NORMAL,   100, 20
