@@ -8830,6 +8830,13 @@ MimicEffect:
     add hl, bc
     ld a, $5
     ld [hl], a
+	ld a, [H_WHOSETURN]
+    and a
+    ld hl, wPlayerBattleStatus3
+    jr z, .setMimicked
+    ld hl, wEnemyBattleStatus3
+.setMimicked
+    set MIMICKED, [hl]
     call GetMoveName
     call PlayCurrentMoveAnimation
     ld hl, MimicLearnedMoveText
