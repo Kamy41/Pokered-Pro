@@ -8819,8 +8819,20 @@ MimicEffect:
     ld a, d
     ld [hl], a
     ld [wd11e], a
-  ; mimic copied move PP behaves like Transform: always set to 5 while
-  ; preserving the user's original PP in party data
+  	push bc
+    push de
+    ld a, d
+    dec a
+    ld hl, Moves
+    ld bc, MoveEnd - Moves
+    call AddNTimes
+    ld de, wcd6d
+    ld a, BANK(Moves)
+    call FarCopyData
+    ld a, [wcd6d + 5]  ; PP is byte 5 of move data
+    pop de
+    pop bc
+    ld e, a
     ld a, [H_WHOSETURN]
     and a
     ld hl, wBattleMonPP
@@ -8828,7 +8840,7 @@ MimicEffect:
     ld hl, wEnemyMonPP
 .setCopiedPP
     add hl, bc
-    ld a, $5
+    ld a, e
     ld [hl], a
 	ld a, [H_WHOSETURN]
     and a
