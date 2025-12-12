@@ -8813,30 +8813,24 @@ MimicEffect:
 	pop af
 	ld hl, wBattleMonMoves
 .playerTurn
-; VERSION 1
-        ld c, a
+; VERSION 2
+       ld c, a
         ld b, $0
         add hl, bc
         ld a, d
         ld [hl], a
         ld [wd11e], a
-        push bc
+        ; mimic copied move PP behaves like Transform: always set to 5 while
+        ; preserving the user's original PP in party data
         ld a, [H_WHOSETURN]
         and a
         ld hl, wBattleMonPP
-        ld a, [wPlayerMoveListIndex]
         jr z, .setCopiedPP
         ld hl, wEnemyMonPP
-        ld a, [wEnemyMoveListIndex]
 .setCopiedPP
-        ld c, a
-        ld b, $0
         add hl, bc
-        ld a, [hl]
-        and %11000000 ; keep PP Up count from the original move slot
-        or $05         ; copied move starts with 5 PP, like Transform
+        ld a, $5
         ld [hl], a
-        pop bc
         call GetMoveName
         call PlayCurrentMoveAnimation
         ld hl, MimicLearnedMoveText
