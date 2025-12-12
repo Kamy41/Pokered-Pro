@@ -8797,7 +8797,7 @@ MimicEffect:
 	ld a, [wEnemyBattleStatus1]
 	bit INVULNERABLE, a
 	jp nz, MimicMissed
-	call SaveScreenTilesToBuffer1	  ;joenote - need to save the tiles in case the opponent switched before mimic
+	call SaveScreenTilesToBuffer1	  ; joenote - need to save the tiles in case the opponent switched before mimic
 	ld a, [wCurrentMenuItem]
 	push af
 	ld a, $1
@@ -8813,28 +8813,27 @@ MimicEffect:
 	pop af
 	ld hl, wBattleMonMoves
 .playerTurn
-; VERSION 2
-       ld c, a
-        ld b, $0
-        add hl, bc
-        ld a, d
-        ld [hl], a
-        ld [wd11e], a
-        ; mimic copied move PP behaves like Transform: always set to 5 while
-        ; preserving the user's original PP in party data
-        ld a, [H_WHOSETURN]
-        and a
-        ld hl, wBattleMonPP
-        jr z, .setCopiedPP
-        ld hl, wEnemyMonPP
+    ld c, a
+    ld b, $0
+    add hl, bc
+    ld a, d
+    ld [hl], a
+    ld [wd11e], a
+  ; mimic copied move PP behaves like Transform: always set to 5 while
+  ; preserving the user's original PP in party data
+    ld a, [H_WHOSETURN]
+    and a
+    ld hl, wBattleMonPP
+    jr z, .setCopiedPP
+    ld hl, wEnemyMonPP
 .setCopiedPP
-        add hl, bc
-        ld a, $5
-        ld [hl], a
-        call GetMoveName
-        call PlayCurrentMoveAnimation
-        ld hl, MimicLearnedMoveText
-        jp PrintText
+    add hl, bc
+    ld a, $5
+    ld [hl], a
+    call GetMoveName
+    call PlayCurrentMoveAnimation
+    ld hl, MimicLearnedMoveText
+    jp PrintText
 MimicMissed:
 	jp PrintButItFailedText_
 
