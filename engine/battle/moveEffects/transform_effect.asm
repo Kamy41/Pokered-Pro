@@ -95,16 +95,29 @@ TransformEffect_:
 	add hl, bc ; ld hl, wBattleMonMoves
 	ld b, NUM_MOVES
 .copyPPLoop
-; 5 PP for all moves
-	ld a, [hli]
-	and a
-	jr z, .lessThanFourMoves
-	ld a, $5
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .copyPPLoop
-	jr .copyStats
+; set PP for all moves to their base values
+    ld a, [hli]
+    and a
+    jr z, .lessThanFourMoves
+    push hl
+    push bc
+    push de
+    dec a
+    ld hl, Moves
+    ld bc, MoveEnd - Moves
+    call AddNTimes
+    ld de, wcd6d
+    ld a, BANK(Moves)
+    call FarCopyData
+    ld a, [wcd6d + 5] ; PP is byte 5 of move data
+    pop de
+    pop bc
+    pop hl
+    ld [de], a
+    inc de
+    dec b
+    jr nz, .copyPPLoop
+    jr .copyStats
 .lessThanFourMoves
 ; 0 PP for blank moves
 	xor a
