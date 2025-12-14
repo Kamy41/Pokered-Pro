@@ -669,8 +669,8 @@ MrMimeEvosMoves:
 	db 0
 ; Learnset	
 	db 15, LIGHT_SCREEN
-	db 23, DOUBLESLAP
-	db 31, PSYBEAM
+	db 23, PSYBEAM
+	db 31, DOUBLESLAP
 	db 39, MEDITATE
 	db 47, SUBSTITUTE
 	db 0
