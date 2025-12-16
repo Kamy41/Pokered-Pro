@@ -229,7 +229,7 @@ MonPartySpritePointers:
 	dw vSprites + $260
 
  	dw MonPartySprites + $100
-    db $20 / $10 ; $20 bytes
+    db $20 / $20 ; $20 bytes
     db BANK(MonPartySprites)
     dw vSprites + $280
 
@@ -309,7 +309,7 @@ MonPartySpritePointers:
 	dw vSprites + $660
 
 	dw MonPartySprites + $120
-    db $20 / $10 ; $20 bytes
+    db $20 / $20 ; $20 bytes
     db BANK(MonPartySprites)
     dw vSprites + $680
 
