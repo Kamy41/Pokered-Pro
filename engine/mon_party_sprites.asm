@@ -91,7 +91,7 @@ PartyMonSpeeds:
 LoadMonPartySpriteGfx:
 ; Load mon party sprite tile patterns into VRAM during V-blank.
 	ld hl, MonPartySpritePointers
-	ld a, $20
+	ld a, $1e
 
 LoadAnimSpriteGfx:
 ; Load animated sprite tile patterns into VRAM during V-blank. hl is the address
@@ -130,7 +130,7 @@ LoadMonPartySpriteGfxWithLCDDisabled:
 ; LCD.
 	call DisableLCD
 	ld hl, MonPartySpritePointers
-	ld a, $20
+	ld a, $1e
 	ld bc, $0
 .loop
 	push af
