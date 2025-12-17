@@ -8,20 +8,20 @@ TypeNames:
 	dw .Rock
 	dw .Bird
 	dw .Bug
-	
-	dw .Normal
-	dw .Normal
-	dw .Normal
-	dw .Normal
-	dw .Normal
-	dw .Normal
-	dw .Normal
-	dw .Normal
-	dw .Normal
-	dw .Normal
-	dw .Normal
-
 	dw .Ghost
+
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	dw .Normal
+	
 	dw .Fire
 	dw .Water
 	dw .Grass
