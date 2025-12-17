@@ -21,14 +21,14 @@ TypeNames:
 	dw .Normal
 	dw .Normal
 
+	dw .Ghost
 	dw .Fire
 	dw .Water
 	dw .Grass
 	dw .Electric
 	dw .Psychic
 	dw .Ice
-	dw .Dragon
-	dw .Ghost
+	dw .Dragon	
 
 .Normal:   db "NORMAL@"
 .Fighting: db "FIGHTING@"
