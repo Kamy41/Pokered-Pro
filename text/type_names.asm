@@ -7,8 +7,7 @@ TypeNames:
 	dw .Ground
 	dw .Rock
 	dw .Bird
-	dw .Bug
-	dw .Ghost
+	dw .Bug	
 
 	dw .Normal
 	dw .Normal
@@ -21,7 +20,8 @@ TypeNames:
 	dw .Normal
 	dw .Normal
 	dw .Normal
-	
+
+	dw .Ghost
 	dw .Fire
 	dw .Water
 	dw .Grass
