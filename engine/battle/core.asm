@@ -4439,7 +4439,8 @@ GetDamageVarsForEnemyAttack:
 	and a
 	ret z ; return if move power is zero
 	ld a, [hl] ; a = [wEnemyMoveType]
-	cp FIRE ; types >= FIRE are all special
+	; cp FIRE ; types >= FIRE are all special  (shifted to make GHOST special)
+	cp GHOST ; types >= GHOST are all special
 	jr nc, .specialAttack
 .physicalAttack
 	ld hl, wBattleMonDefense
