@@ -4018,19 +4018,10 @@ PrintMoveFailureText:
 	ld a, [de]
 	cp JUMP_KICK_EFFECT
 	ret nz
-
 	; if you get here, the mon used jump kick or hi jump kick and missed
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - set the bit that indicates a pkmn hurt itself in confusion or took crash damage
-	;ld a, [wUnusedC000]
-	;set 7, a	;setting this bit causes counter to miss
-	;ld [wUnusedC000], a 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
 	                ; Thus, recoil damage will always be equal to 1
-	                ; even if it was intended to be potential damage/8.
-	;ld hl, wUnusedD71F ;joenote - threatened damage now gets put in this address on a miss.
-						;This should fix the issue with the proper recoil damage
+	                ; even if it was intended to be potential damage/8.	
 	ld a, [hli]
 	ld b, [hl]
 	srl a
@@ -4789,7 +4780,7 @@ CriticalHitTest:
 ; normal hit is (base speed) / 2
 ; focus energy is 2*(base speed) for a 4x crit rate
 ; high crit move is 4*(base speed) for a 8x crit rate
-        ld a, [hld]                  ; read base power from RAM
+    ld a, [hld]                  ; read base power from RAM
 	and a
 	ret z                        ; do nothing if zero
 ; joenote - Also do not do a critical hit if a special damage move is being used (dragon rage, seismic toss, etc)
@@ -4892,9 +4883,7 @@ HandleCounterMove:
 	cp ROCK
 	jr z, .counterableType
 	cp BUG
-	jr z, .counterableType
-	cp GHOST
-	jr z, .counterableType
+	jr z, .counterableType	
 ; if the move wasn't Normal or Fighting type, miss
 	xor a
 	ret
@@ -4932,7 +4921,7 @@ ApplyAttackToEnemyPokemon:
 	jr z, .superFangEffect
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .specialDamage
-        cp TRAPPING_EFFECT	;joenote - clear hyper beam if target hit with trapping effect
+    cp TRAPPING_EFFECT	  ; joenote - clear hyper beam if target hit with trapping effect
 	call z, ClearHyperBeam
 	ld a, [wPlayerMovePower]
 	and a
@@ -5057,7 +5046,7 @@ ApplyAttackToPlayerPokemon:
 	jr z, .superFangEffect
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .specialDamage
-        cp TRAPPING_EFFECT	;joenote - clear hyper beam if target hit with trapping effect
+    cp TRAPPING_EFFECT	   ; joenote - clear hyper beam if target hit with trapping effect
 	call z, ClearHyperBeam
 	ld a, [wEnemyMovePower]
 	and a
@@ -5107,13 +5096,13 @@ ApplyAttackToPlayerPokemon:
 ; loop until a random number in the range (c, b) is found
 .loop
 	call BattleRandom
-        and a
-        jr z, .loop
-        cp c
-        jr c, .loop    ; if a < level / 2, repeat
-        cp b
-        jr nc, .loop   ; if a >= level * 1.5, repeat
-        ld b, a
+    and a
+    jr z, .loop
+    cp c
+    jr c, .loop    ; if a < level / 2, repeat
+    cp b
+    jr nc, .loop   ; if a >= level * 1.5, repeat
+    ld b, a
 .storeDamage
 	ld hl, wDamage
 	xor a
@@ -5487,7 +5476,6 @@ AdjustDamageForMoveType:
 	and $7f	;keep the current multiplier if static move (will be either 00 or 0A)
 	jr .endmulti
 .skip_static
-;;;;;;;;
 ;;;;;;;;joenote - fixing the wrong effectiveness message 
 	cp $05	;multiplier is still in a, so see if it's half damage
 	jr nz, .nothalf	;skip ahead if not half
