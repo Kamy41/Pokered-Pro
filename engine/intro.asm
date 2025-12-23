@@ -142,13 +142,13 @@ PlayIntroScene:
 	call PlaySound
 	ld a, (FightIntroFrontMon3 - FightIntroFrontMon) / BYTES_PER_TILE
 	ld [wIntroNidorinoBaseTile], a
+; raise 2 END
+	ld de, IntroNidorinoAnimation7
 ; raise 2
 	ld b, GENGAR_INTRO_TILES3
 	call IntroCopyTiles
 	lb de, 8 / 2, MOVE_GENGAR_RIGHT
 	call IntroMoveMon
-; raise 2 END
-	ld de, IntroNidorinoAnimation7
 	jp AnimateIntroNidorino
 
 AnimateIntroNidorino:
