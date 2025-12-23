@@ -133,7 +133,7 @@ PlayIntroScene:
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation6
 	call AnimateIntroNidorino
-	ld c, 30
+	ld c, 10
 	call CheckForUserInterruption
 	ret c
 
