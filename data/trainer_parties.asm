@@ -270,7 +270,7 @@ BikerData:
 	db 33,MUK,0
 	db 29,VOLTORB,VOLTORB,0
 	db 29,WEEZING,MUK,0
-	db 25,KOFFING,WEEZING,RATTATA,KOFFING,WEEZING,0   ; switched for a rattata to edit Missingno.'s first move
+	db 25,KOFFING,WEEZING,KOFFING,WEEZING,WEEZING,0   ; switched for a weezing to edit Missingno.'s second move
 ; Route 14
 	db 26,KOFFING,WEEZING,GRIMER,KOFFING,0            ; switched for a weezing to edit Missingno.'s movepool
 	db 28,WEEZING,GRIMER,KOFFING,0                    ; switched for a weezing to edit Missingno.'s movepool
