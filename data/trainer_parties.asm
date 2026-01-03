@@ -272,7 +272,7 @@ BikerData:
 	db 29,WEEZING,MUK,0
 	db 25,KOFFING,WEEZING,KOFFING,WEEZING,WEEZING,0   ; switched for a weezing to edit Missingno.'s second move
 ; Route 14
-	db 26,KOFFING,ARBOK,GRIMER,KOFFING,0              ; switched for a arbok to edit Missingno.'s movepool
+	db 26,KOFFING,ZUBAT,GRIMER,KOFFING,0              ; switched for a zubat to edit Missingno.'s movepool
 	db 28,WEEZING,GRIMER,KOFFING,0                    ; switched for a weezing to edit Missingno.'s movepool
 	db 29,KOFFING,MUK,0
 BurglarData:
