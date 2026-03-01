@@ -563,8 +563,10 @@ LowKickAnim:
 	db $FF
 
 CounterAnim:
+	db SE_DARK_SCREEN_PALETTE, $FF	
 	db SE_SLIDE_MON_OFF, $43
 	db $46,$43,$04
+	db SE_RESET_SCREEN_PALETTE, $FF
 	db SE_SHOW_MON_PIC, $FF
 	db $FF
 
