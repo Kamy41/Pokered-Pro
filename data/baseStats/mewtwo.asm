@@ -14,8 +14,8 @@ dw MewtwoPicBack
 ; attacks known at lvl 0
 db CONFUSION
 db DISABLE
+db HAZE
 db SWIFT
-db BARRIER
 db 5 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8
