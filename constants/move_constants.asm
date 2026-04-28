@@ -165,6 +165,7 @@ const_value = 1
 	const SLASH        ; a3
 	const SUBSTITUTE   ; a4
 	const TWISTER      ; a5
+	const MIRROR_COAT  ; a6
 
 NUM_ATTACKS EQU const_value + -1
 

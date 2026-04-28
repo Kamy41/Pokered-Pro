@@ -164,6 +164,7 @@ AttackAnimationPointers:
 	dw SlashAnim
 	dw SubstituteAnim
 	dw TwisterAnim
+	dw CounterAnim ; MIRROR_COAT reuses the Counter animation
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim

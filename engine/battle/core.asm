@@ -493,15 +493,24 @@ MainInBattleLoop:
 	jr z, .enemyMovesFirst ; if enemy used Quick Attack and player didn't
 	ld a, [wPlayerSelectedMove]
 	cp COUNTER
-	jr nz, .playerDidNotUseCounter
+	jr z, .playerUsedCounterOrMirrorCoat
+	cp MIRROR_COAT
+	jr nz, .playerDidNotUseCounterOrMirrorCoat
+.playerUsedCounterOrMirrorCoat
+; Counter and Mirror Coat share the same reduced priority, so any combination
+; of them on both sides falls back to the speed comparison.
 	ld a, [wEnemySelectedMove]
 	cp COUNTER
-	jr z, .compareSpeed ; if both used Counter
-	jr .enemyMovesFirst ; if player used Counter and enemy didn't
-.playerDidNotUseCounter
+	jr z, .compareSpeed ; if both used Counter/Mirror Coat
+	cp MIRROR_COAT
+	jr z, .compareSpeed ; if both used Counter/Mirror Coat
+	jr .enemyMovesFirst ; if only player used Counter/Mirror Coat
+.playerDidNotUseCounterOrMirrorCoat
 	ld a, [wEnemySelectedMove]
 	cp COUNTER
 	jr z, .playerMovesFirst ; if enemy used Counter and player didn't
+	cp MIRROR_COAT
+	jr z, .playerMovesFirst ; if enemy used Mirror Coat and player didn't
 .compareSpeed
 	ld de, wBattleMonSpeed ; player speed value
 	ld hl, wEnemyMonSpeed ; enemy speed value
@@ -3257,6 +3266,8 @@ PlayerCalcMoveDamage:
 	call CriticalHitTest
 	call HandleCounterMove
 	jr z, handleIfPlayerMoveMissed
+	call HandleMirrorCoatMove
+	jr z, handleIfPlayerMoveMissed
 	call GetDamageVarsForPlayerAttack
 	call CalculateDamage
 	jp z, playerCheckIfFlyOrChargeEffect ; for moves with 0 BP, skip any further damage calculation and, for now, skip MoveHitTest
@@ -3986,7 +3997,7 @@ ExclamationPointMoveSets:
 	db MEDITATE, AGILITY, TELEPORT, MIMIC, DOUBLE_TEAM, BARRAGE
 	db $00
 	db POUND, SCRATCH, VICEGRIP, WING_ATTACK, FLY, BIND, SLAM, HORN_ATTACK, BODY_SLAM
-	db WRAP, THRASH, TAIL_WHIP, LEER, BITE, GROWL, ROAR, SING, PECK, COUNTER
+	db WRAP, THRASH, TAIL_WHIP, LEER, BITE, GROWL, ROAR, SING, PECK, COUNTER, MIRROR_COAT
 	db STRENGTH, ABSORB, STRING_SHOT, EARTHQUAKE, FISSURE, DIG, TOXIC, SCREECH, HARDEN
 	db MINIMIZE, WITHDRAW, DEFENSE_CURL, METRONOME, LICK, CLAMP, CONSTRICT, POISON_GAS
 	db LEECH_LIFE, BUBBLE, FLASH, SPLASH, ACID_ARMOR, FURY_SWIPES, REST, SHARPEN, SLASH, SUBSTITUTE
@@ -4910,6 +4921,80 @@ HandleCounterMove:
 	xor a
 	ld [wMoveMissed], a
 	call MoveHitTest ; do the normal move hit test in addition to Counter's special rules
+	xor a
+	ret
+
+HandleMirrorCoatMove:
+; Mirrors HandleCounterMove, but is triggered by MIRROR_COAT and only counters
+; moves of "special" types: GHOST, FIRE, WATER, GRASS, ELECTRIC, PSYCHIC, ICE.
+; Same caveats apply as for Counter regarding the variables being updated when
+; the cursor moves over a move in the battle menu.
+
+	ld a, [H_WHOSETURN] ; whose turn
+	and a
+; player's turn
+	ld hl, wEnemySelectedMove
+	ld de, wEnemyMovePower
+	ld a, [wPlayerSelectedMove]
+	jr z, .next
+; enemy's turn
+	ld hl, wPlayerSelectedMove
+	ld de, wPlayerMovePower
+	ld a, [wEnemySelectedMove]
+.next
+	cp MIRROR_COAT
+	ret nz ; return if not using Mirror Coat
+	ld a, $01
+	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
+	ld a, [hl]
+	cp MIRROR_COAT
+	ret z ; miss if the opponent's last selected move is Mirror Coat.
+	ld a, [de]
+	and a
+	ret z ; miss if the opponent's last selected move's Base Power is 0.
+; check if the move the target last selected was a special type
+	inc de
+	ld a, [de]
+	cp GHOST
+	jr z, .mirrorableType
+	cp FIRE
+	jr z, .mirrorableType
+	cp WATER
+	jr z, .mirrorableType
+	cp GRASS
+	jr z, .mirrorableType
+	cp ELECTRIC
+	jr z, .mirrorableType
+	cp PSYCHIC
+	jr z, .mirrorableType
+	cp ICE
+	jr z, .mirrorableType
+; if the move wasn't a special type, miss
+	xor a
+	ret
+.mirrorableType
+	ld hl, wDamage
+	ld a, [hli]
+	or [hl]
+	ret z ; If we made it here, Mirror Coat still misses if the last move used in battle did no damage to its target.
+	      ; wDamage is shared by both players, so Mirror Coat may strike back damage dealt by the Mirror Coat user itself
+	      ; if the conditions meet, even though 99% of the times damage will come from the target.
+; if it did damage, double it
+	ld a, [hl]
+	add a
+	ldd [hl], a
+	ld a, [hl]
+	adc a
+	ld [hl], a
+	jr nc, .noCarry
+; damage is capped at 0xFFFF
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+.noCarry
+	xor a
+	ld [wMoveMissed], a
+	call MoveHitTest ; do the normal move hit test in addition to Mirror Coat's special rules
 	xor a
 	ret
 
@@ -5913,6 +5998,8 @@ EnemyCalcMoveDamage:
 	jp c, EnemyMoveHitTest
 	call CriticalHitTest
 	call HandleCounterMove
+	jr z, handleIfEnemyMoveMissed
+	call HandleMirrorCoatMove
 	jr z, handleIfEnemyMoveMissed
 	call SwapPlayerAndEnemyLevels
 	call GetDamageVarsForEnemyAttack

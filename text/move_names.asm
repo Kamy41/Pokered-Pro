@@ -164,4 +164,5 @@ MoveNames::
 	db "SLASH@"
 	db "SUBSTITUTE@"
 	db "TWISTER@"
+	db "MIRROR COAT@"
 	db "STRUGGLE@"
