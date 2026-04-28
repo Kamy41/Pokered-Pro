@@ -164,7 +164,7 @@ AttackAnimationPointers:
 	dw SlashAnim
 	dw SubstituteAnim
 	dw TwisterAnim
-	dw CounterAnim ; MIRROR_COAT reuses the Counter animation
+	dw MirrorCoatAnim ; MIRROR_COAT reuses the Counter animation
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -1139,6 +1139,13 @@ SubstituteAnim:
  	db $45,$A4,$10
 	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$FF,$04
+	db $FF
+
+MirrorCoatAnim:
+	db SE_LIGHT_SCREEN_PALETTE, $FF
+	db $46,$72,$33
+	db $46,$04,$04
+	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
 StruggleAnim:
