@@ -261,7 +261,7 @@ VoltorbEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
-	db 29, THUNDERSHOCK
+	db 29, MIRROR_COAT
 	db 36, SWIFT
 	db 43, LIGHT_SCREEN
 	db 48, EXPLOSION
@@ -306,7 +306,7 @@ ExeggutorEvosMoves:
 	db 0
 ; Learnset	
 	db 28, STOMP
-	db 34, MIRROR_COAT
+	db 38, MIRROR_COAT
 	db 0
 
 LickitungEvosMoves:
@@ -520,7 +520,7 @@ PinsirEvosMoves:
 	db 21, BIND
 	db 25, SEISMIC_TOSS
 	db 30, GUILLOTINE
-	db 36, FOCUS_ENERGY
+	db 36, COUNTER
 	db 43, HARDEN
 	db 49, SLASH
 	db 54, SWORDS_DANCE
@@ -977,7 +977,7 @@ JynxEvosMoves:
 	db 23, DOUBLESLAP
 	db 31, ICE_PUNCH
 	db 39, BODY_SLAM
-	db 47, METRONOME      ; changed for Elite Four fun
+	db 47, MIRROR_COAT      ; changed for Elite Four fun
 	db 58, BLIZZARD
 	db 0
 
@@ -1640,7 +1640,7 @@ ElectrodeEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
-	db 29, THUNDERSHOCK
+	db 29, MIRROR_COAT
 	db 40, SWIFT
 	db 50, LIGHT_SCREEN
 	db 55, EXPLOSION
