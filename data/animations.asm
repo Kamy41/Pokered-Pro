@@ -164,7 +164,7 @@ AttackAnimationPointers:
 	dw SlashAnim
 	dw SubstituteAnim
 	dw TwisterAnim
-	dw MirrorCoatAnim ; MIRROR_COAT reuses the Counter animation
+	dw MirrorCoatAnim
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -716,7 +716,7 @@ ToxicAnim:
 
 ConfusionAnim:
 	db SE_FLASH_SCREEN_LONG, $5C
-        db SE_FLASH_SCREEN_LONG, $FF
+    db SE_FLASH_SCREEN_LONG, $FF
 	db $FF
 
 PsychicAnim:
@@ -1142,10 +1142,10 @@ SubstituteAnim:
 	db $FF
 
 MirrorCoatAnim:
-	db SE_LIGHT_SCREEN_PALETTE, $FF
+	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$72,$33
+	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$04,$04
-	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
 StruggleAnim:
