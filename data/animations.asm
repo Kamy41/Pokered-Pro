@@ -1142,10 +1142,12 @@ SubstituteAnim:
 	db $FF
 
 MirrorCoatAnim:
-	db SE_DARK_SCREEN_FLASH, $FF
-	db $46,$72,$33
+	db SE_LIGHT_SCREEN_PALETTE, $FF	
+	db SE_DARK_SCREEN_FLASH, $72
+	db $46,$FF,$33
 	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$04,$04
+	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
 StruggleAnim:
