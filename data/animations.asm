@@ -1120,8 +1120,8 @@ TriAttackAnim:
 	db $FF
 
 SuperFangAnim:
-	db SE_DARK_SCREEN_PALETTE, $48
-	db $46,$A1,$04
+	db SE_DARK_SCREEN_PALETTE, $48	
+	db $08,$A1,$2A
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
@@ -1148,7 +1148,7 @@ MirrorCoatAnim:
 	db $46,$FF,$33
 	db SE_DARK_SCREEN_FLASH, $FF
 	db SE_DARK_SCREEN_FLASH, $FF
-	db $46,$04,$04
+	db $46,$29,$04
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
