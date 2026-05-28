@@ -14,7 +14,7 @@ dw ExeggutorPicBack
 ; attacks known at lvl 0
 db BARRAGE
 db HYPNOSIS
-db CONFUSION
+db 0
 db 0
 db 5 ; growth rate
 ; learnset
