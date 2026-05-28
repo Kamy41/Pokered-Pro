@@ -325,10 +325,10 @@ ExeggcuteEvosMoves:
 	db EV_ITEM, LEAF_STONE, 1, EXEGGUTOR
 	db 0
 ; Learnset
-	db 22, CONFUSION
+	db 24, CONFUSION
 	db 28, LEECH_SEED
 	db 32, STUN_SPORE
-	db 38, POISONPOWDER
+	db 37, POISONPOWDER
 	db 42, SOLARBEAM
 	db 48, SLEEP_POWDER
 	db 0
@@ -2106,8 +2106,6 @@ VileplumeEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 15, POISONPOWDER
-	db 17, STUN_SPORE
 	db 0
 
 BellsproutEvosMoves:
@@ -2142,6 +2140,4 @@ VictreebelEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 13, WRAP
-	db 18, SLEEP_POWDER
 	db 0
