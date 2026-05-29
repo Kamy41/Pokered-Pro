@@ -306,7 +306,7 @@ ExeggutorEvosMoves:
 	db 0
 ; Learnset	
 	db 28, STOMP
-	db 38, MIRROR_COAT
+	db 37, MIRROR_COAT
 	db 0
 
 LickitungEvosMoves:
