@@ -261,7 +261,7 @@ VoltorbEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
-	db 29, THUNDERSHOCK
+	db 29, MIRROR_COAT
 	db 36, SWIFT
 	db 43, LIGHT_SCREEN
 	db 48, EXPLOSION
@@ -306,6 +306,7 @@ ExeggutorEvosMoves:
 	db 0
 ; Learnset	
 	db 28, STOMP
+	db 37, MIRROR_COAT
 	db 0
 
 LickitungEvosMoves:
@@ -324,10 +325,10 @@ ExeggcuteEvosMoves:
 	db EV_ITEM, LEAF_STONE, 1, EXEGGUTOR
 	db 0
 ; Learnset
-	db 22, CONFUSION
+	db 24, CONFUSION
 	db 28, LEECH_SEED
 	db 32, STUN_SPORE
-	db 38, POISONPOWDER
+	db 37, POISONPOWDER
 	db 42, SOLARBEAM
 	db 48, SLEEP_POWDER
 	db 0
@@ -519,7 +520,7 @@ PinsirEvosMoves:
 	db 21, BIND
 	db 25, SEISMIC_TOSS
 	db 30, GUILLOTINE
-	db 36, FOCUS_ENERGY
+	db 36, COUNTER
 	db 43, HARDEN
 	db 49, SLASH
 	db 54, SWORDS_DANCE
@@ -976,7 +977,7 @@ JynxEvosMoves:
 	db 23, DOUBLESLAP
 	db 31, ICE_PUNCH
 	db 39, BODY_SLAM
-	db 47, METRONOME      ; changed for Elite Four fun
+	db 47, MIRROR_COAT      ; changed for Elite Four fun
 	db 58, BLIZZARD
 	db 0
 
@@ -1639,7 +1640,7 @@ ElectrodeEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
-	db 29, THUNDERSHOCK
+	db 29, MIRROR_COAT
 	db 40, SWIFT
 	db 50, LIGHT_SCREEN
 	db 55, EXPLOSION
@@ -2105,8 +2106,6 @@ VileplumeEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 15, POISONPOWDER
-	db 17, STUN_SPORE
 	db 0
 
 BellsproutEvosMoves:
@@ -2141,6 +2140,4 @@ VictreebelEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 13, WRAP
-	db 18, SLEEP_POWDER
 	db 0

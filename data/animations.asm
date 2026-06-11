@@ -164,6 +164,7 @@ AttackAnimationPointers:
 	dw SlashAnim
 	dw SubstituteAnim
 	dw TwisterAnim
+	dw MirrorCoatAnim
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -715,7 +716,7 @@ ToxicAnim:
 
 ConfusionAnim:
 	db SE_FLASH_SCREEN_LONG, $5C
-        db SE_FLASH_SCREEN_LONG, $FF
+    db SE_FLASH_SCREEN_LONG, $FF
 	db $FF
 
 PsychicAnim:
@@ -1119,8 +1120,8 @@ TriAttackAnim:
 	db $FF
 
 SuperFangAnim:
-	db SE_DARK_SCREEN_PALETTE, $48
-	db $46,$A1,$04
+	db SE_DARK_SCREEN_PALETTE, $48	
+	db $08,$A1,$2A
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
@@ -1138,6 +1139,17 @@ SubstituteAnim:
  	db $45,$A4,$10
 	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$FF,$04
+	db $FF
+
+MirrorCoatAnim:
+	db SE_LIGHT_SCREEN_PALETTE, $FF	
+	db SE_DARK_SCREEN_FLASH, $72
+	db SE_DARK_SCREEN_FLASH, $FF
+	db $46,$FF,$33
+	db SE_DARK_SCREEN_FLASH, $FF
+	db SE_DARK_SCREEN_FLASH, $FF
+	db $46,$29,$04
+	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
 StruggleAnim:
