@@ -304,9 +304,8 @@ IvysaurEvosMoves:
 ExeggutorEvosMoves:
 ; Evolutions
 	db 0
-; Learnset	
+; Learnset
 	db 28, STOMP
-	db 37, MIRROR_COAT
 	db 0
 
 LickitungEvosMoves:
@@ -325,7 +324,7 @@ ExeggcuteEvosMoves:
 	db EV_ITEM, LEAF_STONE, 1, EXEGGUTOR
 	db 0
 ; Learnset
-	db 24, CONFUSION
+	db 24, MIRROR_COAT
 	db 28, LEECH_SEED
 	db 32, STUN_SPORE
 	db 37, POISONPOWDER
