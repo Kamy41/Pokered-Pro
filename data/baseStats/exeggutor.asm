@@ -14,7 +14,7 @@ dw ExeggutorPicBack
 ; attacks known at lvl 0
 db BARRAGE
 db HYPNOSIS
-db 0
+db MIRROR_COAT
 db 0
 db 5 ; growth rate
 ; learnset
