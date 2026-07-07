@@ -297,7 +297,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,0  ; BURGLAR
 	db 1,0    ; ENGINEER
 	db 1,2,0  ; JUGGLER_X
-	db 1,0    ; FISHER
+	db 1,3,0  ; FISHER
 	db 1,3,0  ; SWIMMER
 	db 0      ; CUE_BALL
 	db 1,3,0  ; GAMBLER
@@ -316,7 +316,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,0    ; ROCKET
 	db 1,3,0  ; COOLTRAINER_M
 	db 1,3,0  ; COOLTRAINER_F
-	db 1,3,0  ; BRUNO
+	db 1,0    ; BRUNO
 	db 1,0    ; BROCK
 	db 1,3,0  ; MISTY
 	db 1,3,0  ; LT_SURGE
