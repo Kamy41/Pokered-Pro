@@ -976,7 +976,7 @@ JynxEvosMoves:
 	db 23, DOUBLESLAP
 	db 31, ICE_PUNCH
 	db 39, BODY_SLAM
-	db 47, REFLECT      ; changed for Elite Four fun
+	db 47, BARRIER     ; changed for Elite Four fun
 	db 58, BLIZZARD
 	db 0
 
