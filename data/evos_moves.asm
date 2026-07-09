@@ -658,7 +658,7 @@ MachokeEvosMoves:
 	db 0
 ; Learnset
 	db 20, LOW_KICK
-	db 25, MEDITATE
+	db 25, RAGE
 	db 36, FOCUS_ENERGY
 	db 44, SEISMIC_TOSS
 	db 52, SUBMISSION
@@ -1306,7 +1306,7 @@ MachopEvosMoves:
 	db 0
 ; Learnset
 	db 20, LOW_KICK
-	db 25, MEDITATE
+	db 25, RAGE
 	db 32, FOCUS_ENERGY
 	db 39, SEISMIC_TOSS
 	db 46, SUBMISSION
@@ -1505,7 +1505,7 @@ MachampEvosMoves:
 	db 0
 ; Learnset
 	db 20, LOW_KICK
-	db 25, MEDITATE
+	db 25, RAGE
 	db 36, FOCUS_ENERGY
 	db 44, SEISMIC_TOSS
 	db 52, SUBMISSION
