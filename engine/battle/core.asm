@@ -4786,7 +4786,8 @@ CriticalHitTest:
 	call GetMonHeader
 	ld a, [wMonHBaseSpeed]
 	ld b, a
-	srl b                   ; /2 for regular move (effective (base speed / 2))
+	srl b                   ; base speed / 2
+	srl b                   ; / 2 again = base speed / 4 (lowered base crit rate; Focus Energy and high-crit scale down too)
 	ld a, [H_WHOSETURN]
 	and a
 	ld hl, wPlayerMovePower
@@ -4795,9 +4796,9 @@ CriticalHitTest:
 	ld hl, wEnemyMovePower
 	ld de, wEnemyBattleStatus2
 .calcCriticalHitProbability
-; normal hit is (base speed) / 2
-; focus energy is 2*(base speed) for a 4x crit rate
-; high crit move is 4*(base speed) for a 8x crit rate
+; normal hit is (base speed) / 4
+; focus energy is (base speed) for a 4x crit rate
+; high crit move is 2*(base speed) for a 8x crit rate
     ld a, [hld]                  ; read base power from RAM
 	and a
 	ret z                        ; do nothing if zero
