@@ -382,6 +382,13 @@ MainInBattleLoop:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wFirstMonsNotOutYet], a
+; Clear both sides' move base power at the start of each turn. Counter and Mirror Coat
+; reflect only when wPlayerMovePower/wEnemyMovePower is nonzero (and wDamage is set), so a
+; side that takes its turn without attacking (item, switch, paralysis, sleep...) must leave
+; these at 0 to avoid reflecting stale damage from a previous move. A real move reloads them
+; via GetCurrentMove, so normal Counter/Mirror Coat behavior is unaffected.
+	ld [wPlayerMovePower], a
+	ld [wEnemyMovePower], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - if raging, reset rage's accuracy here to prevent degradation
 	ld a, [wPlayerBattleStatus2]
