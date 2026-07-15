@@ -4878,24 +4878,13 @@ HandleCounterMove:
 	ld a, [de]
 	and a
 	ret z ; miss if the opponent's last selected move's Base Power is 0.
-; check if the move the target last selected was Normal or Fighting type
- 	inc de
- 	ld a, [de]
- 	and a ; normal type
- 	jr z, .counterableType
- 	cp FIGHTING
-	jr z, .counterableType
-	cp FLYING
-	jr z, .counterableType
-	cp POISON
-	jr z, .counterableType
-	cp GROUND
-	jr z, .counterableType
-	cp ROCK
-	jr z, .counterableType
-	cp BUG
-	jr z, .counterableType	
-; if the move wasn't Normal or Fighting type, miss
+; Counter reflects physical moves. The physical/special split matches the damage
+; engine (GetDamageVarsFor...Attack): types below GHOST are physical.
+	inc de
+	ld a, [de]
+	cp GHOST ; types below GHOST are all physical -> counterable
+	jr c, .counterableType
+; if the move was a special type, miss
 	xor a
 	ret
 .counterableType
@@ -4926,7 +4915,7 @@ HandleCounterMove:
 
 HandleMirrorCoatMove:
 ; Mirrors HandleCounterMove, but is triggered by MIRROR_COAT and only counters
-; moves of "special" types: GHOST, FIRE, WATER, GRASS, ELECTRIC, PSYCHIC, ICE.
+; moves of "special" types (GHOST and up): GHOST, FIRE, WATER, GRASS, ELECTRIC, PSYCHIC, ICE, DRAGON.
 ; Same caveats apply as for Counter regarding the variables being updated when
 ; the cursor moves over a move in the battle menu.
 
@@ -4955,21 +4944,9 @@ HandleMirrorCoatMove:
 ; check if the move the target last selected was a special type
 	inc de
 	ld a, [de]
-	cp GHOST
-	jr z, .mirrorableType
-	cp FIRE
-	jr z, .mirrorableType
-	cp WATER
-	jr z, .mirrorableType
-	cp GRASS
-	jr z, .mirrorableType
-	cp ELECTRIC
-	jr z, .mirrorableType
-	cp PSYCHIC
-	jr z, .mirrorableType
-	cp ICE
-	jr z, .mirrorableType
-; if the move wasn't a special type, miss
+	cp GHOST ; types from GHOST up are all special -> mirrorable
+	jr nc, .mirrorableType
+; if the move was a physical type, miss
 	xor a
 	ret
 .mirrorableType
