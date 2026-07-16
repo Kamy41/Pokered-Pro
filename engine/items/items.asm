@@ -2869,7 +2869,7 @@ IsNextTileShoreOrWater:
 	ld hl, WaterTile
 	ld a, [wCurMapTileset]
 	cp SHIP_PORT ; Vermilion Dock tileset
-	
+
 	jr z, .skipShoreTiles ; if it's the Vermilion Dock tileset
 	cp GYM ; eastern shore tile in Safari Zone
 	jr z, .skipShoreTiles
@@ -2894,7 +2894,7 @@ ShoreTiles:
 WaterTile:
 	db $14
 	db $ff ; terminator
-	
+
 ; tilesets with water
 WaterTilesets:
 	db OVERWORLD, FOREST, DOJO, GYM, SHIP, SHIP_PORT, CAVERN, FACILITY, PLATEAU

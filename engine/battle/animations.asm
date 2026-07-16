@@ -518,7 +518,7 @@ AnimationShakeScreenHorizontallySlow:
 	jr nz, AnimationShakeScreenHorizontallySlow
 	ret
 
-SetAnimationPalette:		
+SetAnimationPalette:
 	ld a, [wOnSGB]
 	and a
 	jr z, .notSGB
@@ -848,7 +848,7 @@ FlashScreenEveryEightFrameBlocks:
 
 ; flashes the screen if the subanimation counter is divisible by 4
 FlashScreenEveryFourFrameBlocks:
-;	jp AnimationFlashScreen	
+;	jp AnimationFlashScreen
 	ld a, [wSubAnimCounter]
 	and 1
 	call z, AnimationFlashScreen
@@ -1894,7 +1894,7 @@ AnimationSlideMonDownAndHide:
 	jr nz, .loop
 	call AnimationHideMonPic
 	ret
-			
+
 _AnimationSlideMonOff:
 ; Slides the mon's sprite off the screen horizontally by e tiles and waits
 ; [wSlideMonDelay] V-blanks each time the pic is slid by one tile.
@@ -2004,7 +2004,7 @@ AnimationWavyScreen:
 	;credit to easyaspi314 for finding this
 	ld a, [hl]
 	ld [hSCX], a
-        push hl
+	push hl
 .innerLoop
 	call WavyScreen_SetSCX
 	ld a, [rLY]
@@ -2020,7 +2020,7 @@ AnimationWavyScreen:
 	dec c
 	jr nz, .loop
 	xor a
-        ld [hSCX], a	;joenote - reset the X scroll
+	ld [hSCX], a	;joenote - reset the X scroll
 	ld [hWY], a
 	call SaveScreenTilesToBuffer2
 	call ClearScreen
@@ -2097,7 +2097,7 @@ CopySlowbroSpriteData:
 	jp FarCopyData2
 
 HideSubstituteShowMonAnim:
-        ld a, [H_WHOSETURN]
+	ld a, [H_WHOSETURN]
 	and a
 	ld hl, wPlayerMonMinimized
 	ld a, [wPlayerBattleStatus2]
@@ -2122,7 +2122,7 @@ HideSubstituteShowMonAnim:
 	jp AnimationShowMonPic
 
 ReshowSubstituteAnim:
-        call AnimationSlideMonOff
+	call AnimationSlideMonOff
 	call AnimationSubstitute
 	jp AnimationShowMonPic
 
@@ -2377,7 +2377,7 @@ MoveSoundTable:
 	db SFX_BATTLE_0D,         $00,$40 ; MEGA_PUNCH
 	db SFX_SILPH_SCOPE,       $00,$ff ; PAY_DAY
 	db SFX_BATTLE_0D,         $10,$60 ; FIRE_PUNCH    used for other moves
-	db SFX_BATTLE_14,         $00,$20 ; ICE_PUNCH     unused, reused as backup for CONFUSION 
+	db SFX_BATTLE_14,         $00,$20 ; ICE_PUNCH     unused, reused as backup for CONFUSION
 	db SFX_BATTLE_0D,         $00,$a0 ; THUNDERPUNCH  unused
 	db SFX_BATTLE_16,         $00,$80 ; SCRATCH
 	db SFX_BATTLE_0F,         $20,$40 ; VICEGRIP

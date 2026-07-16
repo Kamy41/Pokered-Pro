@@ -16,8 +16,8 @@ MarowakAnim:
 	ld a, $1
 	ld [H_WHOSETURN], a
 	callab ChangeMonPic
- ; alternate between black and light grey 8 times.
- ; this makes the ghost's body appear to flash
+	; alternate between black and light grey 8 times.
+	; this makes the ghost's body appear to flash
 	ld d, $80
 	call FlashSprite8Times
 .fadeOutGhostLoop

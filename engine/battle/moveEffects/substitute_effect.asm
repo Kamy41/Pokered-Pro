@@ -37,7 +37,7 @@ SubstituteEffect_:
 	sbc 0
 	pop bc
 	jr c, .notEnoughHP ; underflow means user would be left with negative health
-                           ; bug: since it only branches on carry, it will possibly leave user with 0 HP
+	; bug: since it only branches on carry, it will possibly leave user with 0 HP
 ;;;;joenote - fix the bug to also check for exactly 0 hp
 	inc d ;d is still holding the hp loss value from substitute. increment it by 1.
 	dec d ;decrement it by one to change it back

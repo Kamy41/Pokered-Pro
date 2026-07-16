@@ -1,5 +1,5 @@
 OneHitKOEffect_:
-;;;;;;;;;;;;;; edited to compare Attack instead of Speed 
+;;;;;;;;;;;;;; edited to compare Attack instead of Speed
 	ld hl, wDamage
 	xor a
 	ld [hli], a

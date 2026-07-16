@@ -47,7 +47,7 @@ HallofFameRoomScript2:
 	ld a, PALLET_TOWN
 	ld [wLastBlackoutMap], a
 	callba SaveSAVtoSRAM
-	ld b, 5	
+	ld b, 5
 .delayLoop
 	ld c, 600 / 5
 	call DelayFrames

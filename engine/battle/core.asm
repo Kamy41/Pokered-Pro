@@ -154,7 +154,7 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	ld [hSCX], a
 	call DelayFrame
 	ld a, %11100100 ; inverted palette for silhouette effect
-	ld [rBGP], a	
+	ld [rBGP], a
 	ld [rOBP0], a
 	ld [rOBP1], a
 	; ld a, %11111100 ; make the mon a black silhouette
@@ -167,7 +167,7 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	inc b
 	ld h, $0
 	ld l, $60
-	call SetScrollXForSlidingPlayerBodyLeft ; end background scrolling on line $60	
+	call SetScrollXForSlidingPlayerBodyLeft ; end background scrolling on line $60
 	call SlidePlayerHeadLeft
 	ld a, c
 	ld [hSCX], a
@@ -2620,7 +2620,7 @@ MoveSelectionMenu:
 	coord hl, 4, 12
 	ld b, 4
 	ld c, 14
-    di ; out of pure coincidence, it is possible for vblank to occur between the di and ei
+	di ; out of pure coincidence, it is possible for vblank to occur between the di and ei
 	   ; so it is necessary to put the di ei block to not cause tearing
 	call TextBoxBorder
 	coord hl, 4, 12
@@ -3071,7 +3071,7 @@ SelectEnemyMove:
 	jr z, .not_enemy_raging
 	call DecAttackEnemy
 	call DeactivateRageInA
-	ld [wEnemyBattleStatus2], a	
+	ld [wEnemyBattleStatus2], a
 	ld a, $FF
 	ld [wEnemyMoveAccuracy], a
 .not_enemy_raging
@@ -4039,7 +4039,7 @@ PrintMoveFailureText:
 	; if you get here, the mon used jump kick or hi jump kick and missed
 	ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
 	                ; Thus, recoil damage will always be equal to 1
-	                ; even if it was intended to be potential damage/8.	
+	                ; even if it was intended to be potential damage/8.
 	ld a, [hli]
 	ld b, [hl]
 	srl a
@@ -4799,11 +4799,11 @@ CriticalHitTest:
 ; normal hit is (base speed) / 4
 ; focus energy is (base speed) for a 4x crit rate
 ; high crit move is 2*(base speed) for a 8x crit rate
-    ld a, [hld]                  ; read base power from RAM
+	ld a, [hld]                  ; read base power from RAM
 	and a
 	ret z                        ; do nothing if zero
 ; joenote - Also do not do a critical hit if a special damage move is being used (dragon rage, seismic toss, etc)
-; base power of 1 now signifies an expanded range to include moves like bide and counter 
+; base power of 1 now signifies an expanded range to include moves like bide and counter
 	cp 2
 	ret c	; do nothing if base power is 0 or 1
 	dec hl
@@ -4991,7 +4991,7 @@ ApplyAttackToEnemyPokemon:
 	jr z, .superFangEffect
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .specialDamage
-    cp TRAPPING_EFFECT	  ; joenote - clear hyper beam if target hit with trapping effect
+	cp TRAPPING_EFFECT	  ; joenote - clear hyper beam if target hit with trapping effect
 	call z, ClearHyperBeam
 	ld a, [wPlayerMovePower]
 	and a
@@ -5035,19 +5035,19 @@ ApplyAttackToEnemyPokemon:
 	ld b, a       ; b = level
 	srl a
 	ld c, a       ; c = level / 2
- 	ld a, b
- 	add a, c
-  	ld b, a       ; b = level + level / 2 = level * 1.5
+	ld a, b
+	add a, c
+	ld b, a       ; b = level + level / 2 = level * 1.5
 ; loop until a random number in the range (c, b) is found
 .loop
 	call BattleRandom
-   	and a
-   	jr z, .loop
-   	cp c
-  	jr c, .loop    ; if a < level / 2, repeat
-  	cp b
-  	jr nc, .loop   ; if a >= level * 1.5, repeat
-  	ld b, a
+	and a
+	jr z, .loop
+	cp c
+	jr c, .loop    ; if a < level / 2, repeat
+	cp b
+	jr nc, .loop   ; if a >= level * 1.5, repeat
+	ld b, a
 .storeDamage ; store damage value at b
 	ld hl, wDamage
 	xor a
@@ -5116,7 +5116,7 @@ ApplyAttackToPlayerPokemon:
 	jr z, .superFangEffect
 	cp SPECIAL_DAMAGE_EFFECT
 	jr z, .specialDamage
-    cp TRAPPING_EFFECT	   ; joenote - clear hyper beam if target hit with trapping effect
+	cp TRAPPING_EFFECT	   ; joenote - clear hyper beam if target hit with trapping effect
 	call z, ClearHyperBeam
 	ld a, [wEnemyMovePower]
 	and a
@@ -5160,19 +5160,19 @@ ApplyAttackToPlayerPokemon:
 	ld b, a       ; b = level
 	srl a
 	ld c, a       ; c = level / 2
- 	ld a, b
- 	add a, c
-  	ld b, a       ; b = level + level / 2 = level * 1.5
+	ld a, b
+	add a, c
+	ld b, a       ; b = level + level / 2 = level * 1.5
 ; loop until a random number in the range (c, b) is found
 .loop
 	call BattleRandom
-    and a
-    jr z, .loop
-    cp c
-    jr c, .loop    ; if a < level / 2, repeat
-    cp b
-    jr nc, .loop   ; if a >= level * 1.5, repeat
-    ld b, a
+	and a
+	jr z, .loop
+	cp c
+	jr c, .loop    ; if a < level / 2, repeat
+	cp b
+	jr nc, .loop   ; if a >= level * 1.5, repeat
+	ld b, a
 .storeDamage
 	ld hl, wDamage
 	xor a
@@ -5327,7 +5327,7 @@ HandleBuildingRage:
 	push hl
 	ld hl, BuildingRageText
 	call PrintText
-	call StatModifierUpEffect ; stat modifier raising function	
+	call StatModifierUpEffect ; stat modifier raising function
 	pop hl
 	xor a
 	ldd [hl], a ; null move effect
@@ -5337,7 +5337,7 @@ HandleBuildingRage:
 	xor $01 ; flip turn back to the way it was
 	ld [H_WHOSETURN], a
 	ret
-	
+
 BuildingRageText:
 	TX_FAR _BuildingRageText
 	db "@"
@@ -5546,7 +5546,7 @@ AdjustDamageForMoveType:
 	and $7f	;keep the current multiplier if static move (will be either 00 or 0A)
 	jr .endmulti
 .skip_static
-;;;;;;;;joenote - fixing the wrong effectiveness message 
+;;;;;;;;joenote - fixing the wrong effectiveness message
 	cp $05	;multiplier is still in a, so see if it's half damage
 	jr nz, .nothalf	;skip ahead if not half
 	ld a, [wDamageMultipliers]	;otherwise get the original stored multiplier (should be $0A if first time)
@@ -5609,7 +5609,7 @@ AIGetTypeEffectiveness:
 ;		-and modifying this to take into account both types
 	ld a, [wUnusedC000]
 	bit 3, a
-	jr z, .enemyMove	
+	jr z, .enemyMove
 	ld a, [wPlayerMoveType]
 	ld d, a                    ; d = type of player move
 	ld hl, wEnemyMonType
@@ -6145,18 +6145,18 @@ CheckEnemyStatusConditions:
 	ld a, SLP_ANIM
 	call PlayMoveAnimation
 	jr .sleepDone
-	
+
 .wokeUp
 	ld hl, WokeUpText
 	call PrintText
 	jr z, .checkIfFrozen	;joedebug - sleep won't waste turn
-	
+
 .sleepDone
 	xor a
 	ld [wEnemyUsedMove], a
 	ld hl, ExecuteEnemyMoveDone ; enemy can't move this turn
 	jp .enemyReturnToHL
-	
+
 .checkIfFrozen
 	bit FRZ, [hl]
 	jr z, .checkIfTrapped
@@ -6171,7 +6171,7 @@ CheckEnemyStatusConditions:
 	ld [wEnemyUsedMove], a
 	ld hl, ExecuteEnemyMoveDone ; enemy can't move this turn
 	jp .enemyReturnToHL
-	
+
 .defrostMon ; New routine to thaw mon
 	ld hl, wEnemyMonStatus
 	res FRZ, [hl]
@@ -6182,7 +6182,7 @@ CheckEnemyStatusConditions:
 	xor a
 	inc a
 	ld [H_WHOSETURN],a
-	
+
 .checkIfTrapped
 	ld a, [wPlayerBattleStatus1]
 	bit USING_TRAPPING_MOVE, a ; is the player using a multi-turn attack like warp
@@ -7197,9 +7197,9 @@ InitWildBattle:
 	ld [wIsInBattle], a
 	call LoadEnemyMonData
 	call DoBattleTransitionAndInitBattleVariables
- 	ld a, [wCurOpponent]
- 	cp MAROWAK
- 	jr z, .isGhost
+	ld a, [wCurOpponent]
+	cp MAROWAK
+	jr z, .isGhost
 	call IsGhostBattle
 	jr nz, .isNoGhost
 .isGhost
@@ -7917,7 +7917,7 @@ StatModifierUpEffect:
 	sbc 999 / $100
 	jp z, RestoreOriginalStatModifier
 .recalculateStat ; recalculate affected stat
-                 ; paralysis and burn penalties, as well as badge boosts are ignored
+	; paralysis and burn penalties, as well as badge boosts are ignored
 	push hl
 	push bc
 	ld hl, StatModifierRatios
@@ -7976,8 +7976,8 @@ UpdateStatDone:
 	ld a, [de]
 	cp MINIMIZE
 	jr nz, .asm_3f4f9
- ; if a substitute is up, slide off the substitute and show the mon pic before
- ; playing the minimize animation
+	; if a substitute is up, slide off the substitute and show the mon pic before
+	; playing the minimize animation
 	bit HAS_SUBSTITUTE_UP, [hl]
 	push af
 	push bc
@@ -8265,7 +8265,7 @@ UpdateLoweredStatDone:
 	call QuarterSpeedDueToParalysis	;the non-active pkmn has a new recalculated speed. the active pkmn applies par penalty to its opponent.
 .skip_end
 	pop de	;restore de from the stack
-	ret	;remember to return 
+	ret	;remember to return
 
 CantLowerAnymore_Pop:
 	pop de
@@ -8683,7 +8683,7 @@ TrappingEffect:
 .trappingEffect
 	bit USING_TRAPPING_MOVE, [hl]
 	ret nz
-	
+
 	push hl
 	push bc
 	push de
@@ -8694,9 +8694,9 @@ TrappingEffect:
 	ld a, [wTypeEffectiveness]
 	and a
 	ret z
-	
+
 ;	call ClearHyperBeam ; since this effect is called before testing whether the move will hit,
-                        ; the target won't need to recharge even if the trapping move missed
+	; the target won't need to recharge even if the trapping move missed
 						;joenote - will do this later under ApplyAttackToEnemy/Player functions
 	set USING_TRAPPING_MOVE, [hl] ; mon is now using a trapping move
 	call BattleRandom ; 3/8 chance for 2 and 3 attacks, and 1/8 chance for 4 and 5 attacks
@@ -8875,46 +8875,46 @@ MimicEffect:
 	pop af
 	ld hl, wBattleMonMoves
 .playerTurn
-    ld c, a
-    ld b, $0
-    add hl, bc
-    ld a, d
-    ld [hl], a
-    ld [wd11e], a
-  	push bc
-    push de
-    ld a, d
-    dec a
-    ld hl, Moves
-    ld bc, MoveEnd - Moves
-    call AddNTimes
-    ld de, wcd6d
-    ld a, BANK(Moves)
-    call FarCopyData
-    ld a, [wcd6d + 5]  ; PP is byte 5 of move data
-    pop de
-    pop bc
-    ld e, a
-    ld a, [H_WHOSETURN]
-    and a
-    ld hl, wBattleMonPP
-    jr z, .setCopiedPP
-    ld hl, wEnemyMonPP
-.setCopiedPP
-    add hl, bc
-    ld a, e
-    ld [hl], a
+	ld c, a
+	ld b, $0
+	add hl, bc
+	ld a, d
+	ld [hl], a
+	ld [wd11e], a
+	push bc
+	push de
+	ld a, d
+	dec a
+	ld hl, Moves
+	ld bc, MoveEnd - Moves
+	call AddNTimes
+	ld de, wcd6d
+	ld a, BANK(Moves)
+	call FarCopyData
+	ld a, [wcd6d + 5]  ; PP is byte 5 of move data
+	pop de
+	pop bc
+	ld e, a
 	ld a, [H_WHOSETURN]
-    and a
-    ld hl, wPlayerBattleStatus3
-    jr z, .setMimicked
-    ld hl, wEnemyBattleStatus3
+	and a
+	ld hl, wBattleMonPP
+	jr z, .setCopiedPP
+	ld hl, wEnemyMonPP
+.setCopiedPP
+	add hl, bc
+	ld a, e
+	ld [hl], a
+	ld a, [H_WHOSETURN]
+	and a
+	ld hl, wPlayerBattleStatus3
+	jr z, .setMimicked
+	ld hl, wEnemyBattleStatus3
 .setMimicked
-    set MIMICKED, [hl]
-    call GetMoveName
-    call PlayCurrentMoveAnimation
-    ld hl, MimicLearnedMoveText
-    jp PrintText
+	set MIMICKED, [hl]
+	call GetMoveName
+	call PlayCurrentMoveAnimation
+	ld hl, MimicLearnedMoveText
+	jp PrintText
 MimicMissed:
 	jp PrintButItFailedText_
 
@@ -9020,7 +9020,7 @@ PayDayEffect:
 	jpab PayDayEffect_
 
 ConversionEffect:
-	jpab ConversionEffect_	
+	jpab ConversionEffect_
 
 HazeEffect:
 	jpab HazeEffect_
@@ -9142,7 +9142,7 @@ PlayBattleAnimationGotID:
 	pop bc
 	pop de
 	pop hl
-	ret	
+	ret
 
 DecAttackPlayer:
 	push hl

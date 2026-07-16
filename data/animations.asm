@@ -249,7 +249,7 @@ FirePunchAnim:
 
 IcePunchAnim:
 	db $06,$39,$02
-	db $10,$ff,$2F 
+	db $10,$ff,$2F
 	db $FF
 
 ThunderPunchAnim:
@@ -564,7 +564,7 @@ LowKickAnim:
 	db $FF
 
 CounterAnim:
-	db SE_DARK_SCREEN_PALETTE, $FF	
+	db SE_DARK_SCREEN_PALETTE, $FF
 	db SE_SLIDE_MON_OFF, $43
 	db $46,$43,$04
 	db SE_RESET_SCREEN_PALETTE, $FF
@@ -716,7 +716,7 @@ ToxicAnim:
 
 ConfusionAnim:
 	db SE_FLASH_SCREEN_LONG, $5C
-    db SE_FLASH_SCREEN_LONG, $FF
+	db SE_FLASH_SCREEN_LONG, $FF
 	db $FF
 
 PsychicAnim:
@@ -738,7 +738,7 @@ MeditateAnim:
 AgilityAnim:
 	db SE_LIGHT_SCREEN_PALETTE, $60
 	db SE_DELAY_ANIMATION_10, $FF
-    db SE_RESET_SCREEN_PALETTE, $FF
+	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
 QuickAttackAnim:
@@ -1063,7 +1063,7 @@ AcidArmorAnim:
 	db SE_SLIDE_MON_DOWN_AND_HIDE, $96
 	db SE_DELAY_ANIMATION_10, $FF
 	db SE_DELAY_ANIMATION_10, $FF
-	db SE_DELAY_ANIMATION_10, $FF	
+	db SE_DELAY_ANIMATION_10, $FF
 	db SE_SHOW_MON_PIC, $FF
 	db $FF
 
@@ -1120,7 +1120,7 @@ TriAttackAnim:
 	db $FF
 
 SuperFangAnim:
-	db SE_DARK_SCREEN_PALETTE, $48	
+	db SE_DARK_SCREEN_PALETTE, $48
 	db $08,$A1,$2A
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
@@ -1135,14 +1135,14 @@ SubstituteAnim:
 	db SE_SUBSTITUTE_MON, $FF
 	db $FF
 
- TwisterAnim: 	
- 	db $45,$A4,$10
+TwisterAnim:
+	db $45,$A4,$10
 	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$FF,$04
 	db $FF
 
 MirrorCoatAnim:
-	db SE_LIGHT_SCREEN_PALETTE, $FF	
+	db SE_LIGHT_SCREEN_PALETTE, $FF
 	db SE_DARK_SCREEN_FLASH, $72
 	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$FF,$33

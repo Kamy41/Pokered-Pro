@@ -22,11 +22,11 @@ EvolveTradeMon:
 	; KADABRA
 	cp "K"
 	jr z, .ok
-	
+
 	; MACHOKE
 	cp "M"
 	jr z, .ok
-	
+
 	; GRAVELER
 	cp "G"
 	jr z, .ok

@@ -6,7 +6,7 @@ AIEnemyTrainerChooseMoves:
 	ld [hli], a   ; move 1
 	ld [hli], a   ; move 2
 	ld [hli], a   ; move 3
-	ld [hl], a    ; move 4		
+	ld [hl], a    ; move 4
 	ld a, [wEnemyDisabledMove] ; forbid disabled move (if any)
 	swap a
 	and $f
@@ -107,7 +107,7 @@ AIMoveChoiceModificationFunctionPointers:
 	dw AIMoveChoiceModification1
 	dw AIMoveChoiceModification2
 	dw AIMoveChoiceModification3
- 	dw AIMoveChoiceModification4 ; unused
+	dw AIMoveChoiceModification4 ; unused
 
 ; discourages moves that cause no damage but only a status ailment if player's mon already has one
 AIMoveChoiceModification1:
@@ -140,7 +140,7 @@ AIMoveChoiceModification1:
 	pop de
 	pop hl
 	jr nc, .nextMove
-        ld a, [hl]
+	ld a, [hl]
 	add $5 ; heavily discourage move
 	ld [hl], a
 	jr .nextMove
@@ -208,7 +208,7 @@ AIMoveChoiceModification3:
 	callab AIGetTypeEffectiveness
 	pop de
 	pop bc
-	pop hl	
+	pop hl
 	ld a, [wTypeEffectiveness]
 	cp $0A
 	jr z, .nextMove
@@ -218,7 +218,7 @@ AIMoveChoiceModification3:
 	jr z, .nextMove	         ; added for BP check
 	dec [hl] ; slightly encourage this move
 	jr .nextMove
-.notEffectiveMove ; discourages non-effective moves if better moves are available	
+.notEffectiveMove ; discourages non-effective moves if better moves are available
 	push hl
 	push de
 	push bc
@@ -227,13 +227,13 @@ AIMoveChoiceModification3:
 	ld hl, wEnemyMonMoves  ; enemy moves
 	ld b, NUM_MOVES + 1
 	ld c, $0
-.loopMoves	
+.loopMoves
 	dec b
 	jr z, .done
 	ld a, [hli]
 	and a
 	jr z, .done
-	call ReadMove	
+	call ReadMove
 	ld a, [wEnemyMoveEffect]
 ; 	cp SUPER_FANG_EFFECT   ; deleted to preserve Missingno
 ;	jr z, .betterMoveFound ; Super Fang is considered to be a better move ; deleted to preserve Missingno
@@ -260,12 +260,12 @@ AIMoveChoiceModification3:
 	inc [hl] ; slightly discourage this move
 	jr .nextMove
 
-AIMoveChoiceModification4:	
+AIMoveChoiceModification4:
 	nop        ; added to preserve Missingno
 	nop        ; added to preserve Missingno
 	nop        ; added to preserve Missingno
 	ret
-	
+
 ReadMove:
 	push hl
 	push de
@@ -490,7 +490,7 @@ KogaAI:
 
 BlaineAI:
 	cp 25 percent + 1
-	ret nc	
+	ret nc
 	jp AIUseXSpecial
 
 SabrinaAI:
@@ -529,7 +529,7 @@ BrunoAI:
 	cp 50 percent + 1
 	ret nc
 	jp AIUseXAccuracy
-	
+
 AgathaAI:
 	cp 8 percent
 	jp c, AISwitchIfEnoughMons
@@ -735,7 +735,7 @@ AICureStatus:
 	xor a
 	ld [hl], a ; clear status in enemy team roster
 	ld [wEnemyMonStatus], a ; clear status of active enemy
-        ld hl, wEnemyBattleStatus3
+	ld hl, wEnemyBattleStatus3
 	res 0, [hl]
 	ret
 

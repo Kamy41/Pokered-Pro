@@ -10,7 +10,7 @@ DivideBCD::
 	ld [hDivideBCDBuffer+1], a
 	ld [hDivideBCDBuffer+2], a
 	ld d, $1
-.mulBy10Loop 
+.mulBy10Loop
 ; multiply the divisor by 10 until the leading digit is nonzero
 ; to set up the standard long division algorithm
 	ld a, [hDivideBCDDivisor]
@@ -104,7 +104,7 @@ DivideBCD::
 	ld a, [hDivideBCDBuffer+2]
 	ld [hDivideBCDQuotient+2], a
 	pop de
-	ld a, $6 
+	ld a, $6
 	sub d
 	and a
 	ret z
@@ -152,7 +152,7 @@ DivideBCD_getNextDigit:
 	ret c
 	inc b
 	ld de, hMoney+2 ; since SubBCD works starting from the least significant digit
-	ld hl, hDivideBCDDivisor+2  
+	ld hl, hDivideBCDDivisor+2
 	push bc
 	call SubBCD
 	pop bc

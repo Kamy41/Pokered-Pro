@@ -254,22 +254,22 @@ GainExperience:
 	ld [wMonDataLocation], a
 	ld a, [wd0b5]
 	ld [wd11e], a
-	
-	ld a, [wCurEnemyLVL]	
-	ld c, a	
-	ld a, [wTempLevel]	
-	ld b, a	
-.level_loop	
-	inc b	
-	ld a, b	
-	ld [wCurEnemyLVL], a	
-	push bc		
+
+	ld a, [wCurEnemyLVL]
+	ld c, a
+	ld a, [wTempLevel]
+	ld b, a
+.level_loop
+	inc b
+	ld a, b
+	ld [wCurEnemyLVL], a
+	push bc
 	predef LearnMoveFromLevelUp
-	pop bc	
-	ld a, b	
-	cp c	
+	pop bc
+	ld a, b
+	cp c
 	jr nz, .level_loop
-	
+
 	ld hl, wCanEvolveFlags
 	ld a, [wWhichPokemon]
 	ld c, a

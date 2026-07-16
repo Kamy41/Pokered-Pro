@@ -228,15 +228,15 @@ MonPartySpritePointers:
 	db BANK(MonPartySprites)
 	dw vSprites + $260
 
- 	dw MonPartySprites + $100
-    db $10 / $10 ; $20 bytes
-    db BANK(MonPartySprites)
-    dw vSprites + $280
+	dw MonPartySprites + $100
+	db $10 / $10 ; $20 bytes
+	db BANK(MonPartySprites)
+	dw vSprites + $280
 
 	dw MonPartySprites + $110
-    db $10 / $10 ; $20 bytes
-    db BANK(MonPartySprites)
-    dw vSprites + $2a0
+	db $10 / $10 ; $20 bytes
+	db BANK(MonPartySprites)
+	dw vSprites + $2a0
 
 	dw MonPartySprites + $140
 	db $40 / $10 ; $40 bytes
@@ -309,14 +309,14 @@ MonPartySpritePointers:
 	dw vSprites + $660
 
 	dw MonPartySprites + $120
-    db $10 / $10 ; $10 bytes
-    db BANK(MonPartySprites)
-    dw vSprites + $680
+	db $10 / $10 ; $10 bytes
+	db BANK(MonPartySprites)
+	dw vSprites + $680
 
 	dw MonPartySprites + $130
-    db $10 / $10 ; $10 bytes
-    db BANK(MonPartySprites)
-    dw vSprites + $6a0
+	db $10 / $10 ; $10 bytes
+	db BANK(MonPartySprites)
+	dw vSprites + $6a0
 
 	dw MonPartySprites + $140
 	db $40 / $10 ; $40 bytes

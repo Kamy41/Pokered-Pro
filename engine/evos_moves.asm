@@ -201,7 +201,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	call GetPartyMonName
 	call CopyStringToCF4B
 	ld a, [wRemovePokemon]
-	and a	
+	and a
 	ld hl, IsEvolvingText
 	call PrintText
 	ld c, 50

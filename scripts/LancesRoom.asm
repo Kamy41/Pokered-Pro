@@ -92,8 +92,8 @@ LanceScript0:
 	ld a, 1
 	ld [H_SPRITEINDEX], a
 	ld a, SPRITE_FACING_LEFT
-  	ld [hSpriteFacingDirection], a
-  	jp SetSpriteFacingDirection
+	ld [hSpriteFacingDirection], a
+	jp SetSpriteFacingDirection
 
 LanceTriggerMovementCoords:
 	db $01,$05

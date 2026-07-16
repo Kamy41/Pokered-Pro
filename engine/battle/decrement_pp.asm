@@ -18,8 +18,8 @@ DecrementPP:
 
 ; decrement PP in the party struct
 	ld a, [wPlayerBattleStatus3]
-	and (1 << TRANSFORMED) | (1 << MIMICKED)	
-  ; bit TRANSFORMED, a
+	and (1 << TRANSFORMED) | (1 << MIMICKED)
+	; bit TRANSFORMED, a
 	ret nz               ; Return if transformed. Pokemon Red stores the "current pokemon's" PP
 	                     ; separately from the "Pokemon in your party's" PP.  This is
 	                     ; duplication -- in all cases *other* than Pokemon with Transform.

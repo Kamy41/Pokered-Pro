@@ -3,11 +3,11 @@ VermilionDock_Script:
 	call VermilionDock_SubScript
 	ld hl, MewTrainerHeader
 	ld de, VermilionDock_ScriptPointers
-	ld a, [wVermilionDockCurScript]	
-	call ExecuteCurMapScriptInTable	
+	ld a, [wVermilionDockCurScript]
+	call ExecuteCurMapScriptInTable
 	ld [wVermilionDockCurScript], a
 	ret
-	
+
 VermilionDock_ScriptPointers:
 	dw CheckFightingMapTrainers
 	dw DisplayEnemyTrainerTextAndStartBattle
@@ -226,7 +226,7 @@ VermilionDock_TextPointers:
 	dw MewText
 
 MewTrainerHeader:
-        dbEventFlagBit EVENT_BEAT_MEW
+	dbEventFlagBit EVENT_BEAT_MEW
 	db ($0 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MEW
 	dw MewBattleText ; TextBeforeBattle
@@ -234,7 +234,7 @@ MewTrainerHeader:
 	dw MewBattleText ; TextEndBattle
 	dw MewBattleText ; TextEndBattle
 
-        db $ff
+	db $ff
 
 MewText:
 	TX_ASM

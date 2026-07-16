@@ -1652,10 +1652,10 @@ wBattleType:: ; d05a
 
 wDamageMultipliers:: ; d05b
 ; bits 0-6: Effectiveness
-   ;  $0 = immune
-   ;  $5 = not very effective
-   ;  $a = neutral
-   ; $14 = super-effective
+	;  $0 = immune
+	;  $5 = not very effective
+	;  $a = neutral
+	; $14 = super-effective
 ; bit 7: STAB
 	ds 1
 

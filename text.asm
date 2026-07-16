@@ -1137,7 +1137,7 @@ _TrainerAboutToUseText::
 	cont "another #MON!"
 ;	cont"@"
 ;	TX_RAM wEnemyMonNick
-;	text "!"	
+;	text "!"
 
 	para "Will <PLAYER>"
 	line "change #MON?"

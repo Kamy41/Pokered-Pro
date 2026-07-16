@@ -213,7 +213,7 @@ RocketHideout4EndBattleText4:
 RocketHideout4AfterBattleText4:
 	TX_ASM
 	ld hl, RocketHideout4Text_455ec
-	call PrintText	
+	call PrintText
 	jp TextScriptEnd
 
 RocketHideout4Text_455ec:

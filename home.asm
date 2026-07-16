@@ -285,7 +285,7 @@ LoadFrontSpriteByMonIndex::
 	nop  ; ld a, RHYDON ; $1
 ;	ld [wcf91], a
 	ret
-.validDexNumber        
+.validDexNumber
 	push hl
 	nop
 	ld de, vFrontPic
@@ -2351,16 +2351,16 @@ CheckFightingMapTrainers::
 
 ; display the before battle text after the enemy trainer has walked up to the player's sprite
 DisplayEnemyTrainerTextAndStartBattle:: ; 324c (0:324c)
-        ld a, [wd730]
-        and $1
-        ret nz ; return if the enemy trainer hasn't finished walking to the player's sprite
-        ld [wJoyIgnore], a
+	ld a, [wd730]
+	and $1
+	ret nz ; return if the enemy trainer hasn't finished walking to the player's sprite
+	ld [wJoyIgnore], a
 	callba FaceEnemyTrainer
-        ld a, [wSpriteIndex]
-        ld [hSpriteIndexOrTextID], a
-        call DisplayTextID
-        ; fall through
-    
+	ld a, [wSpriteIndex]
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	; fall through
+
 StartTrainerBattle::
 	xor a
 	ld [wJoyIgnore], a
@@ -4252,15 +4252,15 @@ print_digit: macro
 
 if (\1) / $10000
 	ld a, \1 / $10000 % $100
-else	
-        xor a
+else
+	xor a
 endc
 	ld [H_POWEROFTEN + 0], a
 
 if (\1) / $100
 	ld a, \1 / $100   % $100
-else	
-        xor a
+else
+	xor a
 endc
 	ld [H_POWEROFTEN + 1], a
 

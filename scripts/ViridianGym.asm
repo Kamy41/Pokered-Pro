@@ -277,8 +277,8 @@ ViridianGymText1:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, HS_MEW
-        ld [wMissableObjectIndex], a
-        predef ShowObject
+	ld [wMissableObjectIndex], a
+	predef ShowObject
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack

@@ -57,7 +57,7 @@ SetPal_Battle:
 	ld [hli], a
 	inc hl
 	ld a, c
-	ld [hl], a	
+	ld [hl], a
 	ld hl, wPalPacket
 	ld de, BlkPacket_Battle
 	ld a, SET_PAL_BATTLE
@@ -278,7 +278,7 @@ DeterminePaletteID:
 ;	bit TRANSFORMED, a    ; a is battle status 3
 ;	ld a, PAL_MEWMON      ; Load Mew's palette for other transformed Pokémon
 ;	ret nz
- 	ld a, [hl]
+	ld a, [hl]
 DeterminePaletteIDOutOfBattle:
 	ld [wd11e], a
 	and a ; is the mon index 0?
