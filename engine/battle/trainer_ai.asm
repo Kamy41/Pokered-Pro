@@ -189,81 +189,13 @@ AIMoveChoiceModification2:
 ; encourages moves that are effective against the player's mon (even if non-damaging - FIXED).
 ; discourage damaging moves that are ineffective or not very effective against the player's mon,
 ; unless there's no damaging move that deals at least neutral damage
-AIMoveChoiceModification3:
-	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
-	ld de, wEnemyMonMoves ; enemy moves
-	ld b, NUM_MOVES + 1
-.nextMove
-	dec b
-	ret z ; processed all 4 moves
-	inc hl
-	ld a, [de]
-	and a
-	ret z ; no more moves in move set
-	inc de
-	call ReadMove
-	push hl
-	push bc
-	push de
-	callab AIGetTypeEffectiveness
-	pop de
-	pop bc
-	pop hl
-	ld a, [wTypeEffectiveness]
-	cp $0A
-	jr z, .nextMove
-	jr c, .notEffectiveMove
-	ld a, [wEnemyMovePower]  ; added for BP check
-	and a 	                 ; check if it's zero
-	jr z, .nextMove	         ; added for BP check
-	dec [hl] ; slightly encourage this move
-	jr .nextMove
-.notEffectiveMove ; discourages non-effective moves if better moves are available
-	push hl
-	push de
-	push bc
-	ld a, [wEnemyMoveType]
-	ld d, a
-	ld hl, wEnemyMonMoves  ; enemy moves
-	ld b, NUM_MOVES + 1
-	ld c, $0
-.loopMoves
-	dec b
-	jr z, .done
-	ld a, [hli]
-	and a
-	jr z, .done
-	call ReadMove
-	ld a, [wEnemyMoveEffect]
-; 	cp SUPER_FANG_EFFECT   ; deleted to preserve Missingno
-;	jr z, .betterMoveFound ; Super Fang is considered to be a better move ; deleted to preserve Missingno
-	cp SPECIAL_DAMAGE_EFFECT
-	jr z, .betterMoveFound ; any special damage moves are considered to be better moves
-;	cp FLY_EFFECT          ; deleted to preserve Missingno
-;	jr z, .betterMoveFound ; Fly is considered to be a better move ; deleted to preserve Missingno
-	ld a, [wEnemyMoveType]
-	cp d
-	jr z, .loopMoves
-	ld a, [wEnemyMovePower]
-	and a
-	jr nz, .betterMoveFound ; damaging moves of a different type are considered to be better moves
-	jr .loopMoves
-.betterMoveFound
-	ld c, a
-.done
-	ld a, c
-	pop bc
-	pop de
-	pop hl
-	and a
-	jr z, .nextMove
-	inc [hl] ; slightly discourage this move
-	jr .nextMove
+; AIMoveChoiceModification3 was relocated to the free space at the end of this bank
+; (past BikerData / MissingNo.'s read point) so its logic can change size freely.
+; This ds keeps everything below at its original address, so MissingNo.'s data source
+; does not move -- guarded by the ASSERT in data/trainer_parties.asm.
+	ds $6D ; = relocated mod3 body (106) + the 3 reclaimed "preserve Missingno" NOPs
 
 AIMoveChoiceModification4:
-	nop        ; added to preserve Missingno
-	nop        ; added to preserve Missingno
-	nop        ; added to preserve Missingno
 	ret
 
 ReadMove:
@@ -844,3 +776,115 @@ AIPrintItemUse_:
 AIBattleUseItemText:
 	TX_FAR _AIBattleUseItemText
 	db "@"
+
+; --- Relocated here from the locked zone (see the ds up in the move-choice code). Being in
+; --- free space, this logic can grow without shifting MissingNo.'s data source.
+AI_MAX_SAME_MOVE EQU 3 ; the enemy won't spam the same super-effective move more than ~this many turns running
+
+; Move scoring for trainer classes that use modification 3:
+;  - discourages non-damaging (0 BP) moves, so a move that deals damage is always preferred;
+;  - encourages super-effective moves...
+;  - ...but after AI_MAX_SAME_MOVE repeats it discourages the spammed super-effective move for
+;    one turn (variety; state in wAILastMove / wAISameMoveCount, reset on enemy send-out);
+;  - discourages not-very-effective moves when a better move is available.
+AIMoveChoiceModification3:
+; anti-spam bookkeeping (once per turn): count consecutive repeats of the enemy's last move.
+	ld a, [wEnemySelectedMove] ; move the enemy used last turn
+	ld hl, wAILastMove
+	cp [hl]
+	ld [hl], a ; remember it for next turn
+	jr z, .sameMoveAsLastTurn
+	ld a, 1
+	ld [wAISameMoveCount], a ; a different move -> streak resets to 1
+	jr .scanMoves
+.sameMoveAsLastTurn
+	ld hl, wAISameMoveCount
+	inc [hl] ; same move -> streak grows
+.scanMoves
+	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
+	ld de, wEnemyMonMoves ; enemy moves
+	ld b, NUM_MOVES + 1
+.nextMove
+	dec b
+	ret z ; processed all 4 moves
+	inc hl
+	ld a, [de]
+	and a
+	ret z ; no more moves in move set
+	inc de
+	call ReadMove
+	ld a, [wEnemyMovePower] ; a 0 BP move deals no damage:
+	and a
+	jr z, .zeroPowerMove ; discourage it so any damaging move outranks it
+	push hl
+	push bc
+	push de
+	callab AIGetTypeEffectiveness
+	pop de
+	pop bc
+	pop hl
+	ld a, [wTypeEffectiveness]
+	cp $0A
+	jr z, .nextMove
+	jr c, .notEffectiveMove
+; super-effective, BP > 0: encourage it -- unless it's the move we have been spamming.
+	ld a, [wAISameMoveCount]
+	cp AI_MAX_SAME_MOVE
+	jr c, .encourageMove ; used few enough times so far -> encourage
+	push hl
+	ld hl, wAILastMove
+	ld a, [wEnemyMoveNum]
+	cp [hl]
+	pop hl
+	jr nz, .encourageMove ; a different super-effective move -> encourage normally
+	inc [hl]
+	inc [hl] ; over-used: discourage below the second-best move for one turn
+	jr .nextMove
+.encourageMove
+	dec [hl] ; slightly encourage this super-effective move
+	jr .nextMove
+.zeroPowerMove
+	inc [hl]
+	inc [hl] ; a 0 BP move always ranks below a move that deals damage
+	jr .nextMove
+.notEffectiveMove ; discourages non-effective moves if better moves are available
+	push hl
+	push de
+	push bc
+	ld a, [wEnemyMoveType]
+	ld d, a
+	ld hl, wEnemyMonMoves ; enemy moves
+	ld b, NUM_MOVES + 1
+	ld c, $0
+.loopMoves
+	dec b
+	jr z, .done
+	ld a, [hli]
+	and a
+	jr z, .done
+	call ReadMove
+	ld a, [wEnemyMoveEffect]
+	cp SUPER_FANG_EFFECT ; restored: Super Fang is considered a better move
+	jr z, .betterMoveFound
+	cp SPECIAL_DAMAGE_EFFECT
+	jr z, .betterMoveFound ; any special damage move is considered a better move
+	cp FLY_EFFECT ; restored: Fly is considered a better move
+	jr z, .betterMoveFound
+	ld a, [wEnemyMoveType]
+	cp d
+	jr z, .loopMoves
+	ld a, [wEnemyMovePower]
+	and a
+	jr nz, .betterMoveFound ; damaging moves of a different type are considered better moves
+	jr .loopMoves
+.betterMoveFound
+	ld c, a
+.done
+	ld a, c
+	pop bc
+	pop de
+	pop hl
+	and a
+	jp z, .nextMove
+	inc [hl] ; slightly discourage this move
+	jp .nextMove

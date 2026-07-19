@@ -1420,6 +1420,8 @@ EnemySendOut:
 ; don't change wPartyGainExpFlags or wPartyFoughtCurrentEnemyFlags
 EnemySendOutFirstMon:
 	xor a
+	ld [wAILastMove], a ; reset trainer-AI anti-spam counter for the new enemy mon
+	ld [wAISameMoveCount], a
 	ld hl, wEnemyStatsToDouble ; clear enemy statuses
 	ld [hli], a
 	ld [hli], a

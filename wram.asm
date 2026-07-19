@@ -2397,6 +2397,10 @@ wXBlockCoord:: ; d364
 wLastMap:: ; d365
 	ds 1
 
+; wAILastMove: enemy's last selected move, used by AIMoveChoiceModification3's anti-spam
+; counter. Repurposed dead byte (written only outside battle) so no WRAM address shifts --
+; saves and MissingNo. stay untouched. Reset in EnemySendOutFirstMon.
+wAILastMove::
 wUnusedD366:: ; d366
 	ds 1
 
@@ -2650,6 +2654,8 @@ wNumHoFTeams:: ; d5a2
 ; number of HOF teams
 	ds 1
 
+; wAISameMoveCount: how many turns in a row the enemy repeated wAILastMove (anti-spam).
+wAISameMoveCount::
 wUnusedD5A3:: ; d5a3
 	ds 1
 
