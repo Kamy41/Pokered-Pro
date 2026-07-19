@@ -246,6 +246,13 @@ HikerData:
 	db 20,ONIX,ONIX,GEODUDE,0
 	db 21,GEODUDE,GRAVELER,0
 BikerData:
+; --- MissingNo. data-source guard (emits no bytes) ---
+; MissingNo. reads its base stats from a fixed offset past BaseStats, which lands
+; inside the Route 17 Bikers below (see that note and smogon.com/smog/issue27/glitch).
+; This ASSERT locks BikerData's position relative to BaseStats: if any code or data
+; between them changes size, the build FAILS here instead of silently corrupting
+; MissingNo.'s stats/types/moves/sprite.
+ASSERT BikerData - BaseStats == $1BBE, "MissingNo. data source shifted: BikerData moved relative to BaseStats!"
 ; Route 13
 	db 28,KOFFING,KOFFING,KOFFING,0
 ; Route 14
