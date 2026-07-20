@@ -844,7 +844,7 @@ AIMoveChoiceModification3:
 	dec [hl] ; slightly encourage this super-effective move
 	jr .nextMove
 .zeroPowerMove
-	inc [hl]
+	; inc [hl]
 	inc [hl] ; a 0 BP move always ranks below a move that deals damage
 	jr .nextMove
 .notEffectiveMove ; discourages non-effective moves if better moves are available
