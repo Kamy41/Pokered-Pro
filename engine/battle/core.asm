@@ -153,12 +153,24 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	ld a, c
 	ld [hSCX], a
 	call DelayFrame
-	ld a, %11100100 ; inverted palette for silhouette effect
+; Su SGB la silhouette nera dello scroll la fa gia' SET_PAL_BATTLE_BLACK: la maschera rBGP/rOBP
+; qui sovrascriverebbe la grafica. Serve SOLO su non-SGB (GBC/GB), dove altrimenti testa e pic
+; diventano verdi per la palette-compat. Su SGB si usa la palette identita' (comportamento originale).
+	ld a, [wOnSGB]
+	and a
+	jr nz, .sgbIntroPalette
+	ld a, %11111100 ; non-SGB: maschera nera BG (corpo + pic avversario) -> silhouette
+	ld [rBGP], a
+	ld a, %11111111 ; non-SGB: maschera nera testa (sprite OBJ) -> silhouette
+	ld [rOBP0], a
+	ld [rOBP1], a
+	jr .introPaletteSet
+.sgbIntroPalette
+	ld a, %11100100 ; SGB: palette identita' (originale)
 	ld [rBGP], a
 	ld [rOBP0], a
 	ld [rOBP1], a
-	; ld a, %11111100 ; make the mon a black silhouette
-	; ld [rBGP], a
+.introPaletteSet
 .slideSilhouettesLoop ; slide silhouettes of the player's pic and the enemy's pic onto the screen
 	ld h, b
 	ld l, $40
@@ -180,6 +192,8 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	ld [hStartTileID], a
 	coord hl, 1, 5
 	predef CopyUncompressedPicToTilemap
+	ld a, %11100100 ; pic in posizione fissa: rivela i colori del BG (corpo + avversario)
+	ld [rBGP], a
 	xor a
 	ld [hWY], a
 	ld [rWY], a
@@ -189,6 +203,17 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	ld b, SET_PAL_BATTLE
 	call RunPaletteCommand
 	call HideSprites
+	ld a, [wOnSGB]
+	and a
+	jr nz, .skipGbObjReveal ; su SGB non c'e' maschera OBJ da ripristinare -> niente delay (originale)
+; non-SGB: estende la maschera nera di qualche frame a fine scroll (attende il DMA dell'OAM che
+; nasconde lo sprite-testa) prima di ripristinare rOBP, cosi' non si vede la testa verde
+	ld c, 2
+	call DelayFrames
+	ld a, %11100100 ; testa OBJ nascosta: ripristina palette OBJ (Poke Ball verdi)
+	ld [rOBP0], a
+	ld [rOBP1], a
+.skipGbObjReveal
 	jpab PrintBeginningBattleText
 
 ; when a battle is starting, silhouettes of the player's pic and the enemy's pic are slid onto the screen
@@ -7641,7 +7666,10 @@ PoisonEffect:
 	ld a, [de]
 	ld de, wPlayerToxicCounter
 	jr nz, .ok
-	ld b, ANIM_A9
+	push af ; a = effetto-mossa (serve dopo per cp TOXIC), la preservo
+	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7 altrove (evita il verde su GBC)
+	ld b, a
+	pop af
 	ld hl, wEnemyBattleStatus3
 	ld de, wEnemyToxicCounter
 .ok
@@ -7704,6 +7732,18 @@ ExplodeEffect:
 	ld [de], a
 	ret
 
+; Animazione dello status secondario inflitto DAL GIOCATORE all'avversario: ANIM_A9
+; (EnemyHUDShakeAnim) su SGB, ANIM_C7 (ShakeScreenAnim, shake a schermo intero) altrove.
+; Su GBC ANIM_A9 ridisegna la parte alta del backsprite come sprite OBJ, che risulta verde
+; (palette-compat OBJ); lo shake a schermo intero evita del tutto quel percorso. Ritorna in a.
+GetSecondaryStatusAnim:
+	ld a, [wOnSGB]
+	and a
+	ld a, ANIM_A9
+	ret nz
+	ld a, ANIM_C7
+	ret
+
 FreezeBurnParalyzeEffect:
 	xor a
 	ld [wAnimationType], a
@@ -7744,14 +7784,14 @@ FreezeBurnParalyzeEffect:
 	ld a, 1 << PAR
 	ld [wEnemyMonStatus], a
 	call QuarterSpeedDueToParalysis ; quarter speed of affected mon
-	ld a, ANIM_A9
+	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7 altrove (evita il verde su GBC)
 	call PlayBattleAnimation
 	jp PrintMayNotAttackText ; print paralysis text
 .burn
 	ld a, 1 << BRN
 	ld [wEnemyMonStatus], a
 	call HalveAttackDueToBurn ; halve attack of affected mon
-	ld a, ANIM_A9
+	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7 altrove (evita il verde su GBC)
 	call PlayBattleAnimation
 	ld hl, BurnedText
 	jp PrintText
@@ -7759,7 +7799,7 @@ FreezeBurnParalyzeEffect:
 	call ClearHyperBeam ; resets hyper beam (recharge) condition from target
 	ld a, 1 << FRZ
 	ld [wEnemyMonStatus], a
-	ld a, ANIM_A9
+	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7 altrove (evita il verde su GBC)
 	call PlayBattleAnimation
 	ld hl, FrozenText
 	jp PrintText
