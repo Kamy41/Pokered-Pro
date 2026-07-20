@@ -33,3 +33,6 @@
 # for vim configuration
 # url: http://www.vim.org/scripts/script.php?script_id=441
 .lvimrc
+
+# Claude session handoff notes (local only, kept out of the public repo)
+/CLAUDE-P.md
