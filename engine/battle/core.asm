@@ -407,13 +407,30 @@ MainInBattleLoop:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wFirstMonsNotOutYet], a
-; Clear both sides' move base power at the start of each turn. Counter and Mirror Coat
-; reflect only when wPlayerMovePower/wEnemyMovePower is nonzero (and wDamage is set), so a
-; side that takes its turn without attacking (item, switch, paralysis, sleep...) must leave
-; these at 0 to avoid reflecting stale damage from a previous move. A real move reloads them
-; via GetCurrentMove, so normal Counter/Mirror Coat behavior is unaffected.
+; Clear each side's move base power at the start of each turn so Counter and Mirror Coat
+; don't reflect stale damage after a non-attacking turn (item, switch, unable to act): they
+; reflect only when the opponent's power (and wDamage) is nonzero. A normal move reloads the
+; power via GetCurrentMove. EXCEPTION: a side mid-multi-turn attack (Wrap/Bind/Fire Spin/Clamp,
+; Thrash/Petal Dance, Rage) keeps attacking WITHOUT reloading the power (CheckXStatusConditions
+; jumps past GetCurrentMove) and the damage code needs power != 0, so leave those untouched.
+	ld a, [wPlayerBattleStatus1]
+	and (1 << USING_TRAPPING_MOVE) | (1 << THRASHING_ABOUT)
+	jr nz, .keepPlayerMovePower
+	ld a, [wPlayerBattleStatus2]
+	bit USING_RAGE, a
+	jr nz, .keepPlayerMovePower
+	xor a
 	ld [wPlayerMovePower], a
+.keepPlayerMovePower
+	ld a, [wEnemyBattleStatus1]
+	and (1 << USING_TRAPPING_MOVE) | (1 << THRASHING_ABOUT)
+	jr nz, .keepEnemyMovePower
+	ld a, [wEnemyBattleStatus2]
+	bit USING_RAGE, a
+	jr nz, .keepEnemyMovePower
+	xor a
 	ld [wEnemyMovePower], a
+.keepEnemyMovePower
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - if raging, reset rage's accuracy here to prevent degradation
 	ld a, [wPlayerBattleStatus2]
