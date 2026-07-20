@@ -1418,8 +1418,8 @@ SlideTrainerPicOffScreen:
 	add hl, de
 	dec b
 	jr nz, .rowLoop
-	ld c, 2
-	call DelayFrames
+	call Delay3 ; 3 frame = un ciclo BG completo (i terzi 0-5/6-11/12-17), cosi' la cima
+	            ; della pic (riga 5, testa) non resta indietro di un frame rispetto al corpo
 	pop hl
 	pop bc
 	dec c
