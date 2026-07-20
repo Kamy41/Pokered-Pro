@@ -8,6 +8,21 @@ EnterMap::
 	ld a, $ff
 	ld [wJoyIgnore], a
 	call LoadMapData
+; On GBC there is no SGB screen-mask to hide the post-battle map reload, so a few frames of
+; half-updated VRAM were intermittently visible before the fade (after a win or a run). On SGB
+; the palette-command packets already mask this, so do it on non-SGB only, when a battle just
+; happened: blank to white and hold a short settle window (like the SGB mask's duration);
+; GBFadeInFromWhite then fades the overworld in cleanly.
+	ld a, [wOnSGB]
+	and a
+	jr nz, .skipPostBattleSettle ; SGB gia' maschera la transizione (pacchetti palette)
+	ld a, [wd72e]
+	bit 5, a ; did a battle happen immediately before this?
+	jr z, .skipPostBattleSettle
+	call GBPalWhiteOut
+	ld c, 20
+	call DelayFrames
+.skipPostBattleSettle
 	callba ClearVariablesOnEnterMap
 	ld hl, wd72c
 	bit 0, [hl] ; has the player already made 3 steps since the last battle?
