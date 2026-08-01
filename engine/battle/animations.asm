@@ -1052,8 +1052,8 @@ SpecialEffectPointers:
 	dw AnimationSpiralBallsInward
 	db SE_DELAY_ANIMATION_10 ; $E1
 	dw AnimationDelay10
-	db SE_FLASH_ENEMY_MON_PIC ; unused--same as SE_FLASH_MON_PIC ($F5), but for the enemy mon
-	dw AnimationFlashEnemyMonPic
+	db SE_SHAKE_SCREEN_BIS ; $E0: copia di ANIM_C7 con b=6 (status del giocatore, non-SGB)
+	dw AnimationShakeScreenBis
 	db SE_HIDE_ENEMY_MON_PIC ; $DF
 	dw AnimationHideEnemyMonPic
 	db SE_BLINK_ENEMY_MON ; $DE
@@ -1508,10 +1508,12 @@ AnimationFlashMonPic:
 	ld [wChangeMonPicEnemyTurnSpecies], a
 	jp ChangeMonPic
 
-AnimationFlashEnemyMonPic:
-; Flashes the enemy mon's sprite on and off
-	ld hl, AnimationFlashMonPic
-	jp CallWithTurnFlipped
+AnimationShakeScreenBis:
+; Copia di AnimationShakeScreen (ANIM_C7) con b=6 invece di 8, senza suono. Usata per lo status
+; secondario inflitto dal giocatore su non-SGB (ANIM_C7BIS). Rimpiazza il codice morto
+; AnimationFlashEnemyMonPic (SE $E0 mai usata). Durata regolabile cambiando 'ld b'.
+	ld b, $6
+	jp AnimationShakeScreenHorizontallyFast
 
 AnimationShowMonPic:
 	xor a

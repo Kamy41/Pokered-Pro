@@ -210,3 +210,4 @@ NUM_ATTACKS EQU const_value + -1
 	const HIDEPIC_ANIM ; monster disappears
 	const ROCK_ANIM ; throw rock
 	const BAIT_ANIM ; throw bait
+	const ANIM_C7BIS ; copia di ANIM_C7 con b=6 (status del giocatore, non-SGB); riusa lo slot ZigZag inutilizzato
