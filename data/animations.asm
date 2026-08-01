@@ -203,7 +203,7 @@ AttackAnimationPointers:
 	dw HidePicAnim
 	dw ThrowRockAnim
 	dw ThrowBaitAnim
-	dw ZigZagScreenAnim
+	dw ShakeScreenAnimBis
 
 ; each animation is a list of subanimations and special effects
 ; if first byte < $56
@@ -211,8 +211,8 @@ AttackAnimationPointers:
 ; if first byte >= $D8
 ;	db special_effect_id, sound_id
 ; $FF terminated
-ZigZagScreenAnim:
-	db SE_WAVY_SCREEN, $FF
+ShakeScreenAnimBis:
+	db SE_SHAKE_SCREEN_BIS, $FF
 	db $FF
 
 PoundAnim:

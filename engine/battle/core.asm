@@ -7766,7 +7766,7 @@ GetSecondaryStatusAnim:
 	and a
 	ld a, ANIM_A9
 	ret nz
-	ld a, ANIM_C7
+	ld a, ANIM_C7BIS ; era ANIM_C7: copia con b=6 (shake piu' corto), solo su non-SGB
 	ret
 
 FreezeBurnParalyzeEffect:
