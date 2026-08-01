@@ -1321,7 +1321,15 @@ HandlePlayerBlackOut:
 	ret z            ; starter battle in oak's lab: don't black out
 .notSony1Battle
 	ld b, SET_PAL_BATTLE_BLACK
-	call RunPaletteCommand
+	call RunPaletteCommand ; SGB: schermo nero (PAL_BLACK); non-SGB: no-op (ret z)
+; non-SGB (GBC/GB): riusa la stessa maschera nera BG dello scroll d'inizio lotta
+; (SlidePlayerAndEnemySilhouettesOnScreen). Su SGB ci pensa gia' SET_PAL_BATTLE_BLACK.
+	ld a, [wOnSGB]
+	and a
+	jr nz, .afterBlackMask
+	ld a, %11111100 ; col0 -> bianco, col1-3 -> nero (silhouette, text-box leggibile)
+	ld [rBGP], a
+.afterBlackMask
 	ld hl, PlayerBlackedOutText2
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
