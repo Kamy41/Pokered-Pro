@@ -1046,7 +1046,7 @@ SpecialEffectPointers:
 	dw AnimationSlideMonHalfOff
 	db SE_SHAKE_ENEMY_HUD ; $E4
 	dw AnimationShakeEnemyHUD
-	db SE_DELAY_ANIMATION_6 ; $E3: come SE_DELAY_ANIMATION_10 ma attesa di 5 frame
+	db SE_DELAY_ANIMATION_6 ; $E3: come SE_DELAY_ANIMATION_10 ma attesa di 6 frame
 	dw AnimationDelay6
 	db SE_SPIRAL_BALLS_INWARD ; $E2
 	dw AnimationSpiralBallsInward
