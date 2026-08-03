@@ -1046,8 +1046,8 @@ SpecialEffectPointers:
 	dw AnimationSlideMonHalfOff
 	db SE_SHAKE_ENEMY_HUD ; $E4
 	dw AnimationShakeEnemyHUD
-	db SE_SHAKE_ENEMY_HUD_2 ; unused--same pointer as SE_SHAKE_ENEMY_HUD ($E4)
-	dw AnimationShakeEnemyHUD
+	db SE_DELAY_ANIMATION_6 ; $E3: come SE_DELAY_ANIMATION_10 ma attesa di 5 frame
+	dw AnimationDelay6
 	db SE_SPIRAL_BALLS_INWARD ; $E2
 	dw AnimationSpiralBallsInward
 	db SE_DELAY_ANIMATION_10 ; $E1
@@ -1074,6 +1074,10 @@ SpecialEffectPointers:
 
 AnimationDelay10:
 	ld c, 10
+	jp DelayFrames
+
+AnimationDelay6:
+	ld c, 6
 	jp DelayFrames
 
 ; calls a function with the turn flipped from player to enemy or vice versa
