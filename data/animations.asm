@@ -1148,7 +1148,7 @@ MirrorCoatAnim:
 	db $46,$FF,$33
 	db SE_DARK_SCREEN_FLASH, $FF
 	db SE_DARK_SCREEN_FLASH, $FF
-	db $46,$29,$04
+	db $46,$33,$04
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
