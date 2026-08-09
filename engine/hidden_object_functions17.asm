@@ -447,15 +447,6 @@ VermilionGymTrashSuccessText2:
 	TX_FAR _VermilionGymTrashSuccessText2
 	db "@"
 
-; unused
-VermilionGymTrashSuccesPlaySfx:
-	TX_ASM
-	call WaitForSoundToFinish
-	ld a, SFX_SWITCH
-	call PlaySound
-	call WaitForSoundToFinish
-	jp TextScriptEnd
-
 VermilionGymTrashSuccessText3:
 	TX_FAR _VermilionGymTrashSuccessText3
 	TX_ASM

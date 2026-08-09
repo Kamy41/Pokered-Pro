@@ -69,18 +69,6 @@ DisplayDiploma:
 	call Delay3
 	jp GBPalNormal
 
-UnusedPlayerNameLengthFunc:
-; Unused function that does a calculation involving the length of the player's
-; name.
-	ld hl, wPlayerName
-	ld bc, $ff00
-.loop
-	ld a, [hli]
-	cp "@"
-	ret z
-	dec c
-	jr .loop
-
 DiplomaTextPointersAndCoords:
 	dw DiplomaText
 	dwCoord 5, 2

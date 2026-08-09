@@ -4791,13 +4791,6 @@ JumpToOHKOMoveEffect:
 	ret
 
 
-UnusedHighCriticalMoves:
-	db KARATE_CHOP
-	db RAZOR_LEAF
-	db CRABHAMMER
-	db SLASH
-	db $FF
-
 ; determines if attack is a critical hit
 ; azure heights claims "the fastest pokémon (who are,not coincidentally,
 ; among the most popular) tend to CH about 20 to 25% of the time."
@@ -7328,13 +7321,6 @@ _LoadTrainerPic:
 	ld a, $77
 	ld c, a
 	jp LoadUncompressedSpriteData
-
-; unreferenced
-ResetCryModifiers:
-	xor a
-	ld [wFrequencyModifier], a
-	ld [wTempoModifier], a
-	jp PlaySound
 
 ; animates the mon "growing" out of the pokeball
 AnimateSendingOutMon:

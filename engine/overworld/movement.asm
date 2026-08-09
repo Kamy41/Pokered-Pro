@@ -100,17 +100,6 @@ UpdatePlayerSprite:
 	ld [wSpriteStateData2 + 7], a
 	ret
 
-UnusedReadSpriteDataFunction:
-	push bc
-	push af
-	ld a, [H_CURRENTSPRITEOFFSET]
-	ld c, a
-	pop af
-	add c
-	ld l, a
-	pop bc
-	ret
-
 UpdateNPCSprite:
 	ld a, [H_CURRENTSPRITEOFFSET]
 	swap a
