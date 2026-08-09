@@ -131,12 +131,6 @@ SAVGoodChecksum:
 	ld [MBC1SRamEnable], a
 	ret
 
-LoadSAVIgnoreBadCheckSum:
-; unused function that loads save data and ignores bad checksums
-	call LoadSAV0
-	call LoadSAV1
-	jp LoadSAV2
-
 SaveSAV:
 	callba PrintSaveScreenText
 	ld hl, WouldYouLikeToSaveText

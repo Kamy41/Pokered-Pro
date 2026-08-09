@@ -240,10 +240,6 @@ MoneyText:
 JapaneseMochimonoText:
 	db "もちもの@"
 
-JapaneseMainMenuText:
-	db   "つづきから"
-	next "さいしょから@"
-
 BattleMenuText:
 	db   "FIGHT ",$E1,$E2
 	next "ITEM  RUN@"
@@ -283,9 +279,6 @@ DisplayMoneyBox:
 	ld hl, wd730
 	res 6, [hl]
 	ret
-
-CurrencyString:
-	db "      ¥@"
 
 DoBuySellQuitMenu:
 	ld a, [wd730]

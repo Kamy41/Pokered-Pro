@@ -251,16 +251,6 @@ DrawHPBar::
 LoadMonData::
 	jpab LoadMonData_
 
-OverwritewMoves::
-; Write c to [wMoves + b]. Unused.
-	ld hl, wMoves
-	ld e, b
-	ld d, 0
-	add hl, de
-	ld a, c
-	ld [hl], a
-	ret
-
 LoadFlippedFrontSpriteByMonIndex::
 	ld a, 1
 	ld [wSpriteFlipped], a
@@ -522,30 +512,11 @@ PrintLevel::
 	inc c ; increment number of digits to 3
 	jr PrintLevelCommon
 
-; prints the level without leaving off ":L" regardless of level
-; INPUT:
-; hl = destination address
-; [wLoadedMonLevel] = level
-PrintLevelFull::
-	ld a, $6e ; ":L" tile ID
-	ld [hli], a
-	ld c, 3 ; number of digits
-	ld a, [wLoadedMonLevel] ; level
-
 PrintLevelCommon::
 	ld [wd11e], a
 	ld de, wd11e
 	ld b, LEFT_ALIGN | 1 ; 1 byte
 	jp PrintNumber
-
-GetwMoves::
-; Unused. Returns the move at index a from wMoves in a
-	ld hl, wMoves
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	ret
 
 ; copies the base stat data of a pokemon to wMonHeader
 ; INPUT:
@@ -2841,17 +2812,6 @@ DecodeRLEList::
 	inc a                        ; include sentinel in counting
 	ret
 
-; sets movement byte 1 for sprite [H_SPRITEINDEX] to $FE and byte 2 to [hSpriteMovementByte2]
-SetSpriteMovementBytesToFE::
-	push hl
-	call GetSpriteMovementByte1Pointer
-	ld [hl], $fe
-	call GetSpriteMovementByte2Pointer
-	ld a, [hSpriteMovementByte2]
-	ld [hl], a
-	pop hl
-	ret
-
 ; sets both movement bytes for sprite [H_SPRITEINDEX] to $FF
 SetSpriteMovementBytesToFF::
 	push hl
@@ -2980,12 +2940,6 @@ YesNoChoice::
 	call InitYesNoTextBoxParameters
 	jr DisplayYesNoChoice
 
-Func_35f4::
-	ld a, TWO_OPTION_MENU
-	ld [wTextBoxID], a
-	call InitYesNoTextBoxParameters
-	jp DisplayTextBoxID
-
 InitYesNoTextBoxParameters::
 	xor a ; YES_NO_MENU
 	ld [wTwoOptionMenuID], a
@@ -3000,13 +2954,6 @@ YesNoChoicePokeCenter::
 	coord hl, 11, 6
 	lb bc, 8, 12
 	jr DisplayYesNoChoice
-
-WideYesNoChoice:: ; unused
-	call SaveScreenTilesToBuffer1
-	ld a, WIDE_YES_NO_MENU
-	ld [wTwoOptionMenuID], a
-	coord hl, 12, 7
-	lb bc, 8, 13
 
 DisplayYesNoChoice::
 	ld a, TWO_OPTION_MENU
