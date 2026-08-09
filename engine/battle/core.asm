@@ -7648,7 +7648,7 @@ PoisonEffect:
 	dec de
 	ld a, [H_WHOSETURN]
 	and a
-	ld b, ANIM_C7BIS
+	ld b, ANIM_C7
 	ld hl, wPlayerBattleStatus3
 	ld a, [de]
 	ld de, wPlayerToxicCounter
