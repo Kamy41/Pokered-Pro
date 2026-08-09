@@ -652,7 +652,9 @@ StringShotAnim:
 	db $FF
 
 DragonRageAnim:
+	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$51,$1F
+	db SE_DARK_SCREEN_FLASH, $FF
 	db $46,$FF,$0C
 	db $46,$FF,$0D
 	db $46,$FF,$0E
@@ -1148,7 +1150,7 @@ MirrorCoatAnim:
 	db $46,$FF,$33
 	db SE_DARK_SCREEN_FLASH, $FF
 	db SE_DARK_SCREEN_FLASH, $FF
-	db $46,$33,$04
+	db $46,$14,$04
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
