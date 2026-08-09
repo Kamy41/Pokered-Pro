@@ -407,6 +407,7 @@ MainInBattleLoop:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wFirstMonsNotOutYet], a
+	ld [wAttackedThisTurn], a ; dedicated Counter/Mirror Coat flag, no other consumer
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - if raging, reset rage's accuracy here to prevent degradation
 	ld a, [wPlayerBattleStatus2]
@@ -4877,6 +4878,21 @@ HighCriticalMoves:
 	db $FF
 
 
+; Returns z if the opponent did NOT attack this turn, reading the wAttackedThisTurn bit of
+; whichever side is not taking the turn. Only Counter and Mirror Coat use this. Clobbers a
+; and leaves hl/de alone; ld a, [nn] doesn't touch the flags, so the "and a" result survives
+; the load.
+OpponentAttackedThisTurn:
+	ld a, [H_WHOSETURN]
+	and a
+	ld a, [wAttackedThisTurn]
+	jr z, .playersTurn
+	and 1 << 0 ; enemy's turn: did the player attack?
+	ret
+.playersTurn
+	and 1 << 1 ; player's turn: did the enemy attack?
+	ret
+
 ; function to determine if Counter hits and if so, how much damage it does
 HandleCounterMove:
 ; The variables checked by Counter are updated whenever the cursor points to a new move in the battle selection menu.
@@ -4901,6 +4917,9 @@ HandleCounterMove:
 	ret nz ; return if not using Counter
 	ld a, $01
 	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
+	call OpponentAttackedThisTurn
+	ret z ; miss if the opponent didn't attack this turn (item, switch, unable to act):
+	      ; its move power and wDamage would still hold the values of an earlier turn
 	ld a, [hl]
 	cp COUNTER
 	ret z ; miss if the opponent's last selected move is Counter.
@@ -4964,6 +4983,9 @@ HandleMirrorCoatMove:
 	ret nz ; return if not using Mirror Coat
 	ld a, $01
 	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
+	call OpponentAttackedThisTurn
+	ret z ; miss if the opponent didn't attack this turn (item, switch, unable to act):
+	      ; its move power and wDamage would still hold the values of an earlier turn
 	ld a, [hl]
 	cp MIRROR_COAT
 	ret z ; miss if the opponent's last selected move is Mirror Coat.
@@ -5005,6 +5027,8 @@ HandleMirrorCoatMove:
 	ret
 
 ApplyAttackToEnemyPokemon:
+	ld hl, wAttackedThisTurn
+	set 0, [hl] ; the player attacked this turn (read by Counter/Mirror Coat)
 	ld a, [wPlayerMoveEffect]
 	cp OHKO_EFFECT
 	jr z, ApplyDamageToEnemyPokemon
@@ -5130,6 +5154,8 @@ ApplyAttackToEnemyPokemonDone:
 	jp DrawHUDsAndHPBars
 
 ApplyAttackToPlayerPokemon:
+	ld hl, wAttackedThisTurn
+	set 1, [hl] ; the enemy attacked this turn (read by Counter/Mirror Coat)
 	ld a, [wEnemyMoveEffect]
 	cp OHKO_EFFECT
 	jr z, ApplyDamageToPlayerPokemon

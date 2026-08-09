@@ -2091,6 +2091,12 @@ wMoveNum:: ; d0e0
 wMovesString:: ; d0e1
 	ds 56
 
+; wAttackedThisTurn: bit 0 = the player attacked this turn, bit 1 = the enemy did.
+; Cleared once per turn in MainInBattleLoop and set at the entry of ApplyAttackToEnemyPokemon
+; / ApplyAttackToPlayerPokemon. Read ONLY by Counter and Mirror Coat, so they don't reflect
+; stale damage after a turn in which the opponent didn't attack. Repurposed dead byte
+; (written only outside battle) so no WRAM address shifts -- saves and MissingNo. untouched.
+wAttackedThisTurn::
 wUnusedD119:: ; d119
 	ds 1
 
