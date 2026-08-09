@@ -7680,7 +7680,7 @@ PoisonEffect:
 	ld de, wPlayerToxicCounter
 	jr nz, .ok
 	push af ; a = effetto-mossa (serve dopo per cp TOXIC), la preservo
-	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7 altrove (evita il verde su GBC)
+	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7BIS altrove (evita il verde su GBC)
 	ld b, a
 	pop af
 	ld hl, wEnemyBattleStatus3
@@ -7746,15 +7746,18 @@ ExplodeEffect:
 	ret
 
 ; Animazione dello status secondario inflitto DAL GIOCATORE all'avversario: ANIM_A9
-; (EnemyHUDShakeAnim) su SGB, ANIM_C7 (ShakeScreenAnim, shake a schermo intero) altrove.
-; Su GBC ANIM_A9 ridisegna la parte alta del backsprite come sprite OBJ, che risulta verde
-; (palette-compat OBJ); lo shake a schermo intero evita del tutto quel percorso. Ritorna in a.
+; (EnemyHUDShakeAnim) su SGB, ANIM_C7BIS (ShakeScreenAnimBis, shake a schermo intero, copia
+; di ANIM_C7 con b=6 quindi piu' corta) altrove. Su GBC ANIM_A9 ridisegna la parte alta del
+; backsprite come sprite OBJ, che risulta verde (palette-compat OBJ); lo shake a schermo
+; intero evita del tutto quel percorso. Ritorna l'animazione in a.
+; NB: serve solo per il ramo giocatore->nemico. Sul turno del nemico PoisonEffect e
+; FreezeBurnParalyzeEffect usano ANIM_C7 fisso, che non ha mai avuto il problema del verde.
 GetSecondaryStatusAnim:
 	ld a, [wOnSGB]
 	and a
 	ld a, ANIM_A9
 	ret nz
-	ld a, ANIM_C7BIS ; era ANIM_C7: copia con b=6 (shake piu' corto), solo su non-SGB
+	ld a, ANIM_C7BIS
 	ret
 
 FreezeBurnParalyzeEffect:
@@ -7797,14 +7800,14 @@ FreezeBurnParalyzeEffect:
 	ld a, 1 << PAR
 	ld [wEnemyMonStatus], a
 	call QuarterSpeedDueToParalysis ; quarter speed of affected mon
-	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7 altrove (evita il verde su GBC)
+	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7BIS altrove (evita il verde su GBC)
 	call PlayBattleAnimation
 	jp PrintMayNotAttackText ; print paralysis text
 .burn
 	ld a, 1 << BRN
 	ld [wEnemyMonStatus], a
 	call HalveAttackDueToBurn ; halve attack of affected mon
-	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7 altrove (evita il verde su GBC)
+	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7BIS altrove (evita il verde su GBC)
 	call PlayBattleAnimation
 	ld hl, BurnedText
 	jp PrintText
@@ -7812,7 +7815,7 @@ FreezeBurnParalyzeEffect:
 	call ClearHyperBeam ; resets hyper beam (recharge) condition from target
 	ld a, 1 << FRZ
 	ld [wEnemyMonStatus], a
-	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7 altrove (evita il verde su GBC)
+	call GetSecondaryStatusAnim ; ANIM_A9 su SGB, ANIM_C7BIS altrove (evita il verde su GBC)
 	call PlayBattleAnimation
 	ld hl, FrozenText
 	jp PrintText
