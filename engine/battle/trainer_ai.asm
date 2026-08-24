@@ -109,94 +109,12 @@ AIMoveChoiceModificationFunctionPointers:
 	dw AIMoveChoiceModification3
 	dw AIMoveChoiceModification4 ; unused
 
-; discourages moves that cause no damage but only a status ailment if player's mon already has one
-AIMoveChoiceModification1:
-	ld a, [wBattleMonStatus]
-	and a
-	ret z ; return if no status ailment on player's mon
-	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
-	ld de, wEnemyMonMoves ; enemy moves
-	ld b, NUM_MOVES + 1
-.nextMove
-	dec b
-	ret z ; processed all 4 moves
-	inc hl
-	ld a, [de]
-	and a
-	ret z ; no more moves in move set
-	inc de
-	call ReadMove
-	ld a, [wEnemyMovePower]
-	and a
-	jr nz, .nextMove
-	ld a, [wEnemyMoveEffect]
-	push hl
-	push de
-	push bc
-	ld hl, StatusAilmentMoveEffects
-	ld de, $0001
-	call IsInArray
-	pop bc
-	pop de
-	pop hl
-	jr nc, .nextMove
-	ld a, [hl]
-	add $5 ; heavily discourage move
-	ld [hl], a
-	jr .nextMove
-
-StatusAilmentMoveEffects:
-	db $01 ; unused sleep effect
-	db SLEEP_EFFECT
-	db POISON_EFFECT
-	db PARALYZE_EFFECT
-	db $FF
-
-; slightly encourage moves with specific effects.
-; in particular, stat-modifying moves and other move effects
-; that fall in-between
-AIMoveChoiceModification2:
-	ld a, [wAILayer2Encouragement]
-	and a 	;joenote - AI layer 2 should activate on 1st turn instead of 2nd turn after send
-;      	cp $1
-	ret nz
-	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
-	ld de, wEnemyMonMoves ; enemy moves
-	ld b, NUM_MOVES + 1
-.nextMove
-	dec b
-	ret z ; processed all 4 moves
-	inc hl
-	ld a, [de]
-	and a
-	ret z ; no more moves in move set
-	inc de
-	call ReadMove
-	ld a, [wEnemyMoveEffect]
-	cp ATTACK_UP1_EFFECT
-	jr c, .nextMove
-	cp BIDE_EFFECT
-	jr c, .preferMove
-	cp ATTACK_UP2_EFFECT
-	jr c, .nextMove
-	cp POISON_EFFECT
-	jr c, .preferMove
-	jr .nextMove
-.preferMove
-	dec [hl] ; slightly encourage this move
-	jr .nextMove
-
-; encourages moves that are effective against the player's mon (even if non-damaging - FIXED).
-; discourage damaging moves that are ineffective or not very effective against the player's mon,
-; unless there's no damaging move that deals at least neutral damage
-; AIMoveChoiceModification3 was relocated to the free space at the end of this bank
-; (past BikerData / MissingNo.'s read point) so its logic can change size freely.
-; This ds keeps everything below at its original address, so MissingNo.'s data source
-; does not move -- guarded by the ASSERT in data/trainer_parties.asm.
-	ds $6D ; = relocated mod3 body (106) + the 3 reclaimed "preserve Missingno" NOPs
-
-AIMoveChoiceModification4:
-	ret
+; --- AIMoveChoiceModification1/2/3/4: tutte rilocate in fondo al bank (zona free, dopo mod3) ---
+; Stanno oltre BikerData / il punto di lettura di MissingNo., cosi' possono cambiare dimensione
+; liberamente. Questo ds tiene ReadMove, ..., BikerData al loro indirizzo originale -> la fonte
+; dati di MissingNo. NON si muove (protetto dall'ASSERT in data/trainer_parties.asm; se sbagliata
+; la dimensione il build fallisce invece di corrompere MissingNo.).
+	ds $D9 ; = mod1 (60) + mod2 (47) + vecchio backfill mod3 (109) + mod4 (1), tutti rilocati sopra
 
 ReadMove:
 	push hl
@@ -777,8 +695,86 @@ AIBattleUseItemText:
 	TX_FAR _AIBattleUseItemText
 	db "@"
 
-; --- Relocated here from the locked zone (see the ds up in the move-choice code). Being in
-; --- free space, this logic can grow without shifting MissingNo.'s data source.
+; === AIMoveChoiceModification 1/2/3/4: tutte qui nella zona free (dopo BikerData / il punto di
+; === lettura di MissingNo.), in ordine 1-2-3-4. Rilocate dalla zona locked (vedi il ds nella
+; === sezione move-choice sopra): essendo qui, la loro logica puo' crescere senza spostare la
+; === fonte dati di MissingNo. Codice INVARIATO rispetto agli originali (solo spostato).
+AIMoveChoiceModification1:
+; discourages moves that cause no damage but only a status ailment if player's mon already has one
+	ld a, [wBattleMonStatus]
+	and a
+	ret z ; return if no status ailment on player's mon
+	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
+	ld de, wEnemyMonMoves ; enemy moves
+	ld b, NUM_MOVES + 1
+.nextMove
+	dec b
+	ret z ; processed all 4 moves
+	inc hl
+	ld a, [de]
+	and a
+	ret z ; no more moves in move set
+	inc de
+	call ReadMove
+	ld a, [wEnemyMovePower]
+	and a
+	jr nz, .nextMove
+	ld a, [wEnemyMoveEffect]
+	push hl
+	push de
+	push bc
+	ld hl, StatusAilmentMoveEffects
+	ld de, $0001
+	call IsInArray
+	pop bc
+	pop de
+	pop hl
+	jr nc, .nextMove
+	ld a, [hl]
+	add $5 ; heavily discourage move
+	ld [hl], a
+	jr .nextMove
+
+StatusAilmentMoveEffects:
+	db $01 ; unused sleep effect
+	db SLEEP_EFFECT
+	db POISON_EFFECT
+	db PARALYZE_EFFECT
+	db $FF
+
+AIMoveChoiceModification2:
+; slightly encourage moves with specific effects (stat-modifying and other in-between effects)
+	ld a, [wAILayer2Encouragement]
+	and a ;joenote - AI layer 2 should activate on 1st turn instead of 2nd turn after send
+;	cp $1
+	ret nz
+	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
+	ld de, wEnemyMonMoves ; enemy moves
+	ld b, NUM_MOVES + 1
+.nextMove
+	dec b
+	ret z ; processed all 4 moves
+	inc hl
+	ld a, [de]
+	and a
+	ret z ; no more moves in move set
+	inc de
+	call ReadMove
+	ld a, [wEnemyMoveEffect]
+	cp ATTACK_UP1_EFFECT
+	jr c, .nextMove
+	cp BIDE_EFFECT
+	jr c, .preferMove
+	cp ATTACK_UP2_EFFECT
+	jr c, .nextMove
+	cp POISON_EFFECT
+	jr c, .preferMove
+	jr .nextMove
+.preferMove
+	dec [hl] ; slightly encourage this move
+	jr .nextMove
+
+; --- mod3 (in free space, puo' crescere senza spostare la fonte dati di MissingNo.):
 AI_MAX_SAME_MOVE EQU 3 ; the enemy won't spam the same super-effective move more than ~this many turns running
 
 ; Move scoring for trainer classes that use modification 3:
@@ -888,3 +884,7 @@ AIMoveChoiceModification3:
 	jp z, .nextMove
 	inc [hl] ; slightly discourage this move
 	jp .nextMove
+
+AIMoveChoiceModification4:
+; unused -- ora nella zona free insieme alle altre; riusabile in futuro per un altro scoring layer.
+	ret
