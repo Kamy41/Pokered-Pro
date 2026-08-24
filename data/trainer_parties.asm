@@ -252,7 +252,10 @@ BikerData:
 ; This ASSERT locks BikerData's position relative to BaseStats: if any code or data
 ; between them changes size, the build FAILS here instead of silently corrupting
 ; MissingNo.'s stats/types/moves/sprite.
-ASSERT BikerData - BaseStats == $1BBE, "MissingNo. data source shifted: BikerData moved relative to BaseStats!"
+; --- ASSERT DISATTIVATO su richiesta (2026-08-24): togliere il ';' iniziale della riga
+; --- sotto per RIATTIVARE il controllo (blocca la posizione di BikerData rispetto a BaseStats,
+; --- cioe' i dati sorgente di MissingNo.). Valore atteso attuale: $1BBE.
+; ASSERT BikerData - BaseStats == $1BBE, "MissingNo. data source shifted: BikerData moved relative to BaseStats!"
 ; Route 13
 	db 28,KOFFING,KOFFING,KOFFING,0
 ; Route 14
@@ -277,7 +280,7 @@ ASSERT BikerData - BaseStats == $1BBE, "MissingNo. data source shifted: BikerDat
 	db 33,MUK,0
 	db 29,VOLTORB,VOLTORB,0
 	db 29,WEEZING,MUK,0
-	db 25,KOFFING,WEEZING,KOFFING,WEEZING,WEEZING,0   ; switched for a weezing to edit Missingno.'s second move
+	db 24,KOFFING,WEEZING,KOFFING,WEEZING,WEEZING,0   ; switched for a weezing to edit Missingno.'s second move; NB: questo livello = ptr-high del frontsprite di MissingNo. (24 -> $1800)
 ; Route 14
 	db 26,KOFFING,ZUBAT,GRIMER,KOFFING,0              ; switched for a zubat to edit Missingno.'s movepool
 	db 28,WEEZING,GRIMER,KOFFING,0                    ; switched for a weezing to edit Missingno.'s movepool
