@@ -284,7 +284,7 @@ SlowbroEvosMoves:
 	db 33, WATER_GUN
 	db 37, WITHDRAW
 	db 44, AMNESIA
-	db 54, PSYCHIC_M   ; edited for Elite Four fun
+	db 54, PSYCHIC_M
 	db 0
 
 IvysaurEvosMoves:
@@ -405,7 +405,7 @@ LaprasEvosMoves:
 	db 16, SING
 	db 20, MIST
 	db 25, BODY_SLAM
-	db 31, ICE_BEAM    ; Swapped order to fix new TeamMoves
+	db 31, ICE_BEAM
 	db 38, CONFUSE_RAY
 	db 46, HYDRO_PUMP
 	db 0
@@ -801,7 +801,7 @@ MagnetonEvosMoves:
 	db 29, SUPERSONIC
 	db 38, THUNDER_WAVE
 	db 46, SWIFT
-	db 54, SCREECH
+	db 54, THUNDER
 	db 0
 
 KoffingEvosMoves:
@@ -976,7 +976,7 @@ JynxEvosMoves:
 	db 23, DOUBLESLAP
 	db 31, ICE_PUNCH
 	db 39, BODY_SLAM
-	db 47, BARRIER     ; changed for Elite Four fun
+	db 47, BARRIER
 	db 58, BLIZZARD
 	db 0
 
@@ -1191,7 +1191,7 @@ SandshrewEvosMoves:
 	db 17, SLASH
 	db 24, POISON_STING
 	db 31, SWIFT
-	db 38, FURY_SWIPES
+	db 38, DIG
 	db 0
 
 SandslashEvosMoves:
@@ -1202,7 +1202,7 @@ SandslashEvosMoves:
 	db 17, SLASH
 	db 27, POISON_STING
 	db 36, SWIFT
-	db 47, FURY_SWIPES
+	db 47, DIG
 	db 0
 
 OmanyteEvosMoves:
@@ -1857,9 +1857,8 @@ PonytaEvosMoves:
 ; Learnset
 	db 30, TAIL_WHIP
 	db 32, STOMP
-	db 35, GROWL
-	db 39, FIRE_SPIN
-	db 43, TAKE_DOWN
+	db 36, FIRE_SPIN
+	db 42, TAKE_DOWN
 	db 48, AGILITY
 	db 0
 
@@ -1869,8 +1868,8 @@ RapidashEvosMoves:
 ; Learnset
 	db 30, TAIL_WHIP
 	db 32, STOMP
-	db 35, GROWL
-	db 39, FIRE_SPIN
+	db 36, FIRE_SPIN
+	db 40, FURY_ATTACK
 	db 47, TAKE_DOWN
 	db 55, AGILITY
 	db 0
@@ -1972,7 +1971,7 @@ MagnemiteEvosMoves:
 	db 29, SUPERSONIC
 	db 35, THUNDER_WAVE
 	db 41, SWIFT
-	db 47, SCREECH
+	db 47, THUNDER
 	db 0
 
 MissingNoAEEvosMoves:
